@@ -20,7 +20,7 @@ FORMATION_AREAS = {
 
 
 # Path del archivo PDF
-file_path = "escolaridad.pdf"
+file_path = "escolaridades/escolaridad-mathi.pdf"
 
 # Leer archivo PDF
 pdf_text = read_pdf(file_path)
