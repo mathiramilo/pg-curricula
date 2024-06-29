@@ -1,9 +1,13 @@
-from functions import read_pdf, search_aprobed_subjects
+from functions import (
+    read_pdf,
+    search_aprobed_subjects,
+    search_aprobed_subjects_with_intermediate_results,
+)
 
 # Areas de formacion
 FORMATION_AREAS = {
     "Materias Basicas": ["Matematica", "Ciencias Experimentales"],
-    "Basico-Tec, Tecnicas e Integ.": [
+    "Basico-Tec,Tecnicas e Integ.": [
         "Programacion",
         "Arquit, S.Op. y Redes de Comp.",
         "Int.Artificial y Robotica",
@@ -20,13 +24,17 @@ FORMATION_AREAS = {
 
 
 # Path del archivo PDF
-file_path = "escolaridades/escolaridad-mathi.pdf"
+file_path = "escolaridades/esc-ri.pdf"
 
 # Leer archivo PDF
 pdf_text = read_pdf(file_path)
 
+# print(pdf_text) # Debug
+
 # Buscar unidades curriculares aprobadas
-aprobed_subjects = search_aprobed_subjects(FORMATION_AREAS, pdf_text)
+aprobed_subjects = search_aprobed_subjects_with_intermediate_results(
+    FORMATION_AREAS, pdf_text
+)
 
 # Mostrar unidades curriculares aprobadas formato JSON
 print(aprobed_subjects)
