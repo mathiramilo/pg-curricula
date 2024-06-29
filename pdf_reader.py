@@ -3,6 +3,8 @@ import re
 
 import PyPDF2
 
+from consts import LINES_TO_SKIP, Status
+
 
 def read_pdf(file_path) -> str:
     pdf_text = ""
@@ -18,65 +20,74 @@ def read_pdf(file_path) -> str:
     return pdf_text
 
 
-# Verificar si una linea corresponde a una unidad curricular (With Intermediate Results)
-def is_subject_wir(line) -> bool:
-    regex = r"^(Examen|Curso|\*\*\*\*\*\*\*\*\*\*|Resultado Final)"
+def is_subject(line: str, wir: bool) -> bool:
+    """Detecta si una linea corresponde a una unidad curricular.
+
+    Args:
+        line (str): Linea de texto a analizar.
+        wir (bool): Indica si se analiza con o sin resultados intermedios.
+
+    Returns:
+        bool: Retorna True si la linea corresponde a una unidad curricular, False en caso contrario.
+    """
+
+    regex = (
+        r"^(Examen|Curso|\*\*\*\*\*\*\*\*\*\*|Resultado Final)"
+        if wir
+        else r"^(?:\d+|\*\*\*)"
+    )
     return re.match(regex, line)
 
 
-# Verificar si una linea corresponde a una unidad curricular (Without Intermediate Results)
-def is_subject(line) -> bool:
-    regex = r"^(?:\d+|\*\*\*)"
-    return re.match(regex, line)
+def skip_line(line: str) -> bool:
+    """Detecta si la linea debe ser omitida. Ya que entre paginas del PDF se repiten ciertas lineas correspondientes a la cabecera y pie de pagina.
 
+    Args:
+        line (str): Linea a analizar.
 
-def get_letters(text):
-    # Expresión regular para encontrar todas las letras
-    regex = r"[^a-zA-Z\s]"
-    # Encontrar todas las letras
-    result = re.sub(regex, "", text)
-    return result.strip()
+    Returns:
+        bool: Retorna True si la linea debe ser omitida, False en caso contrario.
+    """
 
-
-def delete_letters(text):
-    # Expresión regular para encontrar todas las letras
-    regex = r"[a-zA-Z]"
-    # Reemplazar todas las letras con una cadena vacía
-    result = re.sub(regex, "", text)
-    return result
-
-
-def skip_line(line) -> bool:
-    lines_to_skip = [
-        "Código",
-        "Verificar",
-        "Página",
-        "Escala de Notas",
-        "Cambio de Plan",
-        "Plan",
-        "En cursoEstado Ingreso",
-        "INGENIERIA EN COMPUTACION",
-        "FACULTAD DE INGENIERÍA",
-        "CERTIFICADO DE ESCOLARIDAD",
-        "Resultados Finales e Intermedios",
-        "Normal Tipo de Inscripción: En curso Estado:",
-        "Aprobación",
-        "Unidad Curricular",
-        "Nota  FechaCant.",
-        "sin",
-        "validezCant.",
-        "Reproba",
-        "-cionesCred Actividad",
-    ]
-
-    for s in lines_to_skip:
+    for s in LINES_TO_SKIP:
         if line.startswith(s):
             return True
 
     return False
 
 
-def search_aprobed_subjects_with_intermediate_results(formation_areas, pdf_text) -> str:
+def extract_name(text):
+    # Expresión regular para encontrar la fecha al inicio y el primer número después del nombre de la asignatura
+    regex = r"\d{2}/\d{2}/\d{4}\s+(\d+|S/N)(\s+\d+)?"
+    # Buscar la coincidencia en el texto y eliminarla
+    result = re.sub(regex, "", text)
+    return result.strip()
+
+
+def get_calification(text):
+    # Expresión regular para encontrar la calificación en el texto
+    regex = r"\d+"
+    # Buscar la coincidencia en el texto
+    result = re.search(regex, text)
+    return result.group() if result else None
+
+
+def get_calification_and_note(text: str) -> tuple:
+    """Utilizada en UCs opcionales para obtener la calificación y los créditos.
+
+    Args:
+        text (str): Texto a separar. Ejemplo: "1010".
+
+    Returns:
+        (int, int): Retorna una tupla con la calificación y los créditos.
+    """
+    if text[0] == "1":
+        return text[:2], text[2:]
+    return text[0], text[1:]
+
+
+# Funcion para escolaridades con resultados intermedios -> Tiene en cuenta UCs con curso aprobado
+def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> str:
     # Dicionario de unidades curriculares aprobadas
     aprobed_subjects = {
         "Materias Basicas": {"Matematica": [], "Ciencias Experimentales": []},
@@ -104,14 +115,14 @@ def search_aprobed_subjects_with_intermediate_results(formation_areas, pdf_text)
             lines = []
 
             for line in item_lines:
-                if is_subject_wir(line):
+                if is_subject(line, wir=True):
                     lines.append(line)
                 elif skip_line(line) or line == area.upper() or line == item.upper():
                     continue
                 else:
                     break
 
-            print(lines)  # Debug
+            # print(lines)  # Debug
 
             # Filtrar los strings que comiencen con 'Resultado Final' y almacenar sus índices
             final_results = [
@@ -120,25 +131,28 @@ def search_aprobed_subjects_with_intermediate_results(formation_areas, pdf_text)
                 if line.startswith("Resultado Final")
             ]
 
-            print(final_results)  # Debug
+            # print(final_results)  # Debug
 
             for s in final_results:
                 result = s[1]
 
                 # Si el examen de la unidad curricular no fue aprobado se muestra "***" en el resultado final
                 # Si el curso de la unidad curricular no fue aprobado se muestra "**********" en el curso
-                if result.split(" ")[2].startswith(""):
+                if result.split(" ")[2].startswith("*"):
                     previous_line = lines[s[0] - 1]
-                    if previous_line.startswith("*"):  # Curso reprobado
-                        print("MATERIA REPROBADA")
+                    # Curso reprobado
+                    if previous_line.startswith("*"):
                         continue
-                    else:  # Curso aprobado
+                    # Curso aprobado
+                    else:
                         date = previous_line.split(" ")[1]
-                        print(" ".join(result.split(" ")[2:]))
                         name = " ".join(result.split(" ")[2:])
-                        name = name[
-                            :-2
-                        ]  # TODO: Para materias opcionales esto no funciona bien!
+
+                        if area != "Materias Opcionales":
+                            name = name[:-2]
+
+                        # String -> "17/12/2022 9ARQUITECTURA DE COMPUTADORAS " | "17/12/2022 1 9ARQUITECTURA DE COMPUTADORAS "
+                        name = extract_name(name)
 
                         aprobed_subjects[area][item].append(
                             {
@@ -146,47 +160,54 @@ def search_aprobed_subjects_with_intermediate_results(formation_areas, pdf_text)
                                 "date": date,
                                 "credits": None,
                                 "name": name,
-                                "status": "Curso",
+                                "status": Status.CURSO.value,
+                            }
+                        )
+                else:
+                    # Si la unidad curricular fue aprobada se muestra => "Resultado Final: [Fecha] [Nota][Nombre UC] [Creditos]"
+                    # Se obtiene informacion de la unidad curricular y se almacena en el diccionario aprobed_subjects
+                    if area != "Materias Opcionales":
+                        subject_info = result.split(" ")[2:]
+                        date = subject_info[0]
+                        calification = get_calification(subject_info[1])
+                        credits = subject_info[-1]
+                        name = extract_name(" ".join(subject_info[:-1]))
+
+                        aprobed_subjects[area][item].append(
+                            {
+                                "calification": calification,
+                                "date": date,
+                                "credits": credits,
+                                "name": name,
+                                "status": Status.EXAMEN.value,
+                            }
+                        )
+                    else:
+                        subject_info = result.split(" ")[2:]
+                        # ['26/07/2023', '1010', 'TRATAMIENTO', 'DE', 'IMAGENES', 'POR', 'COMPUTADORA']
+                        # TODO: Creditos y Nota estan pegados, ver como podemos separarlo!
+                        date = subject_info[0]
+                        calification, credits = get_calification_and_note(
+                            subject_info[1]
+                        )
+                        name = " ".join(subject_info[2:])
+
+                        aprobed_subjects[area][item].append(
+                            {
+                                "calification": calification,
+                                "date": date,
+                                "credits": credits,
+                                "name": name,
+                                "status": Status.EXAMEN.value,
                             }
                         )
 
-                # Si la unidad curricular fue aprobada se muestra => "[Nota] [Fecha] [Creditos] [Nombre UC]"
-                # Se obtiene informacion de la unidad curricular y se almacena en el diccionario aprobed_subjects
-                # if area != "Materias Opcionales":
-                #     subject_info = s.split(" ")
-                #     calification = subject_info[0]
-                #     date = subject_info[1][1:]
-                #     credits = subject_info[2]
-                #     name = " ".join(subject_info[3:])
-
-                #     aprobed_subjects[area][item].append(
-                #         {
-                #             "calification": calification,
-                #             "date": date,
-                #             "credits": credits,
-                #             "name": name,
-                #         }
-                #     )
-                # else:
-                #     subject_info = s.split(" ")
-                #     calification = subject_info[-1]
-                #     date = subject_info[0]
-                #     credits = subject_info[-2]
-                #     name = " ".join(subject_info[1 : len(subject_info) - 3])
-
-                #     aprobed_subjects[area][item].append(
-                #         {
-                #             "calification": calification,
-                #             "date": date,
-                #             "credits": credits,
-                #             "name": name,
-                #         }
-                #     )
-
+    # Retornar diccionario de unidades curriculares aprobadas en formato JSON
     return json.dumps(aprobed_subjects, indent=4)
 
 
-def search_aprobed_subjects(formation_areas, pdf_text) -> str:
+# Funcion para escolaridades con resultados finales -> No tiene en cuenta UCs con curso aprobado
+def search_aprobed_subjects_final_results(formation_areas, pdf_text) -> str:
     # Dicionario de unidades curriculares aprobadas
     aprobed_subjects = {
         "Materias Basicas": {"Matematica": [], "Ciencias Experimentales": []},
@@ -214,7 +235,7 @@ def search_aprobed_subjects(formation_areas, pdf_text) -> str:
             lines = []
 
             for line in item_lines:
-                if is_subject(line):
+                if is_subject(line, wir=False):
                     lines.append(line)
                 else:
                     break
