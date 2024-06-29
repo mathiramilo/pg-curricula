@@ -1,6 +1,6 @@
 from enum import Enum
 
-# Areas de formacion. Debemos tener un diccionario asi para cada carrera.
+# Areas de formacion. TODO: Debemos tener un diccionario asi para cada carrera.
 FORMATION_AREAS_INGCOMP = {
     "Materias Basicas": ["Matematica", "Ciencias Experimentales"],
     "Basico-Tec,Tecnicas e Integ.": [

@@ -88,7 +88,7 @@ def get_calification_and_note(text: str) -> tuple:
 
 # Funcion para escolaridades con resultados intermedios -> Tiene en cuenta UCs con curso aprobado
 def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> str:
-    # Dicionario de unidades curriculares aprobadas
+    # Dicionario de unidades curriculares aprobadas. TODO: Para que funcione con todas las carreras se debe tener uno de estos por carrera y seleccionarlo dependiendo de la carrera.
     aprobed_subjects = {
         "Materias Basicas": {"Matematica": [], "Ciencias Experimentales": []},
         "Basico-Tec,Tecnicas e Integ.": {
