@@ -19,14 +19,6 @@
           "rule": "AND",
           "prevs": [
             {
-              "rule": "OR",
-              "prevs": []
-            },
-            {
-              "rule": "OR",
-              "prevs": []
-            },
-            {
               "rule": "PLAN_CREDITS",
               "min": 365
             },
