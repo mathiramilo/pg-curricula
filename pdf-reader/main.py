@@ -6,7 +6,7 @@ from pdf_reader import (
 )
 
 # Path del archivo PDF
-FILE_PATH = "escolaridades/esc-ri.pdf"
+FILE_PATH = "./escolaridades/esc-ri.pdf"
 
 
 def extract_subjects_from_pdf(file_path: str, wir: bool) -> dict:

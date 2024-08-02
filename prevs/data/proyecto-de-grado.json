@@ -1,0 +1,164 @@
+{
+  "code": "1730",
+  "name": "Proyecto de Grado",
+  "credits": 30,
+  "prevs": [
+    {
+      "rule": "NOT",
+      "prevs": [
+        {
+          "code": "CP221",
+          "instance": "Course"
+        }
+      ]
+    },
+    {
+      "rule": "OR",
+      "prevs": [
+        {
+          "rule": "AND",
+          "prevs": [
+            {
+              "rule": "OR",
+              "prevs": []
+            },
+            {
+              "rule": "OR",
+              "prevs": []
+            },
+            {
+              "rule": "PLAN_CREDITS",
+              "min": 365
+            },
+            {
+              "code": "1033",
+              "instance": "Course"
+            },
+            {
+              "code": "1721",
+              "instance": "Course"
+            },
+            {
+              "code": "1325",
+              "instance": "Course"
+            },
+            {
+              "code": "1327",
+              "instance": "Course"
+            },
+            {
+              "code": "1324",
+              "instance": "Course"
+            },
+            {
+              "code": "1911",
+              "instance": "Course"
+            },
+            {
+              "code": "1716",
+              "instance": "Course"
+            },
+            {
+              "code": "1323",
+              "instance": "Course"
+            },
+            {
+              "rule": "OR",
+              "prevs": [
+                {
+                  "code": "1511",
+                  "instance": "Course"
+                },
+                {
+                  "code": "1518",
+                  "instance": "Course"
+                },
+                {
+                  "code": "1532",
+                  "instance": "Course"
+                },
+                {
+                  "code": "1537",
+                  "instance": "Course"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "rule": "AND",
+          "prevs": [
+            {
+              "rule": "PLAN_CREDITS",
+              "min": 330
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "5020",
+              "name": "Ingenieria en Computacion",
+              "min": 8
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4580",
+              "name": "Ingenieria en Computacion",
+              "min": 60
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4756",
+              "name": "Ingenieria en Computacion",
+              "min": 15
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4083",
+              "name": "Ingenieria en Computacion",
+              "min": 70
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "5082",
+              "name": "Ingenieria en Computacion",
+              "min": 10
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4815",
+              "name": "Ingenieria en Computacion",
+              "min": 10
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4647",
+              "name": "Ingenieria en Computacion",
+              "min": 10
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4066",
+              "name": "Ingenieria en Computacion",
+              "min": 10
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "4428",
+              "name": "Ingenieria en Computacion",
+              "min": 30
+            },
+            {
+              "rule": "GROUP_CREDITS",
+              "code": "5265",
+              "name": "Ingenieria en Computacion",
+              "min": 10
+            }
+          ]
+        },
+        {
+          "rule": "PLAN_CREDITS",
+          "min": 380
+        }
+      ]
+    }
+  ]
+}
