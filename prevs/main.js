@@ -4,7 +4,7 @@ const UcPrevs = require("./data/proyecto-de-grado.json")
 const studentData = require("./data/student-data.json")
 
 function satisfiesPrevs(studentData, requiredPrevs) {
-  if (!requiredPrevs || requiredPrevs.length === 0) {
+  if (!requiredPrevs) {
     console.log("No prevs required")
     return true
   }
