@@ -2,7 +2,6 @@ import json
 import re
 
 import PyPDF2
-
 from consts import LINES_TO_SKIP, Status
 
 
@@ -89,35 +88,36 @@ def get_calification_and_note(text: str) -> tuple:
 # Funcion para escolaridades con resultados intermedios -> Tiene en cuenta UCs con curso aprobado
 def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> str:
     # Dicionario de unidades curriculares aprobadas. TODO: Para que funcione con todas las carreras se debe tener uno de estos por carrera y seleccionarlo dependiendo de la carrera.
-    aprobed_subjects = {
-        "Materias Basicas": {"Matematica": [], "Ciencias Experimentales": []},
-        "Basico-Tec,Tecnicas e Integ.": {
-            "Programacion": [],
-            "Arquit, S.Op. y Redes de Comp.": [],
-            "Int.Artificial y Robotica": [],
-            "B.Datos y Sist. de Informacion": [],
-            "Calculo Numerico y Simbolico": [],
-            "Investigacion Operativa": [],
-            "Ingenieria de Software": [],
-            "A.Integ,Talleres,Pasant.y Proy": [],
-            "Gestion en Organizaciones": [],
-        },
-        "Materias Complementarias": {"Ciencias Humanas y Sociales": []},
-        "Materias Opcionales": {"Materias Opcionales": []},
+    student_data = {
+        "UCs Aprobadas": [],
+        "Creditos Totales": 0,
+        "Matematica": 0,
+        "Ciencias Experimentales": 0,
+        "Programacion": 0,
+        "Arquit, S.Op. y Redes de Comp.": 0,
+        "Int.Artificial y Robotica": 0,
+        "B.Datos y Sist. de Informacion": 0,
+        "Calculo Numerico y Simbolico": 0,
+        "Investigacion Operativa": 0,
+        "Ingenieria de Software": 0,
+        "A.Integ,Talleres,Pasant.y Proy": 0,
+        "Gestion en Organizaciones": 0,
+        "Ciencias Humanas y Sociales": 0,
+        "Materias Opcionales": 0,
     }
 
     # Recolectar UCs aprobadas por area de formacion
     for area in formation_areas:
-        for item in formation_areas[area]:
-            item_idx = pdf_text.find("\n" + item.upper() + "\n")
-            item_text = pdf_text[item_idx + len(item) + 2 : len(pdf_text)]
-            item_lines = item_text.split("\n")
+        for group in formation_areas[area]:
+            group_idx = pdf_text.find("\n" + group.upper() + "\n")
+            group_text = pdf_text[group_idx + len(group) + 2 : len(pdf_text)]
+            group_lines = group_text.split("\n")
             lines = []
 
-            for line in item_lines:
+            for line in group_lines:
                 if is_subject(line, wir=True):
                     lines.append(line)
-                elif skip_line(line) or line == area.upper() or line == item.upper():
+                elif skip_line(line) or line == area.upper() or line == group.upper():
                     continue
                 else:
                     break
@@ -154,18 +154,20 @@ def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> s
                         # String -> "17/12/2022 9ARQUITECTURA DE COMPUTADORAS " | "17/12/2022 1 9ARQUITECTURA DE COMPUTADORAS "
                         name = extract_name(name)
 
-                        aprobed_subjects[area][item].append(
+                        student_data["UCs Aprobadas"].append(
                             {
                                 "calification": None,
                                 "date": date,
                                 "credits": None,
                                 "name": name,
                                 "status": Status.CURSO.value,
+                                "area": area,
+                                "group": group,
                             }
                         )
                 else:
                     # Si la unidad curricular fue aprobada se muestra => "Resultado Final: [Fecha] [Nota][Nombre UC] [Creditos]"
-                    # Se obtiene informacion de la unidad curricular y se almacena en el diccionario aprobed_subjects
+                    # Se obtiene informacion de la unidad curricular y se almacena en el diccionario student_data
                     if area != "Materias Opcionales":
                         subject_info = result.split(" ")[2:]
                         date = subject_info[0]
@@ -173,68 +175,77 @@ def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> s
                         credits = subject_info[-1]
                         name = extract_name(" ".join(subject_info[:-1]))
 
-                        aprobed_subjects[area][item].append(
+                        student_data["UCs Aprobadas"].append(
                             {
                                 "calification": calification,
                                 "date": date,
                                 "credits": credits,
                                 "name": name,
                                 "status": Status.EXAMEN.value,
+                                "area": area,
+                                "group": group,
                             }
                         )
+                        student_data["Creditos Totales"] += int(credits)
+                        student_data[group] += int(credits)
                     else:
                         subject_info = result.split(" ")[2:]
                         # ['26/07/2023', '1010', 'TRATAMIENTO', 'DE', 'IMAGENES', 'POR', 'COMPUTADORA']
-                        # TODO: Creditos y Nota estan pegados, ver como podemos separarlo!
+                        # Creditos y Nota estan pegados, creamos una funcion para separarlos
                         date = subject_info[0]
                         calification, credits = get_calification_and_note(
                             subject_info[1]
                         )
                         name = " ".join(subject_info[2:])
 
-                        aprobed_subjects[area][item].append(
+                        student_data["UCs Aprobadas"].append(
                             {
                                 "calification": calification,
                                 "date": date,
                                 "credits": credits,
                                 "name": name,
                                 "status": Status.EXAMEN.value,
+                                "area": area,
+                                "group": group,
                             }
                         )
+                        student_data["Creditos Totales"] += int(credits)
+                        student_data[group] += int(credits)
 
     # Retornar diccionario de unidades curriculares aprobadas en formato JSON
-    return json.dumps(aprobed_subjects, indent=4)
+    return json.dumps(student_data, indent=4)
 
 
 # Funcion para escolaridades con resultados finales -> No tiene en cuenta UCs con curso aprobado
 def search_aprobed_subjects_final_results(formation_areas, pdf_text) -> str:
     # Dicionario de unidades curriculares aprobadas
-    aprobed_subjects = {
-        "Materias Basicas": {"Matematica": [], "Ciencias Experimentales": []},
-        "Basico-Tec, Tecnicas e Integ.": {
-            "Programacion": [],
-            "Arquit, S.Op. y Redes de Comp.": [],
-            "Int.Artificial y Robotica": [],
-            "B.Datos y Sist. de Informacion": [],
-            "Calculo Numerico y Simbolico": [],
-            "Investigacion Operativa": [],
-            "Ingenieria de Software": [],
-            "A.Integ,Talleres,Pasant.y Proy": [],
-            "Gestion en Organizaciones": [],
-        },
-        "Materias Complementarias": {"Ciencias Humanas y Sociales": []},
-        "Materias Opcionales": {"Materias Opcionales": []},
+    student_data = {
+        "UCs Aprobadas": [],
+        "Creditos Totales": 0,
+        "Matematica": 0,
+        "Ciencias Experimentales": 0,
+        "Programacion": 0,
+        "Arquit, S.Op. y Redes de Comp.": 0,
+        "Int.Artificial y Robotica": 0,
+        "B.Datos y Sist. de Informacion": 0,
+        "Calculo Numerico y Simbolico": 0,
+        "Investigacion Operativa": 0,
+        "Ingenieria de Software": 0,
+        "A.Integ,Talleres,Pasant.y Proy": 0,
+        "Gestion en Organizaciones": 0,
+        "Ciencias Humanas y Sociales": 0,
+        "Materias Opcionales": 0,
     }
 
     # Recolectar UCs aprobadas por area de formacion
     for area in formation_areas:
-        for item in formation_areas[area]:
-            item_idx = pdf_text.find("\n" + item.upper() + "\n")
-            item_text = pdf_text[item_idx + len(item) + 2 : len(pdf_text)]
-            item_lines = item_text.split("\n")
+        for group in formation_areas[area]:
+            group_idx = pdf_text.find("\n" + group.upper() + "\n")
+            group_text = pdf_text[group_idx + len(group) + 2 : len(pdf_text)]
+            group_lines = group_text.split("\n")
             lines = []
 
-            for line in item_lines:
+            for line in group_lines:
                 if is_subject(line, wir=False):
                     lines.append(line)
                 else:
@@ -256,14 +267,19 @@ def search_aprobed_subjects_final_results(formation_areas, pdf_text) -> str:
                     credits = subject_info[2]
                     name = " ".join(subject_info[3:])
 
-                    aprobed_subjects[area][item].append(
+                    student_data["UCs Aprobadas"].append(
                         {
                             "calification": calification,
                             "date": date,
                             "credits": credits,
                             "name": name,
+                            "status": Status.EXAMEN.value,
+                            "area": area,
+                            "group": group,
                         }
                     )
+                    student_data["Creditos Totales"] += int(credits)
+                    student_data[group] += int(credits)
                 else:
                     subject_info = s.split(" ")
                     calification = subject_info[-1]
@@ -271,13 +287,18 @@ def search_aprobed_subjects_final_results(formation_areas, pdf_text) -> str:
                     credits = subject_info[-2]
                     name = " ".join(subject_info[1 : len(subject_info) - 3])
 
-                    aprobed_subjects[area][item].append(
+                    student_data["UCs Aprobadas"].append(
                         {
                             "calification": calification,
                             "date": date,
                             "credits": credits,
                             "name": name,
+                            "status": Status.EXAMEN.value,
+                            "area": area,
+                            "group": group,
                         }
                     )
+                    student_data["Creditos Totales"] += int(credits)
+                    student_data[group] += int(credits)
 
-    return json.dumps(aprobed_subjects, indent=4)
+    return json.dumps(student_data, indent=4)

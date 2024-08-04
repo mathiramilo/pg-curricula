@@ -1,76 +1,40 @@
-const prevs = require("./data/proyecto-de-grado.json")
-const esc = require("./data/student-esc.json")
+"use strict"
 
-function serializeEsc(esc) {
-  let totalCredits = 0
-  let basicCredits = {
-    total: 0,
-    math: 0,
-    experimentalSciences: 0
-  }
-  let basicTecCredits = {
-    total: 0,
-    programing: 0,
-    architectureSoNetworks: 0,
-    AI: 0,
-    databases: 0,
-    numericalCalc: 0,
-    operativeInvestigation: 0,
-    softwareEngineering: 0,
-    integralProjects: 0,
-    organizationManagement: 0
-  }
-  let complementaryCredits = {
-    total: 0,
-    humanSocialSciences: 0
-  }
-  let optCredits = {
-    total: 0,
-    optionals: 0
+const UcPrevs = require("./data/proyecto-de-grado.json")
+const studentData = require("./data/student-data.json")
+
+function satisfiesPrevs(studentData, requiredPrevs) {
+  if (!requiredPrevs || requiredPrevs.length === 0) {
+    console.log("No prevs required")
+    return true
   }
 
-  let subjectsList = []
+  console.log(requiredPrevs) // Debug
 
-  esc["Materias Basicas"]["Matematica"].forEach(subject => {
-    subjectsList.push(subject)
-
-    if (subject.status === "Examen") {
-      totalCredits += subject.credits
-      basicCredits.total += subject.credits
-      basicCredits.math += subject.credits
+  try {
+    switch (requiredPrevs.rule) {
+      case "NOT":
+        return !satisfiesPrevs(studentData, requiredPrevs.prevs)
+      case "OR":
+        return requiredPrevs.prevs.some(prev => satisfiesPrevs(studentData, prev))
+      case "AND":
+        return requiredPrevs.prevs.every(prev => satisfiesPrevs(studentData, prev))
+      case "PLAN_CREDITS":
+        return studentData["Creditos Totales"] >= requiredPrevs.min
+      case "GROUP_CREDITS":
+        return studentData[requiredPrevs.name] >= requiredPrevs.min
+      case "UC":
+        return studentData["UCs Aprobadas"].includes(subject => subject.name === requiredPrevs.name)
+      default:
+        console.log("Unknown rule:", requiredPrevs.rule)
+        console.log(requiredPrevs)
+        return false
     }
-  })
-
-  esc["Materias Basicas"]["Ciencias Experimentales"].forEach(subject => {
-    subjectsList.push(subject)
-
-    if (subject.status === "Examen") {
-      totalCredits += subject.credits
-      basicCredits.total += subject.credits
-      basicCredits.math += subject.credits
-    }
-  })
-
-  esc["Basico-Tec,Tecnicas e Integ."]["Matematica"].forEach(subject => {
-    subjectsList.push(subject)
-
-    if (subject.status === "Examen") {
-      totalCredits += subject.credits
-      basicCredits.total += subject.credits
-      basicCredits.math += subject.credits
-    }
-  })
-
-  return {
-    totalCredits,
-    basicCredits,
-    basicTecCredits,
-    complementaryCredits,
-    optCredits,
-    subjectsList
+  } catch (error) {
+    console.log("Error:", error)
+    return false
   }
 }
 
-function satisfiesPrevs(student, prevs) {}
-
-serializeEsc(esc)
+const satisfies = satisfiesPrevs(studentData, UcPrevs.prevs)
+console.log("Satisfies prevs:", satisfies)
