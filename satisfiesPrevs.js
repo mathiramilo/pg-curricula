@@ -1,15 +1,13 @@
 "use strict"
 
-const UcPrevs = require("./data/proyecto-de-grado.json")
-const studentData = require("./data/student-data.json")
-
+// Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
 function satisfiesPrevs(studentData, requiredPrevs) {
   if (!requiredPrevs) {
     console.log("No prevs required")
     return true
   }
 
-  console.log(requiredPrevs) // Debug
+  // console.log(requiredPrevs) // Debug
 
   try {
     switch (requiredPrevs.rule) {
@@ -36,5 +34,4 @@ function satisfiesPrevs(studentData, requiredPrevs) {
   }
 }
 
-const satisfies = satisfiesPrevs(studentData, UcPrevs.prevs)
-console.log("Satisfies prevs:", satisfies)
+module.exports = satisfiesPrevs
