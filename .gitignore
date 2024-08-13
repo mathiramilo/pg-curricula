@@ -1,3 +1,2 @@
-*.pdf
-__pycache__/
-uploads/
+# package directories
+**/node_modules

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es5", "es6", "dom"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "src/",
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false, // Permitir el uso de `any` sin errores
+    "noImplicitReturns": false, // Permitir funciones sin una declaración de retorno explícita
+    "noImplicitThis": false, // Permitir el uso de `this` con tipo implícito
+  },
+  "include": ["src/**/*.ts", "data/*.json"],
+  "exclude": ["node_modules"]
+}
