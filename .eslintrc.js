@@ -3,23 +3,30 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      { singleQuote: true, arrowParens: 'avoid', semi: true },
+    ], // Prettier requiere punto y coma
     'no-console': 'warn',
     'no-debugger': 'error',
-    semi: ['error', 'never'],
+    semi: ['error', 'always'], // ESLint requiere punto y coma
     quotes: ['error', 'single'],
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    '@typescript-eslint/explicit-module-boundary-types': 'warn', // Advertencia para tipos de función
-    '@typescript-eslint/no-explicit-any': 'warn', // Advertencia para uso de `any`
-    '@typescript-eslint/explicit-function-return-type': 'warn' // Advertencia para tipos de retorno de función
+    '@typescript-eslint/explicit-module-boundary-types': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+    'object-shorthand': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/first': 'error',
   },
   overrides: [
     {
-      files: ['**/*.ts', '**/*.tsx']
-    }
-  ]
-}
+      files: ['**/*.ts', '**/*.tsx'],
+    },
+  ],
+};
