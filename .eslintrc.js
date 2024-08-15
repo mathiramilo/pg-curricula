@@ -18,7 +18,6 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
     'object-shorthand': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
