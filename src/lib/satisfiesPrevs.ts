@@ -1,5 +1,5 @@
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
-const satisfiesPrevs = (studentData, requiredPrevs) => {
+const satisfiesPrevs = (studentData, requiredPrevs): boolean => {
   if (!requiredPrevs) {
     console.log('No prevs required');
     return true;
@@ -13,11 +13,11 @@ const satisfiesPrevs = (studentData, requiredPrevs) => {
         return !satisfiesPrevs(studentData, requiredPrevs.prevs);
       case 'OR':
         return requiredPrevs.prevs.some(prev =>
-          satisfiesPrevs(studentData, prev),
+          satisfiesPrevs(studentData, prev)
         );
       case 'AND':
         return requiredPrevs.prevs.every(prev =>
-          satisfiesPrevs(studentData, prev),
+          satisfiesPrevs(studentData, prev)
         );
       case 'PLAN_CREDITS':
         return studentData['Creditos Totales'] >= requiredPrevs.min;
@@ -25,7 +25,7 @@ const satisfiesPrevs = (studentData, requiredPrevs) => {
         return studentData[requiredPrevs.name] >= requiredPrevs.min;
       case 'UC':
         return studentData['UCs Aprobadas'].includes(
-          subject => subject.name === requiredPrevs.name,
+          subject => subject.name === requiredPrevs.name
         );
       default:
         console.log('Unknown rule:', requiredPrevs.rule);

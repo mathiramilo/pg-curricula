@@ -3,12 +3,12 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   rules: {
     'prettier/prettier': [
       'error',
-      { singleQuote: true, arrowParens: 'avoid', semi: true },
+      { singleQuote: true, arrowParens: 'avoid', semi: true }
     ], // Prettier requiere punto y coma
     'no-console': 'warn',
     'no-debugger': 'error',
@@ -22,11 +22,11 @@ module.exports = {
     'object-shorthand': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
-    'import/first': 'error',
+    'import/first': 'error'
   },
   overrides: [
     {
-      files: ['**/*.ts', '**/*.tsx'],
-    },
-  ],
+      files: ['**/*.ts', '**/*.tsx']
+    }
+  ]
 };
