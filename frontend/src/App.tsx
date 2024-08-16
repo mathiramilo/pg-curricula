@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from './SideBar';
 import MainContent from './Inicio';
 import styles from './styles/App.module.css';
