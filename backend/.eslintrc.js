@@ -8,7 +8,12 @@ module.exports = {
   rules: {
     'prettier/prettier': [
       'error',
-      { singleQuote: true, arrowParens: 'avoid', semi: true }
+      {
+        singleQuote: true,
+        arrowParens: 'avoid',
+        semi: true,
+        trailingComma: 'none'
+      }
     ], // Prettier requiere punto y coma
     'no-console': 'warn',
     'no-debugger': 'error',
