@@ -2,10 +2,10 @@
   "name": "pg-curricula",
   "version": "1.0.0",
   "description": "Backend para el proyecto de grado curricula",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "dev": "nodemon src/app.ts",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "npx eslint . --fix",
     "lint": "npx eslint ."

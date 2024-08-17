@@ -2,31 +2,35 @@ import type { Prev, RawPrev } from '../types';
 import { InstanceType, PrevType, RuleTypes } from '../types';
 import readCSV from './readCSV';
 
-const PREVS_CSV_PATH = '../../data/previaturas2.csv';
+const PREVS_CSV_PATH = 'data/previaturas2.csv';
 
-const main = async () => {
+export const main = async () => {
   try {
     const results = await readCSV(PREVS_CSV_PATH);
     const prevs = parsePrevsCSV(results as RawPrev[]);
-    const groupedPrevs = groupByField(prevs, 'ucServiceCode');
-    const globalPrevs = generateGlobalPrevsObject(groupedPrevs);
+    const globalPrevs = generateGlobalPrevsObject(prevs);
 
-    console.log(globalPrevs['1918']);
+    console.log(JSON.stringify(globalPrevs['1918'], null, 2));
   } catch (error) {
     console.error(error);
   }
 };
-main();
 
-const parsePrevsCSV = (rows: RawPrev[]): Prev[] => {
-  const UCs: Prev[] = [];
+const parsePrevsCSV = (rows: RawPrev[]): { [key: string]: Prev[] } => {
+  const UCs: { [key: string]: Prev[] } = {};
 
   rows.forEach(row => {
     // Ignorar las filas que corresponden a Examenes
     if (row.tipo_descriptor !== InstanceType.C) return;
 
+    // Guardar la materia en el objeto
+    const codMateria = row.codenservicio_mat;
+    if (!UCs[codMateria]) {
+      UCs[codMateria] = [];
+    }
+
     // Convertir las columnas relevantes a los tipos apropiados
-    UCs.push({
+    UCs[codMateria].push({
       ucCode: parseInt(row.cod_materia),
       ucServiceCode: row.codenservicio_mat,
       ucName: row.nombre_mat,
