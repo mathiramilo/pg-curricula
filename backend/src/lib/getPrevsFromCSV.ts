@@ -4,7 +4,7 @@ import readCSV from './readCSV';
 
 const PREVS_CSV_PATH = '../../data/previaturas2.csv';
 
-async function main() {
+const main = async () => {
   try {
     const results = await readCSV(PREVS_CSV_PATH);
     const prevs = parsePrevsCSV(results as RawPrev[]);
@@ -15,10 +15,10 @@ async function main() {
   } catch (error) {
     console.error(error);
   }
-}
+};
 main();
 
-function parsePrevsCSV(rows: RawPrev[]): Prev[] {
+const parsePrevsCSV = (rows: RawPrev[]): Prev[] => {
   const UCs: Prev[] = [];
 
   rows.forEach(row => {
@@ -48,14 +48,14 @@ function parsePrevsCSV(rows: RawPrev[]): Prev[] {
   });
 
   return UCs;
-}
+};
 
-function groupByField(
+const groupByField = (
   UCs: Prev[],
   field: keyof Prev
 ): {
   [key: string]: Prev[];
-} {
+} => {
   return UCs.reduce(
     (groupedUCs, uc) => {
       const key = String(uc[field]);
@@ -67,11 +67,11 @@ function groupByField(
     },
     {} as { [key: string]: Prev[] }
   );
-}
+};
 
-function generateGlobalPrevsObject(groupedUCs: {
+const generateGlobalPrevsObject = (groupedUCs: {
   [codMateria: number]: Prev[];
-}) {
+}) => {
   const globalPrevs = {};
   Object.entries(groupedUCs).forEach(
     ([codMateria, UCPrevs]) =>
@@ -79,9 +79,9 @@ function generateGlobalPrevsObject(groupedUCs: {
   );
 
   return globalPrevs;
-}
+};
 
-function generateRootRulesObject(prevs: Prev[]) {
+const generateRootRulesObject = (prevs: Prev[]) => {
   const rootRow = prevs.find(prev => !prev.parentConditionCode);
   if (!rootRow) throw new Error('No se encontro nodo raiz');
 
@@ -89,7 +89,7 @@ function generateRootRulesObject(prevs: Prev[]) {
   const groupedByType = groupByField(prevs, 'type');
 
   return generateRuleObject(rootRow, prevs);
-}
+};
 
 const generateRuleObject = (row: Prev, prevs: Prev[]) => {
   const {

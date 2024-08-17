@@ -1,7 +1,7 @@
 import csv from 'csv-parser';
 import fs from 'fs';
 
-async function readCSV(path: string): Promise<Object[]> {
+const readCSV = async (path: string): Promise<Object[]> => {
   return new Promise((resolve, reject) => {
     const results: Object[] = [];
 
@@ -11,6 +11,6 @@ async function readCSV(path: string): Promise<Object[]> {
       .on('end', () => resolve(results))
       .on('error', err => reject(err));
   });
-}
+};
 
 export default readCSV;
