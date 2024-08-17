@@ -104,7 +104,7 @@ const generateRuleObject = (row: Prev, prevs: Prev[]) => {
   } = row;
 
   switch (type) {
-    case PrevType.AND:
+    case PrevType.AND: {
       const ANDfilteredPrevs = prevs.filter(
         p => p.parentConditionCode === conditionCode
       );
@@ -112,8 +112,8 @@ const generateRuleObject = (row: Prev, prevs: Prev[]) => {
         rule: RuleTypes.AND,
         prevs: ANDfilteredPrevs.map(prev => generateRuleObject(prev, prevs))
       };
-
-    case PrevType.OR:
+    }
+    case PrevType.OR: {
       const ORfilteredPrevs = prevs.filter(
         p => p.parentConditionCode === conditionCode
       );
@@ -121,17 +121,17 @@ const generateRuleObject = (row: Prev, prevs: Prev[]) => {
         rule: RuleTypes.OR,
         prevs: ORfilteredPrevs.map(prev => generateRuleObject(prev, prevs))
       };
-
-    case PrevType.NOT:
+    }
+    case PrevType.NOT: {
       const NOTPrev = prevs.find(p => p.parentConditionCode === conditionCode);
       if (!NOTPrev) return;
       return {
         rule: RuleTypes.NOT,
         prevs: generateRuleObject(NOTPrev, prevs)
       };
-
+    }
     // B (SOME) => TODO: para cada regla B, se genera una regla SOME, cuando enrealidad solo deberia generarse una por cada conjunto de materias B con el mismo cod_condicion
-    case PrevType.B:
+    case PrevType.B: {
       const SOMEfilteredPrevs = prevs
         .filter(p => p.conditionCode === conditionCode)
         .map(p => ({ ...p, type: PrevType.M }));
@@ -140,28 +140,30 @@ const generateRuleObject = (row: Prev, prevs: Prev[]) => {
         amount,
         prevs: SOMEfilteredPrevs.map(prev => generateRuleObject(prev, prevs))
       };
-
-    case PrevType.M:
+    }
+    case PrevType.M: {
       return {
         rule: RuleTypes.UC,
         code: prevServiceCode,
         instance: instanceType
       };
-
-    case PrevType.D:
+    }
+    case PrevType.D: {
       return {
         rule: RuleTypes.GROUP_CREDITS,
         code: groupCode,
         name: groupName,
         amount: creditsAmount
       };
-
-    case PrevType.R:
+    }
+    case PrevType.R: {
       return {
         rule: RuleTypes.PLAN_CREDITS,
         amount: creditsAmount
       };
-    default:
+    }
+    default: {
       console.log('Unknown rule type:', type);
+    }
   }
 };
