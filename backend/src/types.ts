@@ -46,7 +46,6 @@ export enum PrevType {
   NOT = 'NOT',
   B = 'B',
   M = 'M',
-  N = 'N',
   D = 'D',
   R = 'R'
 }
@@ -56,7 +55,6 @@ export enum RuleTypes {
   OR = 'OR',
   NOT = 'NOT',
   SOME = 'SOME',
-  N = 'N',
   UC = 'UC',
   GROUP_CREDITS = 'GROUP_CREDITS',
   PLAN_CREDITS = 'PLAN_CREDITS'

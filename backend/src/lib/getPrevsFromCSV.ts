@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import type { Prev, RawPrev } from '../types';
 import { InstanceType, PrevType, RuleTypes } from '../types';
 import readCSV from './readCSV';
@@ -10,7 +13,8 @@ export const main = async () => {
     const prevs = parsePrevsCSV(results as RawPrev[]);
     const globalPrevs = generateGlobalPrevsObject(prevs);
 
-    console.log(JSON.stringify(globalPrevs['1918'], null, 2));
+    const outputPath = path.join(__dirname, '../../data/global-prevs.json');
+    fs.writeFileSync(outputPath, JSON.stringify(globalPrevs, null, 2), 'utf8');
   } catch (error) {
     console.error(error);
   }
@@ -74,12 +78,12 @@ const groupByField = (
 };
 
 const generateGlobalPrevsObject = (groupedUCs: {
-  [codMateria: number]: Prev[];
+  [ucServiceCode: number]: Prev[];
 }) => {
   const globalPrevs = {};
   Object.entries(groupedUCs).forEach(
-    ([codMateria, UCPrevs]) =>
-      (globalPrevs[codMateria] = generateRootRulesObject(UCPrevs))
+    ([ucServiceCode, UCPrevs]) =>
+      (globalPrevs[ucServiceCode] = generateRootRulesObject(UCPrevs))
   );
 
   return globalPrevs;
@@ -89,13 +93,26 @@ const generateRootRulesObject = (prevs: Prev[]) => {
   const rootRow = prevs.find(prev => !prev.parentConditionCode);
   if (!rootRow) throw new Error('No se encontro nodo raiz');
 
-  // TODO: Tenemos que agrupar cada grupo de filas de tipo B con el mismo cod_condicion y dejar solo una fila en prevs
-  const groupedByType = groupByField(prevs, 'type');
+  // Agrupar filas de tipo B por cod_condicion y dejar solo una fila en prevs
+  const rowsOfTypeB = prevs.filter(p => p.type === PrevType.B);
+  const groupedByConditionCode = groupByField(rowsOfTypeB, 'conditionCode');
+  const groupedByConditionCodeKeys = Object.keys(groupedByConditionCode);
 
-  return generateRuleObject(rootRow, prevs);
+  const formattedPrevs = prevs.filter(p => p.type !== PrevType.B);
+  groupedByConditionCodeKeys.forEach(conditionCode => {
+    const prevs = groupedByConditionCode[conditionCode];
+    const prev = prevs[0];
+    formattedPrevs.push(prev);
+  });
+
+  return generateRuleObject(rootRow, groupedByConditionCode, formattedPrevs);
 };
 
-const generateRuleObject = (row: Prev, prevs: Prev[]) => {
+const generateRuleObject = (
+  row: Prev,
+  prevsOfTypeB: { [conditionCode: string]: Prev[] },
+  formattedPrevs: Prev[]
+) => {
   const {
     creditsAmount,
     amount,
@@ -109,40 +126,48 @@ const generateRuleObject = (row: Prev, prevs: Prev[]) => {
 
   switch (type) {
     case PrevType.AND: {
-      const ANDfilteredPrevs = prevs.filter(
+      const ANDfilteredPrevs = formattedPrevs.filter(
         p => p.parentConditionCode === conditionCode
       );
       return {
         rule: RuleTypes.AND,
-        prevs: ANDfilteredPrevs.map(prev => generateRuleObject(prev, prevs))
+        prevs: ANDfilteredPrevs.map(prev =>
+          generateRuleObject(prev, prevsOfTypeB, formattedPrevs)
+        )
       };
     }
     case PrevType.OR: {
-      const ORfilteredPrevs = prevs.filter(
+      const ORfilteredPrevs = formattedPrevs.filter(
         p => p.parentConditionCode === conditionCode
       );
       return {
         rule: RuleTypes.OR,
-        prevs: ORfilteredPrevs.map(prev => generateRuleObject(prev, prevs))
+        prevs: ORfilteredPrevs.map(prev =>
+          generateRuleObject(prev, prevsOfTypeB, formattedPrevs)
+        )
       };
     }
     case PrevType.NOT: {
-      const NOTPrev = prevs.find(p => p.parentConditionCode === conditionCode);
+      const NOTPrev = formattedPrevs.find(
+        p => p.parentConditionCode === conditionCode
+      );
       if (!NOTPrev) return;
       return {
         rule: RuleTypes.NOT,
-        prevs: generateRuleObject(NOTPrev, prevs)
+        prevs: generateRuleObject(NOTPrev, prevsOfTypeB, formattedPrevs)
       };
     }
-    // B (SOME) => TODO: para cada regla B, se genera una regla SOME, cuando enrealidad solo deberia generarse una por cada conjunto de materias B con el mismo cod_condicion
     case PrevType.B: {
-      const SOMEfilteredPrevs = prevs
-        .filter(p => p.conditionCode === conditionCode)
-        .map(p => ({ ...p, type: PrevType.M }));
+      const BPrevs = prevsOfTypeB[conditionCode].map(p => ({
+        ...p,
+        type: PrevType.M
+      }));
       return {
         rule: RuleTypes.SOME,
         amount,
-        prevs: SOMEfilteredPrevs.map(prev => generateRuleObject(prev, prevs))
+        prevs: BPrevs.map(prev =>
+          generateRuleObject(prev, prevsOfTypeB, formattedPrevs)
+        )
       };
     }
     case PrevType.M: {
@@ -167,6 +192,7 @@ const generateRuleObject = (row: Prev, prevs: Prev[]) => {
       };
     }
     default: {
+      // TODO: Ver que hacer con las filas de tipo N, C, I y K
       console.log('Unknown rule type:', type);
     }
   }
