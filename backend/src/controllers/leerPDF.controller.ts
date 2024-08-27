@@ -36,7 +36,7 @@ export const leerPDF = (
       console.log('Output del script:', stdout);
 
       // Si todo fue bien, solo devolver éxito
-      res.status(200).send('Archivo procesado exitosamente');
+      res.status(200).send(JSON.parse(stdout));
 
       // Llama al callback para eliminar el archivo
       callback();

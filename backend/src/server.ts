@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/api/prevs', prevRoutes);
 
 app.post(
-  '/procesar-escolatidad',
+  '/procesar-escolaridad',
   upload.single('pdf'),
   (req: Request, res: Response) => {
     if (!req.file) {
