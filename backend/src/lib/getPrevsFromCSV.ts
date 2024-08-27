@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { Prev, RawPrev } from '../types';
-import { InstanceType, PrevType, RuleTypes } from '../types';
+import type { Prev, RawPrev } from '../types/previas';
+import { InstanceType, PrevType, RuleTypes } from '../types/previas';
 import readCSV from './readCSV';
 
 const PREVS_CSV_PATH = 'data/previaturas2.csv';
