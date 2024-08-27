@@ -16,7 +16,11 @@ const storage = multer.diskStorage({
 
 export const upload = multer({ storage });
 
-export const leerPDF = (filePath: string, res: Response): void => {
+export const leerPDF = (
+  filePath: string,
+  res: Response,
+  callback: () => void
+): void => {
   exec(
     `python src/scripts/pdf-reader.py ${filePath} --wir`,
     (error, stdout, stderr) => {
@@ -32,7 +36,10 @@ export const leerPDF = (filePath: string, res: Response): void => {
       console.log('Output del script:', stdout);
 
       // Si todo fue bien, solo devolver éxito
-      return res.status(200).send('Archivo procesado exitosamente');
+      res.status(200).send('Archivo procesado exitosamente');
+
+      // Llama al callback para eliminar el archivo
+      callback();
     }
   );
 };
