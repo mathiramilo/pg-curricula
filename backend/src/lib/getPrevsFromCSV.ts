@@ -42,7 +42,7 @@ const parsePrevsCSV = (rows: RawPrev[]): { [key: string]: Prev[] } => {
       parentConditionCode: row.cod_condicion_padre
         ? parseInt(row.cod_condicion_padre)
         : null,
-      type: PrevType[row.tipo] || row.tipo,
+      type: row.tipo === 'N' ? PrevType.M : PrevType[row.tipo] || row.tipo, // Convertimos las filas de tipo 'N' a 'M' ya que entendemos que son lo mismo
       amount: row.cantmaterias ? parseInt(row.cantmaterias) : null,
       planCode: row.cod_plan ? parseInt(row.cod_plan) : null,
       creditsAmount: row.cantcreditos ? parseInt(row.cantcreditos) : null,
@@ -118,6 +118,7 @@ const generateRuleObject = (
     amount,
     conditionCode,
     prevServiceCode,
+    prevName,
     groupCode,
     groupName,
     instanceType,
@@ -174,6 +175,7 @@ const generateRuleObject = (
       return {
         rule: RuleTypes.UC,
         code: prevServiceCode,
+        name: prevName,
         instance: instanceType
       };
     }

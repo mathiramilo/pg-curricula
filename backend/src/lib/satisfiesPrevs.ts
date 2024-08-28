@@ -1,36 +1,37 @@
+import { RuleTypes } from '../types/previas';
+
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
-const satisfiesPrevs = (studentData, requiredPrevs): boolean => {
-  if (!requiredPrevs) {
-    console.log('No prevs required');
+const satisfiesPrevs = (studentData, prevs): boolean => {
+  if (!prevs) {
+    // Si la UC no tiene previas devolvemos true
     return true;
   }
 
-  // console.log(requiredPrevs) // Debug
+  // console.log(prevs) // Debug
 
   try {
-    switch (requiredPrevs.rule) {
-      case 'NOT':
-        return !satisfiesPrevs(studentData, requiredPrevs.prevs);
-      case 'OR':
-        return requiredPrevs.prevs.some(prev =>
-          satisfiesPrevs(studentData, prev)
+    switch (prevs.rule) {
+      case RuleTypes.NOT:
+        return !satisfiesPrevs(studentData, prevs.prevs);
+      case RuleTypes.OR:
+        return prevs.prevs.some(prev => satisfiesPrevs(studentData, prev));
+      case RuleTypes.AND:
+        return prevs.prevs.every(prev => satisfiesPrevs(studentData, prev));
+      case RuleTypes.SOME:
+        return (
+          prevs.prevs.filter(prev => satisfiesPrevs(studentData, prev))
+            .length >= prevs.amount
         );
-      case 'AND':
-        return requiredPrevs.prevs.every(prev =>
-          satisfiesPrevs(studentData, prev)
-        );
-      case 'PLAN_CREDITS':
-        return studentData['Creditos Totales'] >= requiredPrevs.min;
-      case 'GROUP_CREDITS':
-        return studentData[requiredPrevs.name] >= requiredPrevs.min;
-      case 'UC':
-        return studentData['UCs Aprobadas'].includes(
-          subject => subject.name === requiredPrevs.name
-        );
+      case RuleTypes.PLAN_CREDITS:
+        return studentData['Creditos Totales'] >= prevs.amount;
+      case RuleTypes.GROUP_CREDITS:
+        return studentData[prevs.name] >= prevs.amount;
+      case RuleTypes.UC:
+        return studentData['UCs Aprobadas'].hasOwnProperty(prevs.name);
       default:
-        console.log('Unknown rule:', requiredPrevs.rule);
-        console.log(requiredPrevs);
-        return false;
+        console.log('Unknown rule:', prevs.rule);
+        console.log(prevs);
+        return true;
     }
   } catch (error) {
     console.log('Error:', error);
