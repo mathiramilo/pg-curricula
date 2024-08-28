@@ -3,4 +3,4 @@
 
 # python
 **/__pycache__
-**/scripts/path/to/venv/
+**/venv
