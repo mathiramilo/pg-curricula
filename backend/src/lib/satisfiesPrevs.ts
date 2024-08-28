@@ -1,7 +1,12 @@
-import { RuleTypes } from '../types/previas';
+import type { StudentData } from 'types/studentData';
+
+import { RuleObject, RuleTypes } from '../types/rules';
 
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
-const satisfiesPrevs = (studentData, prevs): boolean => {
+const satisfiesPrevs = (
+  studentData: StudentData,
+  prevs: RuleObject
+): boolean => {
   if (!prevs) {
     // Si la UC no tiene previas devolvemos true
     return true;
@@ -20,17 +25,17 @@ const satisfiesPrevs = (studentData, prevs): boolean => {
       case RuleTypes.SOME:
         return (
           prevs.prevs.filter(prev => satisfiesPrevs(studentData, prev))
-            .length >= prevs.amount
+            .length >= prevs.amount!
         );
       case RuleTypes.PLAN_CREDITS:
-        return studentData['Creditos Totales'] >= prevs.amount;
+        return studentData['Creditos Totales'] >= prevs.amount!;
       case RuleTypes.GROUP_CREDITS:
-        return studentData[prevs.name] >= prevs.amount;
+        return studentData[prevs.name!] >= prevs.amount!;
       case RuleTypes.UC:
-        return studentData['UCs Aprobadas'].hasOwnProperty(prevs.name);
+        return studentData['UCs Aprobadas'].hasOwnProperty(prevs.name!);
       default:
-        console.log('Unknown rule:', prevs.rule);
-        console.log(prevs);
+        // console.log('Unknown rule:', prevs.rule);
+        // console.log(prevs);
         return true;
     }
   } catch (error) {

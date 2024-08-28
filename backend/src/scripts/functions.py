@@ -175,9 +175,9 @@ def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> s
                         name = extract_name(" ".join(subject_info[:-1]))
 
                         student_data["UCs Aprobadas"][name] = {
-                            "calification": calification,
+                            "calification": int(calification),
                             "date": date,
-                            "credits": credits,
+                            "credits": int(credits),
                             "name": name,
                             "status": Status.EXAMEN.value,
                             "area": area,
@@ -196,9 +196,9 @@ def search_aprobed_subjects_intermediate_results(formation_areas, pdf_text) -> s
                         name = " ".join(subject_info[2:])
 
                         student_data["UCs Aprobadas"][name] = {
-                            "calification": calification,
+                            "calification": int(calification),
                             "date": date,
-                            "credits": credits,
+                            "credits": int(credits),
                             "name": name,
                             "status": Status.EXAMEN.value,
                             "area": area,
@@ -263,9 +263,9 @@ def search_aprobed_subjects_final_results(formation_areas, pdf_text) -> str:
                     name = " ".join(subject_info[3:])
 
                     student_data["UCs Aprobadas"][name] = {
-                        "calification": calification,
+                        "calification": int(calification),
                         "date": date,
-                        "credits": credits,
+                        "credits": int(credits),
                         "name": name,
                         "status": Status.EXAMEN.value,
                         "area": area,
@@ -281,9 +281,9 @@ def search_aprobed_subjects_final_results(formation_areas, pdf_text) -> str:
                     name = " ".join(subject_info[1 : len(subject_info) - 3])
 
                     student_data["UCs Aprobadas"][name] = {
-                        "calification": calification,
+                        "calification": int(calification),
                         "date": date,
-                        "credits": credits,
+                        "credits": int(credits),
                         "name": name,
                         "status": Status.EXAMEN.value,
                         "area": area,

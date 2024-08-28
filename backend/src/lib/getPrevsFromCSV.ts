@@ -2,12 +2,14 @@ import fs from 'fs';
 import path from 'path';
 
 import type { Prev, RawPrev } from '../types/previas';
-import { InstanceType, PrevType, RuleTypes } from '../types/previas';
+import { InstanceType, PrevType } from '../types/previas';
+import type { RuleObject } from '../types/rules';
+import { RuleTypes } from '../types/rules';
 import readCSV from './readCSV';
 
 const PREVS_CSV_PATH = 'data/previaturas2.csv';
 
-export const main = async () => {
+export const main = async (): Promise<void> => {
   try {
     const results = await readCSV(PREVS_CSV_PATH);
     const prevs = parsePrevsCSV(results as RawPrev[]);
@@ -28,13 +30,13 @@ const parsePrevsCSV = (rows: RawPrev[]): { [key: string]: Prev[] } => {
     if (row.tipo_descriptor !== InstanceType.C) return;
 
     // Guardar la materia en el objeto
-    const codMateria = row.codenservicio_mat;
-    if (!UCs[codMateria]) {
-      UCs[codMateria] = [];
+    const nombreUC = row.nombre_mat;
+    if (!UCs[nombreUC]) {
+      UCs[nombreUC] = [];
     }
 
     // Convertir las columnas relevantes a los tipos apropiados
-    UCs[codMateria].push({
+    UCs[nombreUC].push({
       ucCode: parseInt(row.cod_materia),
       ucServiceCode: row.codenservicio_mat,
       ucName: row.nombre_mat,
@@ -78,18 +80,18 @@ const groupByField = (
 };
 
 const generateGlobalPrevsObject = (groupedUCs: {
-  [ucServiceCode: number]: Prev[];
-}) => {
+  [ucName: string]: Prev[];
+}): { [ucName: string]: RuleObject } => {
   const globalPrevs = {};
   Object.entries(groupedUCs).forEach(
-    ([ucServiceCode, UCPrevs]) =>
-      (globalPrevs[ucServiceCode] = generateRootRulesObject(UCPrevs))
+    ([ucName, UCPrevs]) =>
+      (globalPrevs[ucName] = generateRootRulesObject(UCPrevs))
   );
 
   return globalPrevs;
 };
 
-const generateRootRulesObject = (prevs: Prev[]) => {
+const generateRootRulesObject = (prevs: Prev[]): RuleObject => {
   const rootRow = prevs.find(prev => !prev.parentConditionCode);
   if (!rootRow) throw new Error('No se encontro nodo raiz');
 
@@ -112,7 +114,7 @@ const generateRuleObject = (
   row: Prev,
   prevsOfTypeB: { [conditionCode: string]: Prev[] },
   formattedPrevs: Prev[]
-) => {
+): RuleObject => {
   const {
     creditsAmount,
     amount,

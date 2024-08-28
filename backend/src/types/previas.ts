@@ -49,13 +49,3 @@ export enum PrevType {
   D = 'D',
   R = 'R'
 }
-
-export enum RuleTypes {
-  AND = 'AND',
-  OR = 'OR',
-  NOT = 'NOT',
-  SOME = 'SOME',
-  UC = 'UC',
-  GROUP_CREDITS = 'GROUP_CREDITS',
-  PLAN_CREDITS = 'PLAN_CREDITS'
-}

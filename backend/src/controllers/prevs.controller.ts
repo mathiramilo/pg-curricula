@@ -2,7 +2,6 @@ import { exec } from 'child_process';
 import { Request, Response } from 'express';
 
 import globalPrevs from '../../data/global-prevs.json';
-import studentData from '../../data/student-data.json';
 import satisfiesPrevs from '../lib/satisfiesPrevs';
 
 const FILENAME = 'esc-ri.pdf';
@@ -21,7 +20,7 @@ export const checkPrevs = (req: Request, res: Response): void => {
       }
 
       // console.log("Student data:", stdout) // Debug
-      // const studentData = JSON.parse(stdout);
+      const studentData = JSON.parse(stdout);
 
       const satisfies = satisfiesPrevs(studentData, globalPrevs['1730']);
       console.log('Satisfies prevs:', satisfies);

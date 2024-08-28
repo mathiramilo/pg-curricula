@@ -1,342 +1,342 @@
 {
   "UCs Aprobadas": {
-    "CALCULO DIF. E INTEGRAL EN UNA VARIABLE": {
-      "calification": "3",
-      "date": "17/07/2019",
-      "credits": "13",
-      "name": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES": {
-      "calification": "5",
-      "date": "28/02/2020",
-      "credits": "13",
-      "name": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "GEOMETRIA Y ALGEBRA LINEAL 1": {
-      "calification": "7",
-      "date": "10/12/2019",
-      "credits": "9",
-      "name": "GEOMETRIA Y ALGEBRA LINEAL 1",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "GEOMETRIA Y ALGEBRA LINEAL 2": {
-      "calification": "3",
-      "date": "08/02/2020",
-      "credits": "9",
-      "name": "GEOMETRIA Y ALGEBRA LINEAL 2",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "LOGICA": {
-      "calification": "8",
-      "date": "04/08/2021",
-      "credits": "12",
-      "name": "LOGICA",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "MATEMATICA DISCRETA 1": {
-      "calification": "9",
-      "date": "26/11/2019",
-      "credits": "9",
-      "name": "MATEMATICA DISCRETA 1",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "MATEMATICA DISCRETA 2": {
-      "calification": "8",
-      "date": "29/07/2020",
-      "credits": "9",
-      "name": "MATEMATICA DISCRETA 2",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "PROBABILIDAD Y ESTADISTICA": {
-      "calification": "9",
-      "date": "10/07/2020",
-      "credits": "10",
-      "name": "PROBABILIDAD Y ESTADISTICA",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Matematica"
-    },
-    "FISICA 1": {
-      "calification": "3",
-      "date": "27/07/2019",
-      "credits": "10",
-      "name": "FISICA 1",
-      "status": "Examen",
-      "area": "Materias Basicas",
-      "group": "Ciencias Experimentales"
-    },
-    "PROGRAMACION FUNCIONAL": {
-      "calification": "6",
-      "date": "29/07/2023",
-      "credits": "10",
-      "name": "PROGRAMACION FUNCIONAL",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Programacion"
-    },
-    "PROGRAMACION 1": {
-      "calification": "10",
-      "date": "20/11/2019",
-      "credits": "10",
-      "name": "PROGRAMACION 1",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Programacion"
-    },
-    "PROGRAMACION 2": {
-      "calification": "8",
-      "date": "22/07/2020",
-      "credits": "12",
-      "name": "PROGRAMACION 2",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Programacion"
-    },
-    "PROGRAMACION 3": {
-      "calification": "7",
-      "date": "16/12/2020",
-      "credits": "15",
-      "name": "PROGRAMACION 3",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Programacion"
-    },
-    "PROGRAMACION 4": {
-      "calification": "8",
-      "date": "13/07/2021",
-      "credits": "15",
-      "name": "PROGRAMACION 4",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Programacion"
-    },
-    "TEORIA DE LENGUAJES": {
-      "calification": "9",
-      "date": "15/07/2022",
-      "credits": "12",
-      "name": "TEORIA DE LENGUAJES",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Programacion"
-    },
-    "ARQUITECTURA DE COMPUTADORAS": {
-      "calification": "9",
-      "date": "17/12/2022",
-      "credits": "12",
-      "name": "ARQUITECTURA DE COMPUTADORAS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Arquit, S.Op. y Redes de Comp."
-    },
-    "REDES DE COMPUTADORAS": {
-      "calification": "5",
-      "date": "07/02/2024",
-      "credits": "12",
-      "name": "REDES DE COMPUTADORAS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Arquit, S.Op. y Redes de Comp."
-    },
-    "SISTEMAS OPERATIVOS": {
-      "calification": "6",
-      "date": "08/07/2023",
-      "credits": "12",
-      "name": "SISTEMAS OPERATIVOS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Arquit, S.Op. y Redes de Comp."
-    },
-    "APRENDIZAJE AUTOMATICO": {
-      "calification": "6",
-      "date": "15/11/2023",
-      "credits": "12",
-      "name": "APRENDIZAJE AUTOMATICO",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Int.Artificial y Robotica"
-    },
-    "FUNDAMENTOS DE BASES DE DATOS": {
-      "calification": "9",
-      "date": "24/11/2021",
-      "credits": "15",
-      "name": "FUNDAMENTOS DE BASES DE DATOS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "B.Datos y Sist. de Informacion"
-    },
-    "FUNDAMENTOS DE LA WEB SEMANTICA": {
-      "calification": "10",
-      "date": "02/08/2023",
-      "credits": "8",
-      "name": "FUNDAMENTOS DE LA WEB SEMANTICA",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "B.Datos y Sist. de Informacion"
-    },
-    "RECUPERACION DE INF. Y RECOMEND. EN LA WEB (WIR)": {
-      "calification": "12",
-      "date": "08/12/2023",
-      "credits": "10",
-      "name": "RECUPERACION DE INF. Y RECOMEND. EN LA WEB (WIR)",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "B.Datos y Sist. de Informacion"
-    },
-    "METODOS NUMERICOS": {
-      "calification": "6",
-      "date": "21/12/2020",
-      "credits": "8",
-      "name": "METODOS NUMERICOS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Calculo Numerico y Simbolico"
-    },
-    "FUNDAMENTOS DE OPTIMIZACION": {
-      "calification": "12",
-      "date": "20/07/2023",
-      "credits": "6",
-      "name": "FUNDAMENTOS DE OPTIMIZACION",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Investigacion Operativa"
-    },
-    "INT. A LA INVESTIGACION DE OPERACIONES": {
-      "calification": "6",
-      "date": "23/07/2021",
-      "credits": "10",
-      "name": "INT. A LA INVESTIGACION DE OPERACIONES",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Investigacion Operativa"
-    },
-    "GESTI\u00d3N DE PROYECTOS": {
-      "calification": "7",
-      "date": "28/11/2023",
-      "credits": "10",
-      "name": "GESTI\u00d3N DE PROYECTOS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Ingenieria de Software"
-    },
-    "INT. A LA INGENIERIA DE SOFTWARE": {
-      "calification": "8",
-      "date": "08/07/2022",
-      "credits": "10",
-      "name": "INT. A LA INGENIERIA DE SOFTWARE",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Ingenieria de Software"
-    },
-    "PROYECTO DE INGENIERIA DE SOFTWARE": {
-      "calification": "9",
-      "date": "12/12/2022",
-      "credits": "15",
-      "name": "PROYECTO DE INGENIERIA DE SOFTWARE",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "A.Integ,Talleres,Pasant.y Proy"
-    },
-    "TALLER DE PROGRAMACION": {
-      "calification": "12",
-      "date": "20/12/2021",
-      "credits": "15",
-      "name": "TALLER DE PROGRAMACION",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "A.Integ,Talleres,Pasant.y Proy"
-    },
-    "MODULO DE EXTENSION": {
-      "calification": null,
-      "date": "14/11/2023",
-      "credits": "4",
-      "name": "MODULO DE EXTENSION",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "A.Integ,Talleres,Pasant.y Proy"
-    },
-    "INT. AL NEGOCIO DEL SOFTWARE": {
-      "calification": "8",
-      "date": "17/11/2023",
-      "credits": "6",
-      "name": "INT. AL NEGOCIO DEL SOFTWARE",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Gestion en Organizaciones"
-    },
-    "ADMINISTRACION GENERAL PARA INGENIEROS": {
-      "calification": "11",
-      "date": "09/07/2022",
-      "credits": "5",
-      "name": "ADMINISTRACION GENERAL PARA INGENIEROS",
-      "status": "Examen",
-      "area": "Basico-Tec,Tecnicas e Integ.",
-      "group": "Gestion en Organizaciones"
-    },
-    "CIENCIA, TECNOLOGIA Y SOCIEDAD": {
-      "calification": "4",
-      "date": "28/02/2024",
-      "credits": "8",
-      "name": "CIENCIA, TECNOLOGIA Y SOCIEDAD",
-      "status": "Examen",
-      "area": "Materias Complementarias",
-      "group": "Ciencias Humanas y Sociales"
-    },
-    "ECONOMIA": {
-      "calification": "10",
-      "date": "25/02/2021",
-      "credits": "7",
-      "name": "ECONOMIA",
-      "status": "Examen",
-      "area": "Materias Complementarias",
-      "group": "Ciencias Humanas y Sociales"
-    },
-    "POLITICAS CIENTIFICAS EN INF.Y COMP.": {
-      "calification": "10",
-      "date": "22/02/2023",
-      "credits": "3",
-      "name": "POLITICAS CIENTIFICAS EN INF.Y COMP.",
-      "status": "Examen",
-      "area": "Materias Complementarias",
-      "group": "Ciencias Humanas y Sociales"
-    },
-    "TRATAMIENTO DE IMAGENES POR COMPUTADORA": {
-      "calification": "10",
-      "date": "26/07/2023",
-      "credits": "10",
-      "name": "TRATAMIENTO DE IMAGENES POR COMPUTADORA",
-      "status": "Examen",
-      "area": "Materias Opcionales",
-      "group": "Materias Opcionales"
-    }
+      "CALCULO DIF. E INTEGRAL EN UNA VARIABLE": {
+          "calification": "3",
+          "date": "17/07/2019",
+          "credits": "13",
+          "name": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES": {
+          "calification": "5",
+          "date": "28/02/2020",
+          "credits": "13",
+          "name": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "GEOMETRIA Y ALGEBRA LINEAL 1": {
+          "calification": "7",
+          "date": "10/12/2019",
+          "credits": "9",
+          "name": "GEOMETRIA Y ALGEBRA LINEAL 1",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "GEOMETRIA Y ALGEBRA LINEAL 2": {
+          "calification": "3",
+          "date": "08/02/2020",
+          "credits": "9",
+          "name": "GEOMETRIA Y ALGEBRA LINEAL 2",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "LOGICA": {
+          "calification": "8",
+          "date": "04/08/2021",
+          "credits": "12",
+          "name": "LOGICA",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "MATEMATICA DISCRETA 1": {
+          "calification": "9",
+          "date": "26/11/2019",
+          "credits": "9",
+          "name": "MATEMATICA DISCRETA 1",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "MATEMATICA DISCRETA 2": {
+          "calification": "8",
+          "date": "29/07/2020",
+          "credits": "9",
+          "name": "MATEMATICA DISCRETA 2",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "PROBABILIDAD Y ESTADISTICA": {
+          "calification": "9",
+          "date": "10/07/2020",
+          "credits": "10",
+          "name": "PROBABILIDAD Y ESTADISTICA",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "MATEMATICA"
+      },
+      "FISICA 1": {
+          "calification": "3",
+          "date": "27/07/2019",
+          "credits": "10",
+          "name": "FISICA 1",
+          "status": "Examen",
+          "area": "Materias Basicas",
+          "group": "CIENCIAS EXPERIMENTALES"
+      },
+      "PROGRAMACION FUNCIONAL": {
+          "calification": "6",
+          "date": "29/07/2023",
+          "credits": "10",
+          "name": "PROGRAMACION FUNCIONAL",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "PROGRAMACION"
+      },
+      "PROGRAMACION 1": {
+          "calification": "10",
+          "date": "20/11/2019",
+          "credits": "10",
+          "name": "PROGRAMACION 1",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "PROGRAMACION"
+      },
+      "PROGRAMACION 2": {
+          "calification": "8",
+          "date": "22/07/2020",
+          "credits": "12",
+          "name": "PROGRAMACION 2",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "PROGRAMACION"
+      },
+      "PROGRAMACION 3": {
+          "calification": "7",
+          "date": "16/12/2020",
+          "credits": "15",
+          "name": "PROGRAMACION 3",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "PROGRAMACION"
+      },
+      "PROGRAMACION 4": {
+          "calification": "8",
+          "date": "13/07/2021",
+          "credits": "15",
+          "name": "PROGRAMACION 4",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "PROGRAMACION"
+      },
+      "TEORIA DE LENGUAJES": {
+          "calification": "9",
+          "date": "15/07/2022",
+          "credits": "12",
+          "name": "TEORIA DE LENGUAJES",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "PROGRAMACION"
+      },
+      "ARQUITECTURA DE COMPUTADORAS": {
+          "calification": "9",
+          "date": "17/12/2022",
+          "credits": "12",
+          "name": "ARQUITECTURA DE COMPUTADORAS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "ARQUIT, S.OP. Y REDES DE COMP."
+      },
+      "REDES DE COMPUTADORAS": {
+          "calification": "5",
+          "date": "07/02/2024",
+          "credits": "12",
+          "name": "REDES DE COMPUTADORAS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "ARQUIT, S.OP. Y REDES DE COMP."
+      },
+      "SISTEMAS OPERATIVOS": {
+          "calification": "6",
+          "date": "08/07/2023",
+          "credits": "12",
+          "name": "SISTEMAS OPERATIVOS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "ARQUIT, S.OP. Y REDES DE COMP."
+      },
+      "APRENDIZAJE AUTOMATICO": {
+          "calification": "6",
+          "date": "15/11/2023",
+          "credits": "12",
+          "name": "APRENDIZAJE AUTOMATICO",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "INT.ARTIFICIAL Y ROBOTICA"
+      },
+      "FUNDAMENTOS DE BASES DE DATOS": {
+          "calification": "9",
+          "date": "24/11/2021",
+          "credits": "15",
+          "name": "FUNDAMENTOS DE BASES DE DATOS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "B.DATOS Y SIST. DE INFORMACION"
+      },
+      "FUNDAMENTOS DE LA WEB SEMANTICA": {
+          "calification": "10",
+          "date": "02/08/2023",
+          "credits": "8",
+          "name": "FUNDAMENTOS DE LA WEB SEMANTICA",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "B.DATOS Y SIST. DE INFORMACION"
+      },
+      "RECUPERACION DE INF. Y RECOMEND. EN LA WEB (WIR)": {
+          "calification": "12",
+          "date": "08/12/2023",
+          "credits": "10",
+          "name": "RECUPERACION DE INF. Y RECOMEND. EN LA WEB (WIR)",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "B.DATOS Y SIST. DE INFORMACION"
+      },
+      "METODOS NUMERICOS": {
+          "calification": "6",
+          "date": "21/12/2020",
+          "credits": "8",
+          "name": "METODOS NUMERICOS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "CALCULO NUMERICO Y SIMBOLICO"
+      },
+      "FUNDAMENTOS DE OPTIMIZACION": {
+          "calification": "12",
+          "date": "20/07/2023",
+          "credits": "6",
+          "name": "FUNDAMENTOS DE OPTIMIZACION",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "INVESTIGACION OPERATIVA"
+      },
+      "INT. A LA INVESTIGACION DE OPERACIONES": {
+          "calification": "6",
+          "date": "23/07/2021",
+          "credits": "10",
+          "name": "INT. A LA INVESTIGACION DE OPERACIONES",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "INVESTIGACION OPERATIVA"
+      },
+      "GESTI\u00d3N DE PROYECTOS": {
+          "calification": "7",
+          "date": "28/11/2023",
+          "credits": "10",
+          "name": "GESTI\u00d3N DE PROYECTOS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "INGENIERIA DE SOFTWARE"
+      },
+      "INT. A LA INGENIERIA DE SOFTWARE": {
+          "calification": "8",
+          "date": "08/07/2022",
+          "credits": "10",
+          "name": "INT. A LA INGENIERIA DE SOFTWARE",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "INGENIERIA DE SOFTWARE"
+      },
+      "PROYECTO DE INGENIERIA DE SOFTWARE": {
+          "calification": "9",
+          "date": "12/12/2022",
+          "credits": "15",
+          "name": "PROYECTO DE INGENIERIA DE SOFTWARE",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "A.INTEG,TALLERES,PASANT.Y PROY"
+      },
+      "TALLER DE PROGRAMACION": {
+          "calification": "12",
+          "date": "20/12/2021",
+          "credits": "15",
+          "name": "TALLER DE PROGRAMACION",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "A.INTEG,TALLERES,PASANT.Y PROY"
+      },
+      "MODULO DE EXTENSION": {
+          "calification": null,
+          "date": "14/11/2023",
+          "credits": "4",
+          "name": "MODULO DE EXTENSION",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "A.INTEG,TALLERES,PASANT.Y PROY"
+      },
+      "INT. AL NEGOCIO DEL SOFTWARE": {
+          "calification": "8",
+          "date": "17/11/2023",
+          "credits": "6",
+          "name": "INT. AL NEGOCIO DEL SOFTWARE",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "GESTION EN ORGANIZACIONES"
+      },
+      "ADMINISTRACION GENERAL PARA INGENIEROS": {
+          "calification": "11",
+          "date": "09/07/2022",
+          "credits": "5",
+          "name": "ADMINISTRACION GENERAL PARA INGENIEROS",
+          "status": "Examen",
+          "area": "Basico-Tec,Tecnicas e Integ.",
+          "group": "GESTION EN ORGANIZACIONES"
+      },
+      "CIENCIA, TECNOLOGIA Y SOCIEDAD": {
+          "calification": "4",
+          "date": "28/02/2024",
+          "credits": "8",
+          "name": "CIENCIA, TECNOLOGIA Y SOCIEDAD",
+          "status": "Examen",
+          "area": "Materias Complementarias",
+          "group": "CIENCIAS HUMANAS Y SOCIALES"
+      },
+      "ECONOMIA": {
+          "calification": "10",
+          "date": "25/02/2021",
+          "credits": "7",
+          "name": "ECONOMIA",
+          "status": "Examen",
+          "area": "Materias Complementarias",
+          "group": "CIENCIAS HUMANAS Y SOCIALES"
+      },
+      "POLITICAS CIENTIFICAS EN INF.Y COMP.": {
+          "calification": "10",
+          "date": "22/02/2023",
+          "credits": "3",
+          "name": "POLITICAS CIENTIFICAS EN INF.Y COMP.",
+          "status": "Examen",
+          "area": "Materias Complementarias",
+          "group": "CIENCIAS HUMANAS Y SOCIALES"
+      },
+      "TRATAMIENTO DE IMAGENES POR COMPUTADORA": {
+          "calification": "10",
+          "date": "26/07/2023",
+          "credits": "10",
+          "name": "TRATAMIENTO DE IMAGENES POR COMPUTADORA",
+          "status": "Examen",
+          "area": "Materias Opcionales",
+          "group": "MATERIAS OPCIONALES"
+      }
   },
-  "Creditos Totales": 350,
-  "Matematica": 84,
-  "Ciencias Experimentales": 10,
-  "Programacion": 74,
-  "Arquit, S.Op. y Redes de Comp.": 36,
-  "Int.Artificial y Robotica": 12,
-  "B.Datos y Sist. de Informacion": 33,
-  "Calculo Numerico y Simbolico": 8,
-  "Investigacion Operativa": 16,
-  "Ingenieria de Software": 20,
-  "A.Integ,Talleres,Pasant.y Proy": 34,
-  "Gestion en Organizaciones": 11,
-  "Ciencias Humanas y Sociales": 18,
-  "Materias Opcionales": 10
+  "Creditos Totales": 366,
+  "MATEMATICA": 84,
+  "CIENCIAS EXPERIMENTALES": 10,
+  "PROGRAMACION": 74,
+  "ARQUIT, S.OP. Y REDES DE COMP.": 36,
+  "INT.ARTIFICIAL Y ROBOTICA": 12,
+  "B.DATOS Y SIST. DE INFORMACION": 33,
+  "CALCULO NUMERICO Y SIMBOLICO": 8,
+  "INVESTIGACION OPERATIVA": 16,
+  "INGENIERIA DE SOFTWARE": 20,
+  "A.INTEG,TALLERES,PASANT.Y PROY": 34,
+  "GESTION EN ORGANIZACIONES": 11,
+  "CIENCIAS HUMANAS Y SOCIALES": 18,
+  "MATERIAS OPCIONALES": 10
 }

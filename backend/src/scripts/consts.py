@@ -2,20 +2,20 @@ from enum import Enum
 
 # Areas de formacion. TODO: Debemos tener un diccionario asi para cada carrera.
 FORMATION_AREAS_INGCOMP = {
-    "Materias Basicas": ["Matematica", "Ciencias Experimentales"],
+    "Materias Basicas": ["MATEMATICA", "CIENCIAS EXPERIMENTALES"],
     "Basico-Tec,Tecnicas e Integ.": [
-        "Programacion",
-        "Arquit, S.Op. y Redes de Comp.",
-        "Int.Artificial y Robotica",
-        "B.Datos y Sist. de Informacion",
-        "Calculo Numerico y Simbolico",
-        "Investigacion Operativa",
-        "Ingenieria de Software",
-        "A.Integ,Talleres,Pasant.y Proy",
-        "Gestion en Organizaciones",
+        "PROGRAMACION",
+        "ARQUIT, S.OP. Y REDES DE COMP.",
+        "INT.ARTIFICIAL Y ROBOTICA",
+        "B.DATOS Y SIST. DE INFORMACION",
+        "CALCULO NUMERICO Y SIMBOLICO",
+        "INVESTIGACION OPERATIVA",
+        "INGENIERIA DE SOFTWARE",
+        "A.INTEG,TALLERES,PASANT.Y PROY",
+        "GESTION EN ORGANIZACIONES",
     ],
-    "Materias Complementarias": ["Ciencias Humanas y Sociales"],
-    "Materias Opcionales": ["Materias Opcionales"],
+    "Materias Complementarias": ["CIENCIAS HUMANAS Y SOCIALES"],
+    "Materias Opcionales": ["MATERIAS OPCIONALES"],
 }
 
 # Lineas a omitir en el procesado del PDF. Corresponden a lineas de texto de la cabecera y pie de pagina de las paginas.
