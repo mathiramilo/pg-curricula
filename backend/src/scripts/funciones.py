@@ -2,7 +2,7 @@ import json
 import re
 
 import PyPDF2
-from constantes import LINEAS_A_SALTEAR, Estado
+from constantes import LINEAS_A_SALTEAR, TipoAprobacion
 
 
 def leer_pdf(ubicacion_archivo: str) -> str:
@@ -165,7 +165,7 @@ def buscar_ucs_aprobadas_con_resultados_intermedios(
                             "fecha": fecha,
                             "creditos": None,
                             "nombre": nombre,
-                            "estado": Estado.CURSO.value,
+                            "tipoAprobacion": TipoAprobacion.CURSO.value,
                             "area": area,
                             "grupo": grupo,
                         }
@@ -185,7 +185,7 @@ def buscar_ucs_aprobadas_con_resultados_intermedios(
                             "fecha": fecha,
                             "creditos": int(creditos),
                             "nombre": nombre,
-                            "estado": Estado.EXAMEN.value,
+                            "tipoAprobacion": TipoAprobacion.EXAMEN.value,
                             "area": area,
                             "grupo": grupo,
                         }
@@ -206,7 +206,7 @@ def buscar_ucs_aprobadas_con_resultados_intermedios(
                             "fecha": fecha,
                             "creditos": int(creditos),
                             "nombre": nombre,
-                            "estado": Estado.EXAMEN.value,
+                            "tipoAprobacion": TipoAprobacion.EXAMEN.value,
                             "area": area,
                             "grupo": grupo,
                         }
@@ -273,7 +273,7 @@ def buscar_ucs_aprobadas_con_resultados_finales(areas_de_formacion, texto_pdf) -
                         "fecha": fecha,
                         "creditos": int(creditos),
                         "nombre": nombre,
-                        "estado": Estado.EXAMEN.value,
+                        "tipoAprobacion": TipoAprobacion.EXAMEN.value,
                         "area": area,
                         "grupo": grupo,
                     }
@@ -291,7 +291,7 @@ def buscar_ucs_aprobadas_con_resultados_finales(areas_de_formacion, texto_pdf) -
                         "fecha": fecha,
                         "creditos": int(creditos),
                         "nombre": nombre,
-                        "estado": Estado.EXAMEN.value,
+                        "tipoAprobacion": TipoAprobacion.EXAMEN.value,
                         "area": area,
                         "grupo": grupo,
                     }

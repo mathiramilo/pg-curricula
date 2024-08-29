@@ -1,6 +1,10 @@
 import { exec } from 'child_process';
 import { Response } from 'express';
 
+import { InformacionEstudiante } from '@/types/informacionEstudiante';
+
+import { CodigoHTTP } from '../constants/http';
+import { respuestaExitosa, respuestaFallida } from '../constants/respuestas';
 import { obtenerComandoScriptPython } from './helpers';
 
 export const procesarPDF = (
@@ -14,20 +18,37 @@ export const procesarPDF = (
       if (error) {
         console.error(`exec error: ${error}`);
         return res
-          .status(500)
-          .json({ error: 'Error en la ejecución del script' });
+          .status(CodigoHTTP.INTERNAL_SERVER_ERROR)
+          .json(
+            respuestaFallida(
+              'Error en la ejecución del script',
+              CodigoHTTP.INTERNAL_SERVER_ERROR
+            )
+          );
       }
       if (stderr) {
         console.error(`stderr: ${stderr}`);
         return res
-          .status(500)
-          .json({ error: 'Error en la ejecución del script' });
+          .status(CodigoHTTP.INTERNAL_SERVER_ERROR)
+          .json(
+            respuestaFallida(
+              'Error en el script',
+              CodigoHTTP.INTERNAL_SERVER_ERROR
+            )
+          );
       }
 
       // console.log('Output del script:', stdout);
 
       // Si todo fue bien, solo devolver éxito
-      res.status(200).send({ data: JSON.parse(stdout) });
+      res
+        .status(CodigoHTTP.OK)
+        .json(
+          respuestaExitosa<InformacionEstudiante>(
+            JSON.parse(stdout),
+            CodigoHTTP.OK
+          )
+        );
 
       // Llama al callback para eliminar el archivo
       callback();

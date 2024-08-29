@@ -42,7 +42,7 @@ LINEAS_A_SALTEAR = [
 ]
 
 
-# Estados de las UCs.
-class Estado(Enum):
+# Tipo de aprobacion de las UCs.
+class TipoAprobacion(Enum):
     CURSO = "Curso"
     EXAMEN = "Examen"
