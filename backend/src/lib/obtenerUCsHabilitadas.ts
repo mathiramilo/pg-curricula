@@ -1,4 +1,4 @@
-import type { InformacionEstudiante } from 'types/informacionEstudiante';
+import type { InformacionEstudiante } from '@/types/informacionEstudiante';
 
 import previaturas from '../../data/previaturas.json';
 import cumplePrevias from './cumplePrevias';

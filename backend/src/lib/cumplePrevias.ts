@@ -1,5 +1,4 @@
-import type { InformacionEstudiante } from 'types/informacionEstudiante';
-
+import type { InformacionEstudiante } from '../types/informacionEstudiante';
 import { ReglaPreviaturas, TipoRegla } from '../types/reglas';
 
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
@@ -7,12 +6,10 @@ const cumplePrevias = (
   informacionEstudiante: InformacionEstudiante,
   previas: ReglaPreviaturas
 ): boolean => {
-  if (!previas) {
-    // Si la UC no tiene previas devolvemos true
-    return true;
-  }
+  // Si la UC no tiene previas devolvemos true
+  if (!previas) return true;
 
-  // console.log(previas) // Debug
+  // console.log(previas); // Debug
 
   try {
     switch (previas.regla) {

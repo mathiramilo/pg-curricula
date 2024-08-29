@@ -17,7 +17,7 @@ export interface InformacionEstudiante {
 }
 
 export interface UCAprobada {
-  calificacion: number | null;
+  calificacion: string | null;
   fecha: string;
   creditos: number | null;
   nombre: string;

@@ -1,24 +1,38 @@
-import { exec } from 'child_process';
-import { Request, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 
+import informacionEstudiante from '../../data/informacion-estudiante.json';
 import previaturas from '../../data/previaturas.json';
+import { respuestaExitosa, respuestaFallida } from '../constants/respuestas';
+import { CodigoHTTP } from '../constants/http';
 import cumplePrevias from '../lib/cumplePrevias';
-import { obtenerComandoScriptPython } from '../lib/helpers';
+import type { InformacionEstudiante } from '../types/informacionEstudiante';
 
-const UBICACION_ARCHIVO = 'uploads/esc-ri.pdf';
+export const chequearPrevias: RequestHandler = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { nombreUC } = req.params;
 
-export const chequearPrevias = (req: Request, res: Response): void => {
-  const { uc } = req.params;
+  try {
+    if (!previaturas[nombreUC])
+      return res
+        .status(CodigoHTTP.NOT_FOUND)
+        .json(
+          respuestaFallida(
+            `No se encontró ninguna UC con nombre ${nombreUC}`,
+            CodigoHTTP.NOT_FOUND
+          )
+        );
 
-  exec(
-    obtenerComandoScriptPython(UBICACION_ARCHIVO, true),
-    (error, stdout, stderr) => {
-      if (error) return res.status(500).json({ error });
-      if (stderr) return res.status(500).json({ error: stderr });
-
-      const informacionEstudiante = JSON.parse(stdout);
-      const cumple = cumplePrevias(informacionEstudiante, previaturas[uc]);
-      return res.status(200).json({ habilitado: cumple });
-    }
-  );
+    const cumple = cumplePrevias(
+      informacionEstudiante as InformacionEstudiante,
+      previaturas[nombreUC]
+    );
+    return res
+      .status(CodigoHTTP.OK)
+      .json(respuestaExitosa<boolean>(cumple, CodigoHTTP.OK));
+  } catch (error) {
+    next(error);
+  }
 };

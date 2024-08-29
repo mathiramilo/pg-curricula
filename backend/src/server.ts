@@ -1,17 +1,19 @@
-import express, { Express } from 'express';
+import app from './app';
+import { env } from './config/env';
 
-import endpointsEscolaridad from './routes/escolaridad.routes';
-import endpointsPrevias from './routes/previas.routes';
-
-const PUERTO = process.env.PUERTO ?? 8080;
-
-const app: Express = express();
-
-app.use(express.json());
-
-app.use('/api/previas', endpointsPrevias);
-app.use('/api/escolaridad', endpointsEscolaridad);
-
-app.listen(PUERTO, () => {
-  console.log(`Servidor corriendo en http://localhost:${PUERTO}`);
+const server = app.listen(env.PUERTO, () => {
+  const { NODE_ENV, HOST, PUERTO } = env;
+  console.log(`Servidor (${NODE_ENV}) corriendo en http://${HOST}:${PUERTO}`);
 });
+
+const onCloseSignal = () => {
+  console.log('SIGINT/SIGTERM recibida, apagando...');
+  server.close(() => {
+    console.log('Servidor cerrado');
+    process.exit();
+  });
+  setTimeout(() => process.exit(1), 10000).unref(); // Forzar apagado despues de 10s
+};
+
+process.on('SIGINT', onCloseSignal);
+process.on('SIGTERM', onCloseSignal);
