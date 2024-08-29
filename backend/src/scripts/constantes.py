@@ -1,7 +1,7 @@
 from enum import Enum
 
 # Areas de formacion. TODO: Debemos tener un diccionario asi para cada carrera.
-FORMATION_AREAS_INGCOMP = {
+AREAS_FORMACION_INGCOMP = {
     "Materias Basicas": ["MATEMATICA", "CIENCIAS EXPERIMENTALES"],
     "Basico-Tec,Tecnicas e Integ.": [
         "PROGRAMACION",
@@ -19,7 +19,7 @@ FORMATION_AREAS_INGCOMP = {
 }
 
 # Lineas a omitir en el procesado del PDF. Corresponden a lineas de texto de la cabecera y pie de pagina de las paginas.
-LINES_TO_SKIP = [
+LINEAS_A_SALTEAR = [
     "Código",
     "Verificar",
     "Página",
@@ -43,6 +43,6 @@ LINES_TO_SKIP = [
 
 
 # Estados de las UCs.
-class Status(Enum):
+class Estado(Enum):
     CURSO = "Curso"
     EXAMEN = "Examen"
