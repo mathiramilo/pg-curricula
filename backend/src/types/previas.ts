@@ -1,4 +1,4 @@
-export interface RawPrev {
+export interface PreviaCSV {
   cod_materia: string;
   codenservicio_mat: string;
   nombre_mat: string;
@@ -17,30 +17,30 @@ export interface RawPrev {
   'codenservicio_mat-2': string;
 }
 
-export interface Prev {
-  ucCode: number;
-  ucServiceCode: string;
-  ucName: string;
-  conditionCode: number;
-  parentConditionCode: number | null;
-  type: PrevType;
-  amount: number | null;
-  planCode: number | null;
-  creditsAmount: number | null;
-  groupCode: number | null;
-  groupName: string | null;
-  elementCode: number | null;
-  instanceType: InstanceType | null;
-  prevName: string | null;
-  prevServiceCode: string | null;
+export interface Previa {
+  codigoUC: number;
+  codigoEnServicioUC: string;
+  nombreUC: string;
+  codigoCondicion: number;
+  codigoCondicionPadre: number | null;
+  tipo: TipoPrevia;
+  cantidad: number | null;
+  codigoPlan: number | null;
+  cantidadCreditos: number | null;
+  codigoGrupo: number | null;
+  nombreGrupo: string | null;
+  codigoElemento: number | null;
+  tipoInstancia: TipoInstancia | null;
+  nombrePrevia: string | null;
+  codigoEnServicioPrevia: string | null;
 }
 
-export enum InstanceType {
+export enum TipoInstancia {
   C = 'C',
   E = 'E'
 }
 
-export enum PrevType {
+export enum TipoPrevia {
   AND = 'AND',
   OR = 'OR',
   NOT = 'NOT',

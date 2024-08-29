@@ -1,4 +1,4 @@
-export interface StudentData {
+export interface InformacionEstudiante {
   'UCs Aprobadas': { [key: string]: UCAprobada };
   'Creditos Totales': number;
   MATEMATICA: number;
@@ -17,13 +17,13 @@ export interface StudentData {
 }
 
 export interface UCAprobada {
-  calification: number | null;
-  date: string;
-  credits: number | null;
-  name: string;
-  status: Status;
+  calificacion: number | null;
+  fecha: string;
+  creditos: number | null;
+  nombre: string;
+  tipoAprobacion: TipoAprobacion;
   area: Area;
-  group: string;
+  grupo: string;
 }
 
 export enum Area {
@@ -33,7 +33,7 @@ export enum Area {
   MateriasOpcionales = 'Materias Opcionales'
 }
 
-export enum Status {
+export enum TipoAprobacion {
   Examen = 'Examen',
   Curso = 'Curso'
 }

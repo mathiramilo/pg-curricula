@@ -1,35 +1,41 @@
 import argparse
 
-from consts import FORMATION_AREAS_INGCOMP
-from functions import (
-    read_pdf,
-    search_aprobed_subjects_final_results,
-    search_aprobed_subjects_intermediate_results,
+from constantes import AREAS_FORMACION_INGCOMP
+from funciones import (
+    buscar_ucs_aprobadas_con_resultados_finales,
+    buscar_ucs_aprobadas_con_resultados_intermedios,
+    leer_pdf,
 )
 
 
-def get_student_data(file_path: str, wir: bool) -> dict:
+def obtener_informacion_estudiante(
+    ubicacion_archivo: str, conResultadosIntermedios: bool
+) -> dict:
     # Leer archivo PDF
-    pdf_text = read_pdf(file_path)
+    texto_pdf = leer_pdf(ubicacion_archivo)
 
     # Buscar unidades curriculares aprobadas
-    student_data = (
-        search_aprobed_subjects_intermediate_results(FORMATION_AREAS_INGCOMP, pdf_text)
-        if wir
-        else search_aprobed_subjects_final_results(FORMATION_AREAS_INGCOMP, pdf_text)
+    informacion_estudiante = (
+        buscar_ucs_aprobadas_con_resultados_intermedios(
+            AREAS_FORMACION_INGCOMP, texto_pdf
+        )
+        if conResultadosIntermedios
+        else buscar_ucs_aprobadas_con_resultados_finales(
+            AREAS_FORMACION_INGCOMP, texto_pdf
+        )
     )
 
-    return student_data
+    return informacion_estudiante
 
 
 if __name__ == "__main__":
     # Definir los argumentos de la línea de comandos
     parser = argparse.ArgumentParser(
-        description="Extract student academic progress from PDF."
+        description="Extraer avance academico de un estudiante a partir de su escolaridad en formato PDF."
     )
-    parser.add_argument("file_path", type=str, help="Path del archivo PDF")
+    parser.add_argument("ubicacion_archivo", type=str, help="Ubicacion del archivo PDF")
     parser.add_argument(
-        "--wir",
+        "--cri",
         action="store_true",
         help="Indica si buscar unidades curriculares intermedias",
     )
@@ -38,5 +44,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Extraer las unidades curriculares aprobadas
-    student_data = get_student_data(args.file_path, args.wir)
-    print(student_data)
+    informacion_estudiante = obtener_informacion_estudiante(
+        args.ubicacion_archivo, args.cri
+    )
+    print(informacion_estudiante)

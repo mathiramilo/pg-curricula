@@ -15,6 +15,6 @@ fs.createReadStream('../../data/lista_materias_computacion.csv')
     listaMateriasComputacion[codMateria] = row;
   })
   .on('end', () => {
-    console.log('CSV file successfully processed');
+    console.log('Archivo CSV procesado satisfactoriamente');
     console.log(listaMateriasComputacion); // Muestra todas las materias
   });
