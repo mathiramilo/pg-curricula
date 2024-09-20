@@ -1,9 +1,9 @@
-import type { InformacionEstudiante } from '@/types/informacionEstudiante';
+import { type InformacionEstudiante } from '@/types';
 
 import previaturas from '../../data/previaturas.json';
-import cumplePrevias from './cumplePrevias';
+import { cumplePrevias } from './cumplePrevias';
 
-const obtenerUCsHabilitadas = (
+export const obtenerUCsHabilitadas = (
   informacionEstudiante: InformacionEstudiante,
   todas: boolean
 ): string[] => {
@@ -25,5 +25,3 @@ const obtenerUCsHabilitadas = (
 
   return UCsHabilitadas;
 };
-
-export default obtenerUCsHabilitadas;

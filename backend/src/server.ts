@@ -1,5 +1,5 @@
 import app from './app';
-import { env } from './config/env';
+import { env } from './config';
 
 const server = app.listen(env.PUERTO, () => {
   const { NODE_ENV, HOST, PUERTO } = env;

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Backend para el proyecto de grado curricula",
   "main": "server.js",
+  "engines": {
+    "pnpm": ">=9.0.0"
+  },
   "scripts": {
     "start": "ts-node src/server.ts",
     "dev": "nodemon src/server.ts",

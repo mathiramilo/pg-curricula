@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { procesarEscolaridad } from '../controllers/escolaridad.controller';
-import { upload } from '../lib/upload';
+import { procesarEscolaridad } from '../controllers';
+import { upload } from '../lib';
 
 const router = Router();
 

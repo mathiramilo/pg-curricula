@@ -1,8 +1,3 @@
-enum TipoDescriptor {
-  'E',
-  'C'
-}
-
 // Nodo para el árbol de materias
 class Nodo {
   codigo: string;

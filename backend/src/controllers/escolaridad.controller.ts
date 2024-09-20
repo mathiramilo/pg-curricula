@@ -1,9 +1,8 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 import fs from 'fs';
 
-import { CodigoHTTP } from '../constants/http';
-import { respuestaFallida } from '../constants/respuestas';
-import { procesarPDF } from '../lib/procesarPDF';
+import { CodigoHTTP, respuestaFallida } from '../constants';
+import { procesarPDF } from '../lib';
 
 export const procesarEscolaridad: RequestHandler = (
   req: Request,

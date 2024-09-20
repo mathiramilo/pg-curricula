@@ -1,11 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { Previa, PreviaCSV } from '../types/previas';
-import { TipoInstancia, TipoPrevia } from '../types/previas';
-import type { ReglaPreviaturas } from '../types/reglas';
-import { TipoRegla } from '../types/reglas';
-import leerCSV from './leerCSV';
+import {
+  type Previa,
+  type PreviaCSV,
+  type ReglaPreviaturas,
+  TipoInstancia,
+  TipoPrevia,
+  TipoRegla
+} from '../types';
+import { leerCSV } from './leerCSV';
 
 const UBICACION_CSV_PREVIATURAS = 'data/previaturas2.csv';
 
@@ -118,8 +122,10 @@ const generarReglaRaiz = (previas: Previa[]): ReglaPreviaturas => {
   const previasFormateadas = previas.filter(p => p.tipo !== TipoPrevia.B);
   filasAgrupadasPorCodCondicionKeys.forEach(codCondicion => {
     const previas = filasAgrupadasPorCodCondicion[codCondicion];
-    const previa = previas[0];
-    previasFormateadas.push(previa);
+    if (previas && previas.length > 0) {
+      const previa = previas[0];
+      previa && previasFormateadas.push(previa);
+    }
   });
 
   return generarRegla(
@@ -180,10 +186,12 @@ const generarRegla = (
       };
     }
     case TipoPrevia.B: {
-      const BPrevs = previasDeTipoB[codigoCondicion].map(p => ({
-        ...p,
-        type: TipoPrevia.M
-      }));
+      const BPrevs = previasDeTipoB[codigoCondicion]
+        ? previasDeTipoB[codigoCondicion].map(p => ({
+            ...p,
+            tipo: TipoPrevia.M
+          }))
+        : [];
       return {
         regla: TipoRegla.SOME,
         cantidad,
@@ -192,7 +200,7 @@ const generarRegla = (
         )
       };
     }
-    case TipoPrevia.M: {
+    case TipoPrevia.M || TipoPrevia.N: {
       return {
         regla: TipoRegla.UC,
         codigo: codigoEnServicioPrevia,

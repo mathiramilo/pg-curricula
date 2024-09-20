@@ -1,10 +1,8 @@
 import { exec } from 'child_process';
 import { Response } from 'express';
 
-import { InformacionEstudiante } from '@/types/informacionEstudiante';
-
-import { CodigoHTTP } from '../constants/http';
-import { respuestaExitosa, respuestaFallida } from '../constants/respuestas';
+import { CodigoHTTP, respuestaExitosa, respuestaFallida } from '../constants';
+import { type InformacionEstudiante } from '../types';
 import { obtenerComandoScriptPython } from './helpers';
 
 export const procesarPDF = (

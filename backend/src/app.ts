@@ -5,12 +5,10 @@ import fs from 'fs';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-import { env } from './config/env';
-import { CodigoHTTP } from './constants/http';
-import errorMiddleware from './middleware/error';
-import rateLimiter from './middleware/rateLimiter';
-import endpointsEscolaridad from './routes/escolaridad.routes';
-import endpointsPrevias from './routes/previas.routes';
+import { env } from './config';
+import { CodigoHTTP } from './constants';
+import { errorMiddleware, rateLimiter } from './middleware';
+import { endpointsEscolaridad, endpointsPrevias } from './routes';
 
 const app: Express = express();
 
@@ -24,11 +22,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
-app.use(rateLimiter);
+if (env.NODE_ENV === 'production') app.use(rateLimiter);
 
 // Logger
 app.use(morgan('dev'));
-app.use(morgan('combined', { stream: flujoDeRegistro }));
+if (env.NODE_ENV === 'production')
+  app.use(morgan('combined', { stream: flujoDeRegistro }));
 
 // Rutas
 app.use('/api/previas', endpointsPrevias);

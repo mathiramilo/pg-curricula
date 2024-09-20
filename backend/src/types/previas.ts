@@ -1,4 +1,4 @@
-export interface PreviaCSV {
+export type PreviaCSV = {
   cod_materia: string;
   codenservicio_mat: string;
   nombre_mat: string;
@@ -15,9 +15,9 @@ export interface PreviaCSV {
   tipo_instancia: string;
   'nombre_mat-2': string;
   'codenservicio_mat-2': string;
-}
+};
 
-export interface Previa {
+export type Previa = {
   codigoUC: number;
   codigoEnServicioUC: string;
   nombreUC: string;
@@ -33,19 +33,22 @@ export interface Previa {
   tipoInstancia: TipoInstancia | null;
   nombrePrevia: string | null;
   codigoEnServicioPrevia: string | null;
-}
+};
 
-export enum TipoInstancia {
-  C = 'C',
-  E = 'E'
-}
+export const TipoInstancia = {
+  C: 'C',
+  E: 'E'
+} as const;
+export type TipoInstancia = (typeof TipoInstancia)[keyof typeof TipoInstancia];
 
-export enum TipoPrevia {
-  AND = 'AND',
-  OR = 'OR',
-  NOT = 'NOT',
-  B = 'B',
-  M = 'M',
-  D = 'D',
-  R = 'R'
-}
+export const TipoPrevia = {
+  AND: 'AND',
+  OR: 'OR',
+  NOT: 'NOT',
+  B: 'B',
+  M: 'M',
+  N: 'N',
+  D: 'D',
+  R: 'R'
+} as const;
+export type TipoPrevia = (typeof TipoPrevia)[keyof typeof TipoPrevia];

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { chequearPrevias } from '../controllers/previas.controller';
+import { chequearPrevias } from '../controllers';
 
 const router = Router();
 

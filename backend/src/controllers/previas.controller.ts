@@ -1,11 +1,9 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import informacionEstudiante from '../../data/informacion-estudiante.json';
 import previaturas from '../../data/previaturas.json';
-import { respuestaExitosa, respuestaFallida } from '../constants/respuestas';
-import { CodigoHTTP } from '../constants/http';
-import cumplePrevias from '../lib/cumplePrevias';
-import type { InformacionEstudiante } from '../types/informacionEstudiante';
+import { CodigoHTTP, respuestaExitosa, respuestaFallida } from '../constants';
+import { cumplePrevias } from '../lib';
+import { esInformacionEstudiante, type InformacionEstudiante } from '../types';
 
 export const chequearPrevias: RequestHandler = (
   req: Request,
@@ -13,8 +11,19 @@ export const chequearPrevias: RequestHandler = (
   next: NextFunction
 ) => {
   const { nombreUC } = req.params;
+  const informacionEstudiante = req.body;
 
   try {
+    if (!nombreUC)
+      return res
+        .status(CodigoHTTP.BAD_REQUEST)
+        .json(
+          respuestaFallida(
+            'No se proporcionó el nombre de la UC a chequear',
+            CodigoHTTP.BAD_REQUEST
+          )
+        );
+
     if (!previaturas[nombreUC])
       return res
         .status(CodigoHTTP.NOT_FOUND)
@@ -24,6 +33,22 @@ export const chequearPrevias: RequestHandler = (
             CodigoHTTP.NOT_FOUND
           )
         );
+
+    if (!esInformacionEstudiante(informacionEstudiante))
+      return res
+        .status(CodigoHTTP.BAD_REQUEST)
+        .json(
+          respuestaFallida(
+            'La información del estudiante no cumple con el formato esperado. Verifica que estén todos los campos necesarios y que tengan el tipo de dato correcto',
+            CodigoHTTP.BAD_REQUEST
+          )
+        );
+
+    //? Si la UC ya fue aprobada por el estudiante, no es necesario verificar las previas. En este caso deberiamos devolver true (indicando que el estudiante esta habilitado para cursarla) o false (indicando que no la puede hacer denuevo debido a que ya la curso)?
+    if (informacionEstudiante['UCs Aprobadas'].hasOwnProperty(nombreUC))
+      return res
+        .status(CodigoHTTP.OK)
+        .json(respuestaExitosa<boolean>(false, CodigoHTTP.OK));
 
     const cumple = cumplePrevias(
       informacionEstudiante as InformacionEstudiante,

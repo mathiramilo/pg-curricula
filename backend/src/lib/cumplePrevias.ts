@@ -1,51 +1,65 @@
-import type { InformacionEstudiante } from '../types/informacionEstudiante';
-import { ReglaPreviaturas, TipoRegla } from '../types/reglas';
+import {
+  type InformacionEstudiante,
+  ReglaPreviaturas,
+  TipoRegla
+} from '../types';
 
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
-const cumplePrevias = (
+export const cumplePrevias = (
   informacionEstudiante: InformacionEstudiante,
   previas: ReglaPreviaturas
 ): boolean => {
   // Si la UC no tiene previas devolvemos true
   if (!previas) return true;
 
-  // console.log(previas); // Debug
+  // console.log(JSON.stringify(previas, null, 2)); // Debug
 
   try {
     switch (previas.regla) {
-      case TipoRegla.NOT:
+      case TipoRegla.NOT: {
+        //* Si la regla hija es UC y tiene el nombre 'null', entonces se devuelve true. Esto es necesario ya que si entra en el caso 'UC' se va a devolver true, pero como la regla es NOT, se niega el valor (CASO BORDE, pasa en Proyecto de Grado por ejemplo)
+        if (previas.previas?.regla === TipoRegla.UC && !previas.previas.nombre)
+          return true;
+
         return !cumplePrevias(informacionEstudiante, previas.previas);
-      case TipoRegla.OR:
+      }
+      case TipoRegla.OR: {
         return previas.previas.some(prev =>
           cumplePrevias(informacionEstudiante, prev)
         );
-      case TipoRegla.AND:
+      }
+      case TipoRegla.AND: {
         return previas.previas.every(prev =>
           cumplePrevias(informacionEstudiante, prev)
         );
-      case TipoRegla.SOME:
+      }
+      case TipoRegla.SOME: {
         return (
           previas.previas.filter(prev =>
             cumplePrevias(informacionEstudiante, prev)
           ).length >= previas.cantidad!
         );
-      case TipoRegla.CREDITOS_PLAN:
-        return informacionEstudiante['Creditos Totales'] >= previas.cantidad!;
-      case TipoRegla.CREDITOS_GRUPO:
-        return informacionEstudiante[previas.nombre!] >= previas.cantidad!;
-      case TipoRegla.UC:
-        return informacionEstudiante['UCs Aprobadas'].hasOwnProperty(
-          previas.nombre!
-        );
-      default:
-        // console.log('Regla desconocida:', previas.regla);
-        // console.log(previas);
-        return true;
+      }
+      case TipoRegla.CREDITOS_PLAN: {
+        if (previas.cantidad)
+          return informacionEstudiante['Creditos Totales'] >= previas.cantidad;
+        return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
+      }
+      case TipoRegla.CREDITOS_GRUPO: {
+        if (previas.nombre && previas.cantidad)
+          return informacionEstudiante[previas.nombre] >= previas.cantidad;
+        return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
+      }
+      case TipoRegla.UC: {
+        if (previas.nombre)
+          return informacionEstudiante['UCs Aprobadas'].hasOwnProperty(
+            previas.nombre
+          );
+        return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
+      }
     }
   } catch (error) {
     // console.log('Error:', error);
     return false;
   }
 };
-
-export default cumplePrevias;
