@@ -39,6 +39,8 @@ LINEAS_A_SALTEAR = [
     "validezCant.",
     "Reproba",
     "-cionesCred Actividad",
+    "Curso",
+    "*",
 ]
 
 

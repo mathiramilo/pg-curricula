@@ -160,6 +160,9 @@ def buscar_ucs_aprobadas_con_resultados_intermedios(
                         # String -> "17/12/2022 9ARQUITECTURA DE COMPUTADORAS " | "17/12/2022 1 9ARQUITECTURA DE COMPUTADORAS "
                         nombre = extraer_nombre(nombre)
 
+                        if nombre.startswith("*"):
+                            continue
+
                         informacion_estudiante["UCs Aprobadas"][nombre] = {
                             "calificacion": None,
                             "fecha": fecha,
@@ -179,6 +182,9 @@ def buscar_ucs_aprobadas_con_resultados_intermedios(
                         calificacion = extraer_calificacion(informacion_uc[1])
                         creditos = informacion_uc[-1]
                         nombre = extraer_nombre(" ".join(informacion_uc[:-1]))
+
+                        if nombre.startswith("*"):
+                            continue
 
                         informacion_estudiante["UCs Aprobadas"][nombre] = {
                             "calificacion": calificacion,
@@ -200,6 +206,9 @@ def buscar_ucs_aprobadas_con_resultados_intermedios(
                             informacion_uc[1]
                         )
                         nombre = " ".join(informacion_uc[2:])
+
+                        if nombre.startswith("*"):
+                            continue
 
                         informacion_estudiante["UCs Aprobadas"][nombre] = {
                             "calificacion": calificacion,
