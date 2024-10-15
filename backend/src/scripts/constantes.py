@@ -30,6 +30,11 @@ LINEAS_A_SALTEAR = [
     "INGENIERIA EN COMPUTACION",
     "FACULTAD DE INGENIERÍA",
     "CERTIFICADO DE ESCOLARIDAD",
+    "Estado:",
+    " FechaUnidad",
+    "Cred",
+    "NotaEn",
+    "Cant.",
     "Resultados Finales e Intermedios",
     "Normal Tipo de Inscripción: En curso Estado:",
     "Aprobación",
@@ -38,7 +43,10 @@ LINEAS_A_SALTEAR = [
     "sin",
     "validezCant.",
     "Reproba",
+    "ciones",
     "-cionesCred Actividad",
+    "Curso",
+    "*",
 ]
 
 
