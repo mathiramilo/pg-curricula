@@ -33,7 +33,7 @@ def es_uc(linea: str, conResultadosIntermedios: bool) -> bool:
     regex = (
         r"^(Examen|Curso|\*\*\*\*\*\*\*\*\*\*|Resultado Final)"
         if conResultadosIntermedios
-        else r"^(?:\d+|\*\*\*)"
+        else r"^(?:\d+|\*\*\*|S/N)"
     )
     return re.match(regex, linea)
 
@@ -83,6 +83,19 @@ def extraer_calificacion_y_creditos(texto: str) -> tuple:
     if texto[0] == "1":
         return texto[:2], texto[2:]
     return texto[0], texto[1:]
+
+
+def es_con_resultados_intermedios(texto_pdf: str) -> bool:
+    """Devuelve true si una escolaridad es con resultados finales e intermedios. False si es solo con resultados finales.
+
+    Args:
+        texto_pdf (str): Texto de la escolaridad a analizar.
+
+    Returns:
+        bool: Retorna true si es con resultados intermedio.
+    """
+    lineas = texto_pdf.split("\n")
+    return not lineas[0].startswith("Resultados Finales")
 
 
 # Funcion para escolaridades con resultados intermedios -> Tiene en cuenta UCs con curso aprobado
@@ -258,10 +271,16 @@ def buscar_ucs_aprobadas_con_resultados_finales(areas_de_formacion, texto_pdf) -
             for linea in grupo_lineas:
                 if es_uc(linea, conResultadosIntermedios=False):
                     lineas.append(linea)
+                elif (
+                    saltear_linea(linea)
+                    or linea == area.upper()
+                    or linea == grupo.upper()
+                ):
+                    continue
                 else:
                     break
 
-            # print(lineas) # Debug
+            # print(lineas)  # Debug
 
             for s in lineas:
                 # Si la unidad curricular no fue aprobada se muestra "***" en la escolaridad
@@ -276,6 +295,9 @@ def buscar_ucs_aprobadas_con_resultados_finales(areas_de_formacion, texto_pdf) -
                     fecha = informacion_uc[1][1:]
                     creditos = informacion_uc[2]
                     nombre = " ".join(informacion_uc[3:])
+
+                    if nombre.startswith("*"):
+                        continue
 
                     informacion_estudiante["UCs Aprobadas"][nombre] = {
                         "calificacion": calificacion,
@@ -294,6 +316,9 @@ def buscar_ucs_aprobadas_con_resultados_finales(areas_de_formacion, texto_pdf) -
                     fecha = informacion_uc[0]
                     creditos = informacion_uc[-2]
                     nombre = " ".join(informacion_uc[1 : len(informacion_uc) - 3])
+
+                    if nombre.startswith("*"):
+                        continue
 
                     informacion_estudiante["UCs Aprobadas"][nombre] = {
                         "calificacion": calificacion,

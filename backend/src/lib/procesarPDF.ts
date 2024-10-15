@@ -11,7 +11,7 @@ export const procesarPDF = (
   callback: () => void
 ): void => {
   exec(
-    obtenerComandoScriptPython(ubicacionArchivo, true),
+    obtenerComandoScriptPython(ubicacionArchivo),
     (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`);
