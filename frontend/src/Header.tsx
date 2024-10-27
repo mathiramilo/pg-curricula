@@ -1,9 +1,54 @@
+import { useState } from 'react';
 import styles from './styles/App.module.css';
+import iconFing from './assets/iconFing.svg';
+import iconUpload from './assets/iconUpload.svg';
+import iconDownload from './assets/iconDownload.svg';
+import iconRestar from './assets/iconRestart.svg';
+import ModalSubirArchivo from './ModalSubirArchivo';
 
 function Header() {
+  const [manejarModal, setabrirModal] = useState(false);
+
+  const cerrarModal = () => {
+    setabrirModal(false);
+  };
+
   return (
     <header className={styles.header}>
-      <h1>Header</h1>
+      <div className={styles.leftContainer}>
+        <img 
+          src={iconFing} 
+          alt="Logo" 
+          className={styles.logoFing} />
+        <h3>PG Curricula</h3>
+      </div>
+      <div className={styles.iconContainer}>
+        <div className={styles.iconButton} onClick={()=> {setabrirModal(true)}}>
+          <img 
+            src={iconUpload} 
+            className={styles.iconsHeader} 
+            alt="Cargar Proceso" />
+          <span className={styles.iconLabel}>Cargar Proceso</span>
+        </div>
+        <div className={styles.iconButton} onClick={() => { console.log('Descargar Proceso'); }}>
+          <img 
+            src={iconDownload} 
+            className={styles.iconsHeader} 
+            alt="Descargar Proceso" />
+          <span className={styles.iconLabel}>Descargar Proceso</span>
+        </div>
+        <div className={styles.iconButton} onClick={() => { console.log('Reiniciar'); }}>
+          <img 
+            src={iconRestar} 
+            className={styles.iconsHeader} 
+            alt="Reiniciar" />
+          <span className={styles.iconLabel}>Reiniciar</span>
+        </div>
+      </div>
+      <ModalSubirArchivo
+        abrirModal={manejarModal}
+        cerrarModal={cerrarModal}
+      />
     </header>
   );
 }
