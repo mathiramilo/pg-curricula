@@ -16,6 +16,7 @@
   --color-primary: #004A87;
   --color-border: #EAEAEA;
   --color-text: #000000;
+  --color-secondary-text: #8D8D8D
 }
 p {
   font-size: 14px;

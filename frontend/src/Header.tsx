@@ -7,7 +7,7 @@ import iconRestar from './assets/iconRestart.svg';
 import ModalSubirArchivo from './ModalSubirArchivo';
 
 function Header() {
-  const [manejarModal, setabrirModal] = useState(false);
+  const [abrirModal, setabrirModal] = useState(false);
 
   const cerrarModal = () => {
     setabrirModal(false);
@@ -27,15 +27,15 @@ function Header() {
           <img 
             src={iconUpload} 
             className={styles.iconsHeader} 
-            alt="Cargar Proceso" />
-          <span className={styles.iconLabel}>Cargar Proceso</span>
+            alt="Cargar Progreso" />
+          <span className={styles.iconLabel}>Cargar Progreso</span>
         </div>
-        <div className={styles.iconButton} onClick={() => { console.log('Descargar Proceso'); }}>
+        <div className={styles.iconButton} onClick={() => { console.log('Descargar Progreso'); }}>
           <img 
             src={iconDownload} 
             className={styles.iconsHeader} 
-            alt="Descargar Proceso" />
-          <span className={styles.iconLabel}>Descargar Proceso</span>
+            alt="Descargar Progreso" />
+          <span className={styles.iconLabel}>Descargar Progreso</span>
         </div>
         <div className={styles.iconButton} onClick={() => { console.log('Reiniciar'); }}>
           <img 
@@ -46,7 +46,7 @@ function Header() {
         </div>
       </div>
       <ModalSubirArchivo
-        abrirModal={manejarModal}
+        abrirModal={abrirModal}
         cerrarModal={cerrarModal}
       />
     </header>
