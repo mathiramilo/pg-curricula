@@ -23,17 +23,16 @@ function ModalSubirArchivo({ abrirModal, cerrarModal } : any) {
     const formData = new FormData();
     formData.append("pdf", archivo);
     console.log('archivo', archivo)
-    fetch("http://localhost:8080/procesar-escolaridad", {
+    fetch("http://localhost:8080/api/escolaridad/procesar-escolaridad", {
       method: "POST",
       body: formData,
     })
-      .then((respuesta) => respuesta.json())
-      .then((datos) => {
-        console.log("Éxito:", datos);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    .then((respuesta) => {
+      console.log("Respuesta recibida:", respuesta);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   };
 
   return (
