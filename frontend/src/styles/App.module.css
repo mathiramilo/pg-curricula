@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -15,34 +14,68 @@ html, body {
   width: 100vw;
 }
 
+.header {
+  width: 100%; 
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoFing {
+  padding-right: 10px;
+  width: 27px;
+  height: 27px;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.leftContainer {
+  display: flex;
+}
+
+.iconsHeader {
+  height: 20px; 
+  width: 20px; 
+  cursor: pointer; 
+}
+
+.iconLabel {
+  font-size: 15px;
+}
+
+.iconButton {
+  cursor: pointer; 
+  display: flex;
+  gap: 10px;
+}
+
 .sidebar {
-  width: 100px;
-  background-color: #333;
+  width: 60px;
+  background-color: var(--color-primary);
   color: white;
-  padding: 20px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topContainerSidebar {
+  gap: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.mainContent {
-  flex: 1; 
-  display: flex;
-  flex-direction: column;
-  height: 100%; 
-}
-
-.header {
-  width: 100%; 
-  background-color: #444;
-  color: white;
-  padding: 10px;
-}
-
-.content {
-  flex: 1;
-  width: 100%;
-  padding: 20px;
-  background-color: #f4f4f4;
-  overflow-y: auto; 
+.logoSidebar {
+  width: 20px;
+  height: 20px;
+  cursor: pointer; 
 }

@@ -1,0 +1,96 @@
+.subirArchivoModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .form {
+    display: flex;
+    padding-top: 10px;
+  }
+
+.closeButton {
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    color: var(--color-primary);
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.input {
+    padding-bottom: 12px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+  
+.buttonCargar {
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 13px;
+}
+
+.buttonCargar:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.dropZone {
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  padding: 50px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  margin: 30px 0px;
+}
+
+.dropZoneActiva {
+  border-color: var(--color-primary);
+  background-color:  #52738d;
+}
+
+.nombreArchivo {
+  font-size: 14px;
+  color: var(--color-primary); 
+}
+
+.label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.subtitulo {
+  color: var(--color-secondary-text);
+  font-size: 12px;
+}
+
+.iconDrop {
+  height: 35px; 
+  width: 35px; 
+}
+
+.headerCargarProgreso{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
