@@ -4,14 +4,24 @@ import express, { type Express } from 'express';
 import fs from 'fs';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import path from 'path';
 
 import { env } from './config';
 import { CodigoHTTP } from './constants';
 import { errorMiddleware, rateLimiter } from './middleware';
-import { endpointsEscolaridad, endpointsPrevias } from './routes';
+import {
+  endpointsEscolaridad,
+  endpointsPrevias,
+  unidadesCurriculares
+} from './routes';
 
 const app: Express = express();
 
+const logDir = path.join(__dirname, 'logs');
+// Verifica si la carpeta logs existe, y si no, la crea
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
 const flujoDeRegistro = fs.createWriteStream('logs/accesos.log', {
   flags: 'a'
 });
@@ -32,6 +42,7 @@ if (env.NODE_ENV === 'production')
 // Rutas
 app.use('/api/previas', endpointsPrevias);
 app.use('/api/escolaridad', endpointsEscolaridad);
+app.use('/api/ucs', unidadesCurriculares);
 
 // Rutas no encontradas
 app.get('*', (req, res) => {
