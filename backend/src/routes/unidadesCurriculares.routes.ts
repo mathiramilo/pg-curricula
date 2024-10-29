@@ -7,7 +7,7 @@ import {
 
 const router = Router();
 
-router.get('/semetres', unidadesCurricularesSemestres);
+router.get('/semestres', unidadesCurricularesSemestres);
 router.get('/', unidadesCurriculares);
 
 export default router;
