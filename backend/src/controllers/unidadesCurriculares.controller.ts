@@ -5,20 +5,15 @@ import path from 'path';
 
 import { UnidadCurricular } from '@/types';
 
+import trayectoria_sugerida from '../../data/trayectoria_sugerida.json';
+
 export const unidadesCurricularesSemestres: RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const dataPath = path.join(
-      __dirname,
-      '../../data/trayectoria_sugerida.json'
-    );
-    const rawData = fs.readFileSync(dataPath, 'utf-8');
-    const data = JSON.parse(rawData);
-
-    res.status(200).json(data);
+    res.status(200).json(trayectoria_sugerida);
   } catch (error) {
     next(error);
   }
