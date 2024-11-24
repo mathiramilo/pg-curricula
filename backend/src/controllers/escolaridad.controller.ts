@@ -4,7 +4,7 @@ import fs from 'fs';
 import { CodigoHTTP, respuestaFallida } from '../constants';
 import { procesarPDF } from '../lib';
 
-export const procesarEscolaridad: RequestHandler = (
+export const procesarEscolaridadController: RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction

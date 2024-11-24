@@ -7,8 +7,8 @@ import morgan from 'morgan';
 
 import { env } from './config';
 import { CodigoHTTP } from './constants';
-import { errorMiddleware, rateLimiter } from './middleware';
-import { endpointsEscolaridad, endpointsPrevias } from './routes';
+import { errorMiddleware, rateLimiterMiddleware } from './middleware';
+import { escolaridadRouter, previasRouter } from './routes';
 
 const app: Express = express();
 
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
-if (env.NODE_ENV === 'production') app.use(rateLimiter);
+if (env.NODE_ENV === 'production') app.use(rateLimiterMiddleware);
 
 // Logger
 app.use(morgan('dev'));
@@ -30,8 +30,8 @@ if (env.NODE_ENV === 'production')
   app.use(morgan('combined', { stream: flujoDeRegistro }));
 
 // Rutas
-app.use('/api/previas', endpointsPrevias);
-app.use('/api/escolaridad', endpointsEscolaridad);
+app.use('/api/previas', previasRouter);
+app.use('/api/escolaridad', escolaridadRouter);
 
 // Rutas no encontradas
 app.get('*', (req, res) => {

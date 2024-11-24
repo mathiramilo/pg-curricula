@@ -12,7 +12,8 @@
     "build": "tsc",
     "test": "jest",
     "format": "npx eslint . --fix",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+		"venv": "cd src/scripts && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt"
   },
   "keywords": [],
   "author": "",

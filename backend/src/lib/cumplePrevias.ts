@@ -48,14 +48,14 @@ export const cumplePrevias = (
       case TipoRegla.CREDITOS_GRUPO: {
         if (previas.nombre && previas.cantidad)
           return informacionEstudiante[previas.nombre] >= previas.cantidad;
-        return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
+        return true;
       }
       case TipoRegla.UC: {
         if (previas.nombre)
           return informacionEstudiante['UCs Aprobadas'].hasOwnProperty(
             previas.nombre
           );
-        return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
+        return true;
       }
     }
   } catch (error) {
