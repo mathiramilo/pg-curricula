@@ -3,7 +3,7 @@ import { rateLimit } from 'express-rate-limit';
 
 import { env } from '../config';
 
-export const rateLimiter = rateLimit({
+export const rateLimiterMiddleware = rateLimit({
   legacyHeaders: true,
   limit: env.COMMON_RATE_LIMIT_MAX_REQUESTS,
   message: 'Too many requests, please try again later.',
