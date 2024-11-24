@@ -13,10 +13,10 @@ import { leerCSV } from './leerCSV';
 
 const UBICACION_CSV_PREVIATURAS = 'data/previaturas.csv';
 
-export const obtenerPreviaturas = async (): Promise<void> => {
+export const generarPreviaturas = async (): Promise<void> => {
   try {
-    const resultados = await leerCSV(UBICACION_CSV_PREVIATURAS);
-    const previas = parsearPreviasCSV(resultados as PreviaCSV[]);
+    const datos = await leerCSV(UBICACION_CSV_PREVIATURAS);
+    const previas = parsearPreviasCSV(datos as PreviaCSV[]);
     const sistemaPreviaturas = generarSistemaPreviaturas(previas);
 
     const ubicacionDestino = path.join(
