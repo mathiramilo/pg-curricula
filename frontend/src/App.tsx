@@ -1,14 +1,19 @@
-import Sidebar from './SideBar';
-import MainContent from './Inicio';
-import styles from './styles/App.module.css';
+import { Header, SideBar } from './components';
+import { MainLayout } from './layouts';
+import { Inicio } from './screens';
 
-function App() {
+import styles from './App.module.css';
+
+const App = () => {
   return (
     <div className={styles.container}>
-      <Sidebar />
-      <MainContent />
+      <SideBar />
+      <MainLayout>
+        <Header />
+        <Inicio />
+      </MainLayout>
     </div>
   );
-}
+};
 
 export default App;
