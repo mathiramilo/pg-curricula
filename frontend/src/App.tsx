@@ -1,6 +1,6 @@
 import { Header, SideBar } from './components';
 import { MainLayout } from './layouts';
-import { Inicio } from './screens';
+import { Router } from './router';
 
 import styles from './App.module.css';
 
@@ -10,7 +10,7 @@ const App = () => {
       <SideBar />
       <MainLayout>
         <Header />
-        <Inicio />
+        <Router />
       </MainLayout>
     </div>
   );

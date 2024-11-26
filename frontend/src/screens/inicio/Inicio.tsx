@@ -1,6 +1,6 @@
 import styles from './Inicio.module.css';
 
-export const Inicio = () => {
+export const InicioScreen = () => {
   return (
     <section className={styles.content}>
       <h2>Progreso de Carrera</h2>
