@@ -1,4 +1,4 @@
-import { SvgProps } from '../../types';
+import { SvgProps } from "@/types";
 
 export const LoopIcon = (props: SvgProps) => (
   <svg

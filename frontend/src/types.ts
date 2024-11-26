@@ -1,3 +1,3 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef } from "react";
 
-export type SvgProps = ComponentPropsWithoutRef<'svg'>;
+export type SvgProps = ComponentPropsWithoutRef<"svg">;

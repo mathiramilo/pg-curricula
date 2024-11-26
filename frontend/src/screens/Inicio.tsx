@@ -1,24 +1,32 @@
-import { Progress } from '../components';
+import { Progress, ScreenHeader } from "@/components";
+import { ScreenLayout } from "@/layouts";
 
 export const InicioScreen = () => {
   return (
-    <section className="flex flex-col gap-y-4 flex-1 p-5 bg-white w-full">
-      <h2 className="font-bold text-xl">Progreso de Carrera</h2>
-      <div className="flex flex-col gap-y-1">
-        <p className="font-medium">366 creditos</p>
-        <Progress value={20} />
-        <div className="flex gap-x-4">
-          <p className="font-medium">
-            Matemática: <span className="text-primary font-bold">87/86</span>
-          </p>
-          <p className="font-medium">
-            Programacion: <span className="text-primary font-bold">25/60</span>
-          </p>
-          <p className="font-medium">
-            Programacion: <span className="text-primary font-bold">12/24</span>
-          </p>
+    <ScreenLayout>
+      <ScreenHeader title="Progreso de Carrera">
+        <div className="flex flex-col gap-2">
+          <div>
+            <p className="text-sm text-fuente-principal">366 creditos</p>
+            <Progress value={20} />
+          </div>
+
+          <div className="flex gap-6">
+            <p className="text-sm text-fuente-principal">
+              Matemática:{" "}
+              <span className="font-medium text-principal">87/86</span>
+            </p>
+            <p className="text-sm text-fuente-principal">
+              Programacion:{" "}
+              <span className="font-medium text-principal">25/60</span>
+            </p>
+            <p className="text-sm text-fuente-principal">
+              Programacion:{" "}
+              <span className="font-medium text-principal">12/24</span>
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </ScreenHeader>
+    </ScreenLayout>
   );
 };

@@ -1,6 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 
-import { RUTAS } from './routes';
 import {
   BusquedaScreen,
   GrupoScreen,
@@ -8,7 +7,8 @@ import {
   ProgresoScreen,
   SiguienteSemestreScreen,
   TrayectoriaScreen,
-} from '../screens';
+} from "@/screens";
+import { RUTAS } from ".";
 
 export const Router = () => {
   return (

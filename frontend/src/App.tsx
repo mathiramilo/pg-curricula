@@ -1,15 +1,14 @@
-import { Header, SideBar } from './components';
-import { MainLayout } from './layouts';
-import { Router } from './router';
+import { NavBar, SideBar } from "@/components";
+import { Router } from "@/router";
 
 const App = () => {
   return (
-    <div className="flex h-screen w-screen">
+    <div className="flex h-screen w-full overflow-hidden">
       <SideBar />
-      <MainLayout>
-        <Header />
+      <div className="h-full w-full bg-slate-50">
+        <NavBar />
         <Router />
-      </MainLayout>
+      </div>
     </div>
   );
 };

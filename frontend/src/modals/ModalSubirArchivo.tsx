@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Button, CloseIcon, DropdownIcon } from '../components';
-
-import { useProcesarEscolaridad } from '../hooks/useProcesarEscolaridad';
-import { cn } from '../lib';
+import { Button, CloseIcon, DropdownIcon } from "@/components";
+import { useProcesarEscolaridad } from "@/hooks";
+import { cn } from "@/lib";
 
 interface ModalSubirArchivoProps {
   abrirModal: boolean;
@@ -26,7 +25,7 @@ export const ModalSubirArchivo = ({
   } = useProcesarEscolaridad();
 
   const manejarCambioDeArchivo = (
-    evento: React.ChangeEvent<HTMLInputElement>
+    evento: React.ChangeEvent<HTMLInputElement>,
   ) => {
     if (evento.target.files) {
       const archivoSeleccionado = evento.target.files[0];
@@ -64,25 +63,25 @@ export const ModalSubirArchivo = ({
 
   const subirPDF = async (archivo: File) => {
     const formData = new FormData();
-    formData.append('pdf', archivo);
+    formData.append("pdf", archivo);
 
     procesarEscolaridad(formData);
 
     if (isSuccess) {
-      console.log('Datos: ', data);
+      console.log("Datos: ", data);
     } else {
-      console.log('Error: ', error);
+      console.log("Error: ", error);
     }
   };
 
   return (
     abrirModal && (
-      <div className="fixed w-full h-screen flex items-center justify-center bg-black/20">
-        <div className="flex flex-col gap-5 bg-white p-4 rounded-lg">
+      <div className="fixed flex h-screen w-full items-center justify-center bg-black/20">
+        <div className="flex flex-col gap-5 rounded-lg bg-white p-4">
           <div className="flex justify-between">
             <div className="flex flex-col">
               <h2 className="text-lg font-bold">Cargar Progreso</h2>
-              <p className="text-gray-400 text-xs">
+              <p className="text-xs text-gray-400">
                 Subir escolaridad en formato PDF
               </p>
             </div>
@@ -92,18 +91,18 @@ export const ModalSubirArchivo = ({
           </div>
           <div
             className={cn(
-              'flex flex-col items-center gap-3 border border-dashed rounded-lg border-slate-200 p-12 text-center cursor-pointer transition-all',
-              isDragging && 'border-primary bg-primary/10'
+              "flex cursor-pointer flex-col items-center gap-3 rounded-lg border border-dashed border-slate-200 p-12 text-center transition-all",
+              isDragging && "border-principal bg-principal/10",
             )}
             onDragOver={manejarDragOver}
             onDrop={manejarDrop}
             onDragLeave={manejarDragLeave}
-            onClick={() => document.getElementById('fileInput')?.click()}
+            onClick={() => document.getElementById("fileInput")?.click()}
           >
             <DropdownIcon className="size-9" />
             {nombreArchivo ? (
               <div>
-                <p className="text-sm text-primary">
+                <p className="text-sm text-principal">
                   Archivo seleccionado correctamente
                 </p>
                 <p className="text-xs font-bold">{nombreArchivo}</p>
@@ -113,7 +112,7 @@ export const ModalSubirArchivo = ({
                 <p className="text-xs font-bold">
                   Haz click aquí para subir un archivo o arrástralo
                 </p>
-                <p className="text-gray-400 text-xs">Tamaño máximo 50MB</p>
+                <p className="text-xs text-gray-400">Tamaño máximo 50MB</p>
               </div>
             )}
             <input
@@ -121,7 +120,7 @@ export const ModalSubirArchivo = ({
               type="file"
               onChange={manejarCambioDeArchivo}
               accept="application/pdf"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             />
           </div>
           <div className="flex justify-end">

@@ -1,1 +1,1 @@
-export * from './escolaridad';
+export * from "./escolaridad";
