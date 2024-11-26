@@ -1,8 +1,6 @@
-import styles from './SiguienteSemestre.module.css';
-
 export const SiguienteSemestreScreen = () => {
   return (
-    <section className={styles.content}>
+    <section className="flex flex-col gap-y-4 flex-1 p-5 bg-white w-full">
       <h2>Siguiente Semestre</h2>
     </section>
   );

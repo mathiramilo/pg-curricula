@@ -1,1 +1,1 @@
-export * from './subir-archivo';
+export * from './ModalSubirArchivo';

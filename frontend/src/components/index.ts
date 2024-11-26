@@ -1,4 +1,4 @@
-export * from './header';
+export * from './Header';
 export * from './icons';
-export * from './sidebar';
+export * from './SideBar';
 export * from './ui';

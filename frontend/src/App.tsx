@@ -2,11 +2,9 @@ import { Header, SideBar } from './components';
 import { MainLayout } from './layouts';
 import { Router } from './router';
 
-import styles from './App.module.css';
-
 const App = () => {
   return (
-    <div className={styles.container}>
+    <div className="flex h-screen w-screen">
       <SideBar />
       <MainLayout>
         <Header />

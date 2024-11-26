@@ -1,6 +1,6 @@
 import { SvgProps } from '../../types';
 
-export const CloseIocn = ({ ...props }: SvgProps) => (
+export const CloseIcon = ({ ...props }: SvgProps) => (
   <svg
     width="24"
     height="24"

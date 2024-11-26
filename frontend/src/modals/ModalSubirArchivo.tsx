@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-import { procesarEscolaridad } from '../../api';
-import { CloseIocn, DropdownIcon } from '../../components';
+import { Button, CloseIcon, DropdownIcon } from '../components';
 
-import styles from './ModalSubirArchivo.module.css';
-import { useProcesarEscolaridad } from '../../hooks/useProcesarEscolaridad';
+import { useProcesarEscolaridad } from '../hooks/useProcesarEscolaridad';
+import { cn } from '../lib';
 
 interface ModalSubirArchivoProps {
   abrirModal: boolean;
@@ -21,7 +20,6 @@ export const ModalSubirArchivo = ({
 
   const {
     mutateAsync: procesarEscolaridad,
-    isLoading,
     data,
     isSuccess,
     error,
@@ -79,36 +77,43 @@ export const ModalSubirArchivo = ({
 
   return (
     abrirModal && (
-      <div className={styles.subirArchivoModal}>
-        <div className={styles.modalContent}>
-          <div className={styles.headerCargarProgreso}>
-            <h2>Cargar Progreso</h2>
-            <CloseIocn onClick={cerrarModal} className={styles.closeButton} />
+      <div className="fixed w-full h-screen flex items-center justify-center bg-black/20">
+        <div className="flex flex-col gap-5 bg-white p-4 rounded-lg">
+          <div className="flex justify-between">
+            <div className="flex flex-col">
+              <h2 className="text-lg font-bold">Cargar Progreso</h2>
+              <p className="text-gray-400 text-xs">
+                Subir escolaridad en formato PDF
+              </p>
+            </div>
+            <Button variant="ghost" size="icon">
+              <CloseIcon onClick={cerrarModal} className="" />
+            </Button>
           </div>
-          <p className={styles.subtitulo}>Subir escolaridad en formato PDF</p>
           <div
-            className={`${styles.dropZone} ${
-              isDragging ? styles.dropZoneActiva : ''
-            }`}
+            className={cn(
+              'flex flex-col items-center gap-3 border border-dashed rounded-lg border-slate-200 p-12 text-center cursor-pointer transition-all',
+              isDragging && 'border-primary bg-primary/10'
+            )}
             onDragOver={manejarDragOver}
             onDrop={manejarDrop}
             onDragLeave={manejarDragLeave}
             onClick={() => document.getElementById('fileInput')?.click()}
           >
-            <DropdownIcon className={styles.iconDrop} />
+            <DropdownIcon className="size-9" />
             {nombreArchivo ? (
               <div>
-                <p className={styles.nombreArchivo}>
+                <p className="text-sm text-primary">
                   Archivo seleccionado correctamente
                 </p>
-                <p className={styles.label}>{nombreArchivo}</p>
+                <p className="text-xs font-bold">{nombreArchivo}</p>
               </div>
             ) : (
               <div>
-                <p className={styles.label}>
+                <p className="text-xs font-bold">
                   Haz click aquí para subir un archivo o arrástralo
                 </p>
-                <p className={styles.subtitulo}>Tamaño máximo 50MB</p>
+                <p className="text-gray-400 text-xs">Tamaño máximo 50MB</p>
               </div>
             )}
             <input
@@ -119,14 +124,10 @@ export const ModalSubirArchivo = ({
               style={{ display: 'none' }}
             />
           </div>
-          <div className={styles.buttonContainer}>
-            <button
-              onClick={manejarEnvio}
-              className={styles.buttonCargar}
-              disabled={!archivo}
-            >
+          <div className="flex justify-end">
+            <Button onClick={manejarEnvio} disabled={!archivo}>
               Cargar Progreso
-            </button>
+            </Button>
           </div>
         </div>
       </div>

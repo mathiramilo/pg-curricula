@@ -1,9 +1,15 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-import styles from './MainLayout.module.css';
+import { cn } from '../lib';
 
 type MainLayoutProps = ComponentPropsWithoutRef<'main'>;
 
 export const MainLayout = ({ className, ...props }: MainLayoutProps) => (
-  <main className={`${styles.container} ${className}`} {...props} />
+  <main
+    className={cn(
+      'w-full flex flex-col items-center justify-center h-full',
+      className
+    )}
+    {...props}
+  />
 );
