@@ -2,64 +2,38 @@
 
 Proyecto de Grado, curricula dinamica para estudiantes de ingenieria.
 
-## Installar dependencias de python
+## Instalar dependencias de python
 
 Version python3 3.12.4
 
-### Commando
-
-> Activar/Crear entorno virtual de python:
-> En macOS/Linux:
-
-> [!NOTE]
-> Podes utilizar el comando `pnpm venv` que ejecuta estos pasos
-
-#### Ve a la carpeta de python
+### Ve a la carpeta backend
 
 ```
-cd backend/src/scripts
+cd backend
 ```
 
-#### Crear entorno virtual
+### Ejecuta el siguiente comando
 
 ```
-python3 -m venv path/to/venv
-```
-
-#### Activar entorno virtual
-
-```
-source path/to/venv/bin/activate
-```
-
-> Activar entorno virtual de python:
-> En Windows:
-
-```
-cd backend/src/scripts
-venv/bin/activate
-```
-
-> Instalar dependencias:
-
-```
-pip install -r requirements.txt
+pnpm venv
 ```
 
 ## Installar dependencias de nodejs en backend y frontend
 
+Desde las carpetas backend y frontend ejecutar el siguiente comando
+
 ```
-npm install
+pnpm install
 ```
 
 ## Correr proyecto backend
 
 ```
-npm run start
+pnpm dev
 ```
 
 ## Correr proyecto frontend
 
 ```
-npm run start
+pnpm dev
 ```
