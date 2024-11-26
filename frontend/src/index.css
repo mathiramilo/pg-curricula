@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,10 +17,10 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Variables */
-  --color-primary: #004A87;
-  --color-border: #EAEAEA;
+  --color-primary: #004a87;
+  --color-border: #eaeaea;
   --color-text: #000000;
-  --color-secondary-text: #8D8D8D
+  --color-secondary-text: #8d8d8d;
 }
 p {
   font-size: 14px;
@@ -35,7 +39,7 @@ a:hover {
 progress {
   width: 100%;
   height: 16px;
-  accent-color: var(--color-primary) ;
+  accent-color: var(--color-primary);
 }
 
 body {
