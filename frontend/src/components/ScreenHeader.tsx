@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib";
 
@@ -16,7 +16,7 @@ export const ScreenHeader = ({
     className={cn("flex flex-col gap-4 border-b border-borde pb-4", className)}
     {...props}
   >
-    <h2 className="text-2xl font-medium">{title}</h2>
+    <h1 className="text-2xl font-medium">{title}</h1>
     {children}
   </header>
 );

@@ -1,4 +1,4 @@
-import { SvgProps } from "@/types";
+import type { SvgProps } from "@/types";
 
 export const MenuIcon = (props: SvgProps) => (
   <svg
@@ -9,7 +9,7 @@ export const MenuIcon = (props: SvgProps) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_5_51)">
+    <g clipPath="url(#clip0_5_51)">
       <path
         d="M13.5 9H30"
         stroke="white"

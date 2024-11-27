@@ -1,4 +1,4 @@
-import { SvgProps } from "@/types";
+import type { SvgProps } from "@/types";
 
 export const CloseIcon = ({ ...props }: SvgProps) => (
   <svg
@@ -9,7 +9,7 @@ export const CloseIcon = ({ ...props }: SvgProps) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_61_56)">
+    <g clipPath="url(#clip0_61_56)">
       <path
         d="M18 6L6 18"
         stroke="#004A87"

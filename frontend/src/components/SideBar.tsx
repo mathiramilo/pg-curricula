@@ -5,7 +5,7 @@ import { Button, HomeIcon, LoopIcon, MenuIcon, ProgressIcon } from ".";
 
 export const SideBar = () => {
   return (
-    <aside className="bg-principal p-6">
+    <aside className="bg-principal p-4">
       <nav className="flex flex-col gap-4">
         <NavLink to={RUTAS.BASE}>
           <Button

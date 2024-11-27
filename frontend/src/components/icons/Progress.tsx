@@ -1,4 +1,4 @@
-import { SvgProps } from "@/types";
+import type { SvgProps } from "@/types";
 
 export const ProgressIcon = (props: SvgProps) => (
   <svg
@@ -9,7 +9,7 @@ export const ProgressIcon = (props: SvgProps) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_5_44)">
+    <g clipPath="url(#clip0_5_44)">
       <path
         d="M6 24L15 13.5L22.5 21L30 12"
         stroke="white"

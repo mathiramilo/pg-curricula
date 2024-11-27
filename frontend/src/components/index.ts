@@ -3,3 +3,4 @@ export * from "./ScreenHeader";
 export * from "./SideBar";
 export * from "./icons";
 export * from "./ui";
+export * from "./unidades-curriculares";
