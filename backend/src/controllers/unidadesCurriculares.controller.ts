@@ -3,7 +3,7 @@ import type { NextFunction, Request, RequestHandler, Response } from 'express';
 import fs from 'fs';
 import path from 'path';
 
-import { UnidadCurricular } from '@/types';
+import { UnidadCurricularCSV } from '@/types';
 
 import trayectoria_sugerida from '../../data/trayectoria_sugerida.json';
 
@@ -29,7 +29,7 @@ export const unidadesCurriculares: RequestHandler = (
       __dirname,
       '../../data/lista_materias_computacion.csv'
     );
-    const materias: UnidadCurricular[] = [];
+    const materias: UnidadCurricularCSV[] = [];
 
     fs.createReadStream(dataPath)
       .pipe(csv())
