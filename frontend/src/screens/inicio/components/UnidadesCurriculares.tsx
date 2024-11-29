@@ -4,7 +4,7 @@ import { unidadesCurriculares } from "../mock";
 export const UnidadesCurriculares = () => {
   return (
     <>
-      <section className="mt-8 flex items-center justify-between gap-12">
+      <section className="mt-8 grid gap-8 lg:gap-12 lg:grid-cols-3">
         <UnidadCurricularList
           unidadesCurriculares={unidadesCurriculares}
           titulo="Primer Semestre"
@@ -19,7 +19,7 @@ export const UnidadesCurriculares = () => {
         />
       </section>
 
-      <section className="mt-8 flex items-center justify-between gap-12">
+      <section className="mt-8 grid gap-8 lg:gap-12 lg:grid-cols-3">
         <UnidadCurricularList
           unidadesCurriculares={unidadesCurriculares}
           titulo="Cuarto Semestre"
@@ -34,7 +34,7 @@ export const UnidadesCurriculares = () => {
         />
       </section>
 
-      <section className="mt-8 flex items-center justify-between gap-12">
+      <section className="mt-8">
         <UnidadCurricularGrid
           unidadesCurriculares={[
             ...unidadesCurriculares,

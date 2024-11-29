@@ -59,7 +59,7 @@ export const SubirArchivoModal = ({
 
   return (
     <Dialog open={show} onOpenChange={handleClose}>
-      <DialogContent className="bg-slate-50">
+      <DialogContent className="bg-slate-50 gap-16 sm:gap-6">
         <DialogHeader>
           <DialogTitle>Cargar Progreso</DialogTitle>
           <DialogDescription>
@@ -67,11 +67,11 @@ export const SubirArchivoModal = ({
           </DialogDescription>
         </DialogHeader>
 
-        <div>
+        <div className="flex-1">
           <label htmlFor="file">
             <div
               className={cn(
-                "w-full gap-4 flex flex-col items-center justify-center px-6 py-24 rounded-lg border-2 border-dashed border-borde cursor-pointer transition-all",
+                "w-full h-full gap-4 flex flex-col items-center justify-center px-6 py-24 rounded-lg border-2 border-dashed border-borde cursor-pointer transition-all",
                 dragOver && "bg-principal-50 border-principal-200",
               )}
               onDragOver={handleDragOver}

@@ -19,13 +19,16 @@ export const NavBar = () => {
 
         <nav className="flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={openModal}>
-            <UploadIcon /> Cargar Progreso
+            <UploadIcon />{" "}
+            <span className="hidden md:inline-block">Cargar Progreso</span>
           </Button>
           <Button variant="ghost" size="sm">
-            <DownloadIcon /> Descargar Progreso
+            <DownloadIcon />
+            <span className="hidden md:inline-block">Descargar Progreso</span>
           </Button>
           <Button variant="ghost" size="sm">
-            <RestartIcon /> Reiniciar
+            <RestartIcon />
+            <span className="hidden md:inline-block">Reiniciar</span>
           </Button>
         </nav>
       </header>
