@@ -4,22 +4,23 @@ from constantes import AREAS_FORMACION_INGCOMP
 from funciones import (
     buscar_ucs_aprobadas_con_resultados_finales,
     buscar_ucs_aprobadas_con_resultados_intermedios,
+    es_con_resultados_intermedios,
     leer_pdf,
 )
 
 
-def obtener_informacion_estudiante(
-    ubicacion_archivo: str, conResultadosIntermedios: bool
-) -> dict:
+def obtener_informacion_estudiante(ubicacion_archivo: str) -> dict:
     # Leer archivo PDF
     texto_pdf = leer_pdf(ubicacion_archivo)
+
+    cri = es_con_resultados_intermedios(texto_pdf)
 
     # Buscar unidades curriculares aprobadas
     informacion_estudiante = (
         buscar_ucs_aprobadas_con_resultados_intermedios(
             AREAS_FORMACION_INGCOMP, texto_pdf
         )
-        if conResultadosIntermedios
+        if cri
         else buscar_ucs_aprobadas_con_resultados_finales(
             AREAS_FORMACION_INGCOMP, texto_pdf
         )
@@ -34,17 +35,10 @@ if __name__ == "__main__":
         description="Extraer avance academico de un estudiante a partir de su escolaridad en formato PDF."
     )
     parser.add_argument("ubicacion_archivo", type=str, help="Ubicacion del archivo PDF")
-    parser.add_argument(
-        "--cri",
-        action="store_true",
-        help="Indica si buscar unidades curriculares intermedias",
-    )
 
     # Parsear los argumentos
     args = parser.parse_args()
 
     # Extraer las unidades curriculares aprobadas
-    informacion_estudiante = obtener_informacion_estudiante(
-        args.ubicacion_archivo, args.cri
-    )
+    informacion_estudiante = obtener_informacion_estudiante(args.ubicacion_archivo)
     print(informacion_estudiante)

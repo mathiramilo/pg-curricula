@@ -1,14 +1,16 @@
-import Sidebar from './SideBar';
-import MainContent from './Inicio';
-import styles from './styles/App.module.css';
+import { NavBar, SideBar } from "@/components";
+import { Router } from "@/router";
 
-function App() {
+const App = () => {
   return (
-    <div className={styles.container}>
-      <Sidebar />
-      <MainContent />
+    <div className="flex h-screen w-full overflow-hidden">
+      <SideBar />
+      <div className="h-full w-full bg-slate-50">
+        <NavBar />
+        <Router />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

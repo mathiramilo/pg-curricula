@@ -1,0 +1,6 @@
+export * from "./UnidadCurricularGrid";
+export * from "./UnidadCurricularGridSkeleton";
+export * from "./UnidadCurricularItem";
+export * from "./UnidadCurricularItemSkeleton";
+export * from "./UnidadCurricularList";
+export * from "./UnidadCurricularListSkeleton";

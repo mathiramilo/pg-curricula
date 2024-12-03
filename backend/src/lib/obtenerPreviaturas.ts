@@ -11,7 +11,7 @@ import {
 } from '../types';
 import { leerCSV } from './leerCSV';
 
-const UBICACION_CSV_PREVIATURAS = 'data/previaturas2.csv';
+const UBICACION_CSV_PREVIATURAS = 'data/previaturas.csv';
 
 export const obtenerPreviaturas = async (): Promise<void> => {
   try {

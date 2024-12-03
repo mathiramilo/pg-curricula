@@ -2,6 +2,9 @@
 import csv from 'csv-parser';
 import fs from 'fs';
 
+/**
+ * @deprecated No se va a utilizar
+ */
 export const obtenerUCsComp = (): void => {
   const listaMateriasComputacion: Object = {};
 

@@ -8,10 +8,10 @@ import path from 'path';
 
 import { env } from './config';
 import { CodigoHTTP } from './constants';
-import { errorMiddleware, rateLimiter } from './middleware';
+import { errorMiddleware, rateLimiterMiddleware } from './middleware';
 import {
-  endpointsEscolaridad,
-  endpointsPrevias,
+  escolaridadRouter,
+  previasRouter,
   unidadesCurriculares
 } from './routes';
 
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
-if (env.NODE_ENV === 'production') app.use(rateLimiter);
+if (env.NODE_ENV === 'production') app.use(rateLimiterMiddleware);
 
 // Logger
 app.use(morgan('dev'));
@@ -40,8 +40,8 @@ if (env.NODE_ENV === 'production')
   app.use(morgan('combined', { stream: flujoDeRegistro }));
 
 // Rutas
-app.use('/api/previas', endpointsPrevias);
-app.use('/api/escolaridad', endpointsEscolaridad);
+app.use('/api/previas', previasRouter);
+app.use('/api/escolaridad', escolaridadRouter);
 app.use('/api/ucs', unidadesCurriculares);
 
 // Rutas no encontradas

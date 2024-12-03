@@ -1,2 +1,2 @@
-export * from './error';
-export * from './rateLimiter';
+export * from './error.middleware';
+export * from './rateLimiter.middleware';

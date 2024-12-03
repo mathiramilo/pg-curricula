@@ -1,0 +1,39 @@
+import type { SvgProps } from "@/types";
+
+export const RestartIcon = (props: SvgProps) => (
+  <svg
+    width="24"
+    height="25"
+    viewBox="0 0 24 25"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <g clipPath="url(#clip0_6_976)">
+      <path
+        d="M19.933 13.541C19.7442 14.9809 19.1669 16.3423 18.2632 17.4792C17.3594 18.616 16.1633 19.4853 14.803 19.994C13.4427 20.5027 11.9696 20.6315 10.5417 20.3666C9.11374 20.1017 7.78486 19.453 6.69755 18.4903C5.61024 17.5275 4.80551 16.287 4.36967 14.9016C3.93383 13.5163 3.88332 12.0384 4.22355 10.6266C4.56379 9.2147 5.28194 7.92208 6.30097 6.88734C7.32001 5.8526 8.6015 5.11477 10.008 4.75298C13.907 3.75298 17.943 5.75998 19.433 9.49998"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M20 4.5V9.5H15"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_6_976">
+        <rect
+          width="24"
+          height="24"
+          fill="white"
+          transform="translate(0 0.5)"
+        />
+      </clipPath>
+    </defs>
+  </svg>
+);

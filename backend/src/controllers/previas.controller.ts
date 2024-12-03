@@ -5,7 +5,7 @@ import { CodigoHTTP, respuestaExitosa, respuestaFallida } from '../constants';
 import { cumplePrevias } from '../lib';
 import { esInformacionEstudiante, type InformacionEstudiante } from '../types';
 
-export const chequearPrevias: RequestHandler = (
+export const chequearPreviasController: RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction
