@@ -3,190 +3,80 @@
     {
       "semestre": 1,
       "asignaturas": [
-        { "nombre": "Créditos obtenidos en prueba inicial", "creditos": 4 },
-        {
-          "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
-          "cod": 47537,
-          "creditos": 13
-        },
-        { "nombre": "MATEMATICA DISCRETA 1", "cod": 18807, "creditos": 9 },
-
-        { "nombre": "PROGRAMACION 1", "cod": 18238, "creditos": 10 }
+        { "nombre": "Créditos obtenidos en prueba inicial" },
+        { "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE" },
+        { "nombre": "MATEMATICA DISCRETA 1" },
+        { "nombre": "PROGRAMACION 1" }
       ]
     },
     {
       "semestre": 2,
       "asignaturas": [
-        {
-          "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
-          "cod": 49465,
-          "creditos": 13
-        },
-        {
-          "nombre": "FISICA 1",
-          "cod": 18490,
-          "creditos": 10,
-          "opcional": true
-        },
-        {
-          "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
-          "cod": 18815,
-          "creditos": 9
-        },
-        { "nombre": "PROGRAMACION 2", "cod": 18237, "creditos": 12 }
+        { "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES" },
+        { "nombre": "FISICA 1" },
+        { "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1" },
+        { "nombre": "PROGRAMACION 2" }
       ]
     },
     {
       "semestre": 3,
       "asignaturas": [
-        {
-          "nombre": "PROBABILIDAD Y ESTADISTICA",
-          "cod": 18809,
-          "creditos": 10
-        },
-        {
-          "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
-          "cod": 18814,
-          "creditos": 9
-        },
-        {
-          "nombre": "LOGICA",
-          "cod": 18823,
-          "creditos": 12
-        },
-        { "nombre": "MATEMATICA DISCRETA 2", "cod": 18822, "creditos": 9 }
+        { "nombre": "PROBABILIDAD Y ESTADISTICA" },
+        { "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2" },
+        { "nombre": "LOGICA" },
+        { "nombre": "MATEMATICA DISCRETA 2" }
       ]
     },
     {
       "semestre": 4,
       "asignaturas": [
-        {
-          "nombre": "ARQUITECTURA DE COMPUTADORAS",
-          "cod": 18414,
-          "creditos": 12
-        },
-        {
-          "nombre": "PROGRAMACION 3",
-          "cod": 18272,
-          "creditos": 15
-        },
-        {
-          "nombre": "ECONOMIA",
-          "cod": 18560,
-          "creditos": 7,
-          "opcional": true
-        },
-        { "nombre": "METODOS NUMERICOS", "cod": 18819, "creditos": 8 }
+        { "nombre": "ARQUITECTURA DE COMPUTADORAS" },
+        { "nombre": "PROGRAMACION 3" },
+        { "nombre": "ECONOMIA" },
+        { "nombre": "METODOS NUMERICOS" }
       ]
     },
     {
       "semestre": 5,
       "asignaturas": [
-        {
-          "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
-          "cod": 20804,
-          "creditos": 10
-        },
-        {
-          "nombre": "SISTEMAS OPERATIVOS",
-          "cod": 20925,
-          "creditos": 12
-        },
-        {
-          "nombre": "PROGRAMACION 4",
-          "cod": 18273,
-          "creditos": 15
-        },
-        { "nombre": "TEORIA DE LENGUAJES", "cod": 18274, "creditos": 12 }
+        { "nombre": "INT. A LA INVESTIGACION DE OPERACIONES" },
+        { "nombre": "SISTEMAS OPERATIVOS" },
+        { "nombre": "PROGRAMACION 4" },
+        { "nombre": "TEORIA DE LENGUAJES" }
       ]
     },
     {
       "semestre": 6,
       "asignaturas": [
-        {
-          "nombre": "FUNDAMENTOS DE BASES DE DATOS",
-          "cod": 20458,
-          "creditos": 15
-        },
-        {
-          "nombre": "TALLER DE PROGRAMACION",
-          "cod": 18269,
-          "creditos": 15
-        },
-        {
-          "nombre": "REDES DE COMPUTADORAS",
-          "cod": 18432,
-          "creditos": 12
-        }
+        { "nombre": "FUNDAMENTOS DE BASES DE DATOS" },
+        { "nombre": "TALLER DE PROGRAMACION" },
+        { "nombre": "REDES DE COMPUTADORAS" }
       ]
     },
     {
       "semestre": 7,
       "asignaturas": [
-        {
-          "nombre": "INT. A LA INGENIERIA DE SOFTWARE",
-          "cod": 20686,
-          "creditos": 10
-        },
-        {
-          "nombre": "PROGRAMACION FUNCIONAL",
-          "cod": 40449,
-          "creditos": 10
-        },
-        {
-          "nombre": "PROGRAMACION LOGICA",
-          "cod": 18268,
-          "creditos": 10
-        },
-        {
-          "nombre": "ADMINISTRACION GENERAL PARA INGENIEROS",
-          "cod": 20484,
-          "creditos": 5,
-          "opcional": true
-        }
+        { "nombre": "INT. A LA INGENIERIA DE SOFTWARE" },
+        { "nombre": "PROGRAMACION FUNCIONAL" },
+        { "nombre": "PROGRAMACION LOGICA" },
+        { "nombre": "ADMINISTRACION GENERAL PARA INGENIEROS" }
       ]
     },
     {
       "semestre": 8,
       "asignaturas": [
-        {
-          "nombre": "PROYECTO DE INGENIERIA DE SOFTWARE",
-          "cod": 20651,
-          "creditos": 15
-        },
-        {
-          "nombre": "PRACTICA DE ADMINISTRACION PARA INGENIEROS",
-          "cod": 20487,
-          "creditos": 5,
-          "opcional": true
-        },
-        {
-          "nombre": "POLITICAS CIENTIFICAS EN INF.Y COMP.",
-          "cod": 18561,
-          "creditos": 3,
-          "opcional": true
-        }
+        { "nombre": "PROYECTO DE INGENIERIA DE SOFTWARE" },
+        { "nombre": "PRACTICA DE ADMINISTRACION PARA INGENIEROS" },
+        { "nombre": "POLITICAS CIENTIFICAS EN INF.Y COMP." }
       ]
     },
     {
       "semestre": 9,
-      "asignaturas": [
-        {
-          "nombre": "PROYECTO DE GRADO",
-          "cod": 20639,
-          "creditos": 15
-        }
-      ]
+      "asignaturas": [{ "nombre": "PROYECTO DE GRADO" }]
     },
     {
       "semestre": 10,
-      "asignaturas": [
-        {
-          "nombre": "PROYECTO DE GRADO",
-          "cod": 20639,
-          "creditos": 15
-        }
-      ]
+      "asignaturas": [{ "nombre": "PROYECTO DE GRADO" }]
     }
   ]
 }
