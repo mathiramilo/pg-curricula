@@ -4,7 +4,7 @@
   "description": "Backend para el proyecto de grado curricula",
   "main": "server.js",
   "engines": {
-    "pnpm": ">=8.10.2"
+    "pnpm": ">=9.0.0"
   },
   "scripts": {
     "start": "ts-node src/server.ts",
