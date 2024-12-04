@@ -3,6 +3,7 @@ import type { Request, RequestHandler, Response } from 'express';
 import { trayectoria_regular } from '../../data/trayectoria_sugerida.json';
 import { ErrorResponse, UnidadCurricular } from '@/types';
 import { obtenerUCsComputacion, obtenerUCsActuales } from '../lib/obtenerUCs';
+import { CodigoHTTP } from '@/constants';
 
 type TrayectoriaRegular = {
   semestre: number;
@@ -17,13 +18,14 @@ export const unidadesCurricularesSemestres: RequestHandler = async (
 ) => {
   try {
     await cargarDetallesAsignaturas(trayectoria_regular);
-    res.status(200).json(trayectoria_regular);
+
+    res.status(CodigoHTTP.OK).json(trayectoria_regular);
   } catch (error: unknown) {
     const errorResponse: ErrorResponse = {
       error: 'Error al cargar las unidades curriculares por semestre',
       details: error instanceof Error ? error.message : 'Error desconocido',
     };
-    res.status(500).json(errorResponse);
+    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
   }
 };
 
@@ -62,13 +64,13 @@ export const unidadesCurriculares: RequestHandler = async (
 ) => {
   try {
     const unidadesCurriculares = await obtenerUCsComputacion();
-    res.status(200).json(unidadesCurriculares);
+    res.status(CodigoHTTP.OK).json(unidadesCurriculares);
   } catch (error) {
     const errorResponse: ErrorResponse = {
       error: 'Error al cargar las unidades curriculares',
       details: error instanceof Error ? error.message : 'Error desconocido',
     };
-    res.status(500).json(errorResponse);
+    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
   }
 };
 
@@ -93,12 +95,12 @@ export const unidadesCurricularesOpcionales: RequestHandler = async (
     // Filtrar todas las ucs menos las de la trayectoria sugerida
     const ucsOpcionales = ucsActualOpcionales.filter(ucs => !ucsTrayectoria.has(ucs.nombre.toUpperCase()));
 
-    res.status(200).json(ucsOpcionales);
+    res.status(CodigoHTTP.OK).json(ucsOpcionales);
   } catch (error) {
     const errorResponse: ErrorResponse = {
       error: 'Error al cargar las unidades curriculares opcionales',
       details: error instanceof Error ? error.message : 'Error desconocido',
     };
-    res.status(500).json(errorResponse);
+    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
   }
 };
