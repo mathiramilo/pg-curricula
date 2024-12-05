@@ -1,64 +1,24 @@
-import type { Request, RequestHandler, Response } from 'express';
+import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import { trayectoria_regular } from '../../data/trayectoria_sugerida.json';
-import { ErrorResponse, UnidadCurricular } from '@/types';
-import { obtenerUCsComputacion, obtenerUCsActuales } from '../lib/obtenerUCs';
+import { ErrorResponse, TrayectoriaRegular, UnidadCurricular } from '@/types';
+import { obtenerUCsComputacion, cargarDetallesAsignaturas, unidadesCurricularesOpcionales } from '../lib/obtenerUCs';
 import { CodigoHTTP } from '@/constants';
 
-type TrayectoriaRegular = {
-  semestre: number;
-  asignaturas: {
-    nombre: string;
-  }[];
-};
-
-export const unidadesCurricularesSemestres: RequestHandler = async (
+export const unidadesCurricularesSemestresController: RequestHandler = async (
   _req: Request,
-  res: Response<TrayectoriaRegular[] | ErrorResponse>
+  res: Response<TrayectoriaRegular[] | ErrorResponse>,
+  next: NextFunction
 ) => {
   try {
-    await cargarDetallesAsignaturas(trayectoria_regular);
+    const trayectoriaRegular = await cargarDetallesAsignaturas();
 
-    res.status(CodigoHTTP.OK).json(trayectoria_regular);
-  } catch (error: unknown) {
-    const errorResponse: ErrorResponse = {
-      error: 'Error al cargar las unidades curriculares por semestre',
-      details: error instanceof Error ? error.message : 'Error desconocido',
-    };
-    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
-  }
-};
-
-/**
- * Modifica el objeto `TrayectoriaRegular` para agregar códigos a las asignaturas
- * utilizando los datos de un archivo CSV.
- * @param trayectoria - El arreglo de semestres (TrayectoriaRegular) que será modificado.
- * @returns Una promesa que se resuelve cuando se completa la modificación.
- */
-const cargarDetallesAsignaturas = async (
-  trayectoria: TrayectoriaRegular[]
-): Promise<void> => {
-  try {
-    const unidadesCurriculares = await obtenerUCsComputacion();
-
-    trayectoria.forEach(semestre => {
-      semestre.asignaturas.forEach(asignatura => {
-        const unidadCurricular = unidadesCurriculares.find(
-          uc => uc.nombre === asignatura.nombre
-        );
-
-        if (unidadCurricular) {
-          asignatura['codigo'] = unidadCurricular.codigo;
-        }
-      });
-    });
+    res.status(CodigoHTTP.OK).json(trayectoriaRegular);
   } catch (error) {
-    console.error('Error al cargar los detalles de las unidades curriculares:', error);
-    throw new Error('Error al cargar los detalles de las unidades curriculares');
+    next(error);
   }
 };
 
-export const unidadesCurriculares: RequestHandler = async (
+export const unidadesCurricularesController: RequestHandler = async (
   _req: Request,
   res: Response<UnidadCurricular[] | ErrorResponse>
 ) => {
@@ -74,33 +34,16 @@ export const unidadesCurriculares: RequestHandler = async (
   }
 };
 
-export const unidadesCurricularesOpcionales: RequestHandler = async (
+export const unidadesCurricularesOpcionalesController: RequestHandler = async (
   _req: Request,
-  res: Response<UnidadCurricular[] | ErrorResponse>
+  res: Response<UnidadCurricular[] | ErrorResponse>,
+  next: NextFunction
 ) => {
   try {
-    // Unidades curriculares de ingenieria actuales
-    const ucActuales = await obtenerUCsActuales();
-    // Unidades curriculares de computacion
-    const unidadesCurriculares = await obtenerUCsComputacion();
-    const setUnidadesCurriculares = new Set(unidadesCurriculares.map(uc => uc.nombre));
-
-    // Filtrar todas las ucs actuales con la de la carrera de computacion
-    const ucsActualOpcionales = ucActuales.filter(ucs => setUnidadesCurriculares.has(ucs.nombre.toUpperCase()))
-
-    const ucsTrayectoria = new Set(trayectoria_regular.flatMap((semestre) =>
-      semestre.asignaturas.map((asignatura) => asignatura.nombre.toUpperCase())
-    ));
-
-    // Filtrar todas las ucs menos las de la trayectoria sugerida
-    const ucsOpcionales = ucsActualOpcionales.filter(ucs => !ucsTrayectoria.has(ucs.nombre.toUpperCase()));
+    const ucsOpcionales = await unidadesCurricularesOpcionales();
 
     res.status(CodigoHTTP.OK).json(ucsOpcionales);
   } catch (error) {
-    const errorResponse: ErrorResponse = {
-      error: 'Error al cargar las unidades curriculares opcionales',
-      details: error instanceof Error ? error.message : 'Error desconocido',
-    };
-    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
+    next(error);
   }
 };

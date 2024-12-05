@@ -3,3 +3,10 @@ export type UnidadCurricular = {
   nombre: string;
   semestre?: number;
 };
+
+export type TrayectoriaRegular = {
+  semestre: number;
+  asignaturas: {
+    nombre: string;
+  }[];
+};

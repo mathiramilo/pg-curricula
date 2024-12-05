@@ -12,7 +12,7 @@ import { errorMiddleware, rateLimiterMiddleware } from './middleware';
 import {
   escolaridadRouter,
   previasRouter,
-  unidadesCurriculares
+  unidadesCurricularesRouter
 } from './routes';
 
 const app: Express = express();
@@ -42,7 +42,7 @@ if (env.NODE_ENV === 'production')
 // Rutas
 app.use('/api/previas', previasRouter);
 app.use('/api/escolaridad', escolaridadRouter);
-app.use('/api/ucs', unidadesCurriculares);
+app.use('/api/ucs', unidadesCurricularesRouter);
 
 // Rutas no encontradas
 app.get('*', (req, res) => {
