@@ -1,4 +1,4 @@
-import { Request, RequestHandler, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import previaturas from '../../data/previaturas.json';
 import { CodigoHTTP } from '../constants';
@@ -11,7 +11,8 @@ import {
 
 export const chequearPreviasController: RequestHandler = (
   req: Request,
-  res: Response<boolean | ErrorResponse>
+  res: Response<boolean | ErrorResponse>,
+  next: NextFunction
 ) => {
   const { nombreUC } = req.params;
   const informacionEstudiante = req.body;
@@ -47,11 +48,6 @@ export const chequearPreviasController: RequestHandler = (
       .status(CodigoHTTP.OK)
       .json(cumple);
   } catch (error) {
-    const errorResponse: ErrorResponse = {
-      error: 'Error al procesar el archivo',
-      details: error instanceof Error ? error.message : 'Error desconocido'
-    };
-
-    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
+    next(error);
   }
 };
