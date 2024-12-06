@@ -1,0 +1,82 @@
+{
+  "trayectoria_regular": [
+    {
+      "semestre": 1,
+      "asignaturas": [
+        { "nombre": "Créditos obtenidos en prueba inicial" },
+        { "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE" },
+        { "nombre": "MATEMATICA DISCRETA 1" },
+        { "nombre": "PROGRAMACION 1" }
+      ]
+    },
+    {
+      "semestre": 2,
+      "asignaturas": [
+        { "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES" },
+        { "nombre": "FISICA 1" },
+        { "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1" },
+        { "nombre": "PROGRAMACION 2" }
+      ]
+    },
+    {
+      "semestre": 3,
+      "asignaturas": [
+        { "nombre": "PROBABILIDAD Y ESTADISTICA" },
+        { "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2" },
+        { "nombre": "LOGICA" },
+        { "nombre": "MATEMATICA DISCRETA 2" }
+      ]
+    },
+    {
+      "semestre": 4,
+      "asignaturas": [
+        { "nombre": "ARQUITECTURA DE COMPUTADORAS" },
+        { "nombre": "PROGRAMACION 3" },
+        { "nombre": "ECONOMIA" },
+        { "nombre": "METODOS NUMERICOS" }
+      ]
+    },
+    {
+      "semestre": 5,
+      "asignaturas": [
+        { "nombre": "INT. A LA INVESTIGACION DE OPERACIONES" },
+        { "nombre": "SISTEMAS OPERATIVOS" },
+        { "nombre": "PROGRAMACION 4" },
+        { "nombre": "TEORIA DE LENGUAJES" }
+      ]
+    },
+    {
+      "semestre": 6,
+      "asignaturas": [
+        { "nombre": "FUNDAMENTOS DE BASES DE DATOS" },
+        { "nombre": "TALLER DE PROGRAMACION" },
+        { "nombre": "REDES DE COMPUTADORAS" }
+      ]
+    },
+    {
+      "semestre": 7,
+      "asignaturas": [
+        { "nombre": "INT. A LA INGENIERIA DE SOFTWARE" },
+        { "nombre": "PROGRAMACION FUNCIONAL" },
+        { "nombre": "PROGRAMACION LOGICA" },
+        { "nombre": "ADMINISTRACION GENERAL PARA INGENIEROS" }
+      ]
+    },
+    {
+      "semestre": 8,
+      "asignaturas": [
+        { "nombre": "PROYECTO DE INGENIERIA DE SOFTWARE" },
+        { "nombre": "PRACTICA DE ADMINISTRACION PARA INGENIEROS" },
+        { "nombre": "POLITICAS CIENTIFICAS EN INF.Y COMP." }
+      ]
+    },
+    {
+      "semestre": 9,
+      "asignaturas": [{ "nombre": "PROYECTO DE GRADO" }]
+    },
+    {
+      "semestre": 10,
+      "asignaturas": [{ "nombre": "PROYECTO DE GRADO" }]
+    }
+  ]
+}
