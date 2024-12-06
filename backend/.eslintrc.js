@@ -15,7 +15,7 @@ module.exports = {
         trailingComma: 'none'
       }
     ], // Prettier requiere punto y coma
-    'no-console': 'warn',
+    'no-console': ['warn', 'error'],
     'no-debugger': 'error',
     semi: ['error', 'always'], // ESLint requiere punto y coma
     quotes: ['error', 'single'],
