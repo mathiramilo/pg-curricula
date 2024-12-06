@@ -1,5 +1,5 @@
 export type ErrorResponse = {
-    error: string;
-    details?: string;
-  };
+  error: string;
+  details?: string;
+};
   
