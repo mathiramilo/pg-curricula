@@ -2,6 +2,7 @@ import requisitosTitulo from '../../data/requisitos-titulo.json';
 import UCsGrupos from '../../data/ucs-grupos.json';
 import UCsObligatorias from '../../data/ucs-obligatorias.json';
 import { InformacionEstudiante, UnidadCurricular } from '../types';
+import { cumplePrevias } from './cumplePrevias'
 
 export const obtenerListadoUCs = (
   informacionEstudiante: InformacionEstudiante
@@ -41,6 +42,9 @@ export const obtenerListadoUCs = (
         Math.random() * UCsGrupoFiltradas.length
       );
       const ucAleatoria = UCsGrupoFiltradas[indiceAleatorio];
+
+      if (!cumplePrevias(informacionEstudiante, ucAleatoria)) continue;
+
       listadoUCs.push(ucAleatoria);
       actualizarInformacionEstudiante(
         informacionEstudiante,
@@ -62,6 +66,8 @@ export const obtenerListadoUCs = (
     );
     const ucAleatoria = UCsGrupos[grupoAleatorio][indiceAleatorio];
 
+    if (!cumplePrevias(informacionEstudiante, ucAleatoria)) continue;
+    
     // 3. Agregar la unidad curricular al listado y actualizar informacionEstudiante
     listadoUCs.push(ucAleatoria);
     actualizarInformacionEstudiante(
