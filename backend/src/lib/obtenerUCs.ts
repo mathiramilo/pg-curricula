@@ -2,7 +2,7 @@ import csv from 'csv-parser';
 import { createReadStream } from 'fs';
 import path from 'path';
 
-import { TrayectoriaRegular, UnidadCurricular } from '@/types';
+import { TrayectoriaRegular, UnidadCurricular } from '../types';
 import { trayectoria_regular } from '../../data/trayectoria_sugerida.json';
 
 /**

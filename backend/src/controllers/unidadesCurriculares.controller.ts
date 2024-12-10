@@ -1,8 +1,8 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import { ErrorResponse, TrayectoriaRegular, UnidadCurricular } from '@/types';
-import { obtenerUCsComputacion, cargarDetallesAsignaturas, unidadesCurricularesOpcionales } from '../lib/obtenerUCs';
-import { CodigoHTTP } from '@/constants';
+import { ErrorResponse, TrayectoriaRegular, UnidadCurricular } from '../types';
+import { obtenerUCsComputacion, cargarDetallesAsignaturas, unidadesCurricularesOpcionales } from '../lib';
+import { CodigoHTTP } from '../constants';
 
 export const unidadesCurricularesSemestresController: RequestHandler = async (
   _req: Request,
