@@ -1,14 +1,8 @@
 import type { InformacionEstudiante } from "@/types";
 import { api } from "./axios";
 
-export interface ApiResponse<T> {
-  exito: boolean;
-  datos: T;
-  codigo: number;
-}
-
 export const procesarEscolaridad = async (formData: FormData) => {
-  const res = await api.post<ApiResponse<InformacionEstudiante>>(
+  const res = await api.post<InformacionEstudiante>(
     "/escolaridad/procesar-escolaridad",
     formData,
     {
@@ -17,5 +11,5 @@ export const procesarEscolaridad = async (formData: FormData) => {
       },
     }
   );
-  return res.data.datos;
+  return res.data;
 };
