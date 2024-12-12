@@ -1,19 +1,18 @@
 import fs from 'fs';
-import path from 'path';
 
-import { UnidadCurricular, UnidadCurricularCSV } from '../types';
-import { leerCSV } from './leerCSV';
+import { UnidadCurricularConGrupo, UnidadCurricularConGrupoCSV, UnidadCurricularCSV } from '../types';
+import { leerCSV } from '../lib/leerCSV';
 
-const UBICACION_ARCHIVO = 'data/ucs-con-grupo.csv';
+const UBICACION_CSV_UCS_CON_GRUPO = '../../data/ucs-con-grupo.csv';
+const UBICACION_DESTINO = '../../data/ucs-grupos.json';
 
-export const generarUCsGrupos = async (): Promise<void> => {
+const generarUCsGrupos = async (): Promise<void> => {
   try {
-    const datos = await leerCSV(UBICACION_ARCHIVO);
+    const datos = await leerCSV(UBICACION_CSV_UCS_CON_GRUPO);
     const ucsGrupos = obtenerUCsGrupos(datos as UnidadCurricularCSV[]);
 
-    const ubicacionDestino = path.join(__dirname, '../../data/ucs-grupos.json');
     fs.writeFileSync(
-      ubicacionDestino,
+      UBICACION_DESTINO,
       JSON.stringify(ucsGrupos, null, 2),
       'utf8'
     );
@@ -51,9 +50,9 @@ const obtenerUCsGrupos = (
 };
 
 const parsearUCsGrupos = (
-  filas: UnidadCurricularCSV[]
-): { [clave: string]: UnidadCurricular[] } => {
-  const UCsGrupos: { [clave: string]: UnidadCurricular[] } = {};
+  filas: UnidadCurricularConGrupoCSV[]
+): { [clave: string]: UnidadCurricularConGrupo[] } => {
+  const UCsGrupos: { [clave: string]: UnidadCurricularConGrupo[] } = {};
 
   filas.forEach(fila => {
     const nombreUC = fila.nombre_mat;

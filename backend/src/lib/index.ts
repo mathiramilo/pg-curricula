@@ -1,6 +1,4 @@
 export * from './cumplePrevias';
-export * from './generarPreviaturas';
-export * from './generarUCsGrupos';
 export * from './helpers';
 export * from './leerCSV';
 export * from './obtenerUCs';

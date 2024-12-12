@@ -2,18 +2,18 @@ import csv from 'csv-parser';
 import { createReadStream } from 'fs';
 import path from 'path';
 
-import { TrayectoriaRegular, UnidadCurricular } from '../types';
+import { TrayectoriaRegular, UnidadCurricularConSemestre } from '../types';
 import { trayectoria_regular } from '../../data/trayectoria_sugerida.json';
 
 /**
  * Función para obtener las unidades curriculares de computación desde un archivo CSV.
  */
-export const obtenerUCsComputacion = async (): Promise<UnidadCurricular[]> => {
+export const obtenerUCsComputacion = async (): Promise<UnidadCurricularConSemestre[]> => {
   const dataPath = path.join(
     __dirname,
     '../../data/lista-materias-computacion.csv'
   );
-  const unidadesCurriculares: UnidadCurricular[] = [];
+  const unidadesCurriculares: UnidadCurricularConSemestre[] = [];
 
   try {
     // Crear el Stream
@@ -36,12 +36,12 @@ export const obtenerUCsComputacion = async (): Promise<UnidadCurricular[]> => {
 /**
  * Función para obtener las unidades curriculares ingenieria desde un archivo CSV.
  */
-export const obtenerUCsActuales = async (): Promise<UnidadCurricular[]> => {
+export const obtenerUCsActuales = async (): Promise<UnidadCurricularConSemestre[]> => {
   const dataPath = path.join(
     __dirname,
     '../../data/lista_materias_2021.csv'
   );
-  const unidadesCurriculares: UnidadCurricular[] = [];
+  const unidadesCurriculares: UnidadCurricularConSemestre[] = [];
 
   try {
     // Crear el Stream
@@ -91,7 +91,7 @@ export const cargarDetallesAsignaturas = async (): Promise<TrayectoriaRegular[]>
   }
 };
 
-export const unidadesCurricularesOpcionales = async (): Promise<UnidadCurricular[]> => {
+export const unidadesCurricularesOpcionales = async (): Promise<UnidadCurricularConSemestre[]> => {
   try {
     // Unidades curriculares de ingenieria actuales
     const ucActuales = await obtenerUCsActuales();

@@ -1,4 +1,4 @@
-export type UnidadCurricular = {
+export type UnidadCurricularConSemestre = {
   codigo: string;
   nombre: string;
   semestre?: number;
