@@ -61,7 +61,7 @@ const parsearPreviasCSV = (
       codigoGrupo: fila.cod_grupo ? parseInt(fila.cod_grupo) : null,
       nombreGrupo: fila.nombre_grupo || null,
       codigoElemento: fila.cod_elemento ? parseInt(fila.cod_elemento) : null,
-      tipoInstancia: TIPO_INSTANCIA[fila.tipo_instancia] || null,
+      tipoInstancia: fila.tipo_instancia === "C" ? TIPO_INSTANCIA.CURSO : fila.tipo_instancia === "E" ? TIPO_INSTANCIA.EXAMEN : null,
       nombrePrevia: fila['nombre_mat-2'] || null,
       codigoEnServicioPrevia: fila['codenservicio_mat-2'] || null
     });
