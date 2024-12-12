@@ -4,9 +4,7 @@ export type UnidadCurricularConSemestre = {
   semestre?: number;
 };
 
-export type TrayectoriaRegular = {
+export type TrayectoriaSugerida = {
   semestre: number;
-  asignaturas: {
-    nombre: string;
-  }[];
+  asignaturas: string[];
 };

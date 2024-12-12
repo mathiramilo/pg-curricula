@@ -5,7 +5,7 @@ import ucsFing from '../../data/ucs-fing.json';
 
 const UBICACION_DESTINO = '../../data/ucs-grupos.json';
 
-const generarUCsGrupos = async (): Promise<void> => {
+const generarUCsGruposJson = async (): Promise<void> => {
   try {
     const ucsGrupos = obtenerUCsGrupos(ucsFing as UnidadCurricular[]);
 
@@ -47,4 +47,4 @@ const obtenerUCsGrupos = (
   return UCsGrupos;
 };
 
-generarUCsGrupos();
+generarUCsGruposJson();

@@ -1,4 +1,16 @@
-import { Area } from "./informacionEstudiante"
+import { GrupoHijo, GrupoPadre } from "."
+
+export const SEMESTRE_DE_DICTADO = {
+	PRIMER_SEMESTRE: "1",
+	SEGUNDO_SEMESTRE: "2"
+} as const;
+export type SemestreDeDictado = (typeof SEMESTRE_DE_DICTADO)[keyof typeof SEMESTRE_DE_DICTADO];
+
+export const TIPO_UC = {
+	GRADO: "G",
+	POSGRADO: "P",
+} as const;
+export type TipoUC = (typeof TIPO_UC)[keyof typeof TIPO_UC];
 
 export type UnidadCurricularCSV = {
   nombrep: string;
@@ -13,16 +25,24 @@ export type UnidadCurricularCSV = {
 };
 
 export type UnidadCurricular = {
-  nombreGrupoPadre: Area;
+  nombreGrupoPadre: GrupoPadre;
   codigoGrupoPadre: number;
-  nombreGrupoHijo: string;
+  nombreGrupoHijo: GrupoHijo;
   codigoGrupoHijo: number;
   nombreUC: string;
   codigoUC: number;
   codigoEnServicioUC: string;
-	tipoUC: string;
+	tipoUC: TipoUC;
 	creditosUC: number;
+	semestres: SemestreDeDictado[] | null;
 };
+
+export type UnidadCurricularRelevamientoDeDatosCSV = {
+	instituto: string;
+	nombre: string;
+	codigo: string;
+	inscriptos: string;
+}
 
 export type UnidadCurricularConGrupoCSV = {
 	nombrep: string;
@@ -35,9 +55,9 @@ export type UnidadCurricularConGrupoCSV = {
 }
 
 export type UnidadCurricularConGrupo = {
-	nombreGrupoPadre: Area;
+	nombreGrupoPadre: GrupoPadre;
 	codigoGrupoPadre: number;
-	nombreGrupoHijo: string;
+	nombreGrupoHijo: GrupoHijo;
 	codigoGrupoHijo: number;
 	nombreUC: string;
 	codigoUC: number;
@@ -64,7 +84,7 @@ export type UnidadCurricularFing = {
 	codigoUC: number;
 	codigoEnServicioUC: string;
 	nombreUC: string;
-	tipoUC: string;
+	tipoUC: TipoUC;
 	servicioUC: string;
 	abreviaturaServicioUC: string;
 	creditosUC: number;
@@ -73,5 +93,5 @@ export type UnidadCurricularFing = {
 	minimoEscala: string;
 	maximoEscala: string;
 	umbralAprobacion: string;
-	fechaDatos: string;
+	fechaDatos: Date;
 }

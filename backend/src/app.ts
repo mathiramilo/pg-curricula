@@ -18,11 +18,10 @@ import {
 const app: Express = express();
 
 const logDir = path.join(__dirname, 'logs');
-// Verifica si la carpeta logs existe, y si no, la crea
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
-const flujoDeRegistro = fs.createWriteStream('logs/accesos.log', {
+const logStream = fs.createWriteStream('logs/accesos.log', {
   flags: 'a'
 });
 
@@ -37,7 +36,7 @@ if (env.NODE_ENV === 'production') app.use(rateLimiterMiddleware);
 // Logger
 app.use(morgan('dev'));
 if (env.NODE_ENV === 'production')
-  app.use(morgan('combined', { stream: flujoDeRegistro }));
+  app.use(morgan('combined', { stream: logStream }));
 
 // Rutas
 app.use('/api/previas', previasRouter);
@@ -45,7 +44,7 @@ app.use('/api/escolaridad', escolaridadRouter);
 app.use('/api/ucs', unidadesCurricularesRouter);
 
 // Rutas no encontradas
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
   res.status(CodigoHTTP.NOT_FOUND).json({ error: 'Ruta no encontrada' });
 });
 

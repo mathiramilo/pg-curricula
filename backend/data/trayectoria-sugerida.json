@@ -1,0 +1,78 @@
+[
+	{
+		"semestre": 1,
+		"asignaturas": [
+			"Créditos obtenidos en prueba inicial",
+			"CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+			"MATEMATICA DISCRETA 1",
+			"PROGRAMACION 1"
+		]
+	},
+	{
+		"semestre": 2,
+		"asignaturas": [
+			"CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
+			"FISICA 1",
+			"GEOMETRIA Y ALGEBRA LINEAL 1",
+			"PROGRAMACION 2"
+		]
+	},
+	{
+		"semestre": 3,
+		"asignaturas": [
+			"PROBABILIDAD Y ESTADISTICA",
+			"GEOMETRIA Y ALGEBRA LINEAL 2",
+			"LOGICA",
+			"MATEMATICA DISCRETA 2"
+		]
+	},
+	{
+		"semestre": 4,
+		"asignaturas": [
+			"ARQUITECTURA DE COMPUTADORAS",
+			"PROGRAMACION 3",
+			"ECONOMIA",
+			"METODOS NUMERICOS"
+		]
+	},
+	{
+		"semestre": 5,
+		"asignaturas": [
+			"INT. A LA INVESTIGACION DE OPERACIONES",
+			"SISTEMAS OPERATIVOS",
+			"PROGRAMACION 4",
+			"TEORIA DE LENGUAJES"
+		]
+	},
+	{
+		"semestre": 6,
+		"asignaturas": [
+			"FUNDAMENTOS DE BASES DE DATOS",
+			"TALLER DE PROGRAMACION",
+			"REDES DE COMPUTADORAS"
+		]
+	},
+	{
+		"semestre": 7,
+		"asignaturas": [
+			"INT. A LA INGENIERIA DE SOFTWARE",
+			"PROGRAMACION FUNCIONAL",
+			"PROGRAMACION LOGICA",
+			"ADMINISTRACION GENERAL PARA INGENIEROS"
+		]
+	},
+	{
+		"semestre": 8,
+		"asignaturas": [
+			"PROYECTO DE INGENIERIA DE SOFTWARE",
+			"PRACTICA DE ADMINISTRACION PARA INGENIEROS",
+			"POLITICAS CIENTIFICAS EN INF.Y COMP."
+		]
+	},
+	{
+		"semestre": 9,
+		"asignaturas": [
+			"PROYECTO DE GRADO"
+		]
+	}
+]

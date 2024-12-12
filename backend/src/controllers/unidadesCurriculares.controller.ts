@@ -1,12 +1,12 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import { ErrorResponse, TrayectoriaRegular, UnidadCurricularConSemestre } from '../types';
+import { ErrorResponse } from '../types';
 import { obtenerUCsComputacion, cargarDetallesAsignaturas, unidadesCurricularesOpcionales } from '../lib';
 import { CodigoHTTP } from '../constants';
 
 export const unidadesCurricularesSemestresController: RequestHandler = async (
   _req: Request,
-  res: Response<TrayectoriaRegular[] | ErrorResponse>,
+  res: Response,
   next: NextFunction
 ) => {
   try {
@@ -20,7 +20,7 @@ export const unidadesCurricularesSemestresController: RequestHandler = async (
 
 export const unidadesCurricularesController: RequestHandler = async (
   _req: Request,
-  res: Response<UnidadCurricularConSemestre[] | ErrorResponse>
+  res: Response
 ) => {
   try {
     const unidadesCurriculares = await obtenerUCsComputacion();
@@ -36,7 +36,7 @@ export const unidadesCurricularesController: RequestHandler = async (
 
 export const unidadesCurricularesOpcionalesController: RequestHandler = async (
   _req: Request,
-  res: Response<UnidadCurricularConSemestre[] | ErrorResponse>,
+  res: Response,
   next: NextFunction
 ) => {
   try {

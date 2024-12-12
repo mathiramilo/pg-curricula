@@ -1,7 +1,7 @@
 import {
   type InformacionEstudiante,
   ReglaPreviaturas,
-  TipoRegla
+	TIPO_REGLA
 } from '../types';
 
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
@@ -16,41 +16,41 @@ export const cumplePrevias = (
 
   try {
     switch (previas.regla) {
-      case TipoRegla.NOT: {
+      case TIPO_REGLA.NOT: {
         //* Si la regla hija es UC y tiene el nombre 'null', entonces se devuelve true. Esto es necesario ya que si entra en el caso 'UC' se va a devolver true, pero como la regla es NOT, se niega el valor (CASO BORDE, pasa en Proyecto de Grado por ejemplo)
-        if (previas.previas?.regla === TipoRegla.UC && !previas.previas.nombre)
+        if (previas.previas?.regla === TIPO_REGLA.UC && !previas.previas.nombre)
           return true;
 
         return !cumplePrevias(informacionEstudiante, previas.previas);
       }
-      case TipoRegla.OR: {
+      case TIPO_REGLA.OR: {
         return previas.previas.some(prev =>
           cumplePrevias(informacionEstudiante, prev)
         );
       }
-      case TipoRegla.AND: {
+      case TIPO_REGLA.AND: {
         return previas.previas.every(prev =>
           cumplePrevias(informacionEstudiante, prev)
         );
       }
-      case TipoRegla.SOME: {
+      case TIPO_REGLA.SOME: {
         return (
           previas.previas.filter(prev =>
             cumplePrevias(informacionEstudiante, prev)
           ).length >= previas.cantidad!
         );
       }
-      case TipoRegla.CREDITOS_PLAN: {
+      case TIPO_REGLA.CREDITOS_PLAN: {
         if (previas.cantidad)
           return informacionEstudiante['Creditos Totales'] >= previas.cantidad;
         return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
       }
-      case TipoRegla.CREDITOS_GRUPO: {
+      case TIPO_REGLA.CREDITOS_GRUPO: {
         if (previas.nombre && previas.cantidad)
           return informacionEstudiante[previas.nombre] >= previas.cantidad;
         return true;
       }
-      case TipoRegla.UC: {
+      case TIPO_REGLA.UC: {
         if (previas.nombre)
           return informacionEstudiante['UCs Aprobadas'].hasOwnProperty(
             previas.nombre

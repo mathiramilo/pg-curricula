@@ -35,13 +35,13 @@ export type Previa = {
   codigoEnServicioPrevia: string | null;
 };
 
-export const TipoInstancia = {
-  C: 'C',
-  E: 'E'
+export const TIPO_INSTANCIA = {
+  CURSO: 'C',
+  EXAMEN: 'E'
 } as const;
-export type TipoInstancia = (typeof TipoInstancia)[keyof typeof TipoInstancia];
+export type TipoInstancia = (typeof TIPO_INSTANCIA)[keyof typeof TIPO_INSTANCIA];
 
-export const TipoPrevia = {
+export const TIPO_PREVIA = {
   AND: 'AND',
   OR: 'OR',
   NOT: 'NOT',
@@ -51,4 +51,4 @@ export const TipoPrevia = {
   D: 'D',
   R: 'R'
 } as const;
-export type TipoPrevia = (typeof TipoPrevia)[keyof typeof TipoPrevia];
+export type TipoPrevia = (typeof TIPO_PREVIA)[keyof typeof TIPO_PREVIA];

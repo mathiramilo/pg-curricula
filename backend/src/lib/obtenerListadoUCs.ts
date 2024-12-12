@@ -3,7 +3,7 @@ import UCsGrupos from '../../data/ucs-grupos.json';
 import nombreUCsObligatorias from '../../data/ucs-obligatorias.json';
 import ucsFing from '../../data/ucs-fing.json';
 import previaturas from '../../data/previaturas.json';
-import { InformacionEstudiante, ReglaPreviaturas, TipoAprobacion, UnidadCurricular } from '../types';
+import { GrupoHijo, InformacionEstudiante, ReglaPreviaturas, TIPO_APROBACION, UnidadCurricular } from '../types';
 import { cumplePrevias } from './cumplePrevias'
 
 export const obtenerListadoUCs = (
@@ -59,7 +59,7 @@ export const obtenerListadoUCs = (
       actualizarInformacionEstudiante(
         informacionEstudiante,
         ucAleatoria,
-        grupo
+        grupo as GrupoHijo
       );
     }
   }
@@ -68,7 +68,7 @@ export const obtenerListadoUCs = (
   while (informacionEstudiante['Creditos Totales'] < 450) {
     // 1. Seleccionar un grupo al azar
     const grupos = Object.keys(UCsGrupos);
-    const grupoAleatorio = grupos[Math.floor(Math.random() * grupos.length)];
+    const grupoAleatorio = grupos[Math.floor(Math.random() * grupos.length)] as GrupoHijo;
 
     // 2. Seleccionar una unidad curricular del grupo al azar
     const indiceAleatorio = Math.floor(
@@ -97,7 +97,7 @@ export const obtenerListadoUCs = (
 const actualizarInformacionEstudiante = (
   informacionEstudiante: InformacionEstudiante,
   unidadCurricular: UnidadCurricular,
-  grupo: string
+  grupo: GrupoHijo
 ): void => {
   informacionEstudiante['UCs Aprobadas'].unidadCurricular = {
 		nombre: unidadCurricular.nombreUC,
@@ -106,7 +106,7 @@ const actualizarInformacionEstudiante = (
 		grupo: grupo,
 		area: unidadCurricular.nombreGrupoPadre,
 		fecha: new Date().toISOString(),
-		tipoAprobacion: TipoAprobacion.Examen
+		tipoAprobacion: TIPO_APROBACION.EXAMEN
 	};
   informacionEstudiante[grupo] += unidadCurricular.creditosUC;
   informacionEstudiante['Creditos Totales'] += unidadCurricular.creditosUC;
