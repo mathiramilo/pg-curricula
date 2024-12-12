@@ -3,4 +3,5 @@ export * from './extendedError';
 export * from './informacionEstudiante';
 export * from './previas';
 export * from './reglas';
-export * from './unidadCurricular';
+export * from './unidadesCurriculares';
+export * from './trayectorias';

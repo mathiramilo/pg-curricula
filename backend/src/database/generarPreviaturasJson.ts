@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 
 import {
   type Previa,
@@ -9,22 +8,19 @@ import {
   TipoPrevia,
   TipoRegla
 } from '../types';
-import { leerCSV } from './leerCSV';
+import { leerCSV } from '../lib/leerCSV';
 
-const UBICACION_CSV_PREVIATURAS = 'data/previaturas.csv';
+const UBICACION_CSV_PREVIATURAS = '../../data/previaturas.csv';
+const UBICACION_DESTINO = '../../data/previaturas.json';
 
-export const obtenerPreviaturas = async (): Promise<void> => {
+const generarPreviaturas = async (): Promise<void> => {
   try {
-    const resultados = await leerCSV(UBICACION_CSV_PREVIATURAS);
-    const previas = parsearPreviasCSV(resultados as PreviaCSV[]);
+    const datos = await leerCSV(UBICACION_CSV_PREVIATURAS);
+    const previas = parsearPreviasCSV(datos as PreviaCSV[]);
     const sistemaPreviaturas = generarSistemaPreviaturas(previas);
 
-    const ubicacionDestino = path.join(
-      __dirname,
-      '../../data/previaturas.json'
-    );
     fs.writeFileSync(
-      ubicacionDestino,
+      UBICACION_DESTINO,
       JSON.stringify(sistemaPreviaturas, null, 2),
       'utf8'
     );
@@ -228,3 +224,5 @@ const generarRegla = (
     }
   }
 };
+
+generarPreviaturas();
