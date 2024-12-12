@@ -1,3 +1,5 @@
+import { Area } from "./informacionEstudiante"
+
 export type UnidadCurricularCSV = {
   nombrep: string;
   codigogrupop: string;
@@ -11,7 +13,7 @@ export type UnidadCurricularCSV = {
 };
 
 export type UnidadCurricular = {
-  nombreGrupoPadre: string;
+  nombreGrupoPadre: Area;
   codigoGrupoPadre: number;
   nombreGrupoHijo: string;
   codigoGrupoHijo: number;
@@ -33,7 +35,7 @@ export type UnidadCurricularConGrupoCSV = {
 }
 
 export type UnidadCurricularConGrupo = {
-	nombreGrupoPadre: string;
+	nombreGrupoPadre: Area;
 	codigoGrupoPadre: number;
 	nombreGrupoHijo: string;
 	codigoGrupoHijo: number;

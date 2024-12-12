@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { UnidadCurricular, UnidadCurricularConGrupoCSV, UnidadCurricularFingCSV } from '../types';
+import { Area, UnidadCurricular, UnidadCurricularConGrupoCSV, UnidadCurricularFingCSV } from '../types';
 import { leerCSV } from '../lib/leerCSV'
 
 const UBICACION_CSV_UCS_CON_GRUPO = '../../data/ucs-con-grupo.csv';
@@ -37,7 +37,7 @@ const obtenerUCsFing = async (): Promise<UnidadCurricular[]> => {
 			codigoUC: +ucConGrupo!.codigo_materia,
 			tipoUC: ucFing!.tipo_mat,
 			creditosUC: +ucFing!.creditos_mat,
-			nombreGrupoPadre: ucConGrupo!.nombrep,
+			nombreGrupoPadre: ucConGrupo!.nombrep as Area,
 			codigoGrupoPadre: +ucConGrupo!.codigogrupop,
 			nombreGrupoHijo: ucConGrupo!.nombreh,
 			codigoGrupoHijo: +ucConGrupo!.codigogrupoh,

@@ -15,8 +15,8 @@
     "lint": "npx eslint .",
     "venv": "cd src/scripts && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
 		"generate:previaturas": "cd src/database && ts-node generarPreviaturasJson.ts",
-		"generate:ucs-fing": "cd src/database && ts-node generarUcsFingJson.ts",
-		"generate:ucs-grupos": "cd src/database && ts-node generarUcsConGruposJson.ts"
+		"generate:ucs-fing": "cd src/database && ts-node generarUCsFingJson.ts",
+		"generate:ucs-grupos": "cd src/database && ts-node generarUCsGruposJson.ts"
   },
   "keywords": [],
   "author": "",
