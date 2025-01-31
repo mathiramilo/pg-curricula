@@ -1,39 +1,46 @@
-﻿# Proyecto de Grado
+﻿# PG Curricula
 
 Proyecto de Grado, curricula dinamica para estudiantes de ingenieria.
 
-## Instalar dependencias de python
+## Configuración del entorno virtual
 
-Version python3 3.12.4
+### Requisitos
 
-### Ve a la carpeta backend
+- Asegurate de tener una version de python mayor a la `3.12` instalada en tu sistema.
+- Asegurate de tener `pnpm` instalado en tu sistema. Si no lo tienes, puedes instalarlo con el siguiente comando:
 
-```
-cd backend
-```
-
-### Ejecuta el siguiente comando
-
-```
-pnpm venv
+```bash
+npm install -g pnpm
 ```
 
-## Installar dependencias de nodejs en backend y frontend
+### Ve a la carpeta `core`
 
-Desde las carpetas backend y frontend ejecutar el siguiente comando
-
-```
-pnpm install
+```bash
+cd core
 ```
 
-## Correr proyecto backend
+#### Configurar el entorno virtual
 
-```
-pnpm dev
+Elige el comando correcto dependiendo de tu sistema operativo.
+
+```bash
+pnpm venv:setup:unix
 ```
 
-## Correr proyecto frontend
-
+```bash
+pnpm venv:setup:win
 ```
-pnpm dev
+
+## Configuracion del entorno de desarrollo
+
+### Crear los archivos `.env`
+
+- Asegurate de tener los archivos `.env` en las carpetas `core` y `frontend`.
+- Puedes copiar los archivos `.env.example` y renombrarlos a `.env`.
+- Si te faltan variables de entorno, no dudes en preguntar.
+
+### Correr el entorno de desarrollo con `docker-compose`
+
+```bash
+docker-compose up -d
 ```

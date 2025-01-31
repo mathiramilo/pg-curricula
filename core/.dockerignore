@@ -1,0 +1,23 @@
+# Ignore node_modules to prevent copying local dependencies
+node_modules
+npm-debug.log
+pnpm-debug.log
+yarn-error.log
+
+# Ignore build outputs
+dist
+uploads
+
+# Ignore environment files (keep them secret!)
+.env
+.env.template
+.env.local
+
+# Ignore version control files
+.git
+.gitignore
+
+# Ignore logs and cache
+logs
+*.log
+.cache

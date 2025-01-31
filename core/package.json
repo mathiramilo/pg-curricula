@@ -7,13 +7,14 @@
     "pnpm": ">=9.0.0"
   },
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "node dist/src/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc",
     "test": "jest",
     "format": "npx eslint . --fix",
     "lint": "npx eslint .",
-    "venv": "cd src/scripts && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+    "venv:setup:unix": "cd src/scripts && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+		"venv:setup:win": "cd src/scripts && python -m venv venv && venv\\Scripts\\activate && pip install -r requirements.txt",
 		"generate:previaturas": "cd src/database && ts-node generarPreviaturasJson.ts",
 		"generate:ucs-fing": "cd src/database && ts-node generarUCsFingJson.ts",
 		"generate:ucs-grupos": "cd src/database && ts-node generarUCsGruposJson.ts"

@@ -17,11 +17,17 @@ import {
 
 const app: Express = express();
 
-const logDir = path.join(__dirname, 'logs');
+const logDir = path.join(__dirname, '../logs');
+const logFile = path.join(logDir, 'accesos.log');
+
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
-const logStream = fs.createWriteStream('logs/accesos.log', {
+if (!fs.existsSync(logFile)) {
+	fs.writeFileSync(logFile, '', { flag: 'w' });
+}
+
+const logStream = fs.createWriteStream(logFile, {
   flags: 'a'
 });
 
