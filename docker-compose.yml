@@ -5,22 +5,21 @@ services:
       - "3000:3000"
     volumes:
       - ./core:/app
-      - /app/uploads
       - /app/node_modules
       - /app/dist
     working_dir: /app
     env_file:
       - ./core/.env
     depends_on:
-      - pdf-processing
+      - pdf-processor
     restart: unless-stopped
 
-  pdf-processing:
-    build: ./pdf-processing
+  pdf-processor:
+    build: ./pdf-processor
     ports:
       - "8000:8000"
     volumes:
-      - ./pdf-processing:/app
+      - ./pdf-processor:/app
     working_dir: /app
     restart: unless-stopped
 

@@ -1,10 +1,8 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
-import { unlink } from 'fs/promises';
-
-import { ErrorResponse, ExtendedError, InformacionEstudiante } from '../types';
 
 import { CodigoHTTP } from '../constants';
-import { procesarPDF } from '../lib';
+import { ErrorResponse, InformacionEstudiante } from '../types';
+import { procesarEscolaridad } from '../lib'
 
 export const procesarEscolaridadController: RequestHandler = async (
   req: Request,
@@ -18,19 +16,10 @@ export const procesarEscolaridadController: RequestHandler = async (
   }
 
   try {
-    // Usar ubicacionArchivo donde se guardo el archivo
-    const ubicacionArchivo = req.file.path;
+    const informacionEstudiante = await procesarEscolaridad(req.file);
 
-    // Llamar a la función procesarPDF
-    const archivo = await procesarPDF(ubicacionArchivo) as InformacionEstudiante;
- 
-    // Eliminar el archivo temporal una vez procesado
-    await unlink(ubicacionArchivo);
-
-    res.status(CodigoHTTP.OK).json(archivo);
+    res.status(CodigoHTTP.OK).json(informacionEstudiante);
   } catch (error: unknown) {
-    // Eliminar el archivo temporal una vez procesado en caso de fallo
-    if (error instanceof ExtendedError) await unlink(error.details)
     next(error);
   }
 };

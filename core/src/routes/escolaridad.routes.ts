@@ -1,13 +1,15 @@
 import { Router } from 'express';
+import multer from 'multer';
 
 import { procesarEscolaridadController } from '../controllers';
-import { upload } from '../lib';
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 const router = Router();
 
 router.post(
   '/procesar-escolaridad',
-  upload.single('pdf'),
+  upload.single('file'),
   procesarEscolaridadController
 );
 
