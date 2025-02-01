@@ -9,8 +9,12 @@ const execAsync = promisify(exec);
 export const procesarPDF = async (ubicacionArchivo: string): Promise<InformacionEstudiante | Error> => {
   const scriptCmd = obtenerComandoScriptPython(ubicacionArchivo);
 
+	console.log(scriptCmd);
+
   try {
     const { stdout, stderr } = await execAsync(scriptCmd);
+
+		console.log(stdout);
 
     if (stderr) {
       console.error(`stderr: ${stderr}`);

@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from app.routers import escolaridades
 
+app = FastAPI(title="API para procesamiento de escolaridades")
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, FastAPI project"}
+app.include_router(escolaridades.router, prefix="/api")

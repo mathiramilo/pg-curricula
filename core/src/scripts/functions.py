@@ -2,7 +2,7 @@ import json
 import re
 
 import PyPDF2
-from constantes import LINEAS_A_SALTEAR, TipoAprobacion
+from constants import LINEAS_A_SALTEAR, TipoAprobacion
 
 
 def leer_pdf(ubicacion_archivo: str) -> str:

@@ -1,7 +1,7 @@
 import argparse
 
-from constantes import AREAS_FORMACION_INGCOMP
-from funciones import (
+from constants import AREAS_FORMACION_INGCOMP
+from functions import (
     buscar_ucs_aprobadas_con_resultados_finales,
     buscar_ucs_aprobadas_con_resultados_intermedios,
     es_con_resultados_intermedios,

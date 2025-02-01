@@ -5,6 +5,7 @@ services:
       - "3000:3000"
     volumes:
       - ./core:/app
+      - /app/uploads
       - /app/node_modules
       - /app/dist
     working_dir: /app
