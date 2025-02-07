@@ -1,12 +1,29 @@
 import { useBoolean } from "@/hooks";
-import { SubirArchivoModal } from "@/modals";
-import { Button, DownloadIcon, RestartIcon, UploadIcon } from ".";
+import {
+  Button,
+  DownloadIcon,
+  DownloadProgressAlert,
+  ResetProgressAlert,
+  RestartIcon,
+  SubirArchivoModal,
+  UploadIcon,
+} from ".";
 
 export const NavBar = () => {
   const {
-    value: isOpen,
+    value: showModal,
     setTrue: openModal,
     setFalse: closeModal,
+  } = useBoolean(false);
+  const {
+    value: showDownloadAlert,
+    setTrue: openDownloadAlert,
+    setFalse: closeDownloadAlert,
+  } = useBoolean(false);
+  const {
+    value: showResetAlert,
+    setTrue: openResetAlert,
+    setFalse: closeResetAlert,
   } = useBoolean(false);
 
   return (
@@ -22,18 +39,23 @@ export const NavBar = () => {
             <UploadIcon />{" "}
             <span className="hidden md:inline-block">Cargar Progreso</span>
           </Button>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" onClick={openDownloadAlert}>
             <DownloadIcon />
             <span className="hidden md:inline-block">Descargar Progreso</span>
           </Button>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" onClick={openResetAlert}>
             <RestartIcon />
             <span className="hidden md:inline-block">Reiniciar</span>
           </Button>
         </nav>
       </header>
 
-      <SubirArchivoModal show={isOpen} onClose={closeModal} />
+      <SubirArchivoModal open={showModal} onClose={closeModal} />
+      <DownloadProgressAlert
+        open={showDownloadAlert}
+        onClose={closeDownloadAlert}
+      />
+      <ResetProgressAlert open={showResetAlert} onClose={closeResetAlert} />
     </>
   );
 };

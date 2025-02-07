@@ -12,7 +12,7 @@ import { errorMiddleware, rateLimiterMiddleware } from './middleware';
 import {
   escolaridadRouter,
   previasRouter,
-  unidadesCurricularesRouter
+  unidadesCurricularesRouter,
 } from './routes';
 
 const app: Express = express();
@@ -24,11 +24,11 @@ if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
 if (!fs.existsSync(logFile)) {
-	fs.writeFileSync(logFile, '', { flag: 'w' });
+  fs.writeFileSync(logFile, '', { flag: 'w' });
 }
 
 const logStream = fs.createWriteStream(logFile, {
-  flags: 'a'
+  flags: 'a',
 });
 
 // Middlewares
@@ -47,7 +47,7 @@ if (env.NODE_ENV === 'production')
 // Rutas
 app.use('/api/previas', previasRouter);
 app.use('/api/escolaridad', escolaridadRouter);
-app.use('/api/ucs', unidadesCurricularesRouter);
+app.use('/api/unidades-curriculares', unidadesCurricularesRouter);
 
 // Rutas no encontradas
 app.get('*', (_req, res) => {

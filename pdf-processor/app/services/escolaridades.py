@@ -30,8 +30,8 @@ def get_student_data_with_intermediate_results(
 ) -> dict:
     # Dicionario de unidades curriculares aprobadas. TODO: Para que funcione con todas las carreras se debe tener uno de estos por carrera y seleccionarlo dependiendo de la carrera.
     student_data = {
-        "UCs Aprobadas": {},
-        "Creditos Totales": 0,
+        "unidadesCurricularesAprobadas": {},
+        "creditosTotales": 0,
         "MATEMATICA": 0,
         "CIENCIAS EXPERIMENTALES": 0,
         "PROGRAMACION": 0,
@@ -102,7 +102,7 @@ def get_student_data_with_intermediate_results(
                         if nombre.startswith("*"):
                             continue
 
-                        student_data["UCs Aprobadas"][nombre] = {
+                        student_data["unidadesCurricularesAprobadas"][nombre] = {
                             "calificacion": None,
                             "fecha": fecha,
                             "creditos": None,
@@ -125,7 +125,7 @@ def get_student_data_with_intermediate_results(
                         if nombre.startswith("*"):
                             continue
 
-                        student_data["UCs Aprobadas"][nombre] = {
+                        student_data["unidadesCurricularesAprobadas"][nombre] = {
                             "calificacion": calificacion,
                             "fecha": fecha,
                             "creditos": int(creditos),
@@ -134,7 +134,7 @@ def get_student_data_with_intermediate_results(
                             "area": area,
                             "grupo": group,
                         }
-                        student_data["Creditos Totales"] += int(creditos)
+                        student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
                     else:
                         unidad_curricular_data = result.split(" ")[2:]
@@ -149,7 +149,7 @@ def get_student_data_with_intermediate_results(
                         if nombre.startswith("*"):
                             continue
 
-                        student_data["UCs Aprobadas"][nombre] = {
+                        student_data["unidadesCurricularesAprobadas"][nombre] = {
                             "calificacion": calificacion,
                             "fecha": fecha,
                             "creditos": int(creditos),
@@ -158,7 +158,7 @@ def get_student_data_with_intermediate_results(
                             "area": area,
                             "grupo": group,
                         }
-                        student_data["Creditos Totales"] += int(creditos)
+                        student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
 
     # Retornar diccionario de unidades curriculares aprobadas en formato JSON
@@ -169,8 +169,8 @@ def get_student_data_with_intermediate_results(
 def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> dict:
     # Dicionario de unidades curriculares aprobadas
     student_data = {
-        "UCs Aprobadas": {},
-        "Creditos Totales": 0,
+        "unidadesCurricularesAprobadas": {},
+        "creditosTotales": 0,
         "MATEMATICA": 0,
         "CIENCIAS EXPERIMENTALES": 0,
         "PROGRAMACION": 0,
@@ -225,7 +225,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     if nombre.startswith("*"):
                         continue
 
-                    student_data["UCs Aprobadas"][nombre] = {
+                    student_data["unidadesCurricularesAprobadas"][nombre] = {
                         "calificacion": calificacion,
                         "fecha": fecha,
                         "creditos": int(creditos),
@@ -234,7 +234,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                         "area": area,
                         "grupo": group,
                     }
-                    student_data["Creditos Totales"] += int(creditos)
+                    student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)
                 else:
                     unidad_curricular_data = s.split(" ")
@@ -246,7 +246,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     if nombre.startswith("*"):
                         continue
 
-                    student_data["UCs Aprobadas"][nombre] = {
+                    student_data["unidadesCurricularesAprobadas"][nombre] = {
                         "calificacion": calificacion,
                         "fecha": fecha,
                         "creditos": int(creditos),
@@ -255,7 +255,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                         "area": area,
                         "grupo": group,
                     }
-                    student_data["Creditos Totales"] += int(creditos)
+                    student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)
 
     return student_data

@@ -4,5 +4,5 @@ export const RUTAS = {
   TRAYECTORIA: "/trayectoria",
   SIGUIENTE_SEMESTRE: "/siguiente-semestre",
   PROGRESO: "/progreso",
-  GRUPO: "/grupo/:id",
+  GRUPO: "/grupo/:slug",
 };

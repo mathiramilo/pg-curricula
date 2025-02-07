@@ -1,5 +1,5 @@
 export const ie340 = {
-  'UCs Aprobadas': {
+  unidadesCurricularesAprobadas: {
     'CALCULO DIF. E INTEGRAL EN UNA VARIABLE': {
       calificacion: '3',
       fecha: '17/07/2019',
@@ -7,7 +7,7 @@ export const ie340 = {
       nombre: 'CALCULO DIF. E INTEGRAL EN UNA VARIABLE',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES': {
       calificacion: '5',
@@ -16,7 +16,7 @@ export const ie340 = {
       nombre: 'CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'GEOMETRIA Y ALGEBRA LINEAL 1': {
       calificacion: '7',
@@ -25,7 +25,7 @@ export const ie340 = {
       nombre: 'GEOMETRIA Y ALGEBRA LINEAL 1',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'GEOMETRIA Y ALGEBRA LINEAL 2': {
       calificacion: '3',
@@ -34,7 +34,7 @@ export const ie340 = {
       nombre: 'GEOMETRIA Y ALGEBRA LINEAL 2',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     LOGICA: {
       calificacion: '8',
@@ -43,7 +43,7 @@ export const ie340 = {
       nombre: 'LOGICA',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'MATEMATICA DISCRETA 1': {
       calificacion: '9',
@@ -52,7 +52,7 @@ export const ie340 = {
       nombre: 'MATEMATICA DISCRETA 1',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'MATEMATICA DISCRETA 2': {
       calificacion: '8',
@@ -61,7 +61,7 @@ export const ie340 = {
       nombre: 'MATEMATICA DISCRETA 2',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'PROBABILIDAD Y ESTADISTICA': {
       calificacion: '9',
@@ -70,7 +70,7 @@ export const ie340 = {
       nombre: 'PROBABILIDAD Y ESTADISTICA',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'FISICA 1': {
       calificacion: '3',
@@ -79,7 +79,7 @@ export const ie340 = {
       nombre: 'FISICA 1',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'CIENCIAS EXPERIMENTALES'
+      grupo: 'CIENCIAS EXPERIMENTALES',
     },
     'PROGRAMACION FUNCIONAL': {
       calificacion: '6',
@@ -88,7 +88,7 @@ export const ie340 = {
       nombre: 'PROGRAMACION FUNCIONAL',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 1': {
       calificacion: '10',
@@ -97,7 +97,7 @@ export const ie340 = {
       nombre: 'PROGRAMACION 1',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 2': {
       calificacion: '8',
@@ -106,7 +106,7 @@ export const ie340 = {
       nombre: 'PROGRAMACION 2',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 3': {
       calificacion: '7',
@@ -115,7 +115,7 @@ export const ie340 = {
       nombre: 'PROGRAMACION 3',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 4': {
       calificacion: '8',
@@ -124,7 +124,7 @@ export const ie340 = {
       nombre: 'PROGRAMACION 4',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'TEORIA DE LENGUAJES': {
       calificacion: '9',
@@ -133,7 +133,7 @@ export const ie340 = {
       nombre: 'TEORIA DE LENGUAJES',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'ARQUITECTURA DE COMPUTADORAS': {
       calificacion: '9',
@@ -142,7 +142,7 @@ export const ie340 = {
       nombre: 'ARQUITECTURA DE COMPUTADORAS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.'
+      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'REDES DE COMPUTADORAS': {
       calificacion: '5',
@@ -151,7 +151,7 @@ export const ie340 = {
       nombre: 'REDES DE COMPUTADORAS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.'
+      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'SISTEMAS OPERATIVOS': {
       calificacion: '6',
@@ -160,7 +160,7 @@ export const ie340 = {
       nombre: 'SISTEMAS OPERATIVOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.'
+      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'APRENDIZAJE AUTOMATICO': {
       calificacion: '6',
@@ -169,7 +169,7 @@ export const ie340 = {
       nombre: 'APRENDIZAJE AUTOMATICO',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INT.ARTIFICIAL Y ROBOTICA'
+      grupo: 'INT.ARTIFICIAL Y ROBOTICA',
     },
     'FUNDAMENTOS DE BASES DE DATOS': {
       calificacion: '9',
@@ -178,7 +178,7 @@ export const ie340 = {
       nombre: 'FUNDAMENTOS DE BASES DE DATOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'B.DATOS Y SIST. DE INFORMACION'
+      grupo: 'B.DATOS Y SIST. DE INFORMACION',
     },
     'FUNDAMENTOS DE LA WEB SEMANTICA': {
       calificacion: '10',
@@ -187,7 +187,7 @@ export const ie340 = {
       nombre: 'FUNDAMENTOS DE LA WEB SEMANTICA',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'B.DATOS Y SIST. DE INFORMACION'
+      grupo: 'B.DATOS Y SIST. DE INFORMACION',
     },
     'RECUPERACION DE INF. Y RECOMEND. EN LA WEB (WIR)': {
       calificacion: '12',
@@ -196,7 +196,7 @@ export const ie340 = {
       nombre: 'RECUPERACION DE INF. Y RECOMEND. EN LA WEB (WIR)',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'B.DATOS Y SIST. DE INFORMACION'
+      grupo: 'B.DATOS Y SIST. DE INFORMACION',
     },
     'METODOS NUMERICOS': {
       calificacion: '6',
@@ -205,7 +205,7 @@ export const ie340 = {
       nombre: 'METODOS NUMERICOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'CALCULO NUMERICO Y SIMBOLICO'
+      grupo: 'CALCULO NUMERICO Y SIMBOLICO',
     },
     'FUNDAMENTOS DE OPTIMIZACION': {
       calificacion: '12',
@@ -214,7 +214,7 @@ export const ie340 = {
       nombre: 'FUNDAMENTOS DE OPTIMIZACION',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'INT. A LA INVESTIGACION DE OPERACIONES': {
       calificacion: '6',
@@ -223,7 +223,7 @@ export const ie340 = {
       nombre: 'INT. A LA INVESTIGACION DE OPERACIONES',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'GESTIÓN DE PROYECTOS': {
       calificacion: '7',
@@ -232,7 +232,7 @@ export const ie340 = {
       nombre: 'GESTIÓN DE PROYECTOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INGENIERIA DE SOFTWARE'
+      grupo: 'INGENIERIA DE SOFTWARE',
     },
     'INT. A LA INGENIERIA DE SOFTWARE': {
       calificacion: '8',
@@ -241,7 +241,7 @@ export const ie340 = {
       nombre: 'INT. A LA INGENIERIA DE SOFTWARE',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INGENIERIA DE SOFTWARE'
+      grupo: 'INGENIERIA DE SOFTWARE',
     },
     'PROYECTO DE INGENIERIA DE SOFTWARE': {
       calificacion: '9',
@@ -250,7 +250,7 @@ export const ie340 = {
       nombre: 'PROYECTO DE INGENIERIA DE SOFTWARE',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY'
+      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'TALLER DE PROGRAMACION': {
       calificacion: '12',
@@ -259,7 +259,7 @@ export const ie340 = {
       nombre: 'TALLER DE PROGRAMACION',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY'
+      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'MODULO DE EXTENSION': {
       calificacion: null,
@@ -268,7 +268,7 @@ export const ie340 = {
       nombre: 'MODULO DE EXTENSION',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY'
+      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'ADMINISTRACION GENERAL PARA INGENIEROS': {
       calificacion: '11',
@@ -277,7 +277,7 @@ export const ie340 = {
       nombre: 'ADMINISTRACION GENERAL PARA INGENIEROS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'GESTION EN ORGANIZACIONES'
+      grupo: 'GESTION EN ORGANIZACIONES',
     },
     'CIENCIA, TECNOLOGIA Y SOCIEDAD': {
       calificacion: '4',
@@ -286,10 +286,10 @@ export const ie340 = {
       nombre: 'CIENCIA, TECNOLOGIA Y SOCIEDAD',
       tipoAprobacion: 'Examen',
       area: 'Materias Complementarias',
-      grupo: 'CIENCIAS HUMANAS Y SOCIALES'
-    }
+      grupo: 'CIENCIAS HUMANAS Y SOCIALES',
+    },
   },
-  'Creditos Totales': 340,
+  creditosTotales: 340,
   MATEMATICA: 84,
   'CIENCIAS EXPERIMENTALES': 10,
   PROGRAMACION: 74,
@@ -302,5 +302,5 @@ export const ie340 = {
   'A.INTEG,TALLERES,PASANT.Y PROY': 34,
   'GESTION EN ORGANIZACIONES': 5,
   'CIENCIAS HUMANAS Y SOCIALES': 8,
-  'MATERIAS OPCIONALES': 0
+  'MATERIAS OPCIONALES': 0,
 };

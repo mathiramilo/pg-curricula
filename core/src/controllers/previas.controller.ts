@@ -6,7 +6,7 @@ import { cumplePrevias } from '../lib';
 import {
   ErrorResponse,
   esInformacionEstudiante,
-  type InformacionEstudiante
+  type InformacionEstudiante,
 } from '../types';
 
 export const chequearPreviasController: RequestHandler = (
@@ -20,33 +20,33 @@ export const chequearPreviasController: RequestHandler = (
   try {
     if (!nombreUC)
       return res.status(CodigoHTTP.BAD_REQUEST).json({
-        error: 'No se proporcionó el nombre de la UC a chequear'
+        error: 'No se proporcionó el nombre de la UC a chequear',
       });
 
     if (!previaturas[nombreUC])
       return res.status(CodigoHTTP.NOT_FOUND).json({
-        error: `No se encontró ninguna UC con nombre ${nombreUC}`
+        error: `No se encontró ninguna UC con nombre ${nombreUC}`,
       });
 
     if (!esInformacionEstudiante(informacionEstudiante))
       return res.status(CodigoHTTP.BAD_REQUEST).json({
         error:
-          'La información del estudiante no cumple con el formato esperado. Verifica que estén todos los campos necesarios y que tengan el tipo de dato correcto'
+          'La información del estudiante no cumple con el formato esperado. Verifica que estén todos los campos necesarios y que tengan el tipo de dato correcto',
       });
 
     //? Si la UC ya fue aprobada por el estudiante, no es necesario verificar las previas. En este caso deberiamos devolver true (indicando que el estudiante esta habilitado para cursarla) o false (indicando que no la puede hacer denuevo debido a que ya la curso)?
-    if (informacionEstudiante['UCs Aprobadas'].hasOwnProperty(nombreUC))
-      return res
-        .status(CodigoHTTP.OK)
-        .json(false);
+    if (
+      informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
+        nombreUC
+      )
+    )
+      return res.status(CodigoHTTP.OK).json(false);
 
     const cumple = cumplePrevias(
       informacionEstudiante as InformacionEstudiante,
       previaturas[nombreUC]
     );
-    return res
-      .status(CodigoHTTP.OK)
-      .json(cumple);
+    return res.status(CodigoHTTP.OK).json(cumple);
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,5 @@
 export const ie410 = {
-  'UCs Aprobadas': {
+  unidadesCurricularesAprobadas: {
     'MATEMÁTICA DISCRETA I': {
       calificacion: '7',
       fecha: '06/12/2016',
@@ -7,7 +7,7 @@ export const ie410 = {
       nombre: 'MATEMÁTICA DISCRETA I',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'MATEMÁTICA DISCRETA 2- CIM-CIOCT': {
       calificacion: '9',
@@ -16,7 +16,7 @@ export const ie410 = {
       nombre: 'MATEMÁTICA DISCRETA 2- CIM-CIOCT',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'ECUACIONES DIFERENCIALES': {
       calificacion: '7',
@@ -25,7 +25,7 @@ export const ie410 = {
       nombre: 'ECUACIONES DIFERENCIALES',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'CÁLCULO II': {
       calificacion: '8',
@@ -34,7 +34,7 @@ export const ie410 = {
       nombre: 'CÁLCULO II',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'CÁLCULO I': {
       calificacion: '3',
@@ -43,7 +43,7 @@ export const ie410 = {
       nombre: 'CÁLCULO I',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'ALGEBRA LINEAL II': {
       calificacion: '5',
@@ -52,7 +52,7 @@ export const ie410 = {
       nombre: 'ALGEBRA LINEAL II',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'ALGEBRA LINEAL I': {
       calificacion: '3',
@@ -61,7 +61,7 @@ export const ie410 = {
       nombre: 'ALGEBRA LINEAL I',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'CODIGOS PARA CORRECCION DE ERRORES': {
       calificacion: '5',
@@ -70,7 +70,7 @@ export const ie410 = {
       nombre: 'CODIGOS PARA CORRECCION DE ERRORES',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     LOGICA: {
       calificacion: '6',
@@ -79,7 +79,7 @@ export const ie410 = {
       nombre: 'LOGICA',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'PROBABILIDAD Y ESTADISTICA': {
       calificacion: '6',
@@ -88,7 +88,7 @@ export const ie410 = {
       nombre: 'PROBABILIDAD Y ESTADISTICA',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'MATEMATICA'
+      grupo: 'MATEMATICA',
     },
     'FÍSICA 1': {
       calificacion: '7',
@@ -97,7 +97,7 @@ export const ie410 = {
       nombre: 'FÍSICA 1',
       tipoAprobacion: 'Examen',
       area: 'Materias Basicas',
-      grupo: 'CIENCIAS EXPERIMENTALES'
+      grupo: 'CIENCIAS EXPERIMENTALES',
     },
     'PROGRAMACIÓN I- CIO CT-LHRH': {
       calificacion: '6',
@@ -106,7 +106,7 @@ export const ie410 = {
       nombre: 'PROGRAMACIÓN I- CIO CT-LHRH',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION FUNCIONAL': {
       calificacion: '5',
@@ -115,7 +115,7 @@ export const ie410 = {
       nombre: 'PROGRAMACION FUNCIONAL',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 2': {
       calificacion: '3',
@@ -124,7 +124,7 @@ export const ie410 = {
       nombre: 'PROGRAMACION 2',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 3': {
       calificacion: '7',
@@ -133,7 +133,7 @@ export const ie410 = {
       nombre: 'PROGRAMACION 3',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 4': {
       calificacion: '6',
@@ -142,7 +142,7 @@ export const ie410 = {
       nombre: 'PROGRAMACION 4',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'TEORIA DE LENGUAJES': {
       calificacion: '3',
@@ -151,7 +151,7 @@ export const ie410 = {
       nombre: 'TEORIA DE LENGUAJES',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'PROGRAMACION'
+      grupo: 'PROGRAMACION',
     },
     'ARQUITECTURA DE COMPUTADORAS': {
       calificacion: '4',
@@ -160,7 +160,7 @@ export const ie410 = {
       nombre: 'ARQUITECTURA DE COMPUTADORAS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.'
+      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'COMPUTACION DE ALTA PERFORMANCE': {
       calificacion: '9',
@@ -169,7 +169,7 @@ export const ie410 = {
       nombre: 'COMPUTACION DE ALTA PERFORMANCE',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.'
+      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'SISTEMAS OPERATIVOS': {
       calificacion: '8',
@@ -178,7 +178,7 @@ export const ie410 = {
       nombre: 'SISTEMAS OPERATIVOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.'
+      grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'FUNDAMENTOS DE BASES DE DATOS': {
       calificacion: '3',
@@ -187,7 +187,7 @@ export const ie410 = {
       nombre: 'FUNDAMENTOS DE BASES DE DATOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'B.DATOS Y SIST. DE INFORMACION'
+      grupo: 'B.DATOS Y SIST. DE INFORMACION',
     },
     'MÉTODOS NUMÉRICOS': {
       calificacion: '3',
@@ -196,7 +196,7 @@ export const ie410 = {
       nombre: 'MÉTODOS NUMÉRICOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'CALCULO NUMERICO Y SIMBOLICO'
+      grupo: 'CALCULO NUMERICO Y SIMBOLICO',
     },
     'ALGEBRA LINEAL NUMERICA': {
       calificacion: '8',
@@ -205,7 +205,7 @@ export const ie410 = {
       nombre: 'ALGEBRA LINEAL NUMERICA',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'CALCULO NUMERICO Y SIMBOLICO'
+      grupo: 'CALCULO NUMERICO Y SIMBOLICO',
     },
     'DISEÑO TOPOLOGICO DE REDES': {
       calificacion: '7',
@@ -214,7 +214,7 @@ export const ie410 = {
       nombre: 'DISEÑO TOPOLOGICO DE REDES',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'INVESTIGACION DE OPER.Y GEST. DE RIESGOS': {
       calificacion: '7',
@@ -223,7 +223,7 @@ export const ie410 = {
       nombre: 'INVESTIGACION DE OPER.Y GEST. DE RIESGOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'ALGORITMOS EVOLUTIVOS': {
       calificacion: '9',
@@ -232,7 +232,7 @@ export const ie410 = {
       nombre: 'ALGORITMOS EVOLUTIVOS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'INT. A LA INVESTIGACION DE OPERACIONES': {
       calificacion: '6',
@@ -241,7 +241,7 @@ export const ie410 = {
       nombre: 'INT. A LA INVESTIGACION DE OPERACIONES',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'OPTIMIZACION BAJO INCERTIDUMBRE': {
       calificacion: '3',
@@ -250,7 +250,7 @@ export const ie410 = {
       nombre: 'OPTIMIZACION BAJO INCERTIDUMBRE',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INVESTIGACION OPERATIVA'
+      grupo: 'INVESTIGACION OPERATIVA',
     },
     'INT. A LA INGENIERIA DE SOFTWARE': {
       calificacion: '5',
@@ -259,7 +259,7 @@ export const ie410 = {
       nombre: 'INT. A LA INGENIERIA DE SOFTWARE',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'INGENIERIA DE SOFTWARE'
+      grupo: 'INGENIERIA DE SOFTWARE',
     },
     'PASANTIA (COMPUTACION)': {
       calificacion: null,
@@ -268,7 +268,7 @@ export const ie410 = {
       nombre: 'PASANTIA (COMPUTACION)',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY'
+      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'PROYECTO DE INGENIERIA DE SOFTWARE': {
       calificacion: '10',
@@ -277,7 +277,7 @@ export const ie410 = {
       nombre: 'PROYECTO DE INGENIERIA DE SOFTWARE',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY'
+      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'TALLER DE PROGRAMACION': {
       calificacion: '10',
@@ -286,7 +286,7 @@ export const ie410 = {
       nombre: 'TALLER DE PROGRAMACION',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY'
+      grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'SOCIOLOGÍA DE LA EMPRESA Y MANAGEMENT': {
       calificacion: '11',
@@ -295,7 +295,7 @@ export const ie410 = {
       nombre: 'SOCIOLOGÍA DE LA EMPRESA Y MANAGEMENT',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'GESTION EN ORGANIZACIONES'
+      grupo: 'GESTION EN ORGANIZACIONES',
     },
     'PROPIEDAD INTELECTUAL': {
       calificacion: '7',
@@ -304,7 +304,7 @@ export const ie410 = {
       nombre: 'PROPIEDAD INTELECTUAL',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'GESTION EN ORGANIZACIONES'
+      grupo: 'GESTION EN ORGANIZACIONES',
     },
     'ADMINISTRACION GENERAL PARA INGENIEROS': {
       calificacion: '10',
@@ -313,7 +313,7 @@ export const ie410 = {
       nombre: 'ADMINISTRACION GENERAL PARA INGENIEROS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'GESTION EN ORGANIZACIONES'
+      grupo: 'GESTION EN ORGANIZACIONES',
     },
     'PRACTICA DE ADMINISTRACION PARA INGENIEROS': {
       calificacion: '6',
@@ -322,7 +322,7 @@ export const ie410 = {
       nombre: 'PRACTICA DE ADMINISTRACION PARA INGENIEROS',
       tipoAprobacion: 'Examen',
       area: 'Basico-Tec,Tecnicas e Integ.',
-      grupo: 'GESTION EN ORGANIZACIONES'
+      grupo: 'GESTION EN ORGANIZACIONES',
     },
     'ECONOMÍA POLÍTICA': {
       calificacion: '9',
@@ -331,7 +331,7 @@ export const ie410 = {
       nombre: 'ECONOMÍA POLÍTICA',
       tipoAprobacion: 'Examen',
       area: 'Materias Complementarias',
-      grupo: 'CIENCIAS HUMANAS Y SOCIALES'
+      grupo: 'CIENCIAS HUMANAS Y SOCIALES',
     },
     'CIENCIA, TECNOLOGIA Y SOCIEDAD': {
       calificacion: '6',
@@ -340,7 +340,7 @@ export const ie410 = {
       nombre: 'CIENCIA, TECNOLOGIA Y SOCIEDAD',
       tipoAprobacion: 'Examen',
       area: 'Materias Complementarias',
-      grupo: 'CIENCIAS HUMANAS Y SOCIALES'
+      grupo: 'CIENCIAS HUMANAS Y SOCIALES',
     },
     'INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA': {
       calificacion: '12',
@@ -349,10 +349,10 @@ export const ie410 = {
       nombre: 'INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA',
       tipoAprobacion: 'Examen',
       area: 'Materias Opcionales',
-      grupo: 'MATERIAS OPCIONALES'
-    }
+      grupo: 'MATERIAS OPCIONALES',
+    },
   },
-  'Creditos Totales': 410,
+  creditosTotales: 410,
   MATEMATICA: 116,
   'CIENCIAS EXPERIMENTALES': 10,
   PROGRAMACION: 74,
@@ -365,5 +365,5 @@ export const ie410 = {
   'A.INTEG,TALLERES,PASANT.Y PROY': 40,
   'GESTION EN ORGANIZACIONES': 23,
   'CIENCIAS HUMANAS Y SOCIALES': 18,
-  'MATERIAS OPCIONALES': 6
+  'MATERIAS OPCIONALES': 6,
 };

@@ -1,4 +1,4 @@
-import type { SvgProps } from "@/types";
+import type { SvgProps } from "@/models";
 
 export const HomeIcon = (props: SvgProps) => (
   <svg

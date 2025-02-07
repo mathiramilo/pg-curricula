@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import {
   BusquedaScreen,
@@ -22,6 +22,8 @@ export const Router = () => {
         element={<SiguienteSemestreScreen />}
       />
       <Route path={RUTAS.TRAYECTORIA} element={<TrayectoriaScreen />} />
+
+      <Route path="*" element={<Navigate to={RUTAS.BASE} />} />
     </Routes>
   );
 };

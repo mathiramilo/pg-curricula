@@ -1,15 +1,15 @@
 import { Router } from 'express';
 
 import {
-  unidadesCurricularesController,
-  unidadesCurricularesOpcionalesController,
-  unidadesCurricularesSemestresController
+  getUnidadesCurricularesController,
+  getUnidadesCurricularesOpcionalesController,
+  getUnidadesCurricularesSemestresController,
 } from '../controllers';
 
 const router = Router();
 
-router.get('/semestres', unidadesCurricularesSemestresController);
-router.get('/opcionales', unidadesCurricularesOpcionalesController);
-router.get('/', unidadesCurricularesController);
+router.get('/', getUnidadesCurricularesController);
+router.get('/semestres', getUnidadesCurricularesSemestresController);
+router.get('/opcionales', getUnidadesCurricularesOpcionalesController);
 
 export default router;

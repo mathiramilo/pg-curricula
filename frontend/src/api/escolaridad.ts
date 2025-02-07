@@ -1,4 +1,4 @@
-import type { InformacionEstudiante } from "@/types";
+import type { InformacionEstudiante } from "@/models";
 import { api } from "./axios";
 
 export const procesarEscolaridad = async (formData: FormData) => {
@@ -9,7 +9,7 @@ export const procesarEscolaridad = async (formData: FormData) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    }
+    },
   );
   return res.data;
 };

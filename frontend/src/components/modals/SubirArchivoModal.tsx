@@ -11,16 +11,21 @@ import {
 } from "@/components";
 import { useDropzone, useProcesarEscolaridad } from "@/hooks";
 import { cn } from "@/lib";
+import { useStore } from "@/store";
 
 interface ModalSubirArchivoProps {
-  show: boolean;
+  open: boolean;
   onClose: () => void;
 }
 
 export const SubirArchivoModal = ({
-  show,
+  open,
   onClose,
 }: ModalSubirArchivoProps) => {
+  const setInformacionEstudiante = useStore(
+    (state) => state.setInformacionEstudiante,
+  );
+
   const {
     dragOver,
     file,
@@ -38,11 +43,11 @@ export const SubirArchivoModal = ({
     if (!file) return;
 
     const formData = new FormData();
-    formData.append("pdf", file);
+    formData.append("file", file);
 
     mutate(formData, {
       onSuccess: (data) => {
-        console.log("Exito: ", data);
+        setInformacionEstudiante(data);
         reset();
         onClose();
       },
@@ -58,7 +63,7 @@ export const SubirArchivoModal = ({
   };
 
   return (
-    <Dialog open={show} onOpenChange={handleClose}>
+    <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="bg-slate-50 gap-16 sm:gap-6">
         <DialogHeader>
           <DialogTitle>Cargar Progreso</DialogTitle>

@@ -4,6 +4,6 @@ import { chequearPreviasController } from '../controllers';
 
 const router = Router();
 
-router.get('/cumple-previas/:nombreUC', chequearPreviasController);
+router.get('/cumple/:nombreUC', chequearPreviasController);
 
 export default router;

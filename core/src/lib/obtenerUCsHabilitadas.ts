@@ -13,7 +13,9 @@ export const obtenerUCsHabilitadas = (
     // Si la UC ya fue aprobada, no la agregamos a las disponibles
     if (
       !todas &&
-      informacionEstudiante['UCs Aprobadas'].hasOwnProperty(nombreUC)
+      informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
+        nombreUC
+      )
     ) {
       continue;
     }

@@ -14,15 +14,6 @@ services:
       - pdf-processor
     restart: unless-stopped
 
-  pdf-processor:
-    build: ./pdf-processor
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./pdf-processor:/app
-    working_dir: /app
-    restart: unless-stopped
-
   frontend:
     build: ./frontend
     ports:
@@ -36,4 +27,13 @@ services:
       - ./frontend/.env
     depends_on:
       - core
+    restart: unless-stopped
+  
+  pdf-processor:
+    build: ./pdf-processor
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./pdf-processor:/app
+    working_dir: /app
     restart: unless-stopped

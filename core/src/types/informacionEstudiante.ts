@@ -1,8 +1,8 @@
-import { GrupoHijo, GrupoPadre } from "."
+import { GrupoHijo, GrupoPadre } from '.';
 
 export type InformacionEstudiante = {
-  'UCs Aprobadas': { [key: string]: UCAprobada };
-  'Creditos Totales': number;
+  unidadesCurricularesAprobadas: { [key: string]: UCAprobada };
+  creditosTotales: number;
   MATEMATICA: number;
   'CIENCIAS EXPERIMENTALES': number;
   PROGRAMACION: number;
@@ -30,7 +30,7 @@ export type UCAprobada = {
 
 export const TIPO_APROBACION = {
   EXAMEN: 'Examen',
-  CURSO: 'Curso'
+  CURSO: 'Curso',
 } as const;
 export type TipoAprobacion =
   (typeof TIPO_APROBACION)[keyof typeof TIPO_APROBACION];
@@ -41,8 +41,8 @@ export const esInformacionEstudiante = (
   return (
     typeof obj === 'object' &&
     obj !== null &&
-    typeof obj['UCs Aprobadas'] === 'object' &&
-    typeof obj['Creditos Totales'] === 'number' &&
+    typeof obj['unidadesCurricularesAprobadas'] === 'object' &&
+    typeof obj['creditosTotales'] === 'number' &&
     typeof obj['MATEMATICA'] === 'number' &&
     typeof obj['CIENCIAS EXPERIMENTALES'] === 'number' &&
     typeof obj['PROGRAMACION'] === 'number' &&

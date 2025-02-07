@@ -1,4 +1,4 @@
-import type { UnidadCurricular } from "@/types";
+import type { UnidadCurricular } from "@/models";
 import { UnidadCurricularItem } from "./UnidadCurricularItem";
 
 interface UnidadCurricularListProps {
@@ -14,17 +14,12 @@ export const UnidadCurricularList = ({
     <div className="w-full flex flex-col gap-4">
       {titulo && <h2 className="text-lg font-medium">{titulo}</h2>}
       <div className="w-full flex flex-col gap-2">
-        {unidadesCurriculares.map(
-          ({ codigo, nombre, cursoAprobado, examenAprobado }) => (
-            <UnidadCurricularItem
-              key={codigo}
-              codigo={codigo}
-              nombre={nombre}
-              cursoAprobado={cursoAprobado}
-              examenAprobado={examenAprobado}
-            />
-          ),
-        )}
+        {unidadesCurriculares.map((unidadCurricular) => (
+          <UnidadCurricularItem
+            key={unidadCurricular.codigo}
+            unidadCurricular={unidadCurricular}
+          />
+        ))}
       </div>
     </div>
   );

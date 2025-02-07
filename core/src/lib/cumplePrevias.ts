@@ -1,7 +1,7 @@
 import {
   type InformacionEstudiante,
   ReglaPreviaturas,
-	TIPO_REGLA
+  TIPO_REGLA,
 } from '../types';
 
 // Funcion recursiva que verifica si un estudiante cumple con las previas de una UC
@@ -24,25 +24,25 @@ export const cumplePrevias = (
         return !cumplePrevias(informacionEstudiante, previas.previas);
       }
       case TIPO_REGLA.OR: {
-        return previas.previas.some(prev =>
+        return previas.previas.some((prev) =>
           cumplePrevias(informacionEstudiante, prev)
         );
       }
       case TIPO_REGLA.AND: {
-        return previas.previas.every(prev =>
+        return previas.previas.every((prev) =>
           cumplePrevias(informacionEstudiante, prev)
         );
       }
       case TIPO_REGLA.SOME: {
         return (
-          previas.previas.filter(prev =>
+          previas.previas.filter((prev) =>
             cumplePrevias(informacionEstudiante, prev)
           ).length >= previas.cantidad!
         );
       }
       case TIPO_REGLA.CREDITOS_PLAN: {
         if (previas.cantidad)
-          return informacionEstudiante['Creditos Totales'] >= previas.cantidad;
+          return informacionEstudiante.creditosTotales >= previas.cantidad;
         return true; // Si falta el valor del campo, podemos asumir que es un error del CSV de previaturas proporcionado por SECIU, como esto es muy poco usual, la mejor opcion es retornar true
       }
       case TIPO_REGLA.CREDITOS_GRUPO: {
@@ -52,7 +52,7 @@ export const cumplePrevias = (
       }
       case TIPO_REGLA.UC: {
         if (previas.nombre)
-          return informacionEstudiante['UCs Aprobadas'].hasOwnProperty(
+          return informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
             previas.nombre
           );
         return true;

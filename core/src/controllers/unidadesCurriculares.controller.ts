@@ -1,24 +1,25 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import { ErrorResponse } from '../types';
-import { obtenerUCsComputacion, cargarDetallesAsignaturas, unidadesCurricularesOpcionales } from '../lib';
+import {
+  obtenerUCsComputacion,
+  cargarDetallesAsignaturas,
+  unidadesCurricularesOpcionales,
+} from '../lib';
 import { CodigoHTTP } from '../constants';
 
-export const unidadesCurricularesSemestresController: RequestHandler = async (
-  _req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const trayectoriaRegular = await cargarDetallesAsignaturas();
+export const getUnidadesCurricularesSemestresController: RequestHandler =
+  async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+      const trayectoriaRegular = await cargarDetallesAsignaturas();
 
-    res.status(CodigoHTTP.OK).json(trayectoriaRegular);
-  } catch (error) {
-    next(error);
-  }
-};
+      res.status(CodigoHTTP.OK).json(trayectoriaRegular);
+    } catch (error) {
+      next(error);
+    }
+  };
 
-export const unidadesCurricularesController: RequestHandler = async (
+export const getUnidadesCurricularesController: RequestHandler = async (
   _req: Request,
   res: Response
 ) => {
@@ -34,16 +35,13 @@ export const unidadesCurricularesController: RequestHandler = async (
   }
 };
 
-export const unidadesCurricularesOpcionalesController: RequestHandler = async (
-  _req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const ucsOpcionales = await unidadesCurricularesOpcionales();
+export const getUnidadesCurricularesOpcionalesController: RequestHandler =
+  async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+      const ucsOpcionales = await unidadesCurricularesOpcionales();
 
-    res.status(CodigoHTTP.OK).json(ucsOpcionales);
-  } catch (error) {
-    next(error);
-  }
-};
+      res.status(CodigoHTTP.OK).json(ucsOpcionales);
+    } catch (error) {
+      next(error);
+    }
+  };
