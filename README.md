@@ -17,3 +17,13 @@ Asegurate de estar en la raiz del proyecto.
 ```bash
 docker-compose up -d
 ```
+
+## Generación de datos
+
+Utilizamos archivos JSON para persistir los datos.
+
+### Comandos
+
+- `pnpm generate:previaturas` Genera las previaturas de las carreras.
+- `pnpm generate:ucs-fing` Genera las UCS de la FING.
+- `pnpm generate:ucs-grupos` Genera los grupos de las UCS.

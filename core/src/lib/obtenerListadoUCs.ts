@@ -1,7 +1,7 @@
 import requisitosTitulo from '../../data/requisitos-titulo.json';
-import UCsGrupos from '../../data/ucs-grupos.json';
 import nombreUCsObligatorias from '../../data/ucs-obligatorias.json';
 import ucsFing from '../../data/ucs-fing.json';
+import ucsGrupos from '../../data/ucs-grupos.json';
 import previaturas from '../../data/previaturas.json';
 import {
   GrupoHijo,
@@ -42,12 +42,12 @@ export const obtenerListadoUCs = (
   });
 
   // Por cada grupo
-  for (const grupo in UCsGrupos) {
+  for (const grupo in ucsGrupos) {
     // Si cumple los requisitos pasar al siguiente
     if (informacionEstudiante[grupo] >= requisitosTitulo[grupo]) continue;
 
     // 1. Eliminar de materias grupo las ya aprobadas
-    const nombreUCsGrupoFiltradas = UCsGrupos[grupo].filter(
+    const nombreUCsGrupoFiltradas = ucsGrupos[grupo].filter(
       (unidadCurricular) =>
         !informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
           unidadCurricular
@@ -82,16 +82,16 @@ export const obtenerListadoUCs = (
   // Hasta completar 450 creditos
   while (informacionEstudiante.creditosTotales < 450) {
     // 1. Seleccionar un grupo al azar
-    const grupos = Object.keys(UCsGrupos);
+    const grupos = Object.keys(ucsGrupos);
     const grupoAleatorio = grupos[
       Math.floor(Math.random() * grupos.length)
     ] as GrupoHijo;
 
     // 2. Seleccionar una unidad curricular del grupo al azar
     const indiceAleatorio = Math.floor(
-      Math.random() * UCsGrupos[grupoAleatorio!].length
+      Math.random() * ucsGrupos[grupoAleatorio!].length
     );
-    const nombreUCAleatoria = UCsGrupos[grupoAleatorio!][indiceAleatorio];
+    const nombreUCAleatoria = ucsGrupos[grupoAleatorio!][indiceAleatorio];
     const ucAleatoria = ucsFing.find(
       (uc) => uc.nombreUC === nombreUCAleatoria
     ) as UnidadCurricular;
