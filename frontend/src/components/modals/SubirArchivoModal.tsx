@@ -10,8 +10,8 @@ import {
   UploadIcon,
 } from "@/components";
 import { useDropzone, useProcesarEscolaridad } from "@/hooks";
-import { cn } from "@/lib";
 import { useStore } from "@/store";
+import { cn } from "@/utils";
 
 interface ModalSubirArchivoProps {
   open: boolean;

@@ -8,10 +8,10 @@ import {
   Progress,
   ScreenHeader,
 } from "@/components";
-import { calculatePercentage } from "@/lib";
 import { GRUPO, REQUISITOS_TITULO } from "@/models";
 import { RUTAS } from "@/router";
 import { useStore } from "@/store";
+import { calculatePercentage } from "@/utils";
 
 export const HeaderInicio = () => {
   const informacionEstudiante = useStore(

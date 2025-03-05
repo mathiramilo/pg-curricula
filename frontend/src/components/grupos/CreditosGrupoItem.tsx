@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { capitalizeWords, cn } from "@/lib";
 import { REQUISITOS_TITULO } from "@/models";
 import type { Grupo, UnidadCurricular } from "@/models";
+import { capitalizeWords, cn } from "@/utils";
 
 interface CreditosGrupoItemProps {
   grupo: Grupo;

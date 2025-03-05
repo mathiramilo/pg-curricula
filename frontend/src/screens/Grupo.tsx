@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 import { ScreenHeader, Switch, UnidadCurricularGrid } from "@/components";
 import { ScreenLayout } from "@/layouts";
-import { capitalizeWords } from "@/lib";
+import { capitalizeWords } from "@/utils";
 import { unidadesCurriculares } from "./inicio/mock";
 
 export const GrupoScreen = () => {

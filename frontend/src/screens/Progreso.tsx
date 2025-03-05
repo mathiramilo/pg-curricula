@@ -1,8 +1,8 @@
 import { CreditosGrupoItem, ScreenHeader } from "@/components";
 import { ScreenLayout } from "@/layouts";
-import { cn } from "@/lib";
 import { GRUPO_VALUES, REQUISITOS_TITULO } from "@/models";
 import { useStore } from "@/store";
+import { cn } from "@/utils";
 
 export const ProgresoScreen = () => {
   const informacionEstudiante = useStore(

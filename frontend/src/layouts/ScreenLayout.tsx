@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib";
+import { cn } from "@/utils";
 
 type ScreenLayoutProps = ComponentPropsWithoutRef<"main">;
 

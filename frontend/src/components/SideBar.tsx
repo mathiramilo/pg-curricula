@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { NavLink } from "react-router-dom";
 
-import { cn } from "@/lib";
 import { RUTAS } from "@/router";
+import { cn } from "@/utils";
 import {
   Button,
   HomeIcon,
