@@ -1,78 +1,38 @@
 [
-	{
-		"semestre": 1,
-		"asignaturas": [
-			"Créditos obtenidos en prueba inicial",
-			"CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
-			"MATEMATICA DISCRETA 1",
-			"PROGRAMACION 1"
-		]
-	},
-	{
-		"semestre": 2,
-		"asignaturas": [
-			"CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
-			"FISICA 1",
-			"GEOMETRIA Y ALGEBRA LINEAL 1",
-			"PROGRAMACION 2"
-		]
-	},
-	{
-		"semestre": 3,
-		"asignaturas": [
-			"PROBABILIDAD Y ESTADISTICA",
-			"GEOMETRIA Y ALGEBRA LINEAL 2",
-			"LOGICA",
-			"MATEMATICA DISCRETA 2"
-		]
-	},
-	{
-		"semestre": 4,
-		"asignaturas": [
-			"ARQUITECTURA DE COMPUTADORAS",
-			"PROGRAMACION 3",
-			"ECONOMIA",
-			"METODOS NUMERICOS"
-		]
-	},
-	{
-		"semestre": 5,
-		"asignaturas": [
-			"INT. A LA INVESTIGACION DE OPERACIONES",
-			"SISTEMAS OPERATIVOS",
-			"PROGRAMACION 4",
-			"TEORIA DE LENGUAJES"
-		]
-	},
-	{
-		"semestre": 6,
-		"asignaturas": [
-			"FUNDAMENTOS DE BASES DE DATOS",
-			"TALLER DE PROGRAMACION",
-			"REDES DE COMPUTADORAS"
-		]
-	},
-	{
-		"semestre": 7,
-		"asignaturas": [
-			"INT. A LA INGENIERIA DE SOFTWARE",
-			"PROGRAMACION FUNCIONAL",
-			"PROGRAMACION LOGICA",
-			"ADMINISTRACION GENERAL PARA INGENIEROS"
-		]
-	},
-	{
-		"semestre": 8,
-		"asignaturas": [
-			"PROYECTO DE INGENIERIA DE SOFTWARE",
-			"PRACTICA DE ADMINISTRACION PARA INGENIEROS",
-			"POLITICAS CIENTIFICAS EN INF.Y COMP."
-		]
-	},
-	{
-		"semestre": 9,
-		"asignaturas": [
-			"PROYECTO DE GRADO"
-		]
-	}
+  {
+    "semestre": 1,
+    "unidadesCurriculares": ["DMA05", "1023", "1373"]
+  },
+  {
+    "semestre": 2,
+    "unidadesCurriculares": ["DMA01", "REF04", "DMA03", "1321"]
+  },
+  {
+    "semestre": 3,
+    "unidadesCurriculares": ["DMA06", "1031", "1027", "1026"]
+  },
+  {
+    "semestre": 4,
+    "unidadesCurriculares": ["1466", "1323", "CH201", "CIM20"]
+  },
+  {
+    "semestre": 5,
+    "unidadesCurriculares": ["CP31", "1324", "1325", "1944"]
+  },
+  {
+    "semestre": 6,
+    "unidadesCurriculares": ["1911", "1327", "1446", "1945"]
+  },
+  {
+    "semestre": 7,
+    "unidadesCurriculares": ["1610", "1716", "1354", "1340"]
+  },
+  {
+    "semestre": 8,
+    "unidadesCurriculares": ["1721", "1224", "1225"]
+  },
+  {
+    "semestre": 9,
+    "unidadesCurriculares": ["1730"]
+  }
 ]

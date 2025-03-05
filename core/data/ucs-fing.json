@@ -1692,30 +1692,6 @@
     "semestres": null
   },
   {
-    "nombreUC": "FISICA 1",
-    "codigoEnServicioUC": "1171",
-    "codigoUC": 18485,
-    "tipoUC": "G",
-    "creditosUC": 10,
-    "nombreGrupoPadre": "MATERIAS BASICAS",
-    "codigoGrupoPadre": 2436,
-    "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
-    "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
-  },
-  {
-    "nombreUC": "FISICA 1",
-    "codigoEnServicioUC": "1151",
-    "codigoUC": 18490,
-    "tipoUC": "G",
-    "creditosUC": 10,
-    "nombreGrupoPadre": "MATERIAS BASICAS",
-    "codigoGrupoPadre": 2436,
-    "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
-    "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
-  },
-  {
     "nombreUC": "FÍSICA 1",
     "codigoEnServicioUC": "REF04",
     "codigoUC": 25003,
@@ -3711,30 +3687,6 @@
     "nombreUC": "PROGRAMACION 1",
     "codigoEnServicioUC": "1373",
     "codigoUC": 67810,
-    "tipoUC": "G",
-    "creditosUC": 10,
-    "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
-    "codigoGrupoPadre": 3215,
-    "nombreGrupoHijo": "PROGRAMACION",
-    "codigoGrupoHijo": 4580,
-    "semestres": ["1", "2"]
-  },
-  {
-    "nombreUC": "PROGRAMACION 1",
-    "codigoEnServicioUC": "1372",
-    "codigoUC": 18288,
-    "tipoUC": "G",
-    "creditosUC": 10,
-    "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
-    "codigoGrupoPadre": 3215,
-    "nombreGrupoHijo": "PROGRAMACION",
-    "codigoGrupoHijo": 4580,
-    "semestres": ["1", "2"]
-  },
-  {
-    "nombreUC": "PROGRAMACION 1",
-    "codigoEnServicioUC": "1320",
-    "codigoUC": 18239,
     "tipoUC": "G",
     "creditosUC": 10,
     "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",

@@ -7,8 +7,8 @@ export const leerCSV = async (ubicacion: string): Promise<Object[]> => {
 
     fs.createReadStream(ubicacion)
       .pipe(csv())
-      .on('data', row => resultados.push(row))
+      .on('data', (row) => resultados.push(row))
       .on('end', () => resolve(resultados))
-      .on('error', err => reject(err));
+      .on('error', (err) => reject(err));
   });
 };

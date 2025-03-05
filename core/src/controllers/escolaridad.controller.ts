@@ -2,7 +2,7 @@ import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import { CodigoHTTP } from '../constants';
 import { ErrorResponse, InformacionEstudiante } from '../types';
-import { procesarEscolaridad } from '../lib'
+import { procesarEscolaridad } from '../services';
 
 export const procesarEscolaridadController: RequestHandler = async (
   req: Request,
@@ -11,7 +11,7 @@ export const procesarEscolaridadController: RequestHandler = async (
 ) => {
   if (!req.file) {
     return res.status(CodigoHTTP.BAD_REQUEST).json({
-      error: 'No se subió ningún archivo'
+      error: 'No se subió ningún archivo',
     });
   }
 

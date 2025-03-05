@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 
 import previaturas from '../../data/previaturas.json';
-import { cumplePrevias } from '../lib';
+import { cumplePrevias } from '../services';
 import { InformacionEstudiante, ReglaPreviaturas } from '../types';
 import { ie340, ie366, ie410 } from './mocks';
 

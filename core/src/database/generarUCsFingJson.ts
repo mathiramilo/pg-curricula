@@ -10,7 +10,7 @@ import {
   UnidadCurricularCSV,
   UnidadCurricularRelevamientoDeDatosCSV,
 } from '../types';
-import { leerCSV, eliminarTildes } from '../lib';
+import { leerCSV, eliminarTildes } from '../utils';
 
 const UBICACION_CSV_UCS_FING = '../../data/csv/ucs-fing.csv';
 const UBICACION_CSV_UCS_ACTUALES_PRIMER_SEMESTRE =

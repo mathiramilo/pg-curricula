@@ -2,7 +2,7 @@ import { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import previaturas from '../../data/previaturas.json';
 import { CodigoHTTP } from '../constants';
-import { cumplePrevias } from '../lib';
+import { cumplePrevias } from '../services';
 import {
   ErrorResponse,
   esInformacionEstudiante,

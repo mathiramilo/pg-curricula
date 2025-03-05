@@ -1,15 +1,13 @@
 import { Router } from 'express';
 
 import {
-  getUnidadesCurricularesController,
-  getUnidadesCurricularesOpcionalesController,
-  getUnidadesCurricularesSemestresController,
+  obtenerUnidadesCurricularesController,
+  obtenerTrayectoriaSugeridaController,
 } from '../controllers';
 
 const router = Router();
 
-router.get('/', getUnidadesCurricularesController);
-router.get('/semestres', getUnidadesCurricularesSemestresController);
-router.get('/opcionales', getUnidadesCurricularesOpcionalesController);
+router.get('/', obtenerUnidadesCurricularesController);
+router.get('/trayectoria-sugerida', obtenerTrayectoriaSugeridaController);
 
 export default router;

@@ -6,9 +6,9 @@ import {
   type ReglaPreviaturas,
   TIPO_INSTANCIA,
   TIPO_PREVIA,
-	TIPO_REGLA
+  TIPO_REGLA,
 } from '../types';
-import { leerCSV } from '../lib/leerCSV';
+import { leerCSV } from '../utils/csv';
 
 const UBICACION_CSV_PREVIATURAS = '../../data/csv/previaturas.csv';
 const UBICACION_DESTINO = '../../data/previaturas.json';
@@ -29,12 +29,10 @@ const generarPreviaturasJson = async (): Promise<void> => {
   }
 };
 
-const parsearPreviasCSV = (
-  rows: PreviaCSV[]
-): { [key: string]: Previa[] } => {
+const parsearPreviasCSV = (rows: PreviaCSV[]): { [key: string]: Previa[] } => {
   const UCs: { [key: string]: Previa[] } = {};
 
-  rows.forEach(fila => {
+  rows.forEach((fila) => {
     // Ignorar las filas que corresponden a Examenes
     if (fila.tipo_descriptor !== TIPO_INSTANCIA.CURSO) return;
 
@@ -61,9 +59,14 @@ const parsearPreviasCSV = (
       codigoGrupo: fila.cod_grupo ? parseInt(fila.cod_grupo) : null,
       nombreGrupo: fila.nombre_grupo || null,
       codigoElemento: fila.cod_elemento ? parseInt(fila.cod_elemento) : null,
-      tipoInstancia: fila.tipo_instancia === "C" ? TIPO_INSTANCIA.CURSO : fila.tipo_instancia === "E" ? TIPO_INSTANCIA.EXAMEN : null,
+      tipoInstancia:
+        fila.tipo_instancia === 'C'
+          ? TIPO_INSTANCIA.CURSO
+          : fila.tipo_instancia === 'E'
+            ? TIPO_INSTANCIA.EXAMEN
+            : null,
       nombrePrevia: fila['nombre_mat-2'] || null,
-      codigoEnServicioPrevia: fila['codenservicio_mat-2'] || null
+      codigoEnServicioPrevia: fila['codenservicio_mat-2'] || null,
     });
   });
 
@@ -102,11 +105,11 @@ const generarSistemaPreviaturas = (previasAgrupadas: {
 };
 
 const generarReglaRaiz = (previas: Previa[]): ReglaPreviaturas => {
-  const filaRaiz = previas.find(p => !p.codigoCondicionPadre);
+  const filaRaiz = previas.find((p) => !p.codigoCondicionPadre);
   if (!filaRaiz) throw new Error('No se encontro el nodo raiz');
 
   // Agrupar filas de tipo B por cod_condicion y dejar solo una fila en previas
-  const filasDeTipoB = previas.filter(p => p.tipo === TIPO_PREVIA.B);
+  const filasDeTipoB = previas.filter((p) => p.tipo === TIPO_PREVIA.B);
   const filasAgrupadasPorCodCondicion = agruparPorCampo(
     filasDeTipoB,
     'codigoCondicion'
@@ -115,8 +118,8 @@ const generarReglaRaiz = (previas: Previa[]): ReglaPreviaturas => {
     filasAgrupadasPorCodCondicion
   );
 
-  const previasFormateadas = previas.filter(p => p.tipo !== TIPO_PREVIA.B);
-  filasAgrupadasPorCodCondicionKeys.forEach(codCondicion => {
+  const previasFormateadas = previas.filter((p) => p.tipo !== TIPO_PREVIA.B);
+  filasAgrupadasPorCodCondicionKeys.forEach((codCondicion) => {
     const previas = filasAgrupadasPorCodCondicion[codCondicion];
     if (previas && previas.length > 0) {
       const previa = previas[0];
@@ -145,55 +148,55 @@ const generarRegla = (
     codigoGrupo,
     nombreGrupo,
     tipoInstancia,
-    tipo
+    tipo,
   } = row;
 
   switch (tipo) {
     case TIPO_PREVIA.AND: {
       const ANDfilteredPrevs = previasFormateadas.filter(
-        p => p.codigoCondicionPadre === codigoCondicion
+        (p) => p.codigoCondicionPadre === codigoCondicion
       );
       return {
         regla: TIPO_REGLA.AND,
-        previas: ANDfilteredPrevs.map(prev =>
+        previas: ANDfilteredPrevs.map((prev) =>
           generarRegla(prev, previasDeTipoB, previasFormateadas)
-        )
+        ),
       };
     }
     case TIPO_PREVIA.OR: {
       const ORfilteredPrevs = previasFormateadas.filter(
-        p => p.codigoCondicionPadre === codigoCondicion
+        (p) => p.codigoCondicionPadre === codigoCondicion
       );
       return {
         regla: TIPO_REGLA.OR,
-        previas: ORfilteredPrevs.map(prev =>
+        previas: ORfilteredPrevs.map((prev) =>
           generarRegla(prev, previasDeTipoB, previasFormateadas)
-        )
+        ),
       };
     }
     case TIPO_PREVIA.NOT: {
       const NOTPrev = previasFormateadas.find(
-        p => p.codigoCondicionPadre === codigoCondicion
+        (p) => p.codigoCondicionPadre === codigoCondicion
       );
       if (!NOTPrev) return;
       return {
         regla: TIPO_REGLA.NOT,
-        previas: generarRegla(NOTPrev, previasDeTipoB, previasFormateadas)
+        previas: generarRegla(NOTPrev, previasDeTipoB, previasFormateadas),
       };
     }
     case TIPO_PREVIA.B: {
       const BPrevs = previasDeTipoB[codigoCondicion]
-        ? previasDeTipoB[codigoCondicion].map(p => ({
+        ? previasDeTipoB[codigoCondicion].map((p) => ({
             ...p,
-            tipo: TIPO_PREVIA.M
+            tipo: TIPO_PREVIA.M,
           }))
         : [];
       return {
         regla: TIPO_REGLA.SOME,
         cantidad,
-        previas: BPrevs.map(prev =>
+        previas: BPrevs.map((prev) =>
           generarRegla(prev, previasDeTipoB, previasFormateadas)
-        )
+        ),
       };
     }
     case TIPO_PREVIA.M || TIPO_PREVIA.N: {
@@ -201,7 +204,7 @@ const generarRegla = (
         regla: TIPO_REGLA.UC,
         codigo: codigoEnServicioPrevia,
         nombre: nombrePrevia,
-        tipoInstancia
+        tipoInstancia,
       };
     }
     case TIPO_PREVIA.D: {
@@ -209,13 +212,13 @@ const generarRegla = (
         regla: TIPO_REGLA.CREDITOS_GRUPO,
         codigo: codigoGrupo,
         nombre: nombreGrupo,
-        cantidad: cantidadCreditos
+        cantidad: cantidadCreditos,
       };
     }
     case TIPO_PREVIA.R: {
       return {
         regla: TIPO_REGLA.CREDITOS_PLAN,
-        cantidad: cantidadCreditos
+        cantidad: cantidadCreditos,
       };
     }
     default: {

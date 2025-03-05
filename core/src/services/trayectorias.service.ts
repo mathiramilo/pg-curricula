@@ -10,7 +10,7 @@ import {
   TIPO_APROBACION,
   UnidadCurricular,
 } from '../types';
-import { cumplePrevias } from './cumplePrevias';
+import { cumplePrevias } from './previas.service';
 
 export const obtenerListadoUCs = (
   informacionEstudiante: InformacionEstudiante
