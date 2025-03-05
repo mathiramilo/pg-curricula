@@ -27,7 +27,6 @@ def line_is_unidad_curricular(line: str, with_intermediate_results: bool) -> boo
     Returns:
         bool: Retorna True si la linea corresponde a una unidad curricular, False en caso contrario.
     """
-
     regex = (
         r"^(Examen|Curso|\*\*\*\*\*\*\*\*\*\*|Resultado Final)"
         if with_intermediate_results
@@ -45,7 +44,7 @@ def skip_line(line: str) -> bool:
     Returns:
         bool: Retorna True si la linea debe ser omitida, False en caso contrario.
     """
-  
+
     for s in escolaridades.LINES_TO_SKIP:
         if line.startswith(s):
             return True
@@ -61,38 +60,44 @@ def get_nombre(text: str) -> str:
 
 		Returns:
 				str: El nombre de la unidad curricular encontrado en el texto.
-		"""
-    
+	"""
     regex = r"\d{2}/\d{2}/\d{4}\s+(\d+|S/N)(\s+\d+)?"
     nombre = re.sub(regex, "", text)
     return nombre.strip()
 
 
-def get_calificacion(text: str) -> str:
-    """Expresion regular para encontrar la calificación en el texto.
-
-		Args:
-				text (str): El texto en el cual buscar la calificación.
-
-		Returns:
-				str: La calificación encontrada en el texto.
-    """
-    
-    regex = r"\d+"
-    calificacion = re.search(regex, text)
-    return calificacion.group() if calificacion else None
-
-
-def get_calificacion_y_creditos(text: str) -> tuple:
-    """Utilizada en UCs opcionales para obtener la calificación y los créditos.
+def get_concepto_y_nombre(text: str) -> tuple:
+    """Expresion regular para obtener el concepto y el nombre.
 
     Args:
-        text (str): Texto a separar. Ejemplo: "1010".
+        text (str): Texto a separar. Ejemplo: "ExcelenteCALCULO DIF. E INTEGRAL EN UNA VARIABLE".
 
     Returns:
-        (int, int): Retorna una tupla con la calificación y los créditos.
+        (str, str): Retorna una tupla con el concepto y el nombre.
     """
+    match = re.match(r"(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)(.+)", text, re.IGNORECASE)
+    if match:
+        concepto = match.group(1).strip()
+        nombre = match.group(2).strip()
+        nombre = re.sub(r"^\d+", "", nombre).strip()
+        return concepto, nombre
+    return "", text
     
-    if text[0] == "1":
-        return text[:2], text[2:]
-    return text[0], text[1:]
+
+def get_concepto_y_creditos(text: str) -> tuple:
+    """Utilizada en UCs opcionales para obtener el concepto y los créditos.
+
+    Args:
+        text (str): Texto a separar. Ejemplo: "Excelente10".
+
+    Returns:
+        (int, int): Retorna una tupla con el concepto y los créditos.
+    """
+
+    match = re.match(r"(\D+)(\d+)", text)
+    if match:
+        concepto, creditos = match.groups()
+        return concepto, int(creditos)
+    else:
+        raise ValueError("Formato de entrada incorrecto")
+

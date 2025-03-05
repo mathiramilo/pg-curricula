@@ -1,3 +1,4 @@
+import re
 from fastapi import File
 
 from app.constants import escolaridades as escolaridades_constants
@@ -67,16 +68,12 @@ def get_student_data_with_intermediate_results(
                 else:
                     break
 
-            # print(lines)  # Debug
-
             # Filtrar los strings que comiencen con 'Resultado Final' y almacenar sus índices
             final_results = [
                 (i, line)
                 for i, line in enumerate(lines)
                 if line.startswith("Resultado Final")
             ]
-
-            # print(final_results)  # Debug
 
             for s in final_results:
                 result = s[1]
@@ -94,16 +91,16 @@ def get_student_data_with_intermediate_results(
                         nombre = " ".join(result.split(" ")[2:])
 
                         if area != "Materias Opcionales":
-                            nombre = nombre[:-2]
+                            nombre = nombre[2:-2]
 
-                        # String -> "17/12/2022 9ARQUITECTURA DE COMPUTADORAS " | "17/12/2022 1 9ARQUITECTURA DE COMPUTADORAS "
+                        # Ej: String -> "17/12/2022 ExcelenteARQUITECTURA DE COMPUTADORAS " | "17/12/2022 1 ExcelenteARQUITECTURA DE COMPUTADORAS "
                         nombre = escolaridades.get_nombre(nombre)
 
                         if nombre.startswith("*"):
                             continue
 
                         student_data["unidadesCurricularesAprobadas"][nombre] = {
-                            "calificacion": None,
+                            "concepto": None,
                             "fecha": fecha,
                             "creditos": None,
                             "nombre": nombre,
@@ -118,15 +115,14 @@ def get_student_data_with_intermediate_results(
                     if area != "Materias Opcionales":
                         unidad_curricular_data = result.split(" ")[2:]
                         fecha = unidad_curricular_data[0]
-                        calificacion = escolaridades.get_calificacion(unidad_curricular_data[1])
                         creditos = unidad_curricular_data[-1]
-                        nombre = escolaridades.get_nombre(" ".join(unidad_curricular_data[:-1]))
+                        concepto, nombre = escolaridades.get_concepto_y_nombre(" ".join(unidad_curricular_data[1:-1]))
 
                         if nombre.startswith("*"):
                             continue
 
                         student_data["unidadesCurricularesAprobadas"][nombre] = {
-                            "calificacion": calificacion,
+                            "concepto": concepto,
                             "fecha": fecha,
                             "creditos": int(creditos),
                             "nombre": nombre,
@@ -138,19 +134,23 @@ def get_student_data_with_intermediate_results(
                         student_data[group] += int(creditos)
                     else:
                         unidad_curricular_data = result.split(" ")[2:]
-                        # ['26/07/2023', '1010', 'TRATAMIENTO', 'DE', 'IMAGENES', 'POR', 'COMPUTADORA']
-                        # Creditos y Nota estan pegados, creamos una funcion para separarlos
+                        # Ej: ['26/07/2023', 'Excelente10', 'TRATAMIENTO', 'DE', 'IMAGENES', 'POR', 'COMPUTADORA']
+                        # Concepto y Creditos estan pegados, creamos una funcion para separarlos
                         fecha = unidad_curricular_data[0]
-                        calificacion, creditos = escolaridades.get_calificacion_y_creditos(
-                            unidad_curricular_data[1]
-                        )
-                        nombre = " ".join(unidad_curricular_data[2:])
+
+                        conceptoTieneEspacio = not re.search(r'\d', unidad_curricular_data[1])
+
+                        text = unidad_curricular_data[1] if not conceptoTieneEspacio else f"{unidad_curricular_data[1]} {unidad_curricular_data[2]}"
+
+                        concepto, creditos = escolaridades.get_concepto_y_creditos(text)
+
+                        nombre = " ".join(unidad_curricular_data[2:] if not conceptoTieneEspacio else unidad_curricular_data[3:])
 
                         if nombre.startswith("*"):
                             continue
 
                         student_data["unidadesCurricularesAprobadas"][nombre] = {
-                            "calificacion": calificacion,
+                            "concepto": concepto,
                             "fecha": fecha,
                             "creditos": int(creditos),
                             "nombre": nombre,
@@ -161,7 +161,6 @@ def get_student_data_with_intermediate_results(
                         student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
 
-    # Retornar diccionario de unidades curriculares aprobadas en formato JSON
     return student_data
 
 
@@ -206,8 +205,6 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                 else:
                     break
 
-            # print(lines)  # Debug
-
             for s in lines:
                 # Si la unidad curricular no fue aprobada se muestra "***" en la escolaridad
                 if s[0] == "*":
@@ -217,7 +214,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                 # Se obtiene informacion de la unidad curricular y se almacena en el diccionario aprobed_subjects
                 if area != "Materias Opcionales":
                     unidad_curricular_data = s.split(" ")
-                    calificacion = unidad_curricular_data[0]
+                    concepto = unidad_curricular_data[0]
                     fecha = unidad_curricular_data[1][1:]
                     creditos = unidad_curricular_data[2]
                     nombre = " ".join(unidad_curricular_data[3:])
@@ -226,7 +223,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                         continue
 
                     student_data["unidadesCurricularesAprobadas"][nombre] = {
-                        "calificacion": calificacion,
+                        "concepto": concepto,
                         "fecha": fecha,
                         "creditos": int(creditos),
                         "nombre": nombre,
@@ -238,7 +235,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     student_data[group] += int(creditos)
                 else:
                     unidad_curricular_data = s.split(" ")
-                    calificacion = unidad_curricular_data[-1]
+                    concepto = unidad_curricular_data[-1]
                     fecha = unidad_curricular_data[0]
                     creditos = unidad_curricular_data[-2]
                     nombre = " ".join(unidad_curricular_data[1 : len(unidad_curricular_data) - 3])
@@ -247,7 +244,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                         continue
 
                     student_data["unidadesCurricularesAprobadas"][nombre] = {
-                        "calificacion": calificacion,
+                        "concepto": concepto,
                         "fecha": fecha,
                         "creditos": int(creditos),
                         "nombre": nombre,
