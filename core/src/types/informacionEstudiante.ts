@@ -1,7 +1,9 @@
-import { GrupoHijo, GrupoPadre } from '.';
+import { GrupoHijo, GrupoPadre, UnidadCurricular } from '.';
 
 export type InformacionEstudiante = {
-  unidadesCurricularesAprobadas: { [key: string]: UCAprobada };
+  unidadesCurricularesAprobadas: {
+    [key: UnidadCurricular['codigoEnServicioUC']]: UCAprobada;
+  };
   creditosTotales: number;
   MATEMATICA: number;
   'CIENCIAS EXPERIMENTALES': number;

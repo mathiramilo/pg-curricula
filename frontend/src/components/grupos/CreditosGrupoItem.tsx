@@ -19,7 +19,7 @@ export const CreditosGrupoItem = ({
   return (
     <div key={grupo} className="flex items-center gap-1">
       <Link
-        to={`/grupo/${grupo}`}
+        to={`/grupo/${grupo.toLowerCase()}`}
         className="hover:underline text-sm text-fuente-principal"
       >
         {capitalizeWords(grupo)}:

@@ -29,21 +29,23 @@ const generarPreviaturasJson = async (): Promise<void> => {
   }
 };
 
-const parsearPreviasCSV = (rows: PreviaCSV[]): { [key: string]: Previa[] } => {
-  const UCs: { [key: string]: Previa[] } = {};
+const parsearPreviasCSV = (
+  rows: PreviaCSV[]
+): { [key: Previa['codigoEnServicioUC']]: Previa[] } => {
+  const UCs: { [key: Previa['codigoEnServicioUC']]: Previa[] } = {};
 
   rows.forEach((fila) => {
     // Ignorar las filas que corresponden a Examenes
     if (fila.tipo_descriptor !== TIPO_INSTANCIA.CURSO) return;
 
     // Guardar la materia en el objeto
-    const nombreUC = fila.nombre_mat;
-    if (!UCs[nombreUC]) {
-      UCs[nombreUC] = [];
+    const codigoEnServicioUC = fila.codenservicio_mat;
+    if (!UCs[codigoEnServicioUC]) {
+      UCs[codigoEnServicioUC] = [];
     }
 
     // Convertir las columnas relevantes a los tipos apropiados
-    UCs[nombreUC].push({
+    UCs[codigoEnServicioUC].push({
       codigoUC: parseInt(fila.cod_materia),
       codigoEnServicioUC: fila.codenservicio_mat,
       nombreUC: fila.nombre_mat,
@@ -88,17 +90,17 @@ const agruparPorCampo = (
       previasAgrupadas[clave].push(uc);
       return previasAgrupadas;
     },
-    {} as { [clave: string]: Previa[] }
+    {} as { [key: string]: Previa[] }
   );
 };
 
 const generarSistemaPreviaturas = (previasAgrupadas: {
-  [nombreUC: string]: Previa[];
-}): { [nombreUC: string]: ReglaPreviaturas } => {
+  [codigoEnServicioUC: string]: Previa[];
+}): { [codigoEnServicioUC: string]: ReglaPreviaturas } => {
   const sistemaPreviaturas = {};
   Object.entries(previasAgrupadas).forEach(
-    ([nombreUC, previasUC]) =>
-      (sistemaPreviaturas[nombreUC] = generarReglaRaiz(previasUC))
+    ([codigoEnServicioUC, previasUC]) =>
+      (sistemaPreviaturas[codigoEnServicioUC] = generarReglaRaiz(previasUC))
   );
 
   return sistemaPreviaturas;

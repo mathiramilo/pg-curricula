@@ -24,6 +24,9 @@ export interface UnidadCurricularAprobada extends UnidadCurricular {
 }
 
 export type InformacionEstudiante = {
-  unidadesCurricularesAprobadas: Record<string, UnidadCurricularAprobada>;
+  unidadesCurricularesAprobadas: Record<
+    UnidadCurricular["codigo"],
+    UnidadCurricularAprobada
+  >;
   creditosTotales: number;
 } & Record<Grupo, number>;

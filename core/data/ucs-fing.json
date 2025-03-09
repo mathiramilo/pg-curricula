@@ -249,7 +249,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": null
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
@@ -261,7 +264,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": null
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "CÁLCULO DIFERENCIAL E INTEGRAL EN UNA VARIABLE",
@@ -273,7 +279,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "CALCULO DIFERENCIAL E INTEGRAL EN VARIAS VARIABLES",
@@ -285,7 +291,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "CÁLCULO I",
@@ -333,7 +339,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "CÁLCULO VECTORIAL",
@@ -345,7 +354,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "CODIGOS PARA CORRECCION DE ERRORES",
@@ -357,7 +366,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "COMBINATORIA ANALITICA",
@@ -873,7 +884,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "GEOMETRIA Y ALGEBRA LINEAL",
@@ -909,7 +922,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "GEOMETRIA Y ALGEBRA LINEAL 1",
@@ -921,7 +934,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "GEOMETRÍA Y ÁLGEBRA LINEAL 1",
@@ -933,7 +949,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "GEOMETRIA Y ALGEBRA LINEAL 1 (ANUAL)",
@@ -969,7 +985,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "GEOMETRIA Y ALGEBRA LINEAL 2",
@@ -981,7 +999,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "GEOMETRIA Y ALGEBRA LINEAL 2",
@@ -993,7 +1014,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "GEOMETRIA Y ALGEBRA LINEAL (2DO.SEM.)",
@@ -1053,7 +1074,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INT. A LA TEORIA DE LA INFORMACION",
@@ -1065,7 +1088,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "INT. A LA TOPOLOGIA",
@@ -1089,7 +1114,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "LOGICA",
@@ -1101,7 +1128,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "LOGICA MODALIDAD AL REVES",
@@ -1149,7 +1176,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "MATEMATICA DISCRETA 2",
@@ -1161,7 +1191,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "MATEMÁTICA DISCRETA 2- CIM-CIOCT",
@@ -1221,7 +1254,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "MATEMÁTICA INICIAL",
@@ -1233,7 +1269,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "MATEMATICA INICIAL-OPTATIVA",
@@ -1257,7 +1293,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "PROBABILIDAD Y ESTADISTICA",
@@ -1269,7 +1305,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "PROBABILIDAD Y ESTADÍSTICA",
@@ -1281,7 +1320,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "TEMAS AVANZADOS EN CÓDIGOS PARA CORRECCIÓN DE ERRORES",
@@ -1413,7 +1452,9 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "MATEMATICA",
     "codigoGrupoHijo": 4083,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TUTORIA EN MATEMATICA",
@@ -1692,6 +1733,33 @@
     "semestres": null
   },
   {
+    "nombreUC": "FISICA 1",
+    "codigoEnServicioUC": "1171",
+    "codigoUC": 18485,
+    "tipoUC": "G",
+    "creditosUC": 10,
+    "nombreGrupoPadre": "MATERIAS BASICAS",
+    "codigoGrupoPadre": 2436,
+    "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
+    "codigoGrupoHijo": 4442,
+    "semestres": null
+  },
+  {
+    "nombreUC": "FISICA 1",
+    "codigoEnServicioUC": "1151",
+    "codigoUC": 18490,
+    "tipoUC": "G",
+    "creditosUC": 10,
+    "nombreGrupoPadre": "MATERIAS BASICAS",
+    "codigoGrupoPadre": 2436,
+    "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
+    "codigoGrupoHijo": 4442,
+    "semestres": [
+      "1",
+      "2"
+    ]
+  },
+  {
     "nombreUC": "FÍSICA 1",
     "codigoEnServicioUC": "REF04",
     "codigoUC": 25003,
@@ -1701,7 +1769,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "FISICA 1A CIOCT 2023",
@@ -1737,7 +1805,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "FISICA 2",
@@ -1749,7 +1820,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "FÍSICA 2",
@@ -1761,7 +1832,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "FISICA 2 BIOCIENCIAS 2017",
@@ -1785,7 +1856,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "FISICA 3",
@@ -1797,7 +1868,10 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "FÍSICA 3",
@@ -1809,7 +1883,7 @@
     "codigoGrupoPadre": 2436,
     "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
     "codigoGrupoHijo": 4442,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "FISICA GENERAL 1",
@@ -2085,7 +2159,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "CAMBIO ORGANIZACIONAL",
@@ -2121,7 +2197,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "CONTROL DE CALIDAD",
@@ -2133,7 +2211,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -2205,7 +2283,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "GESTION DE CALIDAD",
@@ -2217,7 +2295,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "GESTION DE CALIDAD",
@@ -2229,7 +2309,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "GESTIÓN DE LA INNOVACIÓN Y LA TECNOLOGÍA",
@@ -2289,7 +2369,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INTRODUCCIÓN AL EMPRENDEDURISMO",
@@ -2385,7 +2467,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
     "codigoGrupoHijo": 4066,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "PROPIEDAD INTELECTUAL",
@@ -2433,7 +2517,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "ARQUITECTURA DE COMPUTADORAS",
@@ -2445,7 +2531,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "ARQUITECTURA DE COMPUTADORAS",
@@ -2457,7 +2545,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "ARQUITECTURA DE COMPUTADORES 1",
@@ -2589,7 +2677,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "COMPUTACION DE ALTA PERFORMANCE",
@@ -2601,7 +2689,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "COMPUTACION DE ALTA PERFORMANCE",
@@ -2613,7 +2701,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "COMPUT.DE PR.GRAL.EN UNID.DE PROC.GRAF.",
@@ -2625,7 +2715,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "COMUNICACION DE DATOS",
@@ -2769,7 +2861,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "DISEÑO LOGICO",
@@ -2781,7 +2873,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "DISEÑO TOPOLOGICO DE REDES",
@@ -2817,7 +2909,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "FUNDAMENTOS DE SEGURIDAD INFORMATICA",
@@ -2829,7 +2923,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "FUND.PARA LA INVEST.EN REDES DE COMPUTAD",
@@ -2961,7 +3055,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "REDES OPTICAS",
@@ -3009,7 +3105,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "SISTEMAS EMBEBIDOS PARA TIEMPO REAL",
@@ -3021,7 +3117,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "SISTEMAS OPERATIVOS",
@@ -3033,7 +3131,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "SISTEMAS OPERATIVOS",
@@ -3045,7 +3143,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "SISTEMAS OPERATIVOS",
@@ -3057,7 +3155,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "SISTEMAS OPERATIVOS",
@@ -3069,7 +3167,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "SISTEMAS OPERATIVOS",
@@ -3081,7 +3179,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "SISTEMAS OPERATIVOS (P. 74)",
@@ -3177,7 +3277,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "TALLER DE SEGURIDAD INFORMÁTICA",
@@ -3189,7 +3289,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TALLER DE SISTEMAS CIBER-FISICOS",
@@ -3201,7 +3303,10 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
     "codigoGrupoHijo": 4428,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "TALLER DE SISTEMAS OPERATIVOS",
@@ -3333,7 +3438,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "COMPUTACION (P. 74)",
@@ -3369,7 +3476,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "CONST.FORMAL DE PROGR.EN TEORIA DE TIPOS",
@@ -3501,7 +3610,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "DISEÑO DE COMPILADORES",
@@ -3537,7 +3648,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "INT. A LA COMPUTACION GRAFICA",
@@ -3681,7 +3794,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "PROGRAMACION 1",
@@ -3693,7 +3806,34 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
+  },
+  {
+    "nombreUC": "PROGRAMACION 1",
+    "codigoEnServicioUC": "1372",
+    "codigoUC": 18288,
+    "tipoUC": "G",
+    "creditosUC": 10,
+    "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
+    "codigoGrupoPadre": 3215,
+    "nombreGrupoHijo": "PROGRAMACION",
+    "codigoGrupoHijo": 4580,
+    "semestres": null
+  },
+  {
+    "nombreUC": "PROGRAMACION 1",
+    "codigoEnServicioUC": "1320",
+    "codigoUC": 18239,
+    "tipoUC": "G",
+    "creditosUC": 10,
+    "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
+    "codigoGrupoPadre": 3215,
+    "nombreGrupoHijo": "PROGRAMACION",
+    "codigoGrupoHijo": 4580,
+    "semestres": null
   },
   {
     "nombreUC": "PROGRAMACION 1",
@@ -3705,7 +3845,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1", "2"]
+    "semestres": null
   },
   {
     "nombreUC": "PROGRAMACION 2",
@@ -3717,7 +3857,10 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "PROGRAMACION 3",
@@ -3729,7 +3872,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "PROGRAMACION 4",
@@ -3741,7 +3886,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "PROGRAMACION FUNCIONAL",
@@ -3753,7 +3900,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "PROGRAMACION FUNCIONAL AVANZADA",
@@ -3765,7 +3914,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "PROGRAMACION I",
@@ -3861,7 +4012,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TALLER DE COMPUTACION GRAFICA",
@@ -3993,7 +4146,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "PROGRAMACION",
     "codigoGrupoHijo": 4580,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TEORIA DE PROGRAMACION II",
@@ -4065,7 +4220,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "BASES DE DATOS",
@@ -4089,7 +4246,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "CALIDAD DE DATOS",
@@ -4113,7 +4272,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "CALIDAD DE DATOS E INFORMACIÓN",
@@ -4125,7 +4284,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -4269,7 +4430,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "FUNDAMENTOS DE LA WEB SEMANTICA",
@@ -4281,7 +4444,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "GESTION DE LA INFORMACION",
@@ -4317,7 +4482,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INT. AL MIDDLEWARE",
@@ -4353,7 +4520,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INTEGRACION DE DATOS",
@@ -4365,7 +4534,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "INTEGRACION DE DATOS",
@@ -4377,7 +4546,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INTEROPERABILIDAD",
@@ -4437,7 +4608,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "SEMINARIO RECUP.DE INF.Y REC.EN LA WEB",
@@ -4473,7 +4646,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
     "codigoGrupoHijo": 4647,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "SISTEMAS MULTIFUENTES",
@@ -4833,7 +5008,10 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": null
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "PROCESAMIENTO DE DATOS II (P. 74)",
@@ -4857,7 +5035,10 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "PROYECTO DE INGENIERIA DE SOFTWARE",
@@ -4869,7 +5050,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "SEMINARIO DE INGENIERIA BIOMEDICA",
@@ -4881,7 +5064,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "SEMINARIO DE PROCESAM. PARALELO APLICADO",
@@ -4953,7 +5138,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TALLER DE PROGRAMACION",
@@ -4965,7 +5152,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TALLER DE PROGRAMACION Y ARTE",
@@ -4989,7 +5178,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TALLER DE SIST. DE INF. GEO. EMPRES.",
@@ -5001,7 +5192,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TALLER DE SIST. DE INF.GEOGRAF.EMPRESAR.",
@@ -5025,7 +5218,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TALLER DE SISTEMAS DE INFORMACION 3",
@@ -5061,7 +5256,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
     "codigoGrupoHijo": 4756,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TALLER DE TELEMATICA",
@@ -5157,7 +5354,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "ALGORITMOS EVOLUTIVOS",
@@ -5169,7 +5368,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "ALGORITMOS EVOLUTIVOS",
@@ -5181,7 +5380,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "ALGORITMOS GENETICOS",
@@ -5277,7 +5478,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "FUNDAMENTOS DE PROGRAMACION ENTERA",
@@ -5289,7 +5492,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "HERRAMIENTAS P/EL DISEÑO Y ANALISIS DE REDES DE TRANSP.URB DE PASAJEROS",
@@ -5325,7 +5530,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "INT. A LA OPTIMIZ.Y A LA PROG. CON RESTR",
@@ -5373,7 +5580,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INVESTIGACION OPERATIVA",
@@ -5481,7 +5690,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "MODELOS COMB. DE CONFIABILIDAD EN REDES",
@@ -5529,7 +5740,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "PRINCIPIOS DE LOGISTICA HUMANITARIA",
@@ -5577,7 +5790,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TALLER INTR A LA INVEST DE OPERACIONES",
@@ -5613,7 +5828,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
     "codigoGrupoHijo": 4815,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TOPICOS EN COLOREO EN GRAFOS Y CONECTIV.",
@@ -5649,7 +5866,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "APRENDIZAJE AUTOMATICO",
@@ -5661,7 +5878,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "APRENDIZAJE AUTOMATICO",
@@ -5673,7 +5890,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "BUTIA: ROBOTICA EDUCATIVA",
@@ -5745,7 +5964,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "FUNDAMENTOS DE LA ROBOTICA AUTONOMA",
@@ -5757,7 +5978,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "GRAMATICAS FORMALES PARA EL LENG.NATURAL",
@@ -5793,7 +6016,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "INT. AL RECONOCIMIENTO DE PATRONES",
@@ -5829,7 +6054,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "RECONOCIMIENTO DE PATRONES",
@@ -5853,7 +6080,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "ROBOTICA BASADA EN COMPORTAMIENTOS",
@@ -5865,7 +6094,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "ROBOTICA EDUCATIVA",
@@ -5901,7 +6132,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "TALLER DE APRENDIZAJE AUTOMATICO",
@@ -5913,7 +6144,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TALLER DE INICIACION A LOS SISTEMAS CIBER-FISICOS",
@@ -5949,7 +6182,10 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
     "codigoGrupoHijo": 4882,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "ALGEBRA LINEAL NUMERICA",
@@ -5961,7 +6197,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "ALGEBRA LINEAL NUMERICA",
@@ -5973,7 +6209,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "ANALISIS DE FOURIER PARA TRATAM.DE IMAGE",
@@ -6021,7 +6259,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "CALCULO NUMERICO",
@@ -6105,7 +6345,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "METODOS NUMERICOS",
@@ -6117,7 +6359,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "METODOS NUMERICOS",
@@ -6129,7 +6373,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "MÉTODOS NUMÉRICOS",
@@ -6141,7 +6385,7 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
     "codigoGrupoHijo": 5020,
-    "semestres": ["2"]
+    "semestres": null
   },
   {
     "nombreUC": "METODOS NUMERICOS PARA LA RESOL. DE ECUAC. DIF.",
@@ -6273,7 +6517,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
     "codigoGrupoHijo": 5082,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "INGENIERIA DE SOFTWARE BASADA EN EVID.Y REV.SIST.",
@@ -6321,7 +6567,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
     "codigoGrupoHijo": 5082,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "INT. A LA INTERAC. PERSONA COMPUTADORA",
@@ -6381,7 +6629,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
     "codigoGrupoHijo": 5082,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "PROFESION EN INGENIERIA DE SOFTWARE",
@@ -6417,7 +6667,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
     "codigoGrupoHijo": 5082,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "RELACIONES PERSONALES EN ING. DE SOFT. Y GER. DE PROY.",
@@ -6453,7 +6705,9 @@
     "codigoGrupoPadre": 3215,
     "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
     "codigoGrupoHijo": 5082,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TALLER DE INTERACCIÓN",
@@ -6573,7 +6827,7 @@
     "codigoGrupoPadre": 3233,
     "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
     "codigoGrupoHijo": 5265,
-    "semestres": ["1"]
+    "semestres": null
   },
   {
     "nombreUC": "CIUDADANIA EN ENTORNOS DIGITALES",
@@ -6585,7 +6839,9 @@
     "codigoGrupoPadre": 3233,
     "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
     "codigoGrupoHijo": 5265,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "COMUNICACIÓN E INTELIGENCIA ARTIFICIAL (PPP)",
@@ -6909,7 +7165,9 @@
     "codigoGrupoPadre": 3233,
     "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
     "codigoGrupoHijo": 5265,
-    "semestres": null
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "TECNOLOGÍA DE MEDIOS AL SERVICIO DE LA PRESERVACIÓN DEL PATRIMONIO HISTÓRICO DOC",
@@ -6969,7 +7227,9 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "BIOINFORMÁTICA",
@@ -7113,7 +7373,9 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "INGLES CIENTÍFICO",
@@ -7149,7 +7411,10 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": null
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "MODELADO 3D PARA PRODUCCION DIGITAL (PERFIL PRODUCTO)",
@@ -7221,7 +7486,9 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": null
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "PROBLEMAS DE DISEÑO",
@@ -7281,7 +7548,9 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": ["2"]
+    "semestres": [
+      "2"
+    ]
   },
   {
     "nombreUC": "SENSIBILIZACIÓN E INTERCAMBIO PARA LA EQUIDAD",
@@ -7389,7 +7658,9 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": ["1"]
+    "semestres": [
+      "1"
+    ]
   },
   {
     "nombreUC": "TUTORIAS ENTRE PARES 1",
@@ -7401,7 +7672,10 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "TUTORIAS ENTRE PARES 2",
@@ -7413,7 +7687,10 @@
     "codigoGrupoPadre": 3582,
     "nombreGrupoHijo": "",
     "codigoGrupoHijo": 0,
-    "semestres": ["1", "2"]
+    "semestres": [
+      "1",
+      "2"
+    ]
   },
   {
     "nombreUC": "TUTORIAS ENTRE PARES ACADEMICAS PROGRESA/FING",

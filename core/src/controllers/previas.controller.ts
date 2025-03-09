@@ -14,18 +14,18 @@ export const chequearPreviasController: RequestHandler = (
   res: Response<boolean | ErrorResponse>,
   next: NextFunction
 ) => {
-  const { nombreUC } = req.params;
+  const { codigoEnServicioUC } = req.params;
   const informacionEstudiante = req.body;
 
   try {
-    if (!nombreUC)
+    if (!codigoEnServicioUC)
       return res.status(CodigoHTTP.BAD_REQUEST).json({
-        error: 'No se proporcionó el nombre de la UC a chequear',
+        error: 'No se proporcionó el código de la UC a chequear',
       });
 
-    if (!previaturas[nombreUC])
+    if (!previaturas[codigoEnServicioUC])
       return res.status(CodigoHTTP.NOT_FOUND).json({
-        error: `No se encontró ninguna UC con nombre ${nombreUC}`,
+        error: `No se encontró ninguna UC con código ${codigoEnServicioUC}`,
       });
 
     if (!esInformacionEstudiante(informacionEstudiante))
@@ -37,14 +37,14 @@ export const chequearPreviasController: RequestHandler = (
     //? Si la UC ya fue aprobada por el estudiante, no es necesario verificar las previas. En este caso deberiamos devolver true (indicando que el estudiante esta habilitado para cursarla) o false (indicando que no la puede hacer denuevo debido a que ya la curso)?
     if (
       informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
-        nombreUC
+        codigoEnServicioUC
       )
     )
       return res.status(CodigoHTTP.OK).json(false);
 
     const cumple = cumplePrevias(
       informacionEstudiante as InformacionEstudiante,
-      previaturas[nombreUC]
+      previaturas[codigoEnServicioUC]
     );
     return res.status(CodigoHTTP.OK).json(cumple);
   } catch (error) {

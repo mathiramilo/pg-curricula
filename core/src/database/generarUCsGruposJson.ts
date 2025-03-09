@@ -24,7 +24,7 @@ const obtenerUCsGrupos = (
 ): { [clave: string]: string[] } => {
   const UCsGrupos: { [clave: string]: string[] } = {};
 
-  unidadesCurriculares.forEach(uc => {
+  unidadesCurriculares.forEach((uc) => {
     const nombreGrupo = uc.nombreGrupoHijo;
 
     if (nombreGrupo === '') {
@@ -38,9 +38,9 @@ const obtenerUCsGrupos = (
     }
 
     if (nombreGrupo === '') {
-      UCsGrupos['MATERIAS OPCIONALES']?.push(uc.nombreUC);
+      UCsGrupos['MATERIAS OPCIONALES']?.push(uc.codigoEnServicioUC);
     } else {
-      UCsGrupos[nombreGrupo]?.push(uc.nombreUC);
+      UCsGrupos[nombreGrupo]?.push(uc.codigoEnServicioUC);
     }
   });
 

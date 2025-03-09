@@ -12,8 +12,6 @@ export const cumplePrevias = (
   // Si la UC no tiene previas devolvemos true
   if (!previas) return true;
 
-  // console.log(JSON.stringify(previas, null, 2)); // Debug
-
   try {
     switch (previas.regla) {
       case TIPO_REGLA.NOT: {
@@ -51,9 +49,9 @@ export const cumplePrevias = (
         return true;
       }
       case TIPO_REGLA.UC: {
-        if (previas.nombre)
+        if (previas.codigo)
           return informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
-            previas.nombre
+            previas.codigo
           );
         return true;
       }

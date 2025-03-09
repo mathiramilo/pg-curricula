@@ -51,18 +51,14 @@ const obtenerUCsFing = async (): Promise<UnidadCurricular[]> => {
     let semestres: SemestreDeDictado[] = [];
     if (
       ucsActualesPrimerSemestre.find(
-        (uc) =>
-          eliminarTildes(uc.nombre.toLowerCase()) ===
-          eliminarTildes(ucFing.nombre_mat.toLowerCase())
+        (uc) => uc.codigo === ucFing.codenservicio_mat
       )
     ) {
       semestres.push(SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE);
     }
     if (
       ucsActualesSegundoSemestre.find(
-        (uc) =>
-          eliminarTildes(uc.nombre.toLowerCase()) ===
-          eliminarTildes(ucFing.nombre_mat.toLowerCase())
+        (uc) => uc.codigo === ucFing.codenservicio_mat
       )
     ) {
       semestres.push(SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE);
