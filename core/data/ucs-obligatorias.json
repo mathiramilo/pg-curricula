@@ -1,26 +1,98 @@
 [
-	"CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
-	"MATEMATICA DISCRETA 1",
-	"PROGRAMACION 1",
-	"CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
-	"GEOMETRIA Y ALGEBRA LINEAL 1",
-	"PROGRAMACION 2",
-	"PROBABILIDAD Y ESTADISTICA",
-	"GEOMETRIA Y ALGEBRA LINEAL 2",
-	"LOGICA",
-	"MATEMATICA DISCRETA 2",
-	"ARQUITECTURA DE COMPUTADORAS",
-	"PROGRAMACION 3",
-	"METODOS NUMERICOS",
-	"INT. A LA INVESTIGACION DE OPERACIONES",
-	"SISTEMAS OPERATIVOS",
-	"PROGRAMACION 4",
-	"TEORIA DE LENGUAJES",
-	"FUNDAMENTOS DE BASES DE DATOS",
-	"TALLER DE PROGRAMACION",
-	"REDES DE COMPUTADORAS",
-	"INT. A LA INGENIERIA DE SOFTWARE",
-	"PROGRAMACION FUNCIONAL",
-	"PROYECTO DE INGENIERIA DE SOFTWARE",
-	"PROYECTO DE GRADO"
+  {
+    "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+    "codigo": "1061"
+  },
+  {
+    "nombre": "MATEMATICA DISCRETA 1",
+    "codigo": "1062"
+  },
+  {
+    "nombre": "PROGRAMACION 1",
+    "codigo": "1373"
+  },
+  {
+    "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
+    "codigo": "1062"
+  },
+  {
+    "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+    "codigo": "1030"
+  },
+  {
+    "nombre": "PROGRAMACION 2",
+    "codigo": "1321"
+  },
+  {
+    "nombre": "PROBABILIDAD Y ESTADISTICA",
+    "codigo": "1025"
+  },
+  {
+    "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+    "codigo": "1031"
+  },
+  {
+    "nombre": "LOGICA",
+    "codigo": "1027"
+  },
+  {
+    "nombre": "MATEMATICA DISCRETA 2",
+    "codigo": "1026"
+  },
+  {
+    "nombre": "ARQUITECTURA DE COMPUTADORAS",
+    "codigo": "1743"
+  },
+  {
+    "nombre": "PROGRAMACION 3",
+    "codigo": "1323"
+  },
+  {
+    "nombre": "METODOS NUMERICOS",
+    "codigo": "1079"
+  },
+  {
+    "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
+    "codigo": "1650"
+  },
+  {
+    "nombre": "SISTEMAS OPERATIVOS",
+    "codigo": "1537"
+  },
+  {
+    "nombre": "PROGRAMACION 4",
+    "codigo": "1324"
+  },
+  {
+    "nombre": "TEORIA DE LENGUAJES",
+    "codigo": "1325"
+  },
+  {
+    "nombre": "FUNDAMENTOS DE BASES DE DATOS",
+    "codigo": "1911"
+  },
+  {
+    "nombre": "TALLER DE PROGRAMACION",
+    "codigo": "1327"
+  },
+  {
+    "nombre": "REDES DE COMPUTADORAS",
+    "codigo": "1446"
+  },
+  {
+    "nombre": "TALLER INTRODUCTORIO DE INGENIERIA DE SOFTWARE",
+    "codigo": "1783"
+  },
+  {
+    "nombre": "PROGRAMACION FUNCIONAL",
+    "codigo": "1354"
+  },
+  {
+    "nombre": "PROYECTO DE INGENIERIA DE SOFTWARE",
+    "codigo": "1721"
+  },
+  {
+    "nombre": "PROYECTO DE GRADO",
+    "codigo": "1730"
+  }
 ]

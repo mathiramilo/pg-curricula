@@ -15,7 +15,8 @@
     "lint": "npx eslint .",
     "generate:previaturas": "cd src/database && ts-node generarPreviaturasJson.ts",
     "generate:ucs-fing": "cd src/database && ts-node generarUCsFingJson.ts",
-    "generate:ucs-grupos": "cd src/database && ts-node generarUCsGruposJson.ts"
+    "generate:ucs-grupos": "cd src/database && ts-node generarUCsGruposJson.ts",
+    "generate:ucs-grupos-actuales": "cd src/database && ts-node generarUCsGruposActualesJson.ts"
   },
   "keywords": [],
   "author": "",

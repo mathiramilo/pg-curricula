@@ -57,7 +57,6 @@ export const cumplePrevias = (
       }
     }
   } catch (error) {
-    // console.log('Error:', error);
     return false;
   }
 };

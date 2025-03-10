@@ -21,7 +21,7 @@ export type InformacionEstudiante = {
 };
 
 export type UCAprobada = {
-  calificacion: string | null;
+  concepto: string | null;
   fecha: string;
   creditos: number | null;
   nombre: string;

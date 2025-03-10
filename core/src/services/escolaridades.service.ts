@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import ucsFing from '../../data/ucs-fing.json';
+
 import { env } from '../config';
 import { InformacionEstudiante } from '../types';
 
@@ -12,5 +14,35 @@ export const procesarEscolaridad = async (file: Express.Multer.File) => {
 
   const response = await axios.post<InformacionEstudiante>(url, formData);
 
-  return response.data;
+  const informacionEstudiante = asociarCodigosUCs(response.data);
+
+  return informacionEstudiante;
+};
+
+const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
+  const nombresUCs = Object.keys(
+    informacionEstudiante.unidadesCurricularesAprobadas
+  );
+
+  const unidadesCurricularesAprobadasActualizado = {};
+
+  for (const nombreUC of nombresUCs) {
+    const ucs = ucsFing.filter((uc) => uc.nombreUC === nombreUC);
+
+    const uc = ucs.find(
+      (uc) =>
+        uc.creditosUC ===
+        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]?.creditos
+    );
+
+    if (uc) {
+      unidadesCurricularesAprobadasActualizado[uc.codigoEnServicioUC] =
+        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC];
+    }
+  }
+
+  return {
+    ...informacionEstudiante,
+    unidadesCurricularesAprobadas: unidadesCurricularesAprobadasActualizado,
+  };
 };
