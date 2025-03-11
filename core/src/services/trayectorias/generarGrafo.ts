@@ -1,19 +1,17 @@
-import previaturas from '../../data/previaturas.json';
+import previaturas from '../../../data/previaturas.json';
 
-import Graph from './grafo.class';
-import {
-  actualizarInformacionEstudiante,
-  cumplePrevias,
-  obtenerCodigosUCsPrevias,
-  obtenerListadoUCs,
-} from '../services';
-import { ie267 } from '../tests/mocks';
 import {
   InformacionEstudiante,
-  SEMESTRE_DE_DICTADO,
   SemestreDeDictado,
   UnidadCurricular,
-} from '../types';
+} from '../../types';
+import { Graph } from '../../models';
+import { cumplePrevias, obtenerCodigosUCsPrevias } from '../previas.service';
+import {
+  actualizarInformacionEstudiante,
+  calcularValorArista,
+  obtenerSiguienteSemestre,
+} from '../../utils';
 
 const NOMBRE_NODO_INICIO = 'inicio';
 const NOMBRE_NODO_FIN = 'fin';
@@ -22,7 +20,7 @@ export const generarGrafo = (
   listadoUCs: UnidadCurricular[],
   semestreInicial: SemestreDeDictado,
   informacionEstudiante: InformacionEstudiante
-) => {
+): Graph => {
   const grafo = new Graph();
 
   grafo.addNode(NOMBRE_NODO_INICIO, true, false);
@@ -114,36 +112,5 @@ export const generarGrafo = (
     listadoUCsPreviasAux = [...listadoUCsPrevias];
   }
 
-  grafo.printGraph();
+  return grafo;
 };
-
-export const obtenerSiguienteSemestre = (semestreActual: SemestreDeDictado) => {
-  return semestreActual === SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE
-    ? SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE
-    : SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE;
-};
-
-const calcularValorArista = (
-  semestresPrevias: SemestreDeDictado[],
-  semestresActuales: SemestreDeDictado[]
-) => {
-  if (semestresActuales.length === 2 || semestresPrevias.length === 2) {
-    return 1;
-  }
-
-  if (semestresActuales[0] === semestresPrevias[0]) {
-    return 2;
-  } else {
-    return 1;
-  }
-};
-
-const ie = structuredClone(ie267);
-
-const listadoUCs = obtenerListadoUCs(ie267 as InformacionEstudiante);
-
-generarGrafo(
-  listadoUCs,
-  SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
-  ie as InformacionEstudiante
-);

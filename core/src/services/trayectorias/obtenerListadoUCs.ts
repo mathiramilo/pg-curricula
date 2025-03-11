@@ -1,17 +1,17 @@
-import requisitosTitulo from '../../data/requisitos-titulo.json';
-import ucsObligatorias from '../../data/ucs-obligatorias.json';
-import ucsFing from '../../data/ucs-fing.json';
-import ucsGruposActuales from '../../data/ucs-grupos-actuales.json';
-import previaturas from '../../data/previaturas.json';
+import requisitosTitulo from '../../../data/requisitos-titulo.json';
+import ucsObligatorias from '../../../data/ucs-obligatorias.json';
+import ucsFing from '../../../data/ucs-fing.json';
+import ucsGruposActuales from '../../../data/ucs-grupos-actuales.json';
+import previaturas from '../../../data/previaturas.json';
 
 import {
   GrupoHijo,
   InformacionEstudiante,
   ReglaPreviaturas,
-  TIPO_APROBACION,
   UnidadCurricular,
-} from '../types';
-import { cumplePrevias } from './previas.service';
+} from '../../types';
+import { cumplePrevias } from '../previas.service';
+import { actualizarInformacionEstudiante } from '../../utils';
 
 export const obtenerListadoUCs = (
   informacionEstudiante: InformacionEstudiante
@@ -130,24 +130,4 @@ export const obtenerListadoUCs = (
   }
 
   return listadoUCs;
-};
-
-export const actualizarInformacionEstudiante = (
-  informacionEstudiante: InformacionEstudiante,
-  unidadCurricular: UnidadCurricular,
-  grupo: GrupoHijo
-): void => {
-  informacionEstudiante.unidadesCurricularesAprobadas[
-    unidadCurricular.codigoEnServicioUC
-  ] = {
-    nombre: unidadCurricular.nombreUC,
-    creditos: unidadCurricular.creditosUC,
-    concepto: '',
-    grupo: grupo,
-    area: unidadCurricular.nombreGrupoPadre,
-    fecha: '',
-    tipoAprobacion: TIPO_APROBACION.EXAMEN,
-  };
-  informacionEstudiante[grupo] += unidadCurricular.creditosUC;
-  informacionEstudiante.creditosTotales += unidadCurricular.creditosUC;
 };
