@@ -60,3 +60,37 @@ export const cumplePrevias = (
     return false;
   }
 };
+
+export const obtenerCodigosUCsPrevias = (
+  previas: ReglaPreviaturas,
+  listadoCodigosUCs: string[]
+) => {
+  if (!previas) return;
+
+  try {
+    switch (previas.regla) {
+      case TIPO_REGLA.OR: {
+        return previas.previas.some((prev) =>
+          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
+        );
+      }
+      case TIPO_REGLA.AND: {
+        return previas.previas.every((prev) =>
+          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
+        );
+      }
+      case TIPO_REGLA.SOME: {
+        return (
+          previas.previas.filter((prev) =>
+            obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
+          ).length >= previas.cantidad!
+        );
+      }
+      case TIPO_REGLA.UC: {
+        if (previas.codigo) listadoCodigosUCs.push(previas.codigo);
+      }
+    }
+  } catch (error) {
+    return;
+  }
+};

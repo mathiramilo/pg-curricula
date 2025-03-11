@@ -29,14 +29,27 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
   for (const nombreUC of nombresUCs) {
     const ucs = ucsFing.filter((uc) => uc.nombreUC === nombreUC);
 
-    const uc = ucs.find(
+    // Buscamos una UC que tenga la misma cantidad de creditos
+    const uc1 = ucs.find(
       (uc) =>
         uc.creditosUC ===
         informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]?.creditos
     );
 
-    if (uc) {
-      unidadesCurricularesAprobadasActualizado[uc.codigoEnServicioUC] =
+    // Buscamos una UC que tenga la misma cantidad de creditos y se dicte actualmente
+    const uc2 = ucs.find(
+      (uc) =>
+        uc.creditosUC ===
+          informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]
+            ?.creditos && uc.semestres
+    );
+
+    // Si encontramos una UC que cumpla con las ultimas condiciones, la asociamos, sino, asociamos la primera que encontramos
+    if (uc2) {
+      unidadesCurricularesAprobadasActualizado[uc2.codigoEnServicioUC] =
+        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC];
+    } else if (uc1) {
+      unidadesCurricularesAprobadasActualizado[uc1.codigoEnServicioUC] =
         informacionEstudiante.unidadesCurricularesAprobadas[nombreUC];
     }
   }

@@ -1,7 +1,7 @@
 export const ie410 = {
   unidadesCurricularesAprobadas: {
     'MATEMÁTICA DISCRETA I': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '06/12/2016',
       creditos: 10,
       nombre: 'MATEMÁTICA DISCRETA I',
@@ -10,7 +10,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'MATEMÁTICA DISCRETA 2- CIM-CIOCT': {
-      calificacion: '9',
+      concepto: '9',
       fecha: '10/07/2017',
       creditos: 10,
       nombre: 'MATEMÁTICA DISCRETA 2- CIM-CIOCT',
@@ -19,7 +19,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'ECUACIONES DIFERENCIALES': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '18/12/2017',
       creditos: 10,
       nombre: 'ECUACIONES DIFERENCIALES',
@@ -28,7 +28,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'CÁLCULO II': {
-      calificacion: '8',
+      concepto: '8',
       fecha: '04/09/2017',
       creditos: 16,
       nombre: 'CÁLCULO II',
@@ -37,7 +37,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'CÁLCULO I': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '03/03/2017',
       creditos: 16,
       nombre: 'CÁLCULO I',
@@ -46,7 +46,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'ALGEBRA LINEAL II': {
-      calificacion: '5',
+      concepto: '5',
       fecha: '13/02/2017',
       creditos: 12,
       nombre: 'ALGEBRA LINEAL II',
@@ -55,7 +55,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'ALGEBRA LINEAL I': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '21/07/2016',
       creditos: 12,
       nombre: 'ALGEBRA LINEAL I',
@@ -64,7 +64,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'CODIGOS PARA CORRECCION DE ERRORES': {
-      calificacion: '5',
+      concepto: '5',
       fecha: '29/08/2022',
       creditos: 8,
       nombre: 'CODIGOS PARA CORRECCION DE ERRORES',
@@ -73,7 +73,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     LOGICA: {
-      calificacion: '6',
+      concepto: '6',
       fecha: '01/07/2019',
       creditos: 12,
       nombre: 'LOGICA',
@@ -82,7 +82,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'PROBABILIDAD Y ESTADISTICA': {
-      calificacion: '6',
+      concepto: '6',
       fecha: '10/07/2018',
       creditos: 10,
       nombre: 'PROBABILIDAD Y ESTADISTICA',
@@ -91,7 +91,7 @@ export const ie410 = {
       grupo: 'MATEMATICA',
     },
     'FÍSICA 1': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '16/12/2017',
       creditos: 10,
       nombre: 'FÍSICA 1',
@@ -100,7 +100,7 @@ export const ie410 = {
       grupo: 'CIENCIAS EXPERIMENTALES',
     },
     'PROGRAMACIÓN I- CIO CT-LHRH': {
-      calificacion: '6',
+      concepto: '6',
       fecha: '08/12/2016',
       creditos: 10,
       nombre: 'PROGRAMACIÓN I- CIO CT-LHRH',
@@ -109,7 +109,7 @@ export const ie410 = {
       grupo: 'PROGRAMACION',
     },
     'PROGRAMACION FUNCIONAL': {
-      calificacion: '5',
+      concepto: '5',
       fecha: '29/07/2021',
       creditos: 10,
       nombre: 'PROGRAMACION FUNCIONAL',
@@ -118,7 +118,7 @@ export const ie410 = {
       grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 2': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '26/07/2018',
       creditos: 12,
       nombre: 'PROGRAMACION 2',
@@ -127,7 +127,7 @@ export const ie410 = {
       grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 3': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '06/12/2019',
       creditos: 15,
       nombre: 'PROGRAMACION 3',
@@ -136,7 +136,7 @@ export const ie410 = {
       grupo: 'PROGRAMACION',
     },
     'PROGRAMACION 4': {
-      calificacion: '6',
+      concepto: '6',
       fecha: '05/07/2019',
       creditos: 15,
       nombre: 'PROGRAMACION 4',
@@ -145,7 +145,7 @@ export const ie410 = {
       grupo: 'PROGRAMACION',
     },
     'TEORIA DE LENGUAJES': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '10/02/2021',
       creditos: 12,
       nombre: 'TEORIA DE LENGUAJES',
@@ -154,7 +154,7 @@ export const ie410 = {
       grupo: 'PROGRAMACION',
     },
     'ARQUITECTURA DE COMPUTADORAS': {
-      calificacion: '4',
+      concepto: '4',
       fecha: '19/12/2023',
       creditos: 12,
       nombre: 'ARQUITECTURA DE COMPUTADORAS',
@@ -163,7 +163,7 @@ export const ie410 = {
       grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'COMPUTACION DE ALTA PERFORMANCE': {
-      calificacion: '9',
+      concepto: '9',
       fecha: '03/08/2022',
       creditos: 10,
       nombre: 'COMPUTACION DE ALTA PERFORMANCE',
@@ -172,7 +172,7 @@ export const ie410 = {
       grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'SISTEMAS OPERATIVOS': {
-      calificacion: '8',
+      concepto: '8',
       fecha: '02/07/2021',
       creditos: 12,
       nombre: 'SISTEMAS OPERATIVOS',
@@ -181,7 +181,7 @@ export const ie410 = {
       grupo: 'ARQUIT, S.OP. Y REDES DE COMP.',
     },
     'FUNDAMENTOS DE BASES DE DATOS': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '17/02/2023',
       creditos: 15,
       nombre: 'FUNDAMENTOS DE BASES DE DATOS',
@@ -190,7 +190,7 @@ export const ie410 = {
       grupo: 'B.DATOS Y SIST. DE INFORMACION',
     },
     'MÉTODOS NUMÉRICOS': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '29/12/2017',
       creditos: 10,
       nombre: 'MÉTODOS NUMÉRICOS',
@@ -199,7 +199,7 @@ export const ie410 = {
       grupo: 'CALCULO NUMERICO Y SIMBOLICO',
     },
     'ALGEBRA LINEAL NUMERICA': {
-      calificacion: '8',
+      concepto: '8',
       fecha: '11/02/2022',
       creditos: 9,
       nombre: 'ALGEBRA LINEAL NUMERICA',
@@ -208,7 +208,7 @@ export const ie410 = {
       grupo: 'CALCULO NUMERICO Y SIMBOLICO',
     },
     'DISEÑO TOPOLOGICO DE REDES': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '22/02/2021',
       creditos: 11,
       nombre: 'DISEÑO TOPOLOGICO DE REDES',
@@ -217,7 +217,7 @@ export const ie410 = {
       grupo: 'INVESTIGACION OPERATIVA',
     },
     'INVESTIGACION DE OPER.Y GEST. DE RIESGOS': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '21/11/2022',
       creditos: 6,
       nombre: 'INVESTIGACION DE OPER.Y GEST. DE RIESGOS',
@@ -226,7 +226,7 @@ export const ie410 = {
       grupo: 'INVESTIGACION OPERATIVA',
     },
     'ALGORITMOS EVOLUTIVOS': {
-      calificacion: '9',
+      concepto: '9',
       fecha: '31/01/2020',
       creditos: 10,
       nombre: 'ALGORITMOS EVOLUTIVOS',
@@ -235,7 +235,7 @@ export const ie410 = {
       grupo: 'INVESTIGACION OPERATIVA',
     },
     'INT. A LA INVESTIGACION DE OPERACIONES': {
-      calificacion: '6',
+      concepto: '6',
       fecha: '24/06/2019',
       creditos: 10,
       nombre: 'INT. A LA INVESTIGACION DE OPERACIONES',
@@ -244,7 +244,7 @@ export const ie410 = {
       grupo: 'INVESTIGACION OPERATIVA',
     },
     'OPTIMIZACION BAJO INCERTIDUMBRE': {
-      calificacion: '3',
+      concepto: '3',
       fecha: '14/06/2022',
       creditos: 8,
       nombre: 'OPTIMIZACION BAJO INCERTIDUMBRE',
@@ -253,7 +253,7 @@ export const ie410 = {
       grupo: 'INVESTIGACION OPERATIVA',
     },
     'INT. A LA INGENIERIA DE SOFTWARE': {
-      calificacion: '5',
+      concepto: '5',
       fecha: '07/12/2022',
       creditos: 10,
       nombre: 'INT. A LA INGENIERIA DE SOFTWARE',
@@ -262,7 +262,7 @@ export const ie410 = {
       grupo: 'INGENIERIA DE SOFTWARE',
     },
     'PASANTIA (COMPUTACION)': {
-      calificacion: null,
+      concepto: null,
       fecha: '16/07/2021',
       creditos: 10,
       nombre: 'PASANTIA (COMPUTACION)',
@@ -271,7 +271,7 @@ export const ie410 = {
       grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'PROYECTO DE INGENIERIA DE SOFTWARE': {
-      calificacion: '10',
+      concepto: '10',
       fecha: '10/12/2021',
       creditos: 15,
       nombre: 'PROYECTO DE INGENIERIA DE SOFTWARE',
@@ -280,7 +280,7 @@ export const ie410 = {
       grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'TALLER DE PROGRAMACION': {
-      calificacion: '10',
+      concepto: '10',
       fecha: '04/12/2019',
       creditos: 15,
       nombre: 'TALLER DE PROGRAMACION',
@@ -289,7 +289,7 @@ export const ie410 = {
       grupo: 'A.INTEG,TALLERES,PASANT.Y PROY',
     },
     'SOCIOLOGÍA DE LA EMPRESA Y MANAGEMENT': {
-      calificacion: '11',
+      concepto: '11',
       fecha: '23/02/2023',
       creditos: 10,
       nombre: 'SOCIOLOGÍA DE LA EMPRESA Y MANAGEMENT',
@@ -298,7 +298,7 @@ export const ie410 = {
       grupo: 'GESTION EN ORGANIZACIONES',
     },
     'PROPIEDAD INTELECTUAL': {
-      calificacion: '7',
+      concepto: '7',
       fecha: '07/07/2023',
       creditos: 3,
       nombre: 'PROPIEDAD INTELECTUAL',
@@ -307,7 +307,7 @@ export const ie410 = {
       grupo: 'GESTION EN ORGANIZACIONES',
     },
     'ADMINISTRACION GENERAL PARA INGENIEROS': {
-      calificacion: '10',
+      concepto: '10',
       fecha: '16/07/2020',
       creditos: 5,
       nombre: 'ADMINISTRACION GENERAL PARA INGENIEROS',
@@ -316,7 +316,7 @@ export const ie410 = {
       grupo: 'GESTION EN ORGANIZACIONES',
     },
     'PRACTICA DE ADMINISTRACION PARA INGENIEROS': {
-      calificacion: '6',
+      concepto: '6',
       fecha: '09/12/2020',
       creditos: 5,
       nombre: 'PRACTICA DE ADMINISTRACION PARA INGENIEROS',
@@ -325,7 +325,7 @@ export const ie410 = {
       grupo: 'GESTION EN ORGANIZACIONES',
     },
     'ECONOMÍA POLÍTICA': {
-      calificacion: '9',
+      concepto: '9',
       fecha: '23/11/2016',
       creditos: 10,
       nombre: 'ECONOMÍA POLÍTICA',
@@ -334,7 +334,7 @@ export const ie410 = {
       grupo: 'CIENCIAS HUMANAS Y SOCIALES',
     },
     'CIENCIA, TECNOLOGIA Y SOCIEDAD': {
-      calificacion: '6',
+      concepto: '6',
       fecha: '26/02/2020',
       creditos: 8,
       nombre: 'CIENCIA, TECNOLOGIA Y SOCIEDAD',
@@ -343,7 +343,7 @@ export const ie410 = {
       grupo: 'CIENCIAS HUMANAS Y SOCIALES',
     },
     'INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA': {
-      calificacion: '12',
+      concepto: '12',
       fecha: '07/12/2022',
       creditos: 6,
       nombre: 'INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA',

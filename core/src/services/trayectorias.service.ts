@@ -35,13 +35,22 @@ export const obtenerListadoUCs = (
     .filter((uc) => uc);
 
   // 2. Agregar las materias obligatorias al listado y actualizar informacionEstudiante
+  // Para que esto funcione el listado de materias obligatorias debe estar ordenado, empezando por las que tienen menos previas
   ucsObligatoriasFaltantes.forEach((unidadCurricular) => {
-    listadoUCs.push(unidadCurricular);
-    actualizarInformacionEstudiante(
-      informacionEstudiante,
-      unidadCurricular,
-      unidadCurricular.nombreGrupoHijo
-    );
+    if (
+      cumplePrevias(
+        informacionEstudiante,
+        previaturas[unidadCurricular.codigoEnServicioUC]
+      )
+    ) {
+      listadoUCs.push(unidadCurricular);
+
+      actualizarInformacionEstudiante(
+        informacionEstudiante,
+        unidadCurricular,
+        unidadCurricular.nombreGrupoHijo
+      );
+    }
   });
 
   // Por cada grupo
@@ -103,7 +112,13 @@ export const obtenerListadoUCs = (
       ucAleatoria.codigoEnServicioUC
     ] as ReglaPreviaturas;
 
-    if (!cumplePrevias(informacionEstudiante, previaturasUCAleatoria)) continue;
+    if (
+      !cumplePrevias(informacionEstudiante, previaturasUCAleatoria) ||
+      informacionEstudiante.unidadesCurricularesAprobadas[
+        ucAleatoria.codigoEnServicioUC
+      ]
+    )
+      continue;
 
     // 3. Agregar la unidad curricular al listado y actualizar informacionEstudiante
     listadoUCs.push(ucAleatoria);
@@ -122,13 +137,15 @@ export const actualizarInformacionEstudiante = (
   unidadCurricular: UnidadCurricular,
   grupo: GrupoHijo
 ): void => {
-  informacionEstudiante.unidadesCurricularesAprobadas.unidadCurricular = {
+  informacionEstudiante.unidadesCurricularesAprobadas[
+    unidadCurricular.codigoEnServicioUC
+  ] = {
     nombre: unidadCurricular.nombreUC,
     creditos: unidadCurricular.creditosUC,
     concepto: '',
     grupo: grupo,
     area: unidadCurricular.nombreGrupoPadre,
-    fecha: new Date().toISOString(),
+    fecha: '',
     tipoAprobacion: TIPO_APROBACION.EXAMEN,
   };
   informacionEstudiante[grupo] += unidadCurricular.creditosUC;
