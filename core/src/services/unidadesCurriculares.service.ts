@@ -16,13 +16,33 @@ export const obtenerTrayectoriaSugerida = () => {
     unidadesCurricularesMap.set(uc.codigoEnServicioUC, uc as UnidadCurricular);
   }
 
-  return trayectoriaSugerida.map((semestre) => ({
-    ...semestre,
-    unidadesCurriculares: semestre.unidadesCurriculares.map(
-      (codigoEnServicioUC: string) =>
-        unidadesCurricularesMap.get(codigoEnServicioUC)
-    ),
-  }));
+  const codigosIncluidos = new Set<string>();
+
+  const trayectoriaProcesada = trayectoriaSugerida.map((semestre) => {
+    const unidadesCurricularesProcesadas = semestre.unidadesCurriculares.map(
+      (codigoUC) => {
+        codigosIncluidos.add(codigoUC);
+        return unidadesCurricularesMap.get(codigoUC);
+      }
+    );
+
+    return {
+      ...semestre,
+      unidadesCurriculares: unidadesCurricularesProcesadas,
+    };
+  });
+
+  const unidadesNoIncluidas = Array.from(
+    unidadesCurricularesMap.values()
+  ).filter((uc) => !codigosIncluidos.has(uc.codigoEnServicioUC));
+
+  return [
+    ...trayectoriaProcesada,
+    {
+      semestre: null,
+      unidadesCurriculares: unidadesNoIncluidas,
+    },
+  ];
 };
 
 export const obtenerUnidadesCurricularesHabilitadas = (

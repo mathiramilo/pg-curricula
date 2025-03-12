@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { ScreenHeader, Switch, UnidadCurricularGrid } from "@/components";
 import { ScreenLayout } from "@/layouts";
 import { capitalizeWords } from "@/utils";
-import { unidadesCurriculares } from "./inicio/mock";
 
 export const GrupoScreen = () => {
   const { slug } = useParams();
@@ -19,7 +18,7 @@ export const GrupoScreen = () => {
         </div>
       </ScreenHeader>
 
-      <UnidadCurricularGrid
+      {/* <UnidadCurricularGrid
         titulo="Listado de unidades curriculares"
         unidadesCurriculares={[
           ...unidadesCurriculares,
@@ -27,7 +26,7 @@ export const GrupoScreen = () => {
           ...unidadesCurriculares,
           ...unidadesCurriculares,
         ]}
-      />
+      /> */}
     </ScreenLayout>
   );
 };

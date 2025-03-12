@@ -1,11 +1,15 @@
+import type { UnidadCurricular } from "@/models";
 import { TIPO_APROBACION } from "@/models";
 import { useStore } from "@/store";
 
-export const useAprobacion = (nombre: string) => {
+export const useAprobacion = (
+  codigoEnServicioUC: UnidadCurricular["codigoEnServicioUC"],
+) => {
   const tipoAprobacion = useStore(
     (state) =>
-      state.informacionEstudiante.unidadesCurricularesAprobadas?.[nombre]
-        ?.tipoAprobacion,
+      state.informacionEstudiante.unidadesCurricularesAprobadas?.[
+        codigoEnServicioUC
+      ]?.tipoAprobacion,
   );
 
   const cursoAprobado =

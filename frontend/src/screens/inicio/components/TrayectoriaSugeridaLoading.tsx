@@ -3,7 +3,7 @@ import {
   UnidadCurricularListSkeleton,
 } from "@/components";
 
-export const UnidadesCurricularesLoading = () => {
+export const TrayectoriaSugeridaLoading = () => {
   return (
     <section className="flex mt-8 flex-col gap-12">
       <div className="grid lg:grid-cols-3 gap-12">

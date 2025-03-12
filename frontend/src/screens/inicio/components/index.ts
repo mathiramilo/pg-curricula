@@ -1,3 +1,3 @@
 export * from "./HeaderInicio";
-export * from "./UnidadesCurriculares";
-export * from "./UnidadesCurricularesLoading";
+export * from "./TrayectoriaSugerida";
+export * from "./TrayectoriaSugeridaLoading";

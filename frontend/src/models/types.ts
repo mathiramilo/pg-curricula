@@ -10,11 +10,16 @@ export type TipoAprobacion =
   (typeof TIPO_APROBACION)[keyof typeof TIPO_APROBACION];
 
 export interface UnidadCurricular {
-  codigo: string;
-  nombre: string;
-  creditos: number;
-  area: Area;
-  grupo: Grupo;
+  nombreUC: string;
+  codigoEnServicioUC: string;
+  codigoUC: string;
+  tipoUC: string;
+  creditosUC: number;
+  nombreGrupoPadre: Area;
+  codigoGrupoPadre: number;
+  nombreGrupoHijo: Grupo;
+  codigoGrupoHijo: number;
+  semestres: number[];
 }
 
 export interface UnidadCurricularAprobada extends UnidadCurricular {
@@ -25,8 +30,13 @@ export interface UnidadCurricularAprobada extends UnidadCurricular {
 
 export type InformacionEstudiante = {
   unidadesCurricularesAprobadas: Record<
-    UnidadCurricular["codigo"],
+    UnidadCurricular["codigoEnServicioUC"],
     UnidadCurricularAprobada
   >;
   creditosTotales: number;
 } & Record<Grupo, number>;
+
+export interface TrayectoriaSugeridaSemestre {
+  semestre: number | null;
+  unidadesCurriculares: UnidadCurricular[];
+}

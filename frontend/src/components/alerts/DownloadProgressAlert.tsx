@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import { useStore } from "@/store";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,9 +21,20 @@ export const DownloadProgressAlert = ({
   open,
   onClose,
 }: DownloadProgressAlertProps) => {
-  const handleDownloadProgress = () => {
-    console.log("Downloading progress JSON file...");
-  };
+  const informacionEstudiante = useStore(
+    (state) => state.informacionEstudiante,
+  );
+
+  const [downloadUrl, setDownloadUrl] = useState("");
+
+  useEffect(() => {
+    const jsonString = JSON.stringify(informacionEstudiante, null, 2);
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    setDownloadUrl(url);
+
+    return () => URL.revokeObjectURL(url);
+  }, [informacionEstudiante]);
 
   return (
     <AlertDialog open={open} onOpenChange={onClose}>
@@ -36,8 +48,10 @@ export const DownloadProgressAlert = ({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDownloadProgress}>
-            Descargar
+          <AlertDialogAction asChild disabled={!downloadUrl}>
+            <a href={downloadUrl} download="informacion-estudiante.json">
+              Descargar Progreso
+            </a>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

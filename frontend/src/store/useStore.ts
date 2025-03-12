@@ -37,7 +37,7 @@ export const useStore = create<Store>()(
             ...state.informacionEstudiante,
             unidadesCurricularesAprobadas: {
               ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-              [unidadCurricular.nombre]: {
+              [unidadCurricular.codigoEnServicioUC]: {
                 ...unidadCurricular,
                 tipoAprobacion: TIPO_APROBACION.CURSO,
               },
@@ -50,30 +50,33 @@ export const useStore = create<Store>()(
             ...state.informacionEstudiante,
             unidadesCurricularesAprobadas: {
               ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-              [unidadCurricular.nombre]: {
+              [unidadCurricular.codigoEnServicioUC]: {
                 ...unidadCurricular,
                 tipoAprobacion: TIPO_APROBACION.EXAMEN,
               },
             },
             creditosTotales:
               state.informacionEstudiante.creditosTotales +
-              unidadCurricular.creditos,
-            [unidadCurricular.grupo]:
-              state.informacionEstudiante[unidadCurricular.grupo] +
-              unidadCurricular.creditos,
+              unidadCurricular.creditosUC,
+            [unidadCurricular.nombreGrupoHijo]:
+              state.informacionEstudiante[unidadCurricular.nombreGrupoHijo] +
+              unidadCurricular.creditosUC,
           },
         })),
       removeUnidadCurricularCurso: (unidadCurricular) =>
         set((state) => {
           const examenAprobado =
             state.informacionEstudiante.unidadesCurricularesAprobadas[
-              unidadCurricular.nombre
+              unidadCurricular.codigoEnServicioUC
             ].tipoAprobacion === TIPO_APROBACION.EXAMEN;
 
           const updatedUCsAprobadas = Object.fromEntries(
             Object.entries(
               state.informacionEstudiante.unidadesCurricularesAprobadas,
-            ).filter(([nombre]) => nombre !== unidadCurricular.nombre),
+            ).filter(
+              ([codigoEnServicioUC]) =>
+                codigoEnServicioUC !== unidadCurricular.codigoEnServicioUC,
+            ),
           );
 
           return {
@@ -82,12 +85,13 @@ export const useStore = create<Store>()(
               unidadesCurricularesAprobadas: updatedUCsAprobadas,
               creditosTotales: examenAprobado
                 ? state.informacionEstudiante.creditosTotales -
-                  unidadCurricular.creditos
+                  unidadCurricular.creditosUC
                 : state.informacionEstudiante.creditosTotales,
-              [unidadCurricular.grupo]: examenAprobado
-                ? state.informacionEstudiante[unidadCurricular.grupo] -
-                  unidadCurricular.creditos
-                : state.informacionEstudiante[unidadCurricular.grupo],
+              [unidadCurricular.nombreGrupoHijo]: examenAprobado
+                ? state.informacionEstudiante[
+                    unidadCurricular.nombreGrupoHijo
+                  ] - unidadCurricular.creditosUC
+                : state.informacionEstudiante[unidadCurricular.nombreGrupoHijo],
             },
           };
         }),
@@ -97,19 +101,19 @@ export const useStore = create<Store>()(
             ...state.informacionEstudiante,
             unidadesCurricularesAprobadas: {
               ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-              [unidadCurricular.nombre]: {
+              [unidadCurricular.codigoEnServicioUC]: {
                 ...state.informacionEstudiante.unidadesCurricularesAprobadas[
-                  unidadCurricular.nombre
+                  unidadCurricular.codigoEnServicioUC
                 ],
                 tipoAprobacion: TIPO_APROBACION.CURSO,
               },
             },
             creditosTotales:
               state.informacionEstudiante.creditosTotales -
-              unidadCurricular.creditos,
-            [unidadCurricular.grupo]:
-              state.informacionEstudiante[unidadCurricular.grupo] -
-              unidadCurricular.creditos,
+              unidadCurricular.creditosUC,
+            [unidadCurricular.nombreGrupoHijo]:
+              state.informacionEstudiante[unidadCurricular.nombreGrupoHijo] -
+              unidadCurricular.creditosUC,
           },
         })),
       resetInformacionEstudiante: () =>
