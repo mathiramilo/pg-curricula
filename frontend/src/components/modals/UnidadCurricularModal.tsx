@@ -62,7 +62,7 @@ export const UnidadCurricularModal = ({
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose}>
-            Cancelar
+            Cerrar
           </Button>
         </DialogFooter>
       </DialogContent>

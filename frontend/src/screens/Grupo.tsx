@@ -14,7 +14,7 @@ export const GrupoScreen = () => {
       <ScreenHeader title={title}>
         <div className="flex items-center gap-2">
           <Switch />
-          <p className="text-sm">Mostrar solamente habilitadas a cursar</p>
+          <p className="text-sm">Mostrar solamente habilitadas</p>
         </div>
       </ScreenHeader>
 

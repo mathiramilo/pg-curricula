@@ -1,4 +1,4 @@
-export * from "./Busqueda";
+export * from "./busqueda";
 export * from "./inicio";
 export * from "./Grupo";
 export * from "./Progreso";
