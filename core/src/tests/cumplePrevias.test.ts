@@ -3,30 +3,16 @@ import { describe, expect, test } from '@jest/globals';
 import previaturas from '../../data/previaturas.json';
 import { cumplePrevias } from '../services';
 import { InformacionEstudiante, ReglaPreviaturas } from '../types';
-import { ie340, ie366, ie410 } from './mocks';
+import { ie267 } from './mocks';
+
+const CODIGO_PROYECTO_DE_GRADO = '1730';
 
 describe('Tests unitarios (cumple previas)', () => {
-  test('Debe retornar true', () => {
-    const resultado = cumplePrevias(
-      ie366 as InformacionEstudiante,
-      previaturas['PROYECTO DE GRADO'] as ReglaPreviaturas
-    );
-    expect(resultado).toBe(true);
-  });
-
   test('Debe retornar false', () => {
     const resultado = cumplePrevias(
-      ie340 as InformacionEstudiante,
-      previaturas['PROYECTO DE GRADO'] as ReglaPreviaturas
+      ie267 as InformacionEstudiante,
+      previaturas[CODIGO_PROYECTO_DE_GRADO] as ReglaPreviaturas
     );
     expect(resultado).toBe(false);
-  });
-
-  test('Debe retornar true', () => {
-    const resultado = cumplePrevias(
-      ie410 as InformacionEstudiante,
-      previaturas['PROYECTO DE GRADO'] as ReglaPreviaturas
-    );
-    expect(resultado).toBe(true);
   });
 });

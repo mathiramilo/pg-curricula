@@ -14,4 +14,4 @@ const grafo = generarGrafo(
   informacionEstudiante as InformacionEstudiante
 );
 
-grafo.printGraph();
+grafo.drawGraph();

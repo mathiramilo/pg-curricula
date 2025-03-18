@@ -1,3 +1,5 @@
+import ucsFing from '../../data/ucs-fing.json';
+
 // Posibles valores para las aristas: 0, 1 o 2.
 export type EdgeValue = 0 | 1 | 2;
 
@@ -160,5 +162,79 @@ export class Graph {
 
       console.log('-------------------------------------');
     });
+  }
+
+  public drawGraph(): void {
+    // Paso 1: Calcular niveles para cada nodo.
+    // Se asume que los nodos iniciales están en el nivel 0.
+    const levels = new Map<string, number>();
+    this.nodes.forEach((node, id) => {
+      // Inicialmente asignamos 0 a todos, pero los iniciales
+      // se consideran nivel 0.
+      levels.set(id, node.isInitial ? 0 : 0);
+    });
+
+    // Actualiza los niveles: para cada nodo, se define su nivel
+    // como el máximo de los niveles de sus predecesores + 1.
+    let changed = true;
+    while (changed) {
+      changed = false;
+      this.nodes.forEach((node, id) => {
+        let maxPredLevel = -1;
+        node.incomingEdges.forEach((edge) => {
+          const predLevel = levels.get(edge.source)!;
+          if (predLevel > maxPredLevel) {
+            maxPredLevel = predLevel;
+          }
+        });
+        const newLevel = maxPredLevel + 1;
+        if (newLevel > levels.get(id)!) {
+          levels.set(id, newLevel);
+          changed = true;
+        }
+      });
+    }
+
+    // Paso 2: Agrupar nodos por nivel.
+    const levelsMap = new Map<number, Node[]>();
+    this.nodes.forEach((node, id) => {
+      const lvl = levels.get(id)!;
+      if (!levelsMap.has(lvl)) {
+        levelsMap.set(lvl, []);
+      }
+      levelsMap.get(lvl)!.push(node);
+    });
+
+    // Ordenar los niveles de forma ascendente.
+    const sortedLevels = Array.from(levelsMap.keys()).sort((a, b) => a - b);
+
+    // Paso 3: Construir una representación en cadena del diagrama.
+    let diagram = '';
+    sortedLevels.forEach((lvl, index) => {
+      const nodesAtLevel = levelsMap.get(lvl)!;
+      // Representamos cada nodo como [id].
+      const nodeLine = nodesAtLevel
+        .map(
+          (node) =>
+            `[${node.id} - ${ucsFing.find((uc) => uc.codigoEnServicioUC === node.id)?.nombreUC}]`
+        )
+        .join('    ');
+      diagram += nodeLine + '\n';
+
+      // Dibujar conexiones entre nodos de este nivel y el siguiente.
+      if (index < sortedLevels.length - 1) {
+        nodesAtLevel.forEach((node) => {
+          node.outgoingEdges.forEach((edge) => {
+            const targetLevel = levels.get(edge.target);
+            if (targetLevel === sortedLevels[index + 1]) {
+              diagram += `      ${node.id} --(${edge.value})--> ${edge.target}\n`;
+            }
+          });
+        });
+      }
+    });
+
+    // Imprime el diagrama en consola.
+    console.log(diagram);
   }
 }

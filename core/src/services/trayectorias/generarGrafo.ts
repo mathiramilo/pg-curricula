@@ -1,4 +1,5 @@
 import previaturas from '../../../data/previaturas.json';
+import ucsAnuales from '../../../data/ucs-anuales.json';
 
 import {
   InformacionEstudiante,
@@ -26,7 +27,7 @@ export const generarGrafo = (
   grafo.addNode(NOMBRE_NODO_INICIO, true, false);
   grafo.addNode(NOMBRE_NODO_FIN, false, true);
 
-  const listadoUCsFaltantes: UnidadCurricular[] = [];
+  let listadoUCsFaltantes: UnidadCurricular[] = [];
   let listadoUCsPrevias: UnidadCurricular[] = [];
   let semestreActual = semestreInicial;
 
@@ -34,8 +35,6 @@ export const generarGrafo = (
     if (
       cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
     ) {
-      console.log(uc.nombreUC);
-
       const seDictaEnSemestreActual = uc.semestres?.includes(semestreActual)!; // Ya nos aseguramos de que semestres no sea null en el paso anterior
 
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
@@ -82,6 +81,7 @@ export const generarGrafo = (
         );
 
         grafo.addNode(uc.codigoEnServicioUC);
+
         codigosUCsPrevias.forEach((codigoUC) => {
           const ucPrevia = listadoUCsPreviasAux.find(
             (ucPrevia) => ucPrevia.codigoEnServicioUC === codigoUC
@@ -93,13 +93,20 @@ export const generarGrafo = (
 
           grafo.addEdge(codigoUC, uc.codigoEnServicioUC, valorArista);
         });
-        grafo.addEdge(uc.codigoEnServicioUC, NOMBRE_NODO_FIN, 1); // TODO: Revisar como obtener la duracion de una unidad curricular (podriamos poner a todas 1 y proyecto de grado 2)
+
+        grafo.addEdge(
+          uc.codigoEnServicioUC,
+          NOMBRE_NODO_FIN,
+          ucsAnuales.includes(uc.codigoEnServicioUC) ? 2 : 1
+        );
 
         listadoUCsPrevias.push(uc);
-
-        listadoUCsFaltantes.splice(listadoUCsFaltantes.indexOf(uc), 1);
       }
     }
+
+    listadoUCsFaltantes = listadoUCsFaltantes.filter(
+      (uc) => !listadoUCsPrevias.includes(uc)
+    );
 
     listadoUCsPrevias.forEach((uc) => {
       actualizarInformacionEstudiante(

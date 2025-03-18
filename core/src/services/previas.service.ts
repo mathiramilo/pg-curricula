@@ -61,6 +61,11 @@ export const cumplePrevias = (
   }
 };
 
+/**
+ * @param previas
+ * @param listadoCodigosUCs
+ * @returns Un array con los códigos de todas las UCs que aparecen en el arbol de previaturas, excepto las UCs que estan dentro de una regla 'NOT'
+ */
 export const obtenerCodigosUCsPrevias = (
   previas: ReglaPreviaturas,
   listadoCodigosUCs: string[]
@@ -70,24 +75,26 @@ export const obtenerCodigosUCsPrevias = (
   try {
     switch (previas.regla) {
       case TIPO_REGLA.OR: {
-        return previas.previas.some((prev) =>
+        return previas.previas.forEach((prev) =>
           obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
         );
       }
       case TIPO_REGLA.AND: {
-        return previas.previas.every((prev) =>
+        return previas.previas.forEach((prev) =>
           obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
         );
       }
       case TIPO_REGLA.SOME: {
-        return (
-          previas.previas.filter((prev) =>
-            obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
-          ).length >= previas.cantidad!
+        return previas.previas.forEach((prev) =>
+          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
         );
       }
       case TIPO_REGLA.UC: {
-        if (previas.codigo) listadoCodigosUCs.push(previas.codigo);
+        if (previas.codigo) {
+          if (!listadoCodigosUCs.includes(previas.codigo)) {
+            listadoCodigosUCs.push(previas.codigo);
+          }
+        }
       }
     }
   } catch (error) {
