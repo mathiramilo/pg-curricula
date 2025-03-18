@@ -13,7 +13,10 @@ export const ScreenHeader = ({
   ...props
 }: ScreenHeaderProps) => (
   <header
-    className={cn("flex flex-col gap-4 border-b border-borde pb-4", className)}
+    className={cn(
+      "w-full flex flex-col gap-4 border-b border-borde pb-4",
+      className,
+    )}
     {...props}
   >
     <h1 className="text-2xl font-medium">{title}</h1>

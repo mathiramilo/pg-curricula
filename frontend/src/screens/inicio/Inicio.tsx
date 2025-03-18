@@ -5,7 +5,6 @@ export const InicioScreen = () => {
   return (
     <ScreenLayout>
       <HeaderInicio />
-
       <TrayectoriaSugerida />
     </ScreenLayout>
   );

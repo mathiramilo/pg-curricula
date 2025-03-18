@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import type { UnidadCurricular } from "@/models";
 import { cn } from "@/utils";
-import { UnidadCurricularItem } from "./UnidadCurricularItem";
+import { MemoizedUnidadCurricularItem } from "./UnidadCurricularItem";
 
 type UnidadCurricularListProps = ComponentPropsWithoutRef<"div"> & {
   unidadesCurriculares: UnidadCurricular[];
@@ -20,7 +20,7 @@ export const UnidadCurricularList = ({
       {titulo && <h2 className="text-lg font-medium">{titulo}</h2>}
       <div className="w-full flex flex-col gap-2">
         {unidadesCurriculares.map((unidadCurricular) => (
-          <UnidadCurricularItem
+          <MemoizedUnidadCurricularItem
             key={unidadCurricular.codigoEnServicioUC}
             unidadCurricular={unidadCurricular}
           />

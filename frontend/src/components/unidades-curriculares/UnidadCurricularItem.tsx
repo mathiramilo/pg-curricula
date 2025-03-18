@@ -1,16 +1,21 @@
+import type { ComponentPropsWithoutRef } from "react";
+import React from "react";
+
 import { useAprobacion, useBoolean } from "@/hooks";
 import type { UnidadCurricular } from "@/models";
 import { useStore } from "@/store";
-import { capitalizeWords } from "@/utils";
+import { capitalizeWords, cn } from "@/utils";
 import { UnidadCurricularModal } from "../modals";
 import { Checkbox } from "../ui";
 
-interface UnidadCurricularItemProps {
+type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   unidadCurricular: UnidadCurricular;
-}
+};
 
-export const UnidadCurricularItem = ({
+const UnidadCurricularItem = ({
   unidadCurricular,
+  className,
+  ...props
 }: UnidadCurricularItemProps) => {
   const {
     value: showModal,
@@ -53,7 +58,13 @@ export const UnidadCurricularItem = ({
 
   return (
     <>
-      <div className="w-full flex items-center justify-between gap-2">
+      <div
+        className={cn(
+          "w-full flex items-center justify-between gap-2",
+          className,
+        )}
+        {...props}
+      >
         <div className="flex items-center gap-1">
           <button
             onClick={openModal}
@@ -90,3 +101,5 @@ export const UnidadCurricularItem = ({
     </>
   );
 };
+
+export const MemoizedUnidadCurricularItem = React.memo(UnidadCurricularItem);

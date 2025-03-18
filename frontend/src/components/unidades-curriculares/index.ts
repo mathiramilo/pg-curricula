@@ -4,3 +4,4 @@ export * from "./UnidadCurricularItem";
 export * from "./UnidadCurricularItemSkeleton";
 export * from "./UnidadCurricularList";
 export * from "./UnidadCurricularListSkeleton";
+export * from "./VirtualizedUnidadCurricularGrid";

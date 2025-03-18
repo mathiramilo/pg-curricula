@@ -7,7 +7,7 @@ import { capitalizeWords, cn } from "@/utils";
 
 interface CreditosGrupoItemProps {
   grupo: Grupo;
-  creditos: UnidadCurricular["creditos"];
+  creditos: UnidadCurricular["creditosUC"];
 }
 
 export const CreditosGrupoItem = ({
@@ -20,7 +20,7 @@ export const CreditosGrupoItem = ({
     <div key={grupo} className="flex items-center gap-1">
       <Link
         to={`/grupo/${grupo.toLowerCase()}`}
-        className="hover:underline text-sm text-fuente-principal"
+        className="hover:underline text-sm text-fuente-principal w-max"
       >
         {capitalizeWords(grupo)}:
       </Link>

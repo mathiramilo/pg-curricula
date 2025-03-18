@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 import { GRUPO_VALUES, TIPO_APROBACION } from "@/models";
 import type { Grupo, InformacionEstudiante, UnidadCurricular } from "@/models";
 
-interface Store {
+export interface Store {
   informacionEstudiante: InformacionEstudiante;
   setInformacionEstudiante: (
     informacionEstudiante: InformacionEstudiante,

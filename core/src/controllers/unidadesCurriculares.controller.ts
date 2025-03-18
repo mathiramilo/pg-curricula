@@ -8,11 +8,23 @@ import {
 } from '../services';
 
 export const obtenerUnidadesCurricularesController: RequestHandler = async (
-  _req: Request,
+  req: Request,
   res: Response
 ) => {
+  const { informacionEstudiante } = req.body;
+  const filter = { ...req.query };
+
+  if (!informacionEstudiante) {
+    return res.status(CodigoHTTP.BAD_REQUEST).json({
+      error: 'Falta la información del estudiante',
+    });
+  }
+
   try {
-    const unidadesCurriculares = await obtenerUnidadesCurriculares();
+    const unidadesCurriculares = await obtenerUnidadesCurriculares(
+      informacionEstudiante,
+      filter
+    );
     res.status(CodigoHTTP.OK).json(unidadesCurriculares);
   } catch (error) {
     const errorResponse: ErrorResponse = {

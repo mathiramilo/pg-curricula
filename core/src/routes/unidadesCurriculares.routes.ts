@@ -7,7 +7,7 @@ import {
 
 const router = Router();
 
-router.get('/', obtenerUnidadesCurricularesController);
+router.post('/', obtenerUnidadesCurricularesController);
 router.get('/trayectoria-sugerida', obtenerTrayectoriaSugeridaController);
 
 export default router;

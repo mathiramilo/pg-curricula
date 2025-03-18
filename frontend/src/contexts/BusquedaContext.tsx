@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { createContext, useContext, useState } from "react";
 
-import { useBoolean } from "@/hooks";
+import { useBoolean, useDebounce } from "@/hooks";
 
 export const MIN_CREDITOS = 0;
 export const MAX_CREDITOS = 30;
@@ -9,12 +9,14 @@ const RANGO_INICIAL = [MIN_CREDITOS, MAX_CREDITOS];
 
 interface BusquedaContextType {
   query: string;
+  debouncedQuery: string;
   grupo: string;
   rangoCreditos: number[];
+  debouncedRangoCreditos: number[];
   soloHabilitadas: boolean;
-  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  setQuery: React.Dispatch<string>;
   setGrupo: React.Dispatch<React.SetStateAction<string>>;
-  setRangoCreditos: React.Dispatch<React.SetStateAction<number[]>>;
+  setRangoCreditos: React.Dispatch<number[]>;
   setSoloHabilitadas: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -23,9 +25,12 @@ const BusquedaContext = createContext<BusquedaContextType | undefined>(
 );
 
 export const BusquedaContextProvider = ({ children }: PropsWithChildren) => {
-  const [query, setQuery] = useState("");
+  const [debouncedQuery, query, setQuery] = useDebounce("", 500);
   const [grupo, setGrupo] = useState("");
-  const [rangoCreditos, setRangoCreditos] = useState(RANGO_INICIAL);
+  const [debouncedRangoCreditos, rangoCreditos, setRangoCreditos] = useDebounce(
+    RANGO_INICIAL,
+    500,
+  );
   const { value: soloHabilitadas, setValue: setSoloHabilitadas } =
     useBoolean(false);
 
@@ -33,8 +38,10 @@ export const BusquedaContextProvider = ({ children }: PropsWithChildren) => {
     <BusquedaContext.Provider
       value={{
         query,
+        debouncedQuery,
         grupo,
         rangoCreditos,
+        debouncedRangoCreditos,
         soloHabilitadas,
         setQuery,
         setGrupo,

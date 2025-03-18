@@ -1,4 +1,7 @@
-import { UnidadCurricularGrid, UnidadCurricularList } from "@/components";
+import {
+  MemoizedUnidadCurricularGrid,
+  UnidadCurricularList,
+} from "@/components";
 import { useTrayectoriaSugerida } from "@/hooks";
 import { getSemestreTitle } from "@/utils";
 import { TrayectoriaSugeridaLoading } from "./TrayectoriaSugeridaLoading";
@@ -34,7 +37,7 @@ export const TrayectoriaSugerida = () => {
           }
 
           return (
-            <UnidadCurricularGrid
+            <MemoizedUnidadCurricularGrid
               key="opcional"
               unidadesCurriculares={unidadesCurriculares}
               titulo={getSemestreTitle(semestre)}
