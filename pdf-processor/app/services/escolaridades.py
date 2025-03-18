@@ -102,11 +102,12 @@ def get_student_data_with_intermediate_results(
                         student_data["unidadesCurricularesAprobadas"][nombre] = {
                             "concepto": None,
                             "fecha": fecha,
-                            "creditos": None,
-                            "nombre": nombre,
+                            "creditosUC": None,
+                            "codigoEnServicioUC": "",
+                            "nombreUC": nombre,
                             "tipoAprobacion": escolaridades_models.ApprobationType.COURSE.value,
-                            "area": area,
-                            "grupo": group,
+                            "nombreGrupoPadre": area,
+                            "nombreGrupoHijo": group,
                         }
 
                 else:
@@ -124,11 +125,12 @@ def get_student_data_with_intermediate_results(
                         student_data["unidadesCurricularesAprobadas"][nombre] = {
                             "concepto": concepto,
                             "fecha": fecha,
-                            "creditos": int(creditos),
-                            "nombre": nombre,
+                            "creditosUC": int(creditos),
+                            "codigoEnServicioUC": "",
+                            "nombreUC": nombre,
                             "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                            "area": area,
-                            "grupo": group,
+                            "nombreGrupoPadre": area,
+                            "nombreGrupoHijo": group,
                         }
                         student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
@@ -152,11 +154,12 @@ def get_student_data_with_intermediate_results(
                         student_data["unidadesCurricularesAprobadas"][nombre] = {
                             "concepto": concepto,
                             "fecha": fecha,
-                            "creditos": int(creditos),
-                            "nombre": nombre,
+                            "creditosUC": int(creditos),
+                            "codigoEnServicioUC": "",
+                            "nombreUC": nombre,
                             "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                            "area": area,
-                            "grupo": group,
+                            "nombreGrupoPadre": area,
+                            "nombreGrupoHijo": group,
                         }
                         student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
@@ -225,11 +228,12 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     student_data["unidadesCurricularesAprobadas"][nombre] = {
                         "concepto": concepto,
                         "fecha": fecha,
-                        "creditos": int(creditos),
-                        "nombre": nombre,
+                        "creditosUC": int(creditos),
+                        "codigoEnServicioUC": "",
+                        "nombreUC": nombre,
                         "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                        "area": area,
-                        "grupo": group,
+                        "nombreGrupoPadre": area,
+                        "nombreGrupoHijo": group,
                     }
                     student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)
@@ -246,11 +250,12 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     student_data["unidadesCurricularesAprobadas"][nombre] = {
                         "concepto": concepto,
                         "fecha": fecha,
-                        "creditos": int(creditos),
-                        "nombre": nombre,
+                        "creditosUC": int(creditos),
+                        "codigoEnServicioUC": "",
+                        "nombreUC": nombre,
                         "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                        "area": area,
-                        "grupo": group,
+                        "nombreGrupoPadre": area,
+                        "nombreGrupoHijo": group,
                     }
                     student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)

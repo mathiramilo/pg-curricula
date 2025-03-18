@@ -1,4 +1,4 @@
-import { GrupoHijo, GrupoPadre, UnidadCurricular } from '.';
+import { UnidadCurricular } from '.';
 
 export type InformacionEstudiante = {
   unidadesCurricularesAprobadas: {
@@ -20,22 +20,25 @@ export type InformacionEstudiante = {
   'MATERIAS OPCIONALES': number;
 };
 
-export type UCAprobada = {
-  concepto: string | null;
-  fecha: string;
-  creditos: number | null;
-  nombre: string;
-  tipoAprobacion: TipoAprobacion;
-  area: GrupoPadre;
-  grupo: GrupoHijo;
-};
-
 export const TIPO_APROBACION = {
   EXAMEN: 'Examen',
   CURSO: 'Curso',
 } as const;
 export type TipoAprobacion =
   (typeof TIPO_APROBACION)[keyof typeof TIPO_APROBACION];
+
+export type UCAprobada = Pick<
+  UnidadCurricular,
+  | 'codigoEnServicioUC'
+  | 'creditosUC'
+  | 'nombreUC'
+  | 'nombreGrupoPadre'
+  | 'nombreGrupoHijo'
+> & {
+  tipoAprobacion: TipoAprobacion;
+  concepto?: string | null;
+  fecha?: string;
+};
 
 export const esInformacionEstudiante = (
   obj: unknown

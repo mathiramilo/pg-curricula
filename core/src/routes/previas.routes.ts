@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import { chequearPreviasController } from '../controllers';
+import { satisfacePreviasController } from '../controllers';
 
 const router = Router();
 
-router.get('/cumple/:nombreUC', chequearPreviasController);
+router.post('/:codigoEnServicioUC/satisface', satisfacePreviasController);
 
 export default router;

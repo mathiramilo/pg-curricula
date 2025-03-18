@@ -15,11 +15,12 @@ export const actualizarInformacionEstudiante = (
   informacionEstudiante.unidadesCurricularesAprobadas[
     unidadCurricular.codigoEnServicioUC
   ] = {
-    nombre: unidadCurricular.nombreUC,
-    creditos: unidadCurricular.creditosUC,
+    codigoEnServicioUC: unidadCurricular.codigoEnServicioUC,
+    nombreUC: unidadCurricular.nombreUC,
+    creditosUC: unidadCurricular.creditosUC,
     concepto: '',
-    grupo: grupo,
-    area: unidadCurricular.nombreGrupoPadre,
+    nombreGrupoHijo: grupo,
+    nombreGrupoPadre: unidadCurricular.nombreGrupoPadre,
     fecha: '',
     tipoAprobacion: TIPO_APROBACION.EXAMEN,
   };

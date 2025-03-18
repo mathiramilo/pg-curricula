@@ -7,7 +7,7 @@ import morgan from 'morgan';
 import path from 'path';
 
 import { env } from './config';
-import { CodigoHTTP } from './constants';
+import { HTTP_STATUS_CODE } from './constants';
 import { errorMiddleware, rateLimiterMiddleware } from './middleware';
 import {
   escolaridadRouter,
@@ -49,9 +49,8 @@ app.use('/api/previas', previasRouter);
 app.use('/api/escolaridad', escolaridadRouter);
 app.use('/api/unidades-curriculares', unidadesCurricularesRouter);
 
-// Rutas no encontradas
 app.get('*', (_req, res) => {
-  res.status(CodigoHTTP.NOT_FOUND).json({ error: 'Ruta no encontrada' });
+  res.status(HTTP_STATUS_CODE.NOT_FOUND).json({ error: 'Ruta no encontrada' });
 });
 
 // Manejador de errores
