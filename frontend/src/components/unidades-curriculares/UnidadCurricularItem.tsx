@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import React from "react";
 
-import { useAprobacion, useBoolean } from "@/hooks";
+import { useAprobacion, useBoolean, useSatisfacePrevias } from "@/hooks";
 import type { UnidadCurricular } from "@/models";
 import { useStore } from "@/store";
 import { capitalizeWords, cn } from "@/utils";
@@ -40,19 +40,33 @@ const UnidadCurricularItem = ({
     unidadCurricular.codigoEnServicioUC,
   );
 
+  const { data: satisfacePrevias, isLoading } = useSatisfacePrevias(
+    unidadCurricular.codigoEnServicioUC,
+  );
+
+  const disabledCheckbox = !satisfacePrevias || isLoading;
+
+  const unidadCurricularAprobada = {
+    codigoEnServicioUC: unidadCurricular.codigoEnServicioUC,
+    nombreUC: unidadCurricular.nombreUC,
+    creditosUC: unidadCurricular.creditosUC,
+    nombreGrupoPadre: unidadCurricular.nombreGrupoPadre,
+    nombreGrupoHijo: unidadCurricular.nombreGrupoHijo,
+  };
+
   const handleCheckedChangeCurso = (value: boolean) => {
     if (value) {
-      addUnidadCurricularCurso(unidadCurricular);
+      addUnidadCurricularCurso(unidadCurricularAprobada);
     } else {
-      removeUnidadCurricularCurso(unidadCurricular);
+      removeUnidadCurricularCurso(unidadCurricularAprobada);
     }
   };
 
   const handleCheckedChangeExamen = (value: boolean) => {
     if (value) {
-      addUnidadCurricularExamen(unidadCurricular);
+      addUnidadCurricularExamen(unidadCurricularAprobada);
     } else {
-      removeUnidadCurricularExamen(unidadCurricular);
+      removeUnidadCurricularExamen(unidadCurricularAprobada);
     }
   };
 
@@ -79,6 +93,7 @@ const UnidadCurricularItem = ({
           <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
             C{" "}
             <Checkbox
+              disabled={disabledCheckbox}
               checked={cursoAprobado}
               onCheckedChange={handleCheckedChangeCurso}
             />
@@ -86,6 +101,7 @@ const UnidadCurricularItem = ({
           <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
             E{" "}
             <Checkbox
+              disabled={disabledCheckbox}
               checked={examenAprobado}
               onCheckedChange={handleCheckedChangeExamen}
             />

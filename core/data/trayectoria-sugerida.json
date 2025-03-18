@@ -1,38 +1,96 @@
 [
   {
     "semestre": 1,
-    "unidadesCurriculares": ["DMA05", "1023", "1373"]
+    "unidadesCurriculares": [
+      { "codigo": "MI2", "nombre": "MATEMÁTICA INICIAL" },
+      { "codigo": "1030", "nombre": "GEOMETRÍA Y ÁLGEBRA LINEAL 1" },
+      { "codigo": "1023", "nombre": "MATEMÁTICA DISCRETA 1" },
+      { "codigo": "1373", "nombre": "PROGRAMACIÓN 1" }
+    ]
   },
   {
     "semestre": 2,
-    "unidadesCurriculares": ["DMA01", "REF04", "DMA03", "1321"]
+    "unidadesCurriculares": [
+      {
+        "codigo": "1061",
+        "nombre": "CALCULO DIFERENCIAL E INTEGRAL EN UNA VARIABLE"
+      },
+      { "codigo": "1031", "nombre": "GEOMETRÍA Y ÁLGEBRA LINEAL 2" },
+      { "codigo": "1026", "nombre": "MATEMÁTICA DISCRETA 2" },
+      { "codigo": "1321", "nombre": "PROGRAMACIÓN 2" }
+    ]
   },
   {
     "semestre": 3,
-    "unidadesCurriculares": ["DMA06", "1031", "1027", "1026"]
+    "unidadesCurriculares": [
+      {
+        "codigo": "1062",
+        "nombre": "CALCULO DIFERENCIAL E INTEGRAL EN VARIAS VARIABLES"
+      },
+      { "codigo": "1027", "nombre": "LÓGICA" },
+      { "codigo": "1324", "nombre": "PROGRAMACIÓN 4" }
+    ]
   },
   {
     "semestre": 4,
-    "unidadesCurriculares": ["1466", "1323", "CH201", "CIM20"]
+    "unidadesCurriculares": [
+      { "codigo": "1025", "nombre": "PROBABILIDAD Y ESTADÍSTICA" },
+      { "codigo": "1323", "nombre": "PROGRAMACIÓN 3" },
+      { "codigo": "1443", "nombre": "ARQUITECTURA DE COMPUTADORAS" },
+      { "codigo": "1033", "nombre": "MÉTODOS NUMÉRICOS" }
+    ]
   },
   {
     "semestre": 5,
-    "unidadesCurriculares": ["CP31", "1324", "1325", "1944"]
+    "unidadesCurriculares": [
+      {
+        "codigo": "1650",
+        "nombre": "INTRODUCCIÓN A LA INVESTIGACIÓN DE OPERACIONES"
+      },
+      { "codigo": "1537", "nombre": "SISTEMAS OPERATIVOS" },
+      { "codigo": "1325", "nombre": "TEORÍA DE LENGUAJES" },
+      { "codigo": "1944", "nombre": "ADMINISTRACIÓN GENERAL PARA INGENIEROS" }
+    ]
   },
   {
     "semestre": 6,
-    "unidadesCurriculares": ["1911", "1327", "1446", "1945"]
+    "unidadesCurriculares": [
+      { "codigo": "1911", "nombre": "FUNDAMENTOS DE BASES DE DATOS" },
+      { "codigo": "1327", "nombre": "TALLER DE PROGRAMACIÓN" },
+      { "codigo": "1446", "nombre": "REDES DE COMPUTADORAS" },
+      {
+        "codigo": "1945",
+        "nombre": "PRACTICA DE ADMINISTRACIÓN PARA INGENIEROS"
+      }
+    ]
   },
   {
     "semestre": 7,
-    "unidadesCurriculares": ["1610", "1716", "1354", "1340"]
+    "unidadesCurriculares": [
+      {
+        "codigo": "1716",
+        "nombre": "INTRODUCCIÓN A LA INGENIERÍA DE SOFTWARE"
+      },
+      { "codigo": "1354", "nombre": "PROGRAMACIÓN FUNCIONAL" },
+      { "codigo": "1340", "nombre": "PROGRAMACIÓN LÓGICA" },
+      { "codigo": "1151", "nombre": "FÍSICA 1" }
+    ]
   },
   {
     "semestre": 8,
-    "unidadesCurriculares": ["1721", "1224", "1225"]
+    "unidadesCurriculares": [
+      { "codigo": "1721", "nombre": "PROYECTO DE INGENIERÍA DE SOFTWARE" },
+      { "codigo": "1224", "nombre": "ECONOMÍA" },
+      {
+        "codigo": "1225",
+        "nombre": "POLÍTICAS CIENTÍFICAS EN INFORMACIÓN Y COMPUTACIÓN"
+      }
+    ]
   },
   {
     "semestre": 9,
-    "unidadesCurriculares": ["1730"]
+    "unidadesCurriculares": [
+      { "codigo": "1730", "nombre": "PROYECTO DE GRADO" }
+    ]
   }
 ]

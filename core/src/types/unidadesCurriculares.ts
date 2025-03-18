@@ -26,15 +26,15 @@ export type UnidadCurricularCSV = {
 };
 
 export type UnidadCurricular = {
+  codigoEnServicioUC: string;
+  nombreUC: string;
+  codigoUC: number;
+  tipoUC: TipoUC;
+  creditosUC: number;
   nombreGrupoPadre: GrupoPadre;
   codigoGrupoPadre: number;
   nombreGrupoHijo: GrupoHijo;
   codigoGrupoHijo: number;
-  nombreUC: string;
-  codigoUC: number;
-  codigoEnServicioUC: string;
-  tipoUC: TipoUC;
-  creditosUC: number;
   semestres: SemestreDeDictado[] | null;
 };
 

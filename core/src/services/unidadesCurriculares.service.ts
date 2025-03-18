@@ -5,13 +5,13 @@ import trayectoriaSugerida from '../../data/trayectoria-sugerida.json';
 import ucsFing from '../../data/ucs-fing.json';
 import { cumplePrevias } from './previas.service';
 
-interface ObtenerUnidadesCurricularesFilter {
-  nombre?: string;
-  grupo?: string;
-  minCreditos?: string;
-  maxCreditos?: string;
-  habilitadas?: string;
-}
+type ObtenerUnidadesCurricularesFilter = Partial<{
+  nombre: string;
+  grupo: string;
+  minCreditos: string;
+  maxCreditos: string;
+  habilitadas: string;
+}>;
 
 // TODO: Implementar paginación y ordenamiento
 export const obtenerUnidadesCurriculares = (
@@ -65,9 +65,9 @@ export const obtenerTrayectoriaSugerida = () => {
 
   const trayectoriaProcesada = trayectoriaSugerida.map((semestre) => {
     const unidadesCurricularesProcesadas = semestre.unidadesCurriculares.map(
-      (codigoUC) => {
-        codigosIncluidos.add(codigoUC);
-        return unidadesCurricularesMap.get(codigoUC);
+      ({ codigo }) => {
+        codigosIncluidos.add(codigo);
+        return unidadesCurricularesMap.get(codigo);
       }
     );
 
@@ -77,40 +77,17 @@ export const obtenerTrayectoriaSugerida = () => {
     };
   });
 
-  const unidadesNoIncluidas = Array.from(
+  const unidadesCurricularesNoIncluidas = Array.from(
     unidadesCurricularesMap.values()
-  ).filter((uc) => !codigosIncluidos.has(uc.codigoEnServicioUC));
+  ).filter(
+    (uc) => !codigosIncluidos.has(uc.codigoEnServicioUC) && uc.semestres
+  );
 
   return [
     ...trayectoriaProcesada,
     {
       semestre: null,
-      unidadesCurriculares: unidadesNoIncluidas,
+      unidadesCurriculares: unidadesCurricularesNoIncluidas,
     },
   ];
-};
-
-export const obtenerUnidadesCurricularesHabilitadas = (
-  informacionEstudiante: InformacionEstudiante,
-  todas: boolean
-): string[] => {
-  const UCsHabilitadas: string[] = [];
-
-  for (const nombreUC in previaturas) {
-    // Si la UC ya fue aprobada, no la agregamos a las disponibles
-    if (
-      !todas &&
-      informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
-        nombreUC
-      )
-    ) {
-      continue;
-    }
-    // Si cumple con las previas, la agregamos a las disponibles
-    if (cumplePrevias(informacionEstudiante, previaturas[nombreUC])) {
-      UCsHabilitadas.push(nombreUC);
-    }
-  }
-
-  return UCsHabilitadas;
 };

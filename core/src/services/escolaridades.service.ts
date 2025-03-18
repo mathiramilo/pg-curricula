@@ -33,7 +33,8 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
     const uc1 = ucs.find(
       (uc) =>
         uc.creditosUC ===
-        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]?.creditos
+        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]
+          ?.creditosUC
     );
 
     // Buscamos una UC que tenga la misma cantidad de creditos y se dicte actualmente
@@ -41,7 +42,7 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
       (uc) =>
         uc.creditosUC ===
           informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]
-            ?.creditos && uc.semestres
+            ?.creditosUC && uc.semestres
     );
 
     // Si encontramos una UC que cumpla con las ultimas condiciones, la asociamos, sino, asociamos la primera que encontramos

@@ -1,4 +1,4 @@
-export const CodigoHTTP = {
+export const HTTP_STATUS_CODE = {
   OK: 200,
   CREATED: 201,
   NO_CONTENT: 204,
@@ -6,6 +6,7 @@ export const CodigoHTTP = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
   NOT_FOUND: 404,
-  INTERNAL_SERVER_ERROR: 500
+  INTERNAL_SERVER_ERROR: 500,
 } as const;
-export type CodigoHTTP = (typeof CodigoHTTP)[keyof typeof CodigoHTTP];
+export type HttpStatusCode =
+  (typeof HTTP_STATUS_CODE)[keyof typeof HTTP_STATUS_CODE];

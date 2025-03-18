@@ -1,15 +1,17 @@
 import { ErrorRequestHandler, Request, Response } from 'express';
 
-import { CodigoHTTP } from '../constants';
+import { HTTP_STATUS_CODE } from '../constants';
 
 export const errorMiddleware: ErrorRequestHandler = (
-  err: Error & { status?: number },
+  err: Error,
   _req: Request,
-  res: Response,
+  res: Response
 ) => {
-  const status = err.status || CodigoHTTP.INTERNAL_SERVER_ERROR;
-  const message = err.message || 'Error interno del servidor';
+  const message = err.message || 'Ha ocurrido un error inesperado';
 
   console.error(err.stack);
-  return res.status(status).json({ error: message });
+
+  return res
+    .status(HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR)
+    .json({ error: message });
 };

@@ -2,17 +2,29 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { GRUPO_VALUES, TIPO_APROBACION } from "@/models";
-import type { Grupo, InformacionEstudiante, UnidadCurricular } from "@/models";
+import type {
+  Grupo,
+  InformacionEstudiante,
+  UnidadCurricularAprobada,
+} from "@/models";
 
 export interface Store {
   informacionEstudiante: InformacionEstudiante;
   setInformacionEstudiante: (
     informacionEstudiante: InformacionEstudiante,
   ) => void;
-  addUnidadCurricularCurso: (unidadCurricular: UnidadCurricular) => void;
-  addUnidadCurricularExamen: (unidadCurricular: UnidadCurricular) => void;
-  removeUnidadCurricularCurso: (unidadCurricular: UnidadCurricular) => void;
-  removeUnidadCurricularExamen: (unidadCurricular: UnidadCurricular) => void;
+  addUnidadCurricularCurso: (
+    unidadCurricular: UnidadCurricularAprobada,
+  ) => void;
+  addUnidadCurricularExamen: (
+    unidadCurricular: UnidadCurricularAprobada,
+  ) => void;
+  removeUnidadCurricularCurso: (
+    unidadCurricular: UnidadCurricularAprobada,
+  ) => void;
+  removeUnidadCurricularExamen: (
+    unidadCurricular: UnidadCurricularAprobada,
+  ) => void;
   resetInformacionEstudiante: () => void;
 }
 

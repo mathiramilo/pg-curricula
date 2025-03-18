@@ -1,7 +1,6 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import { ErrorResponse } from '../types';
-import { CodigoHTTP } from '../constants';
+import { HTTP_STATUS_CODE } from '../constants';
 import {
   obtenerTrayectoriaSugerida,
   obtenerUnidadesCurriculares,
@@ -9,14 +8,15 @@ import {
 
 export const obtenerUnidadesCurricularesController: RequestHandler = async (
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) => {
   const { informacionEstudiante } = req.body;
   const filter = { ...req.query };
 
   if (!informacionEstudiante) {
-    return res.status(CodigoHTTP.BAD_REQUEST).json({
-      error: 'Falta la información del estudiante',
+    return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
+      error: 'No se proporcionó la información del estudiante',
     });
   }
 
@@ -25,13 +25,9 @@ export const obtenerUnidadesCurricularesController: RequestHandler = async (
       informacionEstudiante,
       filter
     );
-    res.status(CodigoHTTP.OK).json(unidadesCurriculares);
+    res.status(HTTP_STATUS_CODE.OK).json(unidadesCurriculares);
   } catch (error) {
-    const errorResponse: ErrorResponse = {
-      error: 'Error al cargar las unidades curriculares',
-      details: error instanceof Error ? error.message : 'Error desconocido',
-    };
-    res.status(CodigoHTTP.INTERNAL_SERVER_ERROR).json(errorResponse);
+    next(error);
   }
 };
 
@@ -42,7 +38,7 @@ export const obtenerTrayectoriaSugeridaController: RequestHandler = async (
 ) => {
   try {
     const trayectoriaSugerida = await obtenerTrayectoriaSugerida();
-    res.status(CodigoHTTP.OK).json(trayectoriaSugerida);
+    res.status(HTTP_STATUS_CODE.OK).json(trayectoriaSugerida);
   } catch (error) {
     next(error);
   }
