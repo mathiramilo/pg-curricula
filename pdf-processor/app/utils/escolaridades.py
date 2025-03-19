@@ -44,6 +44,11 @@ def skip_line(line: str) -> bool:
     Returns:
         bool: Retorna True si la linea debe ser omitida, False en caso contrario.
     """
+    if re.match(r'^\d+:\d+:\d+$', line):
+        return True
+    
+    if re.match(r'^\d{1,2}/\d{1,2}/\d{4}\s*CERTIFICADO DE ESCOLARIDAD', line):
+        return True
 
     for s in escolaridades.LINES_TO_SKIP:
         if line.startswith(s):

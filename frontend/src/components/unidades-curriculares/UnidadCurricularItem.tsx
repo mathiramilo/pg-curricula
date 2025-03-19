@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import React from "react";
 
-import { useAprobacion, useBoolean, useSatisfacePrevias } from "@/hooks";
+import { useAprobacion, useBoolean } from "@/hooks";
 import type { UnidadCurricular } from "@/models";
 import { useStore } from "@/store";
 import { capitalizeWords, cn } from "@/utils";
@@ -39,12 +39,6 @@ const UnidadCurricularItem = ({
   const { cursoAprobado, examenAprobado } = useAprobacion(
     unidadCurricular.codigoEnServicioUC,
   );
-
-  const { data: satisfacePrevias, isLoading } = useSatisfacePrevias(
-    unidadCurricular.codigoEnServicioUC,
-  );
-
-  const disabledCheckbox = !satisfacePrevias || isLoading;
 
   const unidadCurricularAprobada = {
     codigoEnServicioUC: unidadCurricular.codigoEnServicioUC,
@@ -93,7 +87,6 @@ const UnidadCurricularItem = ({
           <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
             C{" "}
             <Checkbox
-              disabled={disabledCheckbox}
               checked={cursoAprobado}
               onCheckedChange={handleCheckedChangeCurso}
             />
@@ -101,7 +94,6 @@ const UnidadCurricularItem = ({
           <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
             E{" "}
             <Checkbox
-              disabled={disabledCheckbox}
               checked={examenAprobado}
               onCheckedChange={handleCheckedChangeExamen}
             />

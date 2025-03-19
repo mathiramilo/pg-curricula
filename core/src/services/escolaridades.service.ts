@@ -47,11 +47,15 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
 
     // Si encontramos una UC que cumpla con las ultimas condiciones, la asociamos, sino, asociamos la primera que encontramos
     if (uc2) {
-      unidadesCurricularesAprobadasActualizado[uc2.codigoEnServicioUC] =
-        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC];
+      unidadesCurricularesAprobadasActualizado[uc2.codigoEnServicioUC] = {
+        ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
+        codigoEnServicioUC: uc2.codigoEnServicioUC,
+      };
     } else if (uc1) {
-      unidadesCurricularesAprobadasActualizado[uc1.codigoEnServicioUC] =
-        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC];
+      unidadesCurricularesAprobadasActualizado[uc1.codigoEnServicioUC] = {
+        ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
+        codigoEnServicioUC: uc1.codigoEnServicioUC,
+      };
     }
   }
 

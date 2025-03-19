@@ -45,4 +45,12 @@ LINES_TO_SKIP = [
     "-cionesCred Actividad",
     "Curso",
     "*",
+    "REFERENCIAS",
+    "Conceptos Sin Concepto",
+    "EMISIÓN",
+    "1997Plan",
+    " FACULTAD DE INGENIERÍA",
+    "RESUMEN DE AVANCE:",
+    "-cionesUnidad",
+    "Concepto",
 ]

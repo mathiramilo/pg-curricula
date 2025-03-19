@@ -68,7 +68,8 @@ export const SubirArchivoModal = ({
         <DialogHeader>
           <DialogTitle>Cargar Progreso</DialogTitle>
           <DialogDescription>
-            Sube tu escolaridad en formato PDF
+            Sube tu escolaridad con resultados intermedios en formato PDF o tu
+            progreso previamente exportado en formato JSON.
           </DialogDescription>
         </DialogHeader>
 
