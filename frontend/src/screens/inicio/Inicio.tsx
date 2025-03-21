@@ -1,5 +1,6 @@
 import { ScreenLayout } from "@/layouts";
-import { HeaderInicio, TrayectoriaSugerida } from "./components";
+import { HeaderInicio } from "./HeaderInicio";
+import { TrayectoriaSugerida } from "./TrayectoriaSugerida";
 
 export const InicioScreen = () => {
   return (

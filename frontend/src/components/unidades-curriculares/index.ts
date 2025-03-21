@@ -1,3 +1,5 @@
+export * from "./EmptyState";
+export * from "./ErrorState";
 export * from "./UnidadCurricularGrid";
 export * from "./UnidadCurricularGridSkeleton";
 export * from "./UnidadCurricularItem";

@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 
 import {
+  EmptyState,
+  ErrorState,
   MemoizedUnidadCurricularGrid,
   ScreenHeader,
   Switch,
+  UnidadCurricularGridSkeleton,
 } from "@/components";
 import { useBoolean, useUnidadesCurriculares } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
@@ -15,7 +18,12 @@ export const GrupoScreen = () => {
   const { value: soloHabilitadas, setValue: setSoloHabilitadas } =
     useBoolean(false);
 
-  const { data: unidadesCurriculares, isLoading } = useUnidadesCurriculares({
+  const {
+    data: unidadesCurriculares,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useUnidadesCurriculares({
     grupo: slug,
     habilitadas: soloHabilitadas,
   });
@@ -34,11 +42,13 @@ export const GrupoScreen = () => {
         </div>
       </ScreenHeader>
 
-      {isLoading && <div>Cargando...</div>}
+      {isLoading && <UnidadCurricularGridSkeleton itemsAmount={78} />}
 
-      {!unidadesCurriculares?.length ? (
-        <div>No se encontraron resultados</div>
-      ) : (
+      {isError && <ErrorState />}
+
+      {isSuccess && !unidadesCurriculares?.length && <EmptyState />}
+
+      {isSuccess && unidadesCurriculares && (
         <MemoizedUnidadCurricularGrid
           titulo="Listado de unidades curriculares"
           unidadesCurriculares={unidadesCurriculares}

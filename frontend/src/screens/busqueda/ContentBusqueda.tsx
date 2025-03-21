@@ -1,4 +1,9 @@
-import { MemoizedUnidadCurricularGrid } from "@/components";
+import {
+  EmptyState,
+  ErrorState,
+  MemoizedUnidadCurricularGrid,
+  UnidadCurricularGridSkeleton,
+} from "@/components";
 import { useBusquedaContext } from "@/contexts";
 import { useUnidadesCurriculares } from "@/hooks";
 
@@ -6,7 +11,11 @@ export const ContentBusqueda = () => {
   const { debouncedQuery, grupo, debouncedRangoCreditos, soloHabilitadas } =
     useBusquedaContext();
 
-  const { data: unidadesCurriculares, isLoading } = useUnidadesCurriculares({
+  const {
+    data: unidadesCurriculares,
+    isLoading,
+    isError,
+  } = useUnidadesCurriculares({
     nombre: debouncedQuery,
     grupo,
     minCreditos: debouncedRangoCreditos[0],
@@ -15,11 +24,15 @@ export const ContentBusqueda = () => {
   });
 
   if (isLoading) {
-    return <div>Cargando...</div>;
+    return <UnidadCurricularGridSkeleton itemsAmount={78} className="mt-8" />;
+  }
+
+  if (isError) {
+    return <ErrorState className="mt-8" />;
   }
 
   if (!unidadesCurriculares?.length) {
-    return <div>No se encontraron resultados</div>;
+    return <EmptyState className="mt-8" />;
   }
 
   return (

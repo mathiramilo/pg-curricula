@@ -1,3 +1,5 @@
+export * from "./AlertHexagon";
+export * from "./AlertTriangle";
 export * from "./ChevronRight";
 export * from "./Close";
 export * from "./Download";

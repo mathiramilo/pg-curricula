@@ -1,4 +1,5 @@
 import {
+  ErrorState,
   MemoizedUnidadCurricularGrid,
   UnidadCurricularList,
 } from "@/components";
@@ -19,7 +20,7 @@ export const TrayectoriaSugerida = () => {
   }
 
   if (isError) {
-    return <div>Ha ocurrido un error inesperado</div>;
+    return <ErrorState className="mt-8" />;
   }
 
   return (
