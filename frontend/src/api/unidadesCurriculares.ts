@@ -1,5 +1,9 @@
-import type { TrayectoriaSugeridaSemestre, UnidadCurricular } from "@/models";
-import type { Store } from "@/store";
+import type {
+  SemestreDeDictado,
+  TrayectoriaSugeridaSemestre,
+  UnidadCurricular,
+} from "@/models";
+import { useStore } from "@/store";
 import { api } from "./axios";
 
 export const DOMINIO_UNIDADES_CURRICULARES = "unidades-curriculares";
@@ -10,16 +14,13 @@ export interface GetUnidadesCurricularesFilter {
   minCreditos?: number;
   maxCreditos?: number;
   habilitadas?: boolean;
+  semestresDeDictado?: SemestreDeDictado[];
 }
 
 export const getUnidadesCurriculares = async (
   filter: GetUnidadesCurricularesFilter,
 ) => {
-  const store = JSON.parse(localStorage.getItem("store") ?? "") as {
-    state: Store;
-  };
-
-  const informacionEstudiante = store.state.informacionEstudiante;
+  const informacionEstudiante = useStore.getState().informacionEstudiante;
 
   const res = await api.post<UnidadCurricular[]>(
     "/unidades-curriculares",
@@ -27,6 +28,7 @@ export const getUnidadesCurriculares = async (
     {
       params: {
         ...filter,
+        semestresDeDictado: JSON.stringify(filter.semestresDeDictado),
       },
     },
   );

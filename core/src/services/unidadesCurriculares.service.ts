@@ -1,4 +1,8 @@
-import { UnidadCurricular, type InformacionEstudiante } from '@/types';
+import {
+  SemestreDeDictado,
+  UnidadCurricular,
+  type InformacionEstudiante,
+} from '@/types';
 
 import previaturas from '../../data/previaturas.json';
 import trayectoriaSugerida from '../../data/trayectoria-sugerida.json';
@@ -11,6 +15,7 @@ type ObtenerUnidadesCurricularesFilter = Partial<{
   minCreditos: string;
   maxCreditos: string;
   habilitadas: string;
+  semestresDeDictado: string;
 }>;
 
 // TODO: Implementar paginación y ordenamiento
@@ -49,6 +54,20 @@ export const obtenerUnidadesCurriculares = (
   if (soloHabilitadas) {
     unidadesCurriculares = unidadesCurriculares.filter((uc) =>
       cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
+    );
+  }
+
+  const semestres = JSON.parse(
+    filter.semestresDeDictado || '[]'
+  ) as SemestreDeDictado[];
+
+  if (semestres.length) {
+    unidadesCurriculares = unidadesCurriculares.filter(
+      (uc) =>
+        uc.semestres &&
+        uc.semestres.some((semestre) =>
+          semestres.includes(semestre as SemestreDeDictado)
+        )
     );
   }
 

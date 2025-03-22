@@ -8,8 +8,13 @@ import { useBusquedaContext } from "@/contexts";
 import { useUnidadesCurriculares } from "@/hooks";
 
 export const ContentBusqueda = () => {
-  const { debouncedQuery, grupo, debouncedRangoCreditos, soloHabilitadas } =
-    useBusquedaContext();
+  const {
+    debouncedQuery,
+    grupo,
+    debouncedRangoCreditos,
+    soloHabilitadas,
+    semestresDeDictado,
+  } = useBusquedaContext();
 
   const {
     data: unidadesCurriculares,
@@ -21,6 +26,7 @@ export const ContentBusqueda = () => {
     minCreditos: debouncedRangoCreditos[0],
     maxCreditos: debouncedRangoCreditos[1],
     habilitadas: soloHabilitadas,
+    semestresDeDictado,
   });
 
   if (isLoading) {

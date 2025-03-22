@@ -28,6 +28,11 @@ export const TIPO_APROBACION = {
   CURSO: "Curso",
 } as const;
 
+export const SEMESTRE_DE_DICTADO = {
+  PRIMER_SEMESTRE: "1",
+  SEGUNDO_SEMESTRE: "2",
+} as const;
+
 export const REQUISITOS_TITULO = {
   CREDITOS_TOTALES: 450,
   [GRUPO.MATEMATICA]: 70,

@@ -1,4 +1,5 @@
 import {
+  Checkbox,
   Input,
   ScreenHeader,
   Select,
@@ -10,7 +11,7 @@ import {
   Switch,
 } from "@/components";
 import { MAX_CREDITOS, MIN_CREDITOS, useBusquedaContext } from "@/contexts";
-import { GRUPO_VALUES } from "@/models";
+import { GRUPO_VALUES, SEMESTRE_DE_DICTADO } from "@/models";
 import { capitalizeWords } from "@/utils";
 
 export const HeaderBusqueda = () => {
@@ -19,10 +20,12 @@ export const HeaderBusqueda = () => {
     grupo,
     rangoCreditos,
     soloHabilitadas,
+    semestresDeDictado,
     setQuery,
     setGrupo,
     setRangoCreditos,
     setSoloHabilitadas,
+    setSemestresDeDictado,
   } = useBusquedaContext();
 
   return (
@@ -75,6 +78,46 @@ export const HeaderBusqueda = () => {
             onCheckedChange={setSoloHabilitadas}
           />
           <p className="text-sm xl:w-52">Mostrar solamente habilitadas</p>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Checkbox
+              checked={semestresDeDictado.includes(
+                SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
+              )}
+              onCheckedChange={(checked) => {
+                setSemestresDeDictado((prev) =>
+                  checked
+                    ? [...prev, SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE]
+                    : prev.filter(
+                        (semestre) =>
+                          semestre !== SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
+                      ),
+                );
+              }}
+            />
+            <p className="text-sm xl:w-52">Primer semestre</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Checkbox
+              checked={semestresDeDictado.includes(
+                SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE,
+              )}
+              onCheckedChange={(checked) => {
+                setSemestresDeDictado((prev) =>
+                  checked
+                    ? [...prev, SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE]
+                    : prev.filter(
+                        (semestre) =>
+                          semestre !== SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE,
+                      ),
+                );
+              }}
+            />
+            <p className="text-sm xl:w-52">Segundo semestre</p>
+          </div>
         </div>
       </div>
     </ScreenHeader>

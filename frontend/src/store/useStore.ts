@@ -41,8 +41,10 @@ export const useStore = create<Store>()(
   persist(
     (set) => ({
       informacionEstudiante: initialInformacionEstudiante,
+
       setInformacionEstudiante: (informacionEstudiante) =>
         set({ informacionEstudiante }),
+
       addUnidadCurricularCurso: (unidadCurricular) =>
         set((state) => ({
           informacionEstudiante: {
@@ -56,6 +58,7 @@ export const useStore = create<Store>()(
             },
           },
         })),
+
       addUnidadCurricularExamen: (unidadCurricular) =>
         set((state) => ({
           informacionEstudiante: {
@@ -75,6 +78,7 @@ export const useStore = create<Store>()(
               unidadCurricular.creditosUC,
           },
         })),
+
       removeUnidadCurricularCurso: (unidadCurricular) =>
         set((state) => {
           const examenAprobado =
@@ -107,6 +111,7 @@ export const useStore = create<Store>()(
             },
           };
         }),
+        
       removeUnidadCurricularExamen: (unidadCurricular) =>
         set((state) => ({
           informacionEstudiante: {
@@ -128,6 +133,7 @@ export const useStore = create<Store>()(
               unidadCurricular.creditosUC,
           },
         })),
+        
       resetInformacionEstudiante: () =>
         set(() => ({
           informacionEstudiante: initialInformacionEstudiante,

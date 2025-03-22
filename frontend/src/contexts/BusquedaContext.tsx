@@ -2,6 +2,7 @@ import type { PropsWithChildren } from "react";
 import { createContext, useContext, useState } from "react";
 
 import { useBoolean, useDebounce } from "@/hooks";
+import { SemestreDeDictado } from "@/models";
 
 export const MIN_CREDITOS = 0;
 export const MAX_CREDITOS = 30;
@@ -14,10 +15,14 @@ interface BusquedaContextType {
   rangoCreditos: number[];
   debouncedRangoCreditos: number[];
   soloHabilitadas: boolean;
+  semestresDeDictado: SemestreDeDictado[];
   setQuery: React.Dispatch<string>;
   setGrupo: React.Dispatch<React.SetStateAction<string>>;
   setRangoCreditos: React.Dispatch<number[]>;
   setSoloHabilitadas: React.Dispatch<React.SetStateAction<boolean>>;
+  setSemestresDeDictado: React.Dispatch<
+    React.SetStateAction<SemestreDeDictado[]>
+  >;
 }
 
 const BusquedaContext = createContext<BusquedaContextType | undefined>(
@@ -33,6 +38,9 @@ export const BusquedaContextProvider = ({ children }: PropsWithChildren) => {
   );
   const { value: soloHabilitadas, setValue: setSoloHabilitadas } =
     useBoolean(false);
+  const [semestresDeDictado, setSemestresDeDictado] = useState<
+    SemestreDeDictado[]
+  >([]);
 
   return (
     <BusquedaContext.Provider
@@ -43,10 +51,12 @@ export const BusquedaContextProvider = ({ children }: PropsWithChildren) => {
         rangoCreditos,
         debouncedRangoCreditos,
         soloHabilitadas,
+        semestresDeDictado,
         setQuery,
         setGrupo,
         setRangoCreditos,
         setSoloHabilitadas,
+        setSemestresDeDictado,
       }}
     >
       {children}
