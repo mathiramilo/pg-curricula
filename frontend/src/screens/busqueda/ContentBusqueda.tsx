@@ -44,15 +44,15 @@ export const ContentBusqueda = () => {
   ]);
 
   if (isLoading) {
-    return <UnidadCurricularGridSkeleton itemsAmount={60} className="mt-8" />;
+    return <UnidadCurricularGridSkeleton itemsAmount={60} />;
   }
 
   if (isError) {
-    return <ErrorState className="mt-8" />;
+    return <ErrorState />;
   }
 
   if (!data?.data.length) {
-    return <EmptyState className="mt-8" />;
+    return <EmptyState />;
   }
 
   const {
@@ -66,7 +66,6 @@ export const ContentBusqueda = () => {
     <MemoizedUnidadCurricularGrid
       titulo="Resultados"
       unidadesCurriculares={unidadesCurriculares}
-      className="mt-8"
       rightElement={
         <Pagination
           page={currentPage}

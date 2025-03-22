@@ -1,5 +1,6 @@
 export * from "./AlertHexagon";
 export * from "./AlertTriangle";
+export * from "./CalendarTime";
 export * from "./ChevronLeft";
 export * from "./ChevronRight";
 export * from "./Close";

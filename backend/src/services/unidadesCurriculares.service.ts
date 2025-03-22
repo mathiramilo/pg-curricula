@@ -14,8 +14,9 @@ type ObtenerUnidadesCurricularesFilter = Partial<{
   grupo: string;
   minCreditos: string;
   maxCreditos: string;
-  habilitadas: string;
   semestresDeDictado: string;
+  habilitadas: string;
+  aprobadas: string;
 }>;
 
 export const obtenerUnidadesCurriculares = (
@@ -50,16 +51,6 @@ export const obtenerUnidadesCurriculares = (
     );
   }
 
-  const soloHabilitadas = filter.habilitadas === 'true';
-
-  if (soloHabilitadas) {
-    unidadesCurriculares = unidadesCurriculares.filter(
-      (uc) =>
-        uc.semestres &&
-        cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
-    );
-  }
-
   const semestres = JSON.parse(
     filter.semestresDeDictado || '[]'
   ) as SemestreDeDictado[];
@@ -71,6 +62,26 @@ export const obtenerUnidadesCurriculares = (
         uc.semestres.some((semestre) =>
           semestres.includes(semestre as SemestreDeDictado)
         )
+    );
+  }
+
+  const soloHabilitadas = filter.habilitadas === 'true';
+
+  if (soloHabilitadas) {
+    unidadesCurriculares = unidadesCurriculares.filter(
+      (uc) =>
+        uc.semestres &&
+        cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
+    );
+  }
+
+  const aprobadas = filter.aprobadas === 'true';
+
+  if (aprobadas) {
+    unidadesCurriculares = unidadesCurriculares.filter((uc) =>
+      Object.keys(informacionEstudiante.unidadesCurricularesAprobadas).includes(
+        uc.codigoEnServicioUC
+      )
     );
   }
 

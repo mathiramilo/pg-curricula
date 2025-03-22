@@ -33,7 +33,7 @@ export const GrupoScreen = () => {
   const title = capitalizeWords(slug ?? "");
 
   return (
-    <ScreenLayout className="flex flex-col gap-8">
+    <ScreenLayout>
       <ScreenHeader title={title}>
         <SwitchField
           id="solo-habilitadas"
@@ -48,7 +48,7 @@ export const GrupoScreen = () => {
       {isError && <ErrorState />}
 
       {isSuccess && !data.data.length && (
-        <EmptyState message="No se encontraron unidades curriculares pertenecientes a este grupo." />
+        <EmptyState message="No se encontraron unidades curriculares que se dicten este semestre." />
       )}
 
       {isSuccess && data.data.length > 0 && (

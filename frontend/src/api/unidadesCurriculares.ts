@@ -14,8 +14,9 @@ export interface GetUnidadesCurricularesFilter {
   grupo?: string;
   minCreditos?: number;
   maxCreditos?: number;
-  habilitadas?: boolean;
   semestresDeDictado?: SemestreDeDictado[];
+  habilitadas?: boolean;
+  aprobadas?: boolean;
 }
 
 export type GetUnidadesCurricularesResponse = PaginatedResponse<

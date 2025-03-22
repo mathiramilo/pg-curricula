@@ -24,7 +24,7 @@ export const TrayectoriaSugerida = () => {
   }
 
   return (
-    <section className="mt-8 grid gap-8 lg:gap-12 lg:grid-cols-3">
+    <section className="grid gap-8 lg:gap-12 lg:grid-cols-3">
       {isSuccess &&
         trayectoriaSugerida.map(({ semestre, unidadesCurriculares }) => {
           if (semestre) {
