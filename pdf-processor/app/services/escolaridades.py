@@ -206,6 +206,7 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                 ):
                     continue
                 else:
+                    print(line)
                     break
 
             for s in lines:
@@ -213,14 +214,13 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                 if s[0] == "*":
                     continue
 
-                # Si la unidad curricular fue aprobada se muestra => "[Nota] [Fecha] [Creditos] [Nombre UC]"
+                # Si la unidad curricular fue aprobada se muestra => "[Cant. Reprobaciones][Fecha] [Creditos] [Nombre UC] [Concepto]"
                 # Se obtiene informacion de la unidad curricular y se almacena en el diccionario aprobed_subjects
                 if area != "Materias Opcionales":
                     unidad_curricular_data = s.split(" ")
-                    concepto = unidad_curricular_data[0]
-                    fecha = unidad_curricular_data[1][1:]
-                    creditos = unidad_curricular_data[2]
-                    nombre = " ".join(unidad_curricular_data[3:])
+                    fecha = unidad_curricular_data[0][1:]
+                    creditos = unidad_curricular_data[1]
+                    nombre, concepto = escolaridades.get_nombre_y_concepto(" ".join(unidad_curricular_data[2:]))
 
                     if nombre.startswith("*"):
                         continue
@@ -238,11 +238,11 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)
                 else:
+                    # Unidades curriculares del area Materias Opcionales se muestran diferente => "[Fecha] [Nombre UC] [Cant. Reprobaciones] [Creditos] [Concepto]"
                     unidad_curricular_data = s.split(" ")
-                    concepto = unidad_curricular_data[-1]
                     fecha = unidad_curricular_data[0]
                     creditos = unidad_curricular_data[-2]
-                    nombre = " ".join(unidad_curricular_data[1 : len(unidad_curricular_data) - 3])
+                    nombre, creditos, concepto = escolaridades.get_nombre_creditos_y_concepto(" ".join(unidad_curricular_data[1:]))
 
                     if nombre.startswith("*"):
                         continue

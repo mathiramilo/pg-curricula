@@ -12,9 +12,11 @@ def has_intermediate_results(pdf_text: str) -> bool:
     Returns:
         bool: Retorna true si es con resultados intermedio.
     """
-     
     lines = pdf_text.split("\n")
-    return not lines[0].startswith("Resultados Finales")
+
+    text_to_check = "Resultados Finales e Intermedios"
+
+    return lines[4] == text_to_check or lines[5] == text_to_check
 
 
 def line_is_unidad_curricular(line: str, with_intermediate_results: bool) -> bool:
@@ -27,10 +29,17 @@ def line_is_unidad_curricular(line: str, with_intermediate_results: bool) -> boo
     Returns:
         bool: Retorna True si la linea corresponde a una unidad curricular, False en caso contrario.
     """
+    # Se saltean las lineas que corresponden a unidades curriculares revalidadas
+    if (re.search(r'\*R\*NA', line)):
+        return False
+    
+    if (re.match(r'^[A-ZÁÉÍÓÚÑ]+,\s+[A-ZÁÉÍÓÚÑ]+(?:\s+[A-ZÁÉÍÓÚÑ]+)?$', line)):
+        return False
+
     regex = (
         r"^(Examen|Curso|\*\*\*\*\*\*\*\*\*\*|Resultado Final)"
         if with_intermediate_results
-        else r"^(?:\d+|\*\*\*|S/N)"
+        else r"^(?:\d+/\d+/\d+|\*\*\*|S/N)"
     )
     return re.match(regex, line)
 
@@ -48,6 +57,16 @@ def skip_line(line: str) -> bool:
         return True
     
     if re.match(r'^\d{1,2}/\d{1,2}/\d{4}\s*CERTIFICADO DE ESCOLARIDAD', line):
+        return True
+    
+    if re.match(r'^\d\*+\s\.*', line):
+        return True
+    
+    # Se saltean las lineas que corresponden a unidades curriculares revalidadas
+    if (re.search(r'\*R\*NA', line)):
+        return True
+    
+    if (re.match(r'^[A-ZÁÉÍÓÚÑ]+,\s+[A-ZÁÉÍÓÚÑ]+(?:\s+[A-ZÁÉÍÓÚÑ]+)?$', line)):
         return True
 
     for s in escolaridades.LINES_TO_SKIP:
@@ -87,6 +106,43 @@ def get_concepto_y_nombre(text: str) -> tuple:
         nombre = re.sub(r"^\d+", "", nombre).strip()
         return concepto, nombre
     return "", text
+
+
+def get_nombre_y_concepto(text: str) -> tuple:
+    """Expresion regular para obtener el nombre y el concepto.
+
+    Args:
+        text (str): Texto a separar. Ejemplo: "CALCULO DIF. E INTEGRAL EN UNA VARIABLEExcelente".
+
+    Returns:
+        (str, str): Retorna una tupla con el nombre y el concepto.
+    """
+    match = re.match(r"(.+?)(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)", text, re.IGNORECASE)
+    if match:
+        nombre = match.group(1).strip()
+        concepto = match.group(2).strip()
+        nombre = re.sub(r"\d+$", "", nombre).strip()
+        return nombre, concepto
+    return text, ""
+
+
+def get_nombre_creditos_y_concepto(text: str) -> tuple:
+    """Expresion regular para obtener el nombre, los creditos y el concepto.
+
+    Args:
+        text (str): Texto a separar. Ejemplo: "CALCULO DIF. E INTEGRAL EN UNA VARIABLE 0 10 Muy Bueno".
+
+    Returns:
+        (str, int, str): Retorna una tupla con el nombre, los creditos y el concepto.
+    """
+    match = re.match(r"^(.*?)\s+(\d+)\s+(\d+)\s+(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)$", text, re.IGNORECASE)
+    if match:
+        nombre = match.group(1).strip()
+        creditos = int(match.group(3))
+        concepto = match.group(4).strip()
+        nombre = re.sub(r"\d+$", "", nombre).strip()
+        return nombre, creditos, concepto
+    return text, 0, ""
     
 
 def get_concepto_y_creditos(text: str) -> tuple:

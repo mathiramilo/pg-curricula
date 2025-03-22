@@ -15,8 +15,11 @@ export const cumplePrevias = (
   try {
     switch (previas.regla) {
       case TIPO_REGLA.NOT: {
-        //* Si la regla hija es UC y tiene el nombre 'null', entonces se devuelve true. Esto es necesario ya que si entra en el caso 'UC' se va a devolver true, pero como la regla es NOT, se niega el valor (CASO BORDE, pasa en Proyecto de Grado por ejemplo)
-        if (previas.previas?.regla === TIPO_REGLA.UC && !previas.previas.nombre)
+        // Hay casos donde tenemos un objeto asi: { regla: "NOT" }, en este caso se devuelve true
+        if (!previas.previas) return true;
+
+        // Si la regla hija es UC y tiene el nombre 'null', entonces se devuelve true. Esto es necesario ya que si entra en el caso 'UC' se va a devolver true, pero como la regla es NOT, se niega el valor (CASO BORDE, pasa en Proyecto de Grado por ejemplo)
+        if (previas.previas.regla === TIPO_REGLA.UC && !previas.previas.nombre)
           return true;
 
         return !cumplePrevias(informacionEstudiante, previas.previas);
