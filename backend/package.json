@@ -1,5 +1,5 @@
 {
-  "name": "pg-curricula",
+  "name": "pg-curricula-backend",
   "version": "1.0.0",
   "description": "Backend para el proyecto de grado curricula",
   "main": "server.js",

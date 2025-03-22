@@ -6,7 +6,7 @@ Proyecto de Grado, curricula dinamica para estudiantes de ingenieria.
 
 ### Crear los archivos `.env`
 
-- Asegurate de tener los archivos `.env` en las carpetas `core` y `frontend`.
+- Asegurate de tener los archivos `.env` en las carpetas `backend` y `frontend`.
 - Puedes copiar los archivos `.env.example` y renombrarlos a `.env`.
 - Si te faltan variables de entorno, no dudes en preguntar.
 

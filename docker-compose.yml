@@ -1,15 +1,15 @@
 services:
-  core:
-    build: ./core
+  backend:
+    build: ./backend
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
-      - ./core:/app
+      - ./backend:/app
       - /app/node_modules
       - /app/dist
     working_dir: /app
     env_file:
-      - ./core/.env
+      - ./backend/.env
     depends_on:
       - pdf-processor
     restart: unless-stopped
@@ -17,7 +17,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "5173:5173"
+      - '5173:5173'
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -26,13 +26,13 @@ services:
     env_file:
       - ./frontend/.env
     depends_on:
-      - core
+      - backend
     restart: unless-stopped
-  
+
   pdf-processor:
     build: ./pdf-processor
     ports:
-      - "8000:8000"
+      - '8000:8000'
     volumes:
       - ./pdf-processor:/app
     working_dir: /app

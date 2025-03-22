@@ -8,7 +8,7 @@ RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN pnpm build
+# RUN pnpm build
 
 EXPOSE 3000
 
