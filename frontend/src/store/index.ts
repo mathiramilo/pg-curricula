@@ -1,1 +1,2 @@
-export * from "./useStore";
+export * from "./useInformacionEstudianteStore";
+export * from "./useUnidadCurricularModalStore";

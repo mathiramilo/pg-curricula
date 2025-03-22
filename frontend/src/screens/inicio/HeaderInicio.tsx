@@ -5,41 +5,22 @@ import {
   Button,
   ChevronRightIcon,
   CreditosGrupoItem,
-  Progress,
   ScreenHeader,
+  TotalProgress,
 } from "@/components";
-import { GRUPO_VALUES, REQUISITOS_TITULO } from "@/models";
+import { GRUPO_VALUES } from "@/models";
 import { RUTAS } from "@/router";
-import { useStore } from "@/store";
-import { calculatePercentage } from "@/utils";
+import { useInformacionEstudianteStore } from "@/store";
 
 export const HeaderInicio = () => {
-  const informacionEstudiante = useStore(
+  const informacionEstudiante = useInformacionEstudianteStore(
     (state) => state.informacionEstudiante,
   );
-
-  const creditosTotales = informacionEstudiante.creditosTotales;
-
-  const progressPercentage = calculatePercentage(
-    creditosTotales,
-    REQUISITOS_TITULO.CREDITOS_TOTALES,
-  );
-
-  const satisfaceCreditosTotales =
-    informacionEstudiante.creditosTotales >= REQUISITOS_TITULO.CREDITOS_TOTALES;
 
   return (
     <ScreenHeader title="Progreso de Carrera">
       <div className="sm:w-[calc(100vw-230px)] flex flex-col gap-2">
-        <div>
-          <p className="text-sm text-fuente-principal">
-            {creditosTotales} creditos
-          </p>
-          <Progress
-            value={progressPercentage}
-            className={satisfaceCreditosTotales ? "[&>div]:bg-green-600" : ""}
-          />
-        </div>
+        <TotalProgress />
 
         <div className="flex items-center justify-between gap-x-6 gap-y-1">
           <div className="flex items-center gap-4 overflow-x-scroll grow">

@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/utils";
-import { AlertHexagon } from "../icons";
+import { AlertHexagonIcon } from "../icons";
 
 type ErrorStateProps = ComponentPropsWithoutRef<"div">;
 
@@ -12,7 +12,7 @@ export const ErrorState = ({ className, ...props }: ErrorStateProps) => {
       {...props}
     >
       <div className="flex flex-col items-center justify-center gap-2">
-        <AlertHexagon className="stroke-fuente-secundario" />
+        <AlertHexagonIcon className="stroke-fuente-secundario" />
         <p className="text-fuente-secundario w-2/3 font-light text-sm text-center">
           Ha ocurrido un error inesperado, vuelve a intentarlo luego de unos
           minutos.

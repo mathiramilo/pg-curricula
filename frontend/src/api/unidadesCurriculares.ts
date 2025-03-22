@@ -3,7 +3,8 @@ import type {
   TrayectoriaSugeridaSemestre,
   UnidadCurricular,
 } from "@/models";
-import { useStore } from "@/store";
+import { useInformacionEstudianteStore } from "@/store";
+import type { PaginatedResponse } from "./axios";
 import { api } from "./axios";
 
 export const DOMINIO_UNIDADES_CURRICULARES = "unidades-curriculares";
@@ -17,18 +18,25 @@ export interface GetUnidadesCurricularesFilter {
   semestresDeDictado?: SemestreDeDictado[];
 }
 
+export type GetUnidadesCurricularesResponse = PaginatedResponse<
+  UnidadCurricular[]
+>;
+
 export const getUnidadesCurriculares = async (
   filter: GetUnidadesCurricularesFilter,
+  page: number,
 ) => {
-  const informacionEstudiante = useStore.getState().informacionEstudiante;
+  const informacionEstudiante =
+    useInformacionEstudianteStore.getState().informacionEstudiante;
 
-  const res = await api.post<UnidadCurricular[]>(
+  const res = await api.post<GetUnidadesCurricularesResponse>(
     "/unidades-curriculares",
     { informacionEstudiante },
     {
       params: {
         ...filter,
         semestresDeDictado: JSON.stringify(filter.semestresDeDictado),
+        page,
       },
     },
   );

@@ -4,10 +4,12 @@ import { cn } from "@/utils";
 
 type ScreenHeaderProps = ComponentPropsWithoutRef<"header"> & {
   title: string;
+  rightElement?: React.ReactNode;
 };
 
 export const ScreenHeader = ({
   title,
+  rightElement,
   className,
   children,
   ...props
@@ -19,7 +21,10 @@ export const ScreenHeader = ({
     )}
     {...props}
   >
-    <h1 className="text-2xl font-medium">{title}</h1>
+    <div className="flex items-center justify-between">
+      <h1 className="text-2xl font-medium">{title}</h1>
+      {rightElement}
+    </div>
     {children}
   </header>
 );

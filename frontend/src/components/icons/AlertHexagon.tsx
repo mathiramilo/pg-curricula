@@ -1,6 +1,6 @@
 import type { SvgProps } from "@/models";
 
-export const AlertHexagon = (props: SvgProps) => (
+export const AlertHexagonIcon = (props: SvgProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"

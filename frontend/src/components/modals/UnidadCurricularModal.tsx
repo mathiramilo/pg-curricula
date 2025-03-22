@@ -12,23 +12,22 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components";
-import type { UnidadCurricular } from "@/models";
+import { usePrevias } from "@/hooks";
+import { useUnidadCurricularModalStore } from "@/store";
 import { capitalizeWords, getSemestresDeDictado } from "@/utils";
 
-interface UnidadCurricularModalProps {
-  unidadCurricular: UnidadCurricular;
-  open: boolean;
-  onClose: () => void;
-}
+export const UnidadCurricularModal = () => {
+  const { unidadCurricular, show, close } = useUnidadCurricularModalStore();
 
-export const UnidadCurricularModal = ({
-  unidadCurricular,
-  open,
-  onClose,
-}: UnidadCurricularModalProps) => {
+  const { data: previas } = usePrevias(unidadCurricular?.codigoEnServicioUC);
+
+  console.log(previas);
+
+  if (!unidadCurricular) return null;
+
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="bg-slate-50 gap-16 sm:gap-6">
+    <Dialog open={show} onOpenChange={close}>
+      <DialogContent className="bg-slate-50 justify-start">
         <DialogHeader>
           <DialogTitle>
             {unidadCurricular.codigoEnServicioUC} -{" "}
@@ -60,8 +59,16 @@ export const UnidadCurricularModal = ({
           </CardContent>
         </Card>
 
-        <DialogFooter>
-          <Button variant="outline" onClick={onClose}>
+        <Card>
+          <CardHeader>
+            <CardTitle>Previaturas</CardTitle>
+          </CardHeader>
+
+          <CardContent>{/* Mostrar arbol de previaturas */}</CardContent>
+        </Card>
+
+        <DialogFooter className="mt-auto">
+          <Button variant="outline" onClick={close}>
             Cerrar
           </Button>
         </DialogFooter>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useStore } from "@/store";
+import { useInformacionEstudianteStore } from "@/store";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,7 +21,7 @@ export const DownloadProgressAlert = ({
   open,
   onClose,
 }: DownloadProgressAlertProps) => {
-  const informacionEstudiante = useStore(
+  const informacionEstudiante = useInformacionEstudianteStore(
     (state) => state.informacionEstudiante,
   );
 

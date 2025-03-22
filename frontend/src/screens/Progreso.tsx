@@ -1,36 +1,17 @@
-import { CreditosGrupoItem, Progress, ScreenHeader } from "@/components";
+import { CreditosGrupoItem, ScreenHeader, TotalProgress } from "@/components";
 import { ScreenLayout } from "@/layouts";
-import { GRUPO_VALUES, REQUISITOS_TITULO } from "@/models";
-import { useStore } from "@/store";
-import { calculatePercentage } from "@/utils";
+import { GRUPO_VALUES } from "@/models";
+import { useInformacionEstudianteStore } from "@/store";
 
 export const ProgresoScreen = () => {
-  const informacionEstudiante = useStore(
+  const informacionEstudiante = useInformacionEstudianteStore(
     (state) => state.informacionEstudiante,
   );
-
-  const creditosTotales = informacionEstudiante.creditosTotales;
-
-  const progressPercentage = calculatePercentage(
-    creditosTotales,
-    REQUISITOS_TITULO.CREDITOS_TOTALES,
-  );
-
-  const satisfaceCreditosTotales =
-    informacionEstudiante.creditosTotales >= REQUISITOS_TITULO.CREDITOS_TOTALES;
 
   return (
     <ScreenLayout>
       <ScreenHeader title="Progreso Completo">
-        <div>
-          <p className="text-sm text-fuente-principal">
-            {creditosTotales} creditos
-          </p>
-          <Progress
-            value={progressPercentage}
-            className={satisfaceCreditosTotales ? "[&>div]:bg-green-600" : ""}
-          />
-        </div>
+        <TotalProgress />
       </ScreenHeader>
 
       <section className="my-6 flex flex-col gap-2">

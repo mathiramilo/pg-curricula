@@ -28,6 +28,21 @@ export const TIPO_APROBACION = {
   CURSO: "Curso",
 } as const;
 
+export const TIPO_INSTANCIA = {
+  CURSO: "C",
+  EXAMEN: "E",
+} as const;
+
+export const TIPO_REGLA = {
+  AND: "AND",
+  OR: "OR",
+  NOT: "NOT",
+  SOME: "SOME",
+  UC: "UC",
+  CREDITOS_GRUPO: "CREDITOS_GRUPO",
+  CREDITOS_PLAN: "CREDITOS_PLAN",
+} as const;
+
 export const SEMESTRE_DE_DICTADO = {
   PRIMER_SEMESTRE: "1",
   SEGUNDO_SEMESTRE: "2",

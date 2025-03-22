@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useStore } from "@/store";
+import { useInformacionEstudianteStore } from "@/store";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -21,7 +21,7 @@ export const ResetProgressAlert = ({
   open,
   onClose,
 }: ResetProgressAlertProps) => {
-  const resetInformacionEstudiante = useStore(
+  const resetInformacionEstudiante = useInformacionEstudianteStore(
     (state) => state.resetInformacionEstudiante,
   );
 

@@ -18,10 +18,11 @@ type ObtenerUnidadesCurricularesFilter = Partial<{
   semestresDeDictado: string;
 }>;
 
-// TODO: Implementar paginación y ordenamiento
 export const obtenerUnidadesCurriculares = (
   informacionEstudiante: InformacionEstudiante,
-  filter: ObtenerUnidadesCurricularesFilter
+  filter: ObtenerUnidadesCurricularesFilter,
+  page: number,
+  pageSize: number = 60
 ) => {
   let unidadesCurriculares = ucsFing;
 
@@ -52,8 +53,10 @@ export const obtenerUnidadesCurriculares = (
   const soloHabilitadas = filter.habilitadas === 'true';
 
   if (soloHabilitadas) {
-    unidadesCurriculares = unidadesCurriculares.filter((uc) =>
-      cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
+    unidadesCurriculares = unidadesCurriculares.filter(
+      (uc) =>
+        uc.semestres &&
+        cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
     );
   }
 
@@ -71,7 +74,19 @@ export const obtenerUnidadesCurriculares = (
     );
   }
 
-  return unidadesCurriculares;
+  const totalItems = unidadesCurriculares.length;
+  const startIndex = (page - 1) * pageSize;
+  const paginatedData = unidadesCurriculares.slice(
+    startIndex,
+    startIndex + pageSize
+  );
+
+  return {
+    data: paginatedData,
+    page,
+    pageSize,
+    totalItems,
+  };
 };
 
 export const obtenerTrayectoriaSugerida = () => {

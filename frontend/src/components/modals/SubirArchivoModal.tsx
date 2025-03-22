@@ -10,7 +10,7 @@ import {
   UploadIcon,
 } from "@/components";
 import { useDropzone, useProcesarEscolaridad } from "@/hooks";
-import { useStore } from "@/store";
+import { useInformacionEstudianteStore } from "@/store";
 import { cn } from "@/utils";
 
 interface ModalSubirArchivoProps {
@@ -22,7 +22,7 @@ export const SubirArchivoModal = ({
   open,
   onClose,
 }: ModalSubirArchivoProps) => {
-  const setInformacionEstudiante = useStore(
+  const setInformacionEstudiante = useInformacionEstudianteStore(
     (state) => state.setInformacionEstudiante,
   );
 

@@ -13,6 +13,7 @@ export const obtenerUnidadesCurricularesController: RequestHandler = async (
 ) => {
   const { informacionEstudiante } = req.body;
   const filter = { ...req.query };
+  const page = req.query.page || 1;
 
   if (!informacionEstudiante) {
     return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
@@ -23,7 +24,8 @@ export const obtenerUnidadesCurricularesController: RequestHandler = async (
   try {
     const unidadesCurriculares = await obtenerUnidadesCurriculares(
       informacionEstudiante,
-      filter
+      filter,
+      +page
     );
     res.status(HTTP_STATUS_CODE.OK).json(unidadesCurriculares);
   } catch (error) {

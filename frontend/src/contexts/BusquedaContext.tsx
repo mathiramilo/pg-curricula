@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react";
 import { createContext, useContext, useState } from "react";
 
 import { useBoolean, useDebounce } from "@/hooks";
-import { SemestreDeDictado } from "@/models";
+import type { SemestreDeDictado } from "@/models";
 
 export const MIN_CREDITOS = 0;
 export const MAX_CREDITOS = 30;
@@ -23,6 +23,7 @@ interface BusquedaContextType {
   setSemestresDeDictado: React.Dispatch<
     React.SetStateAction<SemestreDeDictado[]>
   >;
+  clearFilters: () => void;
 }
 
 const BusquedaContext = createContext<BusquedaContextType | undefined>(
@@ -42,6 +43,14 @@ export const BusquedaContextProvider = ({ children }: PropsWithChildren) => {
     SemestreDeDictado[]
   >([]);
 
+  const clearFilters = () => {
+    setQuery("");
+    setGrupo("");
+    setRangoCreditos(RANGO_INICIAL);
+    setSoloHabilitadas(false);
+    setSemestresDeDictado([]);
+  };
+
   return (
     <BusquedaContext.Provider
       value={{
@@ -57,6 +66,7 @@ export const BusquedaContextProvider = ({ children }: PropsWithChildren) => {
         setRangoCreditos,
         setSoloHabilitadas,
         setSemestresDeDictado,
+        clearFilters,
       }}
     >
       {children}
