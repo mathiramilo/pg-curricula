@@ -6,10 +6,12 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  JsonIcon,
   PdfIcon,
   UploadIcon,
 } from "@/components";
 import { useDropzone, useProcesarEscolaridad } from "@/hooks";
+import type { InformacionEstudiante } from "@/models";
 import { useInformacionEstudianteStore } from "@/store";
 import { cn } from "@/utils";
 
@@ -42,19 +44,40 @@ export const SubirArchivoModal = ({
   const handleUpload = () => {
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append("file", file);
+    const isJson = file.type === "application/json";
 
-    mutate(formData, {
-      onSuccess: (data) => {
-        setInformacionEstudiante(data);
-        reset();
-        onClose();
-      },
-      onError: (error) => {
-        console.log("Error: ", error);
-      },
-    });
+    if (isJson) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const data = event.target?.result as string;
+
+        try {
+          const parsedData = JSON.parse(data) as InformacionEstudiante;
+          setInformacionEstudiante(parsedData);
+          reset();
+          onClose();
+        } catch (error) {
+          console.error("Error: ", error);
+        }
+      };
+
+      reader.readAsText(file);
+    } else {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      mutate(formData, {
+        onSuccess: (data) => {
+          setInformacionEstudiante(data);
+          reset();
+          onClose();
+        },
+        onError: (error) => {
+          console.error("Error: ", error);
+        },
+      });
+    }
   };
 
   const handleClose = () => {
@@ -68,8 +91,8 @@ export const SubirArchivoModal = ({
         <DialogHeader>
           <DialogTitle>Cargar Progreso</DialogTitle>
           <DialogDescription>
-            Sube tu escolaridad con resultados intermedios en formato PDF o tu
-            progreso previamente exportado en formato JSON.
+            Sube tu escolaridad en formato PDF o tu progreso previamente
+            exportado en formato JSON.
           </DialogDescription>
         </DialogHeader>
 
@@ -87,7 +110,11 @@ export const SubirArchivoModal = ({
               {file && (
                 <>
                   <div className="size-12 rounded-full flex items-center justify-center gap-2 bg-red-500">
-                    <PdfIcon className="text-slate-50" />
+                    {file.type === "application/pdf" ? (
+                      <PdfIcon className="text-slate-50" />
+                    ) : (
+                      <JsonIcon className="text-slate-50" />
+                    )}
                   </div>
                   <p className="text-center text-sm text-fuente-principal">
                     {file.name}
@@ -119,7 +146,7 @@ export const SubirArchivoModal = ({
             <input
               type="file"
               id="file"
-              accept="application/pdf"
+              accept=".pdf,.json,application/pdf,application/json"
               className="hidden"
               onChange={handleFileChange}
             />

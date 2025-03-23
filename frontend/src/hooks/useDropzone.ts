@@ -33,8 +33,8 @@ export const useDropzone = () => {
       return;
     }
 
-    if (file.type !== "application/pdf") {
-      setError("Solo se permiten archivos PDF");
+    if (file.type !== "application/pdf" && file.type !== "application/json") {
+      setError("Solo se permiten archivos PDF o JSON");
       setFile(null);
       return;
     }

@@ -7,6 +7,7 @@ export * from "./Close";
 export * from "./Download";
 export * from "./FilterMinus";
 export * from "./Home";
+export * from "./Json";
 export * from "./Loop";
 export * from "./Menu";
 export * from "./Path";
