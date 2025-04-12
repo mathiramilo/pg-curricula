@@ -11,7 +11,7 @@ services:
     env_file:
       - ./backend/.env
     depends_on:
-      - pdf-processor
+      - processor-scraper
     restart: unless-stopped
 
   frontend:
@@ -29,11 +29,11 @@ services:
       - backend
     restart: unless-stopped
 
-  pdf-processor:
-    build: ./pdf-processor
+  processor-scraper:
+    build: ./processor-scraper
     ports:
       - '8000:8000'
     volumes:
-      - ./pdf-processor:/app
+      - ./processor-scraper:/app
     working_dir: /app
     restart: unless-stopped

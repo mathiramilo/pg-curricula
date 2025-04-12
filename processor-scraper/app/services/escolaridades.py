@@ -1,35 +1,36 @@
 import re
+
+from app.constants.escolaridades import INGENIERIA_COMPUTACION_FORMATION_AREAS
+from app.models.escolaridades import (
+    InformacionEstudiante,
+    TipoAprobacion,
+    UnidadCurricularAprobada,
+)
+from app.utils import escolaridades, pdf
 from fastapi import File
 
-from app.constants import escolaridades as escolaridades_constants
-from app.models import escolaridades as escolaridades_models
-from app.utils import pdf, escolaridades
 
-
-def get_student_data(file: File) -> dict:
+def get_student_data(file: File) -> InformacionEstudiante:
     pdf_text = pdf.read(file)
 
     with_intermediate_results = escolaridades.has_intermediate_results(pdf_text)
 
-    # Buscar unidades curriculares aprobadas
     student_data = (
         get_student_data_with_intermediate_results(
-            escolaridades_constants.INGENIERIA_COMPUTACION_FORMATION_AREAS, pdf_text
+            INGENIERIA_COMPUTACION_FORMATION_AREAS, pdf_text
         )
         if with_intermediate_results
         else get_student_data_without_intermediate_results(
-            escolaridades_constants.INGENIERIA_COMPUTACION_FORMATION_AREAS, pdf_text
+            INGENIERIA_COMPUTACION_FORMATION_AREAS, pdf_text
         )
     )
 
     return student_data
 
 
-# Funcion para escolaridades con resultados intermedios -> Tiene en cuenta UCs con curso aprobado
 def get_student_data_with_intermediate_results(
     formation_areas, pdf_text
-) -> dict:
-    # Dicionario de unidades curriculares aprobadas. TODO: Para que funcione con todas las carreras se debe tener uno de estos por carrera y seleccionarlo dependiendo de la carrera.
+) -> InformacionEstudiante:
     student_data = {
         "unidadesCurricularesAprobadas": {},
         "creditosTotales": 0,
@@ -48,7 +49,6 @@ def get_student_data_with_intermediate_results(
         "MATERIAS OPCIONALES": 0,
     }
 
-    # Recolectar UCs aprobadas por area de formacion
     for area in formation_areas:
         for group in formation_areas[area]:
             group_idx = pdf_text.find("\n" + group.upper() + "\n")
@@ -57,7 +57,9 @@ def get_student_data_with_intermediate_results(
             lines = []
 
             for line in group_lines:
-                if escolaridades.line_is_unidad_curricular(line, with_intermediate_results=True):
+                if escolaridades.line_is_unidad_curricular(
+                    line, with_intermediate_results=True
+                ):
                     lines.append(line)
                 elif (
                     escolaridades.skip_line(line)
@@ -68,7 +70,6 @@ def get_student_data_with_intermediate_results(
                 else:
                     break
 
-            # Filtrar los strings que comiencen con 'Resultado Final' y almacenar sus índices
             final_results = [
                 (i, line)
                 for i, line in enumerate(lines)
@@ -99,68 +100,83 @@ def get_student_data_with_intermediate_results(
                         if nombre.startswith("*"):
                             continue
 
-                        student_data["unidadesCurricularesAprobadas"][nombre] = {
-                            "concepto": None,
-                            "fecha": fecha,
-                            "creditosUC": None,
-                            "codigoEnServicioUC": "",
-                            "nombreUC": nombre,
-                            "tipoAprobacion": escolaridades_models.ApprobationType.COURSE.value,
-                            "nombreGrupoPadre": area,
-                            "nombreGrupoHijo": group,
-                        }
-
+                        student_data["unidadesCurricularesAprobadas"][nombre] = (
+                            UnidadCurricularAprobada(
+                                concepto=None,
+                                fecha=fecha,
+                                creditos=None,
+                                codigo="",
+                                nombre=nombre,
+                                tipo_aprobacion=TipoAprobacion.COURSE.value,
+                                nombre_grupo_padre=area,
+                                nombre_grupo_hijo=group,
+                            )
+                        )
                 else:
                     # Si la unidad curricular fue aprobada se muestra => "Resultado Final: [Fecha] [Nota][Nombre UC] [Creditos]"
-                    # Se obtiene informacion de la unidad curricular y se almacena en el diccionario student_data
                     if area != "Materias Opcionales":
                         unidad_curricular_data = result.split(" ")[2:]
                         fecha = unidad_curricular_data[0]
                         creditos = unidad_curricular_data[-1]
-                        concepto, nombre = escolaridades.get_concepto_y_nombre(" ".join(unidad_curricular_data[1:-1]))
+                        concepto, nombre = escolaridades.get_concepto_y_nombre(
+                            " ".join(unidad_curricular_data[1:-1])
+                        )
 
                         if nombre.startswith("*"):
                             continue
 
-                        student_data["unidadesCurricularesAprobadas"][nombre] = {
-                            "concepto": concepto,
-                            "fecha": fecha,
-                            "creditosUC": int(creditos),
-                            "codigoEnServicioUC": "",
-                            "nombreUC": nombre,
-                            "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                            "nombreGrupoPadre": area,
-                            "nombreGrupoHijo": group,
-                        }
+                        student_data["unidadesCurricularesAprobadas"][nombre] = (
+                            UnidadCurricularAprobada(
+                                concepto=concepto,
+                                fecha=fecha,
+                                creditos=int(creditos),
+                                codigo="",
+                                nombre=nombre,
+                                tipo_aprobacion=TipoAprobacion.EXAM.value,
+                                nombre_grupo_padre=area,
+                                nombre_grupo_hijo=group,
+                            )
+                        )
                         student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
                     else:
                         unidad_curricular_data = result.split(" ")[2:]
                         # Ej: ['26/07/2023', 'Excelente10', 'TRATAMIENTO', 'DE', 'IMAGENES', 'POR', 'COMPUTADORA']
-                        # Concepto y Creditos estan pegados, creamos una funcion para separarlos
                         fecha = unidad_curricular_data[0]
 
-                        conceptoTieneEspacio = not re.search(r'\d', unidad_curricular_data[1])
+                        conceptoTieneEspacio = not re.search(
+                            r"\d", unidad_curricular_data[1]
+                        )
 
-                        text = unidad_curricular_data[1] if not conceptoTieneEspacio else f"{unidad_curricular_data[1]} {unidad_curricular_data[2]}"
+                        text = (
+                            unidad_curricular_data[1]
+                            if not conceptoTieneEspacio
+                            else f"{unidad_curricular_data[1]} {unidad_curricular_data[2]}"
+                        )
 
                         concepto, creditos = escolaridades.get_concepto_y_creditos(text)
 
-                        nombre = " ".join(unidad_curricular_data[2:] if not conceptoTieneEspacio else unidad_curricular_data[3:])
+                        nombre = " ".join(
+                            unidad_curricular_data[2:]
+                            if not conceptoTieneEspacio
+                            else unidad_curricular_data[3:]
+                        )
 
                         if nombre.startswith("*"):
                             continue
 
-                        student_data["unidadesCurricularesAprobadas"][nombre] = {
-                            "concepto": concepto,
-                            "fecha": fecha,
-                            "creditosUC": int(creditos),
-                            "codigoEnServicioUC": "",
-                            "nombreUC": nombre,
-                            "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                            "nombreGrupoPadre": area,
-                            "nombreGrupoHijo": group,
-                        }
+                        student_data["unidadesCurricularesAprobadas"][nombre] = (
+                            UnidadCurricularAprobada(
+                                concepto=concepto,
+                                fecha=fecha,
+                                creditos=int(creditos),
+                                codigo="",
+                                nombre=nombre,
+                                tipo_aprobacion=TipoAprobacion.EXAM.value,
+                                nombre_grupo_padre=area,
+                                nombre_grupo_hijo=group,
+                            )
+                        )
                         student_data["creditosTotales"] += int(creditos)
                         student_data[group] += int(creditos)
 
@@ -168,8 +184,9 @@ def get_student_data_with_intermediate_results(
 
 
 # Funcion para escolaridades con resultados finales -> No tiene en cuenta UCs con curso aprobado
-def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> dict:
-    # Dicionario de unidades curriculares aprobadas
+def get_student_data_without_intermediate_results(
+    formation_areas, pdf_text
+) -> InformacionEstudiante:
     student_data = {
         "unidadesCurricularesAprobadas": {},
         "creditosTotales": 0,
@@ -188,7 +205,6 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
         "MATERIAS OPCIONALES": 0,
     }
 
-    # Recolectar UCs aprobadas por area de formacion
     for area in formation_areas:
         for group in formation_areas[area]:
             group_idx = pdf_text.find("\n" + group.upper() + "\n")
@@ -197,7 +213,9 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
             lines = []
 
             for line in group_lines:
-                if escolaridades.line_is_unidad_curricular(line, with_intermediate_results=False):
+                if escolaridades.line_is_unidad_curricular(
+                    line, with_intermediate_results=False
+                ):
                     lines.append(line)
                 elif (
                     escolaridades.skip_line(line)
@@ -215,26 +233,29 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     continue
 
                 # Si la unidad curricular fue aprobada se muestra => "[Cant. Reprobaciones][Fecha] [Creditos] [Nombre UC] [Concepto]"
-                # Se obtiene informacion de la unidad curricular y se almacena en el diccionario aprobed_subjects
                 if area != "Materias Opcionales":
                     unidad_curricular_data = s.split(" ")
                     fecha = unidad_curricular_data[0][1:]
                     creditos = unidad_curricular_data[1]
-                    nombre, concepto = escolaridades.get_nombre_y_concepto(" ".join(unidad_curricular_data[2:]))
+                    nombre, concepto = escolaridades.get_nombre_y_concepto(
+                        " ".join(unidad_curricular_data[2:])
+                    )
 
                     if nombre.startswith("*"):
                         continue
 
-                    student_data["unidadesCurricularesAprobadas"][nombre] = {
-                        "concepto": concepto,
-                        "fecha": fecha,
-                        "creditosUC": int(creditos),
-                        "codigoEnServicioUC": "",
-                        "nombreUC": nombre,
-                        "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                        "nombreGrupoPadre": area,
-                        "nombreGrupoHijo": group,
-                    }
+                    student_data["unidadesCurricularesAprobadas"][nombre] = (
+                        UnidadCurricularAprobada(
+                            concepto=concepto,
+                            fecha=fecha,
+                            creditos=int(creditos),
+                            codigo="",
+                            nombre=nombre,
+                            tipo_aprobacion=TipoAprobacion.EXAM.value,
+                            nombre_grupo_padre=area,
+                            nombre_grupo_hijo=group,
+                        )
+                    )
                     student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)
                 else:
@@ -242,21 +263,27 @@ def get_student_data_without_intermediate_results(formation_areas, pdf_text) -> 
                     unidad_curricular_data = s.split(" ")
                     fecha = unidad_curricular_data[0]
                     creditos = unidad_curricular_data[-2]
-                    nombre, creditos, concepto = escolaridades.get_nombre_creditos_y_concepto(" ".join(unidad_curricular_data[1:]))
+                    nombre, creditos, concepto = (
+                        escolaridades.get_nombre_creditos_y_concepto(
+                            " ".join(unidad_curricular_data[1:])
+                        )
+                    )
 
                     if nombre.startswith("*"):
                         continue
 
-                    student_data["unidadesCurricularesAprobadas"][nombre] = {
-                        "concepto": concepto,
-                        "fecha": fecha,
-                        "creditosUC": int(creditos),
-                        "codigoEnServicioUC": "",
-                        "nombreUC": nombre,
-                        "tipoAprobacion": escolaridades_models.ApprobationType.EXAM.value,
-                        "nombreGrupoPadre": area,
-                        "nombreGrupoHijo": group,
-                    }
+                    student_data["unidadesCurricularesAprobadas"][nombre] = (
+                        UnidadCurricularAprobada(
+                            concepto=concepto,
+                            fecha=fecha,
+                            creditos=int(creditos),
+                            codigo="",
+                            nombre=nombre,
+                            tipo_aprobacion=TipoAprobacion.EXAM.value,
+                            nombre_grupo_padre=area,
+                            nombre_grupo_hijo=group,
+                        )
+                    )
                     student_data["creditosTotales"] += int(creditos)
                     student_data[group] += int(creditos)
 
