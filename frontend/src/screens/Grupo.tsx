@@ -48,7 +48,7 @@ export const GrupoScreen = () => {
       {isError && <ErrorState />}
 
       {isSuccess && !data.data.length && (
-        <EmptyState message="No se encontraron unidades curriculares que se dicten este semestre." />
+        <EmptyState message="No se encontraron unidades curriculares habilitadas para cursar." />
       )}
 
       {isSuccess && data.data.length > 0 && (
