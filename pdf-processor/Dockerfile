@@ -1,4 +1,12 @@
-FROM python:3.10
+FROM python:3.13-slim
+
+RUN apt-get update && apt-get install -y \
+    chromium \
+    chromium-driver \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROMEDRIVER_BIN=/usr/bin/chromedriver
 
 WORKDIR /app
 
