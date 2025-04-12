@@ -1,13 +1,10 @@
-import os
 import re
 from typing import List
 
 from app.models.grupos import Grupo
 from app.models.unidades_curriculares import UnidadCurricular
+from app.utils.scraper import init_driver
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -20,20 +17,6 @@ GROUP_PATTERN = (
 SUBJECT_PATTERN = (
     r"^(?P<code>[A-Za-z0-9]+)\s*-\s*(?P<name>.*?)\s*-\s*créditos:\s*(?P<credits>\d+)"
 )
-
-
-def init_driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--user-data-dir=/tmp/chrome-user-data")
-    chrome_options.binary_location = os.environ.get("CHROME_BIN")
-
-    service = ChromeService(executable_path=os.environ.get("CHROMEDRIVER_BIN"))
-
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    return driver
 
 
 def navigate_to_groups_and_subjects(driver):
