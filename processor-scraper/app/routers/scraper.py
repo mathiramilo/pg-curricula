@@ -16,3 +16,13 @@ def scrape_grupos_y_unidades_curriculares():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/previaturas")
+def scrape_previaturas():
+    try:
+        previaturas = scraper.scrape_previatures()
+
+        return previaturas
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

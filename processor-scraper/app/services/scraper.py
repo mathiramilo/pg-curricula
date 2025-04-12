@@ -18,6 +18,8 @@ SUBJECT_PATTERN = (
     r"^(?P<code>[A-Za-z0-9]+)\s*-\s*(?P<name>.*?)\s*-\s*créditos:\s*(?P<credits>\d+)"
 )
 
+TOTAL_PAGES = 19
+
 
 def navigate_to_groups_and_subjects(driver):
     nav_element = WebDriverWait(driver, 10).until(
@@ -70,6 +72,24 @@ def navigate_to_groups_and_subjects(driver):
     info_button.click()
 
 
+def navigate_to_previatures(driver):
+    navigate_to_groups_and_subjects(driver)
+
+    previatures_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "verSistemaPreviaturaPlan"))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", previatures_button)
+    previatures_button.click()
+
+
+def go_to_next_page(driver, actual_page: int):
+    next_page_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.LINK_TEXT, str(actual_page + 1)))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", next_page_button)
+    next_page_button.click()
+
+
 def get_groups_and_subjects_html(driver):
     navigate_to_groups_and_subjects(driver)
 
@@ -78,6 +98,36 @@ def get_groups_and_subjects_html(driver):
     )
 
     return groups_and_subjects_html.get_attribute("outerHTML")
+
+
+def get_previatures_list_html(driver):
+    previatures_list_html = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "j_idt103_data"))
+    )
+
+    return previatures_list_html.get_attribute("outerHTML")
+
+
+def get_list_of_subjects(html) -> List[tuple]:
+    soup = BeautifulSoup(html, "html.parser")
+    subjects = []
+
+    rows = soup.find_all("tr")
+    for row in rows:
+        data_ri = row.get("data-ri")
+
+        columns = row.find_all("td")
+
+        code, _ = columns[0].text.split(" - ", 1)
+        code = code.strip()
+        type = columns[1].text.strip()
+
+        if type == "Examen":
+            continue
+
+        subjects.append((data_ri, code))
+
+    return subjects
 
 
 def scrape_groups_and_subjects():
@@ -182,3 +232,49 @@ def scrape_groups_and_subjects():
         return parent_groups, child_groups, subjects
     finally:
         driver.quit()
+
+
+def scrape_previatures():
+    driver = init_driver()
+    driver.get(BASE_URL)
+
+    previatures_object = {}
+
+    try:
+        navigate_to_previatures(driver)
+
+        for i in range(1, TOTAL_PAGES):
+            print(f"Scraping page {i} of previatures...")
+
+            previatures_list_html = get_previatures_list_html(driver)
+            subjects = get_list_of_subjects(previatures_list_html)
+
+            for data_ri, code in subjects:
+                previatures = get_previatures(driver, data_ri)
+                previatures_object[code] = previatures
+
+            go_to_next_page(driver, i)
+
+        return previatures_object
+    finally:
+        driver.quit()
+
+
+def get_previatures(driver, data_ri):
+    print(f"Scraping previatures for data_ri: {data_ri}...")
+    link_element = WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.XPATH, f"//tr[@data-ri='{data_ri}']/td[3]/a"))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", link_element)
+    link_element.click()
+
+    # Scraping logic
+
+    driver.back()
+    print(f"Finished clicking the link for data_ri: {data_ri}...")
+
+    return {}
+
+
+if __name__ == "__main__":
+    scrape_previatures()
