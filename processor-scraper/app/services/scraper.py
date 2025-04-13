@@ -1,4 +1,5 @@
 import re
+import time
 from typing import List
 
 from app.models.grupos import Grupo
@@ -130,7 +131,17 @@ def get_list_of_subjects(html) -> List[tuple]:
     return subjects
 
 
+def get_previatures_tree_html(driver):
+    previatures_tree_html = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "arbol"))
+    )
+
+    return previatures_tree_html.get_attribute("outerHTML")
+
+
 def scrape_groups_and_subjects():
+    start_time = time.time()
+
     driver = init_driver()
     driver.get(BASE_URL)
 
@@ -229,12 +240,18 @@ def scrape_groups_and_subjects():
                     else:
                         print("No match found (Subject)")
 
+        execution_time = time.time() - start_time
+        minutes, seconds = divmod(execution_time, 60)
+        print(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
+
         return parent_groups, child_groups, subjects
     finally:
         driver.quit()
 
 
 def scrape_previatures():
+    start_time = time.time()
+
     driver = init_driver()
     driver.get(BASE_URL)
 
@@ -244,36 +261,62 @@ def scrape_previatures():
         navigate_to_previatures(driver)
 
         for i in range(1, TOTAL_PAGES):
-            print(f"Scraping page {i} of previatures...")
+            print(f"Scraping page {i} of previatures")
 
             previatures_list_html = get_previatures_list_html(driver)
             subjects = get_list_of_subjects(previatures_list_html)
 
             for data_ri, code in subjects:
+                print(f"Scraping previatures for data_ri: {data_ri}...")
                 previatures = get_previatures(driver, data_ri)
                 previatures_object[code] = previatures
 
             go_to_next_page(driver, i)
+            time.sleep(1)
+
+        execution_time = time.time() - start_time
+        minutes, seconds = divmod(execution_time, 60)
+        print(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
 
         return previatures_object
     finally:
         driver.quit()
 
 
+def expand_tree(driver):
+    collapsed_nodes = driver.find_elements(By.CLASS_NAME, "ui-treenode-collapsed")
+
+    if not collapsed_nodes:
+        return
+
+    for node in collapsed_nodes:
+        try:
+            toggle_div = node.find_element(By.CSS_SELECTOR, "div")
+            driver.execute_script("arguments[0].scrollIntoView(true);", toggle_div)
+            toggle_div.click()
+            time.sleep(1)
+        except Exception as e:
+            print("Error clicking the toggle:", e)
+
+    expand_tree(driver)
+
+
 def get_previatures(driver, data_ri):
-    print(f"Scraping previatures for data_ri: {data_ri}...")
     link_element = WebDriverWait(driver, 20).until(
         EC.element_to_be_clickable((By.XPATH, f"//tr[@data-ri='{data_ri}']/td[3]/a"))
     )
     driver.execute_script("arguments[0].scrollIntoView(true);", link_element)
     link_element.click()
 
-    # Scraping logic
+    expand_tree(driver)
+    previatures_tree_html = get_previatures_tree_html(driver)
+    soup = BeautifulSoup(previatures_tree_html, "html.parser")
+
+    previatures = {}
 
     driver.back()
-    print(f"Finished clicking the link for data_ri: {data_ri}...")
 
-    return {}
+    return previatures
 
 
 if __name__ == "__main__":
