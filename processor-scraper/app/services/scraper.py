@@ -2,93 +2,25 @@ import re
 import time
 from typing import List
 
+from app.constants.scraper import (
+    BASE_URL,
+    GROUP_PATTERN,
+    NODE_TYPE,
+    SUBJECT_PATTERN,
+    TOTAL_PAGES,
+)
 from app.models.grupos import Grupo
 from app.models.unidades_curriculares import UnidadCurricular
-from app.utils.scraper import init_driver
+from app.utils.scraper import (
+    go_to_next_page,
+    init_driver,
+    navigate_to_groups_and_subjects,
+    navigate_to_previatures,
+)
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
-BASE_URL = "https://bedelias.udelar.edu.uy/"
-
-GROUP_PATTERN = (
-    r"^(?P<code>[A-Za-z0-9]+)\s*-\s*(?P<name>.*?)\s*-\s*min:\s*(?P<credits>\d+)"
-)
-SUBJECT_PATTERN = (
-    r"^(?P<code>[A-Za-z0-9]+)\s*-\s*(?P<name>.*?)\s*-\s*créditos:\s*(?P<credits>\d+)"
-)
-
-TOTAL_PAGES = 19
-
-
-def navigate_to_groups_and_subjects(driver):
-    nav_element = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.LINK_TEXT, "PLANES DE ESTUDIO"))
-    )
-    nav_element.click()
-
-    nav_link = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.LINK_TEXT, "Planes de estudio / Previas"))
-    )
-    nav_link.click()
-
-    tec_nat_accordion = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "j_idt98:2:j_idt99_header"))
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", tec_nat_accordion)
-    tec_nat_accordion.click()
-
-    fing_element = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            (By.XPATH, "//td[text()='FING - FACULTAD DE INGENIERÍA']")
-        )
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", fing_element)
-    fing_element.click()
-
-    # Go to page 4, where "INGENIERIA EN COMPUTACION" is located
-    page_4_link = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.LINK_TEXT, "4"))
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", page_4_link)
-    page_4_link.click()
-
-    row_toggler = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            (
-                By.XPATH,
-                "//td[text()='INGENIERIA EN COMPUTACION']/preceding-sibling::td[1]/div",
-            )
-        )
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", row_toggler)
-    row_toggler.click()
-
-    info_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            (By.ID, "datos1111:j_idt98:37:j_idt110:0:verComposicionPlan")
-        )
-    )
-    info_button.click()
-
-
-def navigate_to_previatures(driver):
-    navigate_to_groups_and_subjects(driver)
-
-    previatures_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.ID, "verSistemaPreviaturaPlan"))
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", previatures_button)
-    previatures_button.click()
-
-
-def go_to_next_page(driver, actual_page: int):
-    next_page_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.LINK_TEXT, str(actual_page + 1)))
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", next_page_button)
-    next_page_button.click()
 
 
 def get_groups_and_subjects_html(driver):
@@ -131,12 +63,68 @@ def get_list_of_subjects(html) -> List[tuple]:
     return subjects
 
 
-def get_previatures_tree_html(driver):
+def expand_tree(driver):
+    collapsed_nodes = driver.find_elements(By.CLASS_NAME, "ui-treenode-collapsed")
+
+    if not collapsed_nodes:
+        return
+
+    for node in collapsed_nodes:
+        try:
+            toggle_div = node.find_element(By.CSS_SELECTOR, "div")
+            driver.execute_script("arguments[0].scrollIntoView(true);", toggle_div)
+            toggle_div.click()
+            time.sleep(1)
+        except Exception as e:
+            print("Error clicking the toggle:", e)
+
+    expand_tree(driver)
+
+
+def get_previatures_root_node_html(driver):
     previatures_tree_html = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "arbol"))
     )
 
-    return previatures_tree_html.get_attribute("outerHTML")
+    return previatures_tree_html.find_element(By.CSS_SELECTOR, "tr").get_attribute(
+        "outerHTML"
+    )
+
+
+def get_previatures(driver, data_ri):
+    link_element = WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.XPATH, f"//tr[@data-ri='{data_ri}']/td[3]/a"))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", link_element)
+    link_element.click()
+
+    expand_tree(driver)
+    previatures_root_node_html = get_previatures_root_node_html(driver)
+
+    previatures = generate_previatures_object(previatures_root_node_html)
+
+    driver.back()
+
+    return previatures
+
+
+def generate_previatures_object(node_html):
+    soup = BeautifulSoup(node_html, "html.parser")
+
+    node_type_element = soup.find("td", attrs={"data-nodetype": True})
+    node_type = node_type_element["data-nodetype"]
+
+    match node_type:
+        case NODE_TYPE.AND:
+            print("AND")
+        case NODE_TYPE.OR:
+            print("OR")
+        case NODE_TYPE.NOT:
+            print("NOT")
+        case NODE_TYPE.DEFAULT:
+            print("DEFAULT")
+        case _:
+            print("Rule not recognized")
 
 
 def scrape_groups_and_subjects():
@@ -281,42 +269,6 @@ def scrape_previatures():
         return previatures_object
     finally:
         driver.quit()
-
-
-def expand_tree(driver):
-    collapsed_nodes = driver.find_elements(By.CLASS_NAME, "ui-treenode-collapsed")
-
-    if not collapsed_nodes:
-        return
-
-    for node in collapsed_nodes:
-        try:
-            toggle_div = node.find_element(By.CSS_SELECTOR, "div")
-            driver.execute_script("arguments[0].scrollIntoView(true);", toggle_div)
-            toggle_div.click()
-            time.sleep(1)
-        except Exception as e:
-            print("Error clicking the toggle:", e)
-
-    expand_tree(driver)
-
-
-def get_previatures(driver, data_ri):
-    link_element = WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.XPATH, f"//tr[@data-ri='{data_ri}']/td[3]/a"))
-    )
-    driver.execute_script("arguments[0].scrollIntoView(true);", link_element)
-    link_element.click()
-
-    expand_tree(driver)
-    previatures_tree_html = get_previatures_tree_html(driver)
-    soup = BeautifulSoup(previatures_tree_html, "html.parser")
-
-    previatures = {}
-
-    driver.back()
-
-    return previatures
 
 
 if __name__ == "__main__":

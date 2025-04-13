@@ -1,4 +1,3 @@
-# Areas de formacion. TODO: Debemos tener un diccionario asi para cada carrera.
 INGENIERIA_COMPUTACION_FORMATION_AREAS = {
     "Materias Basicas": ["MATEMATICA", "CIENCIAS EXPERIMENTALES"],
     "Basico-Tec,Tecnicas e Integ.": [
