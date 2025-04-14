@@ -1,15 +1,30 @@
+import json
 import re
 import time
 from typing import List
 
 from app.constants.scraper import (
     BASE_URL,
+    DEFAULT_NODE_TYPE,
     GROUP_PATTERN,
     NODE_TYPE,
+    SOME_RULE_PATTERN,
     SUBJECT_PATTERN,
     TOTAL_PAGES,
 )
 from app.models.grupos import Grupo
+from app.models.previaturas import (
+    TIPO_INSTANCIA,
+    TIPO_REGLA,
+    ReglaAnd,
+    ReglaCreditosGrupo,
+    ReglaCreditosPlan,
+    ReglaNot,
+    ReglaOr,
+    ReglaPreviaturas,
+    ReglaSome,
+    ReglaUc,
+)
 from app.models.unidades_curriculares import UnidadCurricular
 from app.utils.scraper import (
     go_to_next_page,
@@ -85,10 +100,9 @@ def get_previatures_root_node_html(driver):
     previatures_tree_html = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "arbol"))
     )
+    previatures_tree_html = previatures_tree_html.find_element(By.CSS_SELECTOR, "tr")
 
-    return previatures_tree_html.find_element(By.CSS_SELECTOR, "tr").get_attribute(
-        "outerHTML"
-    )
+    return previatures_tree_html.get_attribute("outerHTML")
 
 
 def get_previatures(driver, data_ri):
@@ -97,6 +111,8 @@ def get_previatures(driver, data_ri):
     )
     driver.execute_script("arguments[0].scrollIntoView(true);", link_element)
     link_element.click()
+
+    time.sleep(1)
 
     expand_tree(driver)
     previatures_root_node_html = get_previatures_root_node_html(driver)
@@ -108,7 +124,7 @@ def get_previatures(driver, data_ri):
     return previatures
 
 
-def generate_previatures_object(node_html):
+def generate_previatures_object(node_html) -> ReglaPreviaturas:
     soup = BeautifulSoup(node_html, "html.parser")
 
     node_type_element = soup.find("td", attrs={"data-nodetype": True})
@@ -116,15 +132,110 @@ def generate_previatures_object(node_html):
 
     match node_type:
         case NODE_TYPE.AND:
-            print("AND")
+            children_element = soup.find("div", class_="ui-treenode-children")
+            table_elements = children_element.find_all("table", recursive=False)
+            tr_elements = [table.find("tr") for table in table_elements]
+
+            return ReglaAnd(
+                regla=TIPO_REGLA.AND,
+                previas=[
+                    generate_previatures_object(str(tr_element))
+                    for tr_element in tr_elements
+                ],
+            )
+
         case NODE_TYPE.OR:
-            print("OR")
+            children_element = soup.find("div", class_="ui-treenode-children")
+            table_elements = children_element.find_all("table", recursive=False)
+            tr_elements = [table.find("tr") for table in table_elements]
+
+            return ReglaOr(
+                regla=TIPO_REGLA.OR,
+                previas=[
+                    generate_previatures_object(str(tr_element))
+                    for tr_element in tr_elements
+                ],
+            )
+
         case NODE_TYPE.NOT:
-            print("NOT")
+            children_element = soup.find("div", class_="ui-treenode-children")
+            tr_element = children_element.find("tr")
+
+            return ReglaNot(
+                regla=TIPO_REGLA.NOT,
+                previas=generate_previatures_object(str(tr_element)),
+            )
+
         case NODE_TYPE.DEFAULT:
-            print("DEFAULT")
+            label_element = node_type_element.find("span", class_="ui-treenode-label")
+            rule_element = label_element.find("span")
+            rule_text = rule_element.get_text(strip=True)
+            content_text = rule_element.next_sibling.get_text(strip=True)
+
+            if DEFAULT_NODE_TYPE.SOME in rule_text.lower():
+                amount = rule_text.strip().split(" ")[0]
+                subjects = content_text.split("\n")
+
+                return ReglaSome(
+                    regla=TIPO_REGLA.SOME,
+                    cantidad=amount,
+                    previas=[
+                        ReglaUc(
+                            regla=TIPO_REGLA.UC,
+                            codigo=match.group("code"),
+                            nombre=match.group("name"),
+                            tipoInstancia=(
+                                TIPO_INSTANCIA.EXAMEN
+                                if match.group("type") == "Examen"
+                                else TIPO_INSTANCIA.CURSO
+                            ),
+                        )
+                        for subject in subjects
+                        if (match := re.match(SOME_RULE_PATTERN, subject))
+                    ],
+                )
+
+            elif (
+                DEFAULT_NODE_TYPE.UC in rule_text.lower()
+                or DEFAULT_NODE_TYPE.UC_EXAMEN in rule_text.lower()
+            ):
+                code, name = content_text.split(" - ", 1)
+                return ReglaUc(
+                    regla=TIPO_REGLA.UC,
+                    codigo=code,
+                    nombre=name,
+                    tipoInstancia=TIPO_INSTANCIA.EXAMEN,
+                )
+
+            elif DEFAULT_NODE_TYPE.UC_CURSO in rule_text.lower():
+                code, name = content_text.split(" - ", 1)
+                return ReglaUc(
+                    regla=TIPO_REGLA.UC,
+                    codigo=code,
+                    nombre=name,
+                    tipoInstancia=TIPO_INSTANCIA.CURSO,
+                )
+
+            elif DEFAULT_NODE_TYPE.CREDITOS_GRUPO in rule_text.lower():
+                credits = rule_text.split(" ")[0]
+                code, name = content_text.split(" - ", 1)
+                return ReglaCreditosGrupo(
+                    regla=TIPO_REGLA.CREDITOS_GRUPO,
+                    cantidad=credits,
+                    codigo=code,
+                    nombre=name,
+                )
+
+            elif DEFAULT_NODE_TYPE.CREDITOS_PLAN in rule_text.lower():
+                credits = rule_text.split(" ")[0]
+                return ReglaCreditosPlan(
+                    regla=TIPO_REGLA.CREDITOS_PLAN,
+                    cantidad=credits,
+                )
+
         case _:
-            print("Rule not recognized")
+            print(f"Rule not recognized: {node_type}")
+            return None
 
 
 def scrape_groups_and_subjects():
@@ -257,6 +368,7 @@ def scrape_previatures():
             for data_ri, code in subjects:
                 print(f"Scraping previatures for data_ri: {data_ri}...")
                 previatures = get_previatures(driver, data_ri)
+                print(previatures)
                 previatures_object[code] = previatures
 
             go_to_next_page(driver, i)
@@ -272,4 +384,8 @@ def scrape_previatures():
 
 
 if __name__ == "__main__":
-    scrape_previatures()
+    previatures = scrape_previatures()
+
+    with open("previatures.json", "w", encoding="utf-8") as f:
+        json_string = json.dumps(previatures, indent=4, ensure_ascii=False)
+        f.write(json_string)

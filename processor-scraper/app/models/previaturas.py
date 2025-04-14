@@ -8,10 +8,6 @@ class TIPO_INSTANCIA:
     EXAMEN = "E"
 
 
-class TipoInstancia(BaseModel):
-    tipo: Literal["C", "E"]
-
-
 class TIPO_REGLA:
     AND = "AND"
     OR = "OR"
@@ -47,7 +43,7 @@ class ReglaUc(BaseModel):
     regla: Literal["UC"]
     codigo: Optional[str]
     nombre: Optional[str]
-    tipoInstancia: Optional[TipoInstancia]
+    tipoInstancia: Optional[Literal["C", "E"]]
 
 
 class ReglaCreditosGrupo(BaseModel):
