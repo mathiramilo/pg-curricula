@@ -17,13 +17,16 @@ class NODE_TYPE:
     AND = "y"
     OR = "o"
     NOT = "no"
+    GROUP_CREDITS = "cag"
     DEFAULT = "default"
 
 
 class DEFAULT_NODE_TYPE:
     SOME = "aprobación/es entre"
+    SOME_ACTIVITIES = "actividad/es entre"
     UC = "u.c.b aprobada"
     UC_CURSO = "curso aprobado de la u.c.b"
     UC_EXAMEN = "examen aprobado de la u.c.b"
-    CREDITOS_GRUPO = "créditos en el grupo"
+    UC_INSCRIPTION = "inscripción a curso de la u.c.b"
+    ACTIVITY = "actividad examen aprobada/reprobada en la u.c.b"
     CREDITOS_PLAN = "créditos en el plan"

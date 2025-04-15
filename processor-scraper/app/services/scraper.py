@@ -166,13 +166,31 @@ def generate_previatures_object(node_html) -> ReglaPreviaturas:
                 previas=generate_previatures_object(str(tr_element)),
             )
 
+        case NODE_TYPE.GROUP_CREDITS:
+            label_element = node_type_element.find("span", class_="ui-treenode-label")
+            rule_element = label_element.find("span")
+            rule_text = rule_element.get_text(strip=True)
+            content_text = rule_element.next_sibling.get_text(strip=True)
+
+            credits = rule_text.split(" ")[0]
+            code, name = content_text.split(" - ", 1)
+            return ReglaCreditosGrupo(
+                regla=TIPO_REGLA.CREDITOS_GRUPO,
+                cantidad=credits,
+                codigo=code,
+                nombre=name,
+            )
+
         case NODE_TYPE.DEFAULT:
             label_element = node_type_element.find("span", class_="ui-treenode-label")
             rule_element = label_element.find("span")
             rule_text = rule_element.get_text(strip=True)
             content_text = rule_element.next_sibling.get_text(strip=True)
 
-            if DEFAULT_NODE_TYPE.SOME in rule_text.lower():
+            if (
+                DEFAULT_NODE_TYPE.SOME in rule_text.lower()
+                or DEFAULT_NODE_TYPE.SOME_ACTIVITIES in rule_text.lower()
+            ):
                 amount = rule_text.strip().split(" ")[0]
                 subjects = content_text.split("\n")
 
@@ -207,7 +225,11 @@ def generate_previatures_object(node_html) -> ReglaPreviaturas:
                     tipoInstancia=TIPO_INSTANCIA.EXAMEN,
                 )
 
-            elif DEFAULT_NODE_TYPE.UC_CURSO in rule_text.lower():
+            elif (
+                DEFAULT_NODE_TYPE.UC_CURSO in rule_text.lower()
+                or DEFAULT_NODE_TYPE.UC_INSCRIPTION in rule_text.lower()
+                or DEFAULT_NODE_TYPE.ACTIVITY in rule_text.lower()
+            ):
                 code, name = content_text.split(" - ", 1)
                 return ReglaUc(
                     regla=TIPO_REGLA.UC,
@@ -216,22 +238,16 @@ def generate_previatures_object(node_html) -> ReglaPreviaturas:
                     tipoInstancia=TIPO_INSTANCIA.CURSO,
                 )
 
-            elif DEFAULT_NODE_TYPE.CREDITOS_GRUPO in rule_text.lower():
-                credits = rule_text.split(" ")[0]
-                code, name = content_text.split(" - ", 1)
-                return ReglaCreditosGrupo(
-                    regla=TIPO_REGLA.CREDITOS_GRUPO,
-                    cantidad=credits,
-                    codigo=code,
-                    nombre=name,
-                )
-
             elif DEFAULT_NODE_TYPE.CREDITOS_PLAN in rule_text.lower():
                 credits = rule_text.split(" ")[0]
                 return ReglaCreditosPlan(
                     regla=TIPO_REGLA.CREDITOS_PLAN,
                     cantidad=credits,
                 )
+
+            else:
+                print(f"Default node type not recognized: {rule_text}")
+                return None
 
         case _:
             print(f"Rule not recognized: {node_type}")
@@ -332,8 +348,10 @@ def scrape_groups_and_subjects():
                                 codigo=subject_code,
                                 nombre=subject_name,
                                 creditos=credits,
-                                grupo_padre=parent_group_code,
-                                grupo_hijo=child_group_code,
+                                codigo_grupo_padre=parent_group_code,
+                                nombre_grupo_padre=parent_group_name,
+                                codigo_grupo_hijo=child_group_code,
+                                nombre_grupo_hijo=child_group_name,
                             )
                         )
                     else:
@@ -368,7 +386,6 @@ def scrape_previatures():
             for data_ri, code in subjects:
                 print(f"Scraping previatures for data_ri: {data_ri}...")
                 previatures = get_previatures(driver, data_ri)
-                print(previatures)
                 previatures_object[code] = previatures
 
             go_to_next_page(driver, i)
@@ -381,11 +398,3 @@ def scrape_previatures():
         return previatures_object
     finally:
         driver.quit()
-
-
-if __name__ == "__main__":
-    previatures = scrape_previatures()
-
-    with open("previatures.json", "w", encoding="utf-8") as f:
-        json_string = json.dumps(previatures, indent=4, ensure_ascii=False)
-        f.write(json_string)

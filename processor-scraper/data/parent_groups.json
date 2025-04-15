@@ -1,0 +1,22 @@
+[
+    {
+        "codigo": "2436",
+        "nombre": "MATERIAS BASICAS",
+        "min_creditos": 80
+    },
+    {
+        "codigo": "3215",
+        "nombre": "BASICO-TEC,TECNICAS E INTEG.",
+        "min_creditos": 220
+    },
+    {
+        "codigo": "3233",
+        "nombre": "MATERIAS COMPLEMENTARIAS",
+        "min_creditos": 10
+    },
+    {
+        "codigo": "3582",
+        "nombre": "MATERIAS OPCIONALES",
+        "min_creditos": 0
+    }
+]
