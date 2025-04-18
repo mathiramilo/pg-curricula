@@ -1,4 +1,3 @@
-import json
 import re
 import time
 from typing import List
@@ -8,7 +7,6 @@ from app.constants.scraper import (
     DEFAULT_NODE_TYPE,
     GROUP_PATTERN,
     NODE_TYPE,
-    SOME_RULE_PATTERN,
     SUBJECT_PATTERN,
     TOTAL_PAGES,
 )
@@ -31,6 +29,7 @@ from app.utils.scraper import (
     init_driver,
     navigate_to_groups_and_subjects,
     navigate_to_previatures,
+    parse_some_line,
 )
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
@@ -194,23 +193,30 @@ def generate_previatures_object(node_html) -> ReglaPreviaturas:
                 amount = rule_text.strip().split(" ")[0]
                 subjects = content_text.split("\n")
 
-                return ReglaSome(
-                    regla=TIPO_REGLA.SOME,
-                    cantidad=amount,
-                    previas=[
+                previas = []
+                for subject in subjects:
+                    parsed = parse_some_line(subject)
+
+                    if not parsed:
+                        continue
+
+                    previas.append(
                         ReglaUc(
                             regla=TIPO_REGLA.UC,
-                            codigo=match.group("code"),
-                            nombre=match.group("name"),
+                            codigo=parsed["code"],
+                            nombre=parsed["name"],
                             tipoInstancia=(
                                 TIPO_INSTANCIA.EXAMEN
-                                if match.group("type") == "Examen"
+                                if parsed["type"] == "Examen"
                                 else TIPO_INSTANCIA.CURSO
                             ),
                         )
-                        for subject in subjects
-                        if (match := re.match(SOME_RULE_PATTERN, subject))
-                    ],
+                    )
+
+                return ReglaSome(
+                    regla=TIPO_REGLA.SOME,
+                    cantidad=amount,
+                    previas=previas,
                 )
 
             elif (

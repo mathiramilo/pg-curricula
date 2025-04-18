@@ -1,5 +1,6 @@
 import os
 
+from app.constants.scraper import SOME_RULE_PATTERN
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -89,3 +90,20 @@ def go_to_next_page(driver, actual_page: int):
     )
     driver.execute_script("arguments[0].scrollIntoView(true);", next_page_button)
     next_page_button.click()
+
+
+def parse_some_line(line: str):
+    m = SOME_RULE_PATTERN.match(line)
+    if not m:
+        return None
+
+    tipo = m.group("type")
+
+    if tipo is None:
+        tipo = "Curso"
+
+    return {
+        "type": tipo,
+        "code": m.group("code"),
+        "name": m.group("name").strip(),
+    }

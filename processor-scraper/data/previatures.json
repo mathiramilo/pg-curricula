@@ -7,7 +7,26 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "2241",
+                            "nombre": "ADMINISTRACION DE EMPRESAS",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1519",
+                            "nombre": "INT. A LA ADMINISTRACION PARA INGENIEROS",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1930",
+                            "nombre": "ORGANIZACIONES PARA INGENIEROS",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -648,7 +667,68 @@
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1021",
+                        "nombre": "ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MA09",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "M9",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031P",
+                        "nombre": "CREDITOS NO ACUM GAL2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP2",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "R101",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP23",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1058",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    }
+                ]
             },
             {
                 "regla": "SOME",
@@ -1712,7 +1792,146 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "CP1",
+                            "nombre": "ANALISIS MATEMATICO I",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP22",
+                            "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP44",
+                            "nombre": "ANALISIS MATEMATICO I (1ER.SEM.)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1061R",
+                            "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1020",
+                            "nombre": "CALCULO 1",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "107L",
+                            "nombre": "CALCULO 1",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1070",
+                            "nombre": "CALCULO 1",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "170Q",
+                            "nombre": "CALCULO 1",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1052",
+                            "nombre": "CALCULO 1 (ANUAL)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CAL10",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CAL12",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MAT14",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MAT33",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA25",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA47",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA51",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MC13",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "M12",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "M13",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "M14",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1020R",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1020P",
+                            "nombre": "CREDITOS NO ACUM CALCULO 1",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1061P",
+                            "nombre": "CREDITOS NO ACUM CDIV",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -1745,7 +1964,68 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "CP1",
+                            "nombre": "ANALISIS MATEMATICO I",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP22",
+                            "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP45",
+                            "nombre": "ANALISIS MATEMATICO I (2DO.SEM.)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1022",
+                            "nombre": "CALCULO 2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1072",
+                            "nombre": "CALCULO 2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MAT33",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA16",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA25",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA9",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1062P",
+                            "nombre": "CREDITOS NO ACUM CDIVV",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -2111,7 +2391,122 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "CP1",
+                    "nombre": "ANALISIS MATEMATICO I",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP22",
+                    "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP44",
+                    "nombre": "ANALISIS MATEMATICO I (1ER.SEM.)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "107L",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1070",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "170Q",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1052",
+                    "nombre": "CALCULO 1 (ANUAL)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CAL10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CAL12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MAT14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MAT33",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA25",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA47",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA51",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MC13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1020R",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "1052": {
@@ -2257,7 +2652,56 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "CP1",
+                            "nombre": "ANALISIS MATEMATICO I",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP22",
+                            "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP45",
+                            "nombre": "ANALISIS MATEMATICO I (2DO.SEM.)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1072",
+                            "nombre": "CALCULO 2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MAT33",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA16",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA25",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA9",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -4509,7 +4953,26 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "1224P",
+                    "nombre": "CREDITOS NO ACUM ECONOMIA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1221",
+                    "nombre": "ECONOMIA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP20",
+                    "nombre": "ECONOMIA POLITICA",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "1028": {
@@ -4520,7 +4983,38 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "CP6",
+                            "nombre": "ANALISIS MATEMATICO II",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP25",
+                            "nombre": "ANALISIS MATEMATICO II (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP48",
+                            "nombre": "ANALISIS MATEMATICO II (1ER.SEM.)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA16",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1074",
+                            "nombre": "ECUACIONES DIFERENCIALES",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -4829,7 +5323,122 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "FF12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FG",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FIS13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FIS14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FI10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FI13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F1Y3",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F30",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1120P",
+                    "nombre": "CREDITOS NO ACUM. FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1151P",
+                    "nombre": "CREDITOS NO ACUM FISICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1120",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "117Q",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1170",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP41",
+                    "nombre": "FISICA I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1171",
+                    "nombre": "FISICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP26",
+                    "nombre": "MECANICA GENERAL I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP3",
+                    "nombre": "MECANICA I",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP17",
+                    "nombre": "MECANICA I (TRANSICION)",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "SRN50": {
@@ -4837,7 +5446,134 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "FF12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FG",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FIS13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FIS14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FI10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FI13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F1Y3",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F30",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1120P",
+                    "nombre": "CREDITOS NO ACUM. FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1151P",
+                    "nombre": "CREDITOS NO ACUM FISICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1120",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "117Q",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1170",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP41",
+                    "nombre": "FISICA I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1171",
+                    "nombre": "FISICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CENURLN",
+                    "nombre": "REF05 - FÍSICA IA- LDI.CIOCT",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CENURLN",
+                    "nombre": "REF04 - FÍSICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP26",
+                    "nombre": "MECANICA GENERAL I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP3",
+                    "nombre": "MECANICA I",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP17",
+                    "nombre": "MECANICA I (TRANSICION)",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "1152": {
@@ -4848,7 +5584,20 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "FI10",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1152P",
+                            "nombre": "CREDITOS NO ACUM FISICA 2",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -5020,7 +5769,74 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "FF12",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "FG2",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "FIS14",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "F7",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "F8",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1153P",
+                            "nombre": "CREDITOS NO ACUM FISICA 3",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP13",
+                            "nombre": "ELECTROMAGNETISMO",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1121",
+                            "nombre": "FISICA GENERAL 2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1172",
+                            "nombre": "FISICA GENERAL 2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP43",
+                            "nombre": "FISICA III (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1173",
+                            "nombre": "FISICA 3",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -5226,7 +6042,134 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "FF12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FG",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FIS13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FIS14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FI10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "FI13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F1Y3",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "F30",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1120P",
+                    "nombre": "CREDITOS NO ACUM. FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1151P",
+                    "nombre": "CREDITOS NO ACUM FISICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1120",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "117Q",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1170",
+                    "nombre": "FISICA GENERAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP41",
+                    "nombre": "FISICA I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1171",
+                    "nombre": "FISICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CENURLN",
+                    "nombre": "SRN50 - FISICA 1A CIOCT 2023",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CENURLN",
+                    "nombre": "REF04 - FÍSICA 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP26",
+                    "nombre": "MECANICA GENERAL I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP3",
+                    "nombre": "MECANICA I",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP17",
+                    "nombre": "MECANICA I (TRANSICION)",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "SRN11": {
@@ -6199,7 +7142,98 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "CM14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "GAL7",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MAT33",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA51",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA7",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MC3",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M24",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M9",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP2",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP23",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP46",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL (1ER.SEM.)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1030",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1071",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "171L",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "171Q",
+                    "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "GAL1P": {
@@ -6335,7 +7369,68 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "MA09",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA10",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA5",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "M9",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1031P",
+                            "nombre": "CREDITOS NO ACUM GAL2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP2",
+                            "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP23",
+                            "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP47",
+                            "nombre": "GEOMETRIA Y ALGEBRA LINEAL (2DO.SEM.)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1058",
+                            "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "158Q",
+                            "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -6433,7 +7528,20 @@
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1510",
+                        "nombre": "CONTROL DE CALIDAD",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1901",
+                        "nombre": "CONTROL DE CALIDAD",
+                        "tipoInstancia": "C"
+                    }
+                ]
             }
         ]
     },
@@ -6470,7 +7578,20 @@
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1510",
+                        "nombre": "CONTROL DE CALIDAD",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1901",
+                        "nombre": "CONTROL DE CALIDAD",
+                        "tipoInstancia": "C"
+                    }
+                ]
             }
         ]
     },
@@ -8186,7 +9307,20 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "PR7",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1328P",
+                            "nombre": "CREDITOS NO ACUM INT. A LA PROG. FUNCIONAL",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -8568,7 +9702,50 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "CP6",
+                            "nombre": "ANALISIS MATEMATICO II",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP25",
+                            "nombre": "ANALISIS MATEMATICO II (P. 74)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP48",
+                            "nombre": "ANALISIS MATEMATICO II (1ER.SEM.)",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "MA16",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1028P",
+                            "nombre": "CREDITOS NO ACUM EC. DIFERENCIALES",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1028",
+                            "nombre": "ECUACIONES DIFERENCIALES",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1074",
+                            "nombre": "ECUACIONES DIFERENCIALES",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -10698,7 +11875,152 @@
         "previas": {
             "regla": "SOME",
             "cantidad": 1,
-            "previas": []
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "CP1",
+                    "nombre": "ANALISIS MATEMATICO I",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP22",
+                    "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP44",
+                    "nombre": "ANALISIS MATEMATICO I (1ER.SEM.)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1061",
+                    "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1020",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "107L",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1070",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "170Q",
+                    "nombre": "CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1052",
+                    "nombre": "CALCULO 1 (ANUAL)",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CENURLN",
+                    "nombre": "SRN02 - CÁLCULO I",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CAL10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CAL12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MAT14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MAT33",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA25",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA47",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MA51",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "MC13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M12",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M13",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "M14",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1020R",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1020P",
+                    "nombre": "CREDITOS NO ACUM CALCULO 1",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1061P",
+                    "nombre": "CREDITOS NO ACUM CDIV",
+                    "tipoInstancia": "C"
+                }
+            ]
         }
     },
     "CIM11": {
@@ -12147,17 +13469,146 @@
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1025",
+                        "nombre": "PROBABILIDAD Y ESTADISTICA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1075",
+                        "nombre": "PROBABILIDAD Y ESTADISTICA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "125L",
+                        "nombre": "PROBABILIDAD Y ESTADISTICA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "175Q",
+                        "nombre": "PROBABILIDAD Y ESTADISTICA",
+                        "tipoInstancia": "C"
+                    }
+                ]
             },
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP1",
+                        "nombre": "ANALISIS MATEMATICO I",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP22",
+                        "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1062",
+                        "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1022",
+                        "nombre": "CALCULO 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1072",
+                        "nombre": "CALCULO 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1062P",
+                        "nombre": "CREDITOS NO ACUM CDIVV",
+                        "tipoInstancia": "C"
+                    }
+                ]
             },
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1021",
+                        "nombre": "ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MA09",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "M9",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031P",
+                        "nombre": "CREDITOS NO ACUM GAL2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP2",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "R101",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP23",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1058",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    }
+                ]
             }
         ]
     },
@@ -12293,7 +13744,32 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "2241",
+                            "nombre": "ADMINISTRACION DE EMPRESAS",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1945P",
+                            "nombre": "CREDITOS NO ACUM. PRACTICA DE ADM. PARA INGENIEROS",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1519",
+                            "nombre": "INT. A LA ADMINISTRACION PARA INGENIEROS",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1930",
+                            "nombre": "ORGANIZACIONES PARA INGENIEROS",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -13499,7 +14975,26 @@
                     {
                         "regla": "SOME",
                         "cantidad": 1,
-                        "previas": []
+                        "previas": [
+                            {
+                                "regla": "UC",
+                                "codigo": "1023P",
+                                "nombre": "CREDITOS NO ACUM MATEMATICA DISCRETA 1",
+                                "tipoInstancia": "C"
+                            },
+                            {
+                                "regla": "UC",
+                                "codigo": "1023",
+                                "nombre": "MATEMATICA DISCRETA 1",
+                                "tipoInstancia": "C"
+                            },
+                            {
+                                "regla": "UC",
+                                "codigo": "CENURLN",
+                                "nombre": "SRN14 - MATEMÁTICA DISCRETA I",
+                                "tipoInstancia": "C"
+                            }
+                        ]
                     }
                 ]
             },
@@ -13615,7 +15110,26 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "PR7",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1324P",
+                            "nombre": "CREDITOS NO ACUM PROGRAMACION 4",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "CP30",
+                            "nombre": "TALLER III (1ER.SEM.)",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -15309,7 +16823,20 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "1781P",
+                            "nombre": "CREDITOS NO ACUM. SIST. DE INFOR. PARA GRANDES VOLÚMENES DE DATOS",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1939",
+                            "nombre": "DISEÑO Y CONSTRUCCION DE DATA WAREHOUSE",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -17791,7 +19318,32 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "BTI23",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "BTI29",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "BTI33",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "BTI38",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -18227,7 +19779,26 @@
                 "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
-                    "previas": []
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "AI28",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "A28",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "BT28",
+                            "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                            "tipoInstancia": "C"
+                        }
+                    ]
                 }
             },
             {
@@ -19635,22 +21206,272 @@
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1021",
+                        "nombre": "ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CM14",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "M9",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1030P",
+                        "nombre": "CREDITOS NO ACUM GAL1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP2",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "R101",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP23",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1030",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1071",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "171Q",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1053",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1 (ANUAL)",
+                        "tipoInstancia": "C"
+                    }
+                ]
             },
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1021",
+                        "nombre": "ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CM14",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "M9",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031P",
+                        "nombre": "CREDITOS NO ACUM GAL2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP2",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "R101",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP23",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1058",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "158Q",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "C"
+                    }
+                ]
             },
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP1",
+                        "nombre": "ANALISIS MATEMATICO I",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "R100",
+                        "nombre": "ANALISIS MATEMATICO I",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP22",
+                        "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1061",
+                        "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1020",
+                        "nombre": "CALCULO 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1070",
+                        "nombre": "CALCULO 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1052",
+                        "nombre": "CALCULO 1 (ANUAL)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CAL10",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1020P",
+                        "nombre": "CREDITOS NO ACUM CALCULO 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1061P",
+                        "nombre": "CREDITOS NO ACUM CDIV",
+                        "tipoInstancia": "C"
+                    }
+                ]
             },
             {
                 "regla": "SOME",
                 "cantidad": 1,
-                "previas": []
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP1",
+                        "nombre": "ANALISIS MATEMATICO I",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP22",
+                        "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1062",
+                        "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1022",
+                        "nombre": "CALCULO 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1072",
+                        "nombre": "CALCULO 2",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1062P",
+                        "nombre": "CREDITOS NO ACUM CDIVV",
+                        "tipoInstancia": "C"
+                    }
+                ]
             }
         ]
     },

@@ -1,3 +1,5 @@
+import re
+
 BASE_URL = "https://bedelias.udelar.edu.uy/"
 
 GROUP_PATTERN = (
@@ -6,8 +8,20 @@ GROUP_PATTERN = (
 SUBJECT_PATTERN = (
     r"^(?P<code>[A-Za-z0-9]+)\s*-\s*(?P<name>.*?)\s*-\s*créditos:\s*(?P<credits>\d+)"
 )
-SOME_RULE_PATTERN = (
-    r"^(?P<type>Curso|Examen) de la U\.C\.B:\s*(?P<code>\w+)\s*-\s*(?P<name>.+)$"
+SOME_RULE_PATTERN = re.compile(
+    r"""
+    ^                            
+    (?:
+       (?P<type>Curso|Examen)\s+ 
+       de\ la\ U\.C\.B:           
+     |
+       U\.C\.B\ aprobada:         
+    )
+    \s*(?P<code>\w+)\s*-\s*     
+    (?P<name>.+)                  
+    $
+""",
+    re.VERBOSE,
 )
 
 TOTAL_PAGES = 19
