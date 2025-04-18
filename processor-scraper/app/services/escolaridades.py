@@ -107,9 +107,9 @@ def get_student_data_with_intermediate_results(
                                 creditos=None,
                                 codigo="",
                                 nombre=nombre,
-                                tipo_aprobacion=TipoAprobacion.COURSE.value,
-                                nombre_grupo_padre=area,
-                                nombre_grupo_hijo=group,
+                                tipoAprobacion=TipoAprobacion.COURSE.value,
+                                nombreGrupoPadre=area,
+                                nombreGrupoHijo=group,
                             )
                         )
                 else:
@@ -132,9 +132,9 @@ def get_student_data_with_intermediate_results(
                                 creditos=int(creditos),
                                 codigo="",
                                 nombre=nombre,
-                                tipo_aprobacion=TipoAprobacion.EXAM.value,
-                                nombre_grupo_padre=area,
-                                nombre_grupo_hijo=group,
+                                tipoAprobacion=TipoAprobacion.EXAM.value,
+                                nombreGrupoPadre=area,
+                                nombreGrupoHijo=group,
                             )
                         )
                         student_data["creditosTotales"] += int(creditos)
@@ -172,9 +172,9 @@ def get_student_data_with_intermediate_results(
                                 creditos=int(creditos),
                                 codigo="",
                                 nombre=nombre,
-                                tipo_aprobacion=TipoAprobacion.EXAM.value,
-                                nombre_grupo_padre=area,
-                                nombre_grupo_hijo=group,
+                                tipoAprobacion=TipoAprobacion.EXAM.value,
+                                nombreGrupoPadre=area,
+                                nombreGrupoHijo=group,
                             )
                         )
                         student_data["creditosTotales"] += int(creditos)
@@ -251,9 +251,9 @@ def get_student_data_without_intermediate_results(
                             creditos=int(creditos),
                             codigo="",
                             nombre=nombre,
-                            tipo_aprobacion=TipoAprobacion.EXAM.value,
-                            nombre_grupo_padre=area,
-                            nombre_grupo_hijo=group,
+                            tipoAprobacion=TipoAprobacion.EXAM.value,
+                            nombreGrupoPadre=area,
+                            nombreGrupoHijo=group,
                         )
                     )
                     student_data["creditosTotales"] += int(creditos)
@@ -279,9 +279,9 @@ def get_student_data_without_intermediate_results(
                             creditos=int(creditos),
                             codigo="",
                             nombre=nombre,
-                            tipo_aprobacion=TipoAprobacion.EXAM.value,
-                            nombre_grupo_padre=area,
-                            nombre_grupo_hijo=group,
+                            tipoAprobacion=TipoAprobacion.EXAM.value,
+                            nombreGrupoPadre=area,
+                            nombreGrupoHijo=group,
                         )
                     )
                     student_data["creditosTotales"] += int(creditos)

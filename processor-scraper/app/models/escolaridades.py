@@ -15,9 +15,9 @@ class UnidadCurricularAprobada(BaseModel):
     creditos: int
     codigo: str
     nombre: str
-    tipo_aprobacion: TipoAprobacion
-    nombre_grupo_padre: str
-    nombre_grupo_hijo: str
+    tipoAprobacion: TipoAprobacion
+    nombreGrupoPadre: str
+    nombreGrupoHijo: str
 
 
 class InformacionEstudiante(BaseModel):
