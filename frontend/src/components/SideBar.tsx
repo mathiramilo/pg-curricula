@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { NavLink } from "react-router-dom";
 
+import { FEEDBACK_FORM_URL } from "@/config";
 import { RUTAS } from "@/router";
 import { cn } from "@/utils";
 import {
@@ -99,7 +100,7 @@ const SideBarDesktop = ({
     </nav>
 
     <nav className="flex flex-col gap-4">
-      <a href="https://google.com/" target="_blank" rel="noreferrer">
+      <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
         <Button
           size="sm"
           className="w-full justify-start pr-12 text-white/90 hover:bg-principal-400"
