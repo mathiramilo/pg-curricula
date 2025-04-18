@@ -11,6 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  PreviaturasTree,
 } from "@/components";
 import { usePrevias } from "@/hooks";
 import { useUnidadCurricularModalStore } from "@/store";
@@ -19,9 +20,7 @@ import { capitalizeWords, getSemestresDeDictado } from "@/utils";
 export const UnidadCurricularModal = () => {
   const { unidadCurricular, show, close } = useUnidadCurricularModalStore();
 
-  const { data: previas } = usePrevias(unidadCurricular?.codigo);
-
-  console.log(previas);
+  const { data: previaturas } = usePrevias(unidadCurricular?.codigo);
 
   if (!unidadCurricular) return null;
 
@@ -64,7 +63,9 @@ export const UnidadCurricularModal = () => {
             <CardTitle>Previaturas</CardTitle>
           </CardHeader>
 
-          <CardContent>{/* Mostrar arbol de previaturas */}</CardContent>
+          <CardContent>
+            <PreviaturasTree previaturas={previaturas} />
+          </CardContent>
         </Card>
 
         <DialogFooter className="mt-auto">

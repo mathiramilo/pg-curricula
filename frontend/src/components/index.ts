@@ -9,5 +9,6 @@ export * from "./fields";
 export * from "./grupos";
 export * from "./icons";
 export * from "./modals";
+export * from "./previaturas";
 export * from "./ui";
 export * from "./unidades-curriculares";

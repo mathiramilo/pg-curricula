@@ -54,38 +54,52 @@ export interface TrayectoriaSugeridaSemestre {
   unidadesCurriculares: UnidadCurricular[];
 }
 
+export interface ReglaAnd {
+  regla: typeof TIPO_REGLA.AND;
+  previas: ReglaPreviaturas[];
+}
+
+export interface ReglaOr {
+  regla: typeof TIPO_REGLA.OR;
+  previas: ReglaPreviaturas[];
+}
+
+export interface ReglaNot {
+  regla: typeof TIPO_REGLA.NOT;
+  previas: ReglaPreviaturas;
+}
+
+export interface ReglaSome {
+  regla: typeof TIPO_REGLA.SOME;
+  cantidad: number;
+  previas: ReglaPreviaturas[];
+}
+
+export interface ReglaUc {
+  regla: typeof TIPO_REGLA.UC;
+  codigo: string;
+  nombre: string;
+  tipoInstancia: TipoInstancia;
+}
+
+export interface ReglaCreditosGrupo {
+  regla: typeof TIPO_REGLA.CREDITOS_GRUPO;
+  codigo: number;
+  nombre: string;
+  cantidad: number;
+}
+
+export interface ReglaCreditosPlan {
+  regla: typeof TIPO_REGLA.CREDITOS_PLAN;
+  cantidad: number;
+}
+
 export type ReglaPreviaturas =
-  | {
-      regla: typeof TIPO_REGLA.AND;
-      previas: ReglaPreviaturas[];
-    }
-  | {
-      regla: typeof TIPO_REGLA.OR;
-      previas: ReglaPreviaturas[];
-    }
-  | {
-      regla: typeof TIPO_REGLA.NOT;
-      previas: ReglaPreviaturas;
-    }
-  | {
-      regla: typeof TIPO_REGLA.SOME;
-      cantidad: number | null;
-      previas: ReglaPreviaturas[];
-    }
-  | {
-      regla: typeof TIPO_REGLA.UC;
-      codigo: string | null;
-      nombre: string | null;
-      tipoInstancia: TipoInstancia | null;
-    }
-  | {
-      regla: typeof TIPO_REGLA.CREDITOS_GRUPO;
-      codigo: number | null;
-      nombre: string | null;
-      cantidad: number | null;
-    }
-  | {
-      regla: typeof TIPO_REGLA.CREDITOS_PLAN;
-      cantidad: number | null;
-    }
+  | ReglaAnd
+  | ReglaOr
+  | ReglaNot
+  | ReglaSome
+  | ReglaUc
+  | ReglaCreditosGrupo
+  | ReglaCreditosPlan
   | undefined;

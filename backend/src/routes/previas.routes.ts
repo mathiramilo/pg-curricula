@@ -7,7 +7,7 @@ import {
 
 const router = Router();
 
-router.get('/:codigoEnServicioUC', obtenerPreviasController);
-router.post('/:codigoEnServicioUC/satisface', satisfacePreviasController);
+router.get('/:codigo', obtenerPreviasController);
+router.post('/:codigo/satisface', satisfacePreviasController);
 
 export default router;

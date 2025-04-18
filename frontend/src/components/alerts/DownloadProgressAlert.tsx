@@ -49,7 +49,7 @@ export const DownloadProgressAlert = ({
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction asChild disabled={!downloadUrl}>
-            <a href={downloadUrl} download="informacion-estudiante.json">
+            <a href={downloadUrl} download="progreso.json">
               Descargar Progreso
             </a>
           </AlertDialogAction>
