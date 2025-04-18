@@ -10,7 +10,7 @@ import { api } from "./axios";
 export const DOMINIO_UNIDADES_CURRICULARES = "unidades-curriculares";
 
 export interface GetUnidadesCurricularesFilter {
-  nombre?: string;
+  search?: string;
   grupo?: string;
   minCreditos?: number;
   maxCreditos?: number;

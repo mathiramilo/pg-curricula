@@ -1,4 +1,4 @@
-import { NavBar, SideBar, UnidadCurricularModal } from "@/components";
+import { NavBar, SideBar, Toaster, UnidadCurricularModal } from "@/components";
 import { Router } from "@/router";
 
 const App = () => {
@@ -9,6 +9,7 @@ const App = () => {
         <div className="h-full w-full bg-slate-50">
           <NavBar />
           <Router />
+          <Toaster />
         </div>
       </div>
 

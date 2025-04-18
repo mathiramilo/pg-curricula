@@ -23,7 +23,7 @@ export const ContentBusqueda = () => {
 
   const { data, isLoading, isError } = useUnidadesCurriculares(
     {
-      nombre: debouncedQuery,
+      search: debouncedQuery,
       grupo,
       minCreditos: debouncedRangoCreditos[0],
       maxCreditos: debouncedRangoCreditos[1],

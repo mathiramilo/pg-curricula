@@ -1,5 +1,9 @@
+import { toast } from "sonner";
+
 import {
+  AlertTriangleIcon,
   Button,
+  ConfettiIcon,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -55,6 +59,10 @@ export const SubirArchivoModal = ({
         try {
           const parsedData = JSON.parse(data) as InformacionEstudiante;
           setInformacionEstudiante(parsedData);
+          toast.success("Tu progreso ha sido cargado correctamente", {
+            icon: <ConfettiIcon className="size-5" />,
+            description: "Ya puedes empezar a utilizar la app!",
+          });
           reset();
           onClose();
         } catch (error) {
@@ -70,10 +78,18 @@ export const SubirArchivoModal = ({
       mutate(formData, {
         onSuccess: (data) => {
           setInformacionEstudiante(data);
+          toast.success("Tu escolaridad ha sido cargada correctamente", {
+            icon: <ConfettiIcon className="size-5" />,
+            description: "Ya puedes empezar a utilizar la app!",
+          });
           reset();
           onClose();
         },
         onError: (error) => {
+          toast.error("Ha ocurrido un error al procesar tu escolaridad", {
+            icon: <AlertTriangleIcon className="size-5" />,
+            description: "Por favor intenta nuevamente en unos minutos.",
+          });
           console.error("Error: ", error);
         },
       });
