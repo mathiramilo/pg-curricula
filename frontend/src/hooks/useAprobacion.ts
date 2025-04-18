@@ -2,14 +2,11 @@ import type { UnidadCurricular } from "@/models";
 import { TIPO_APROBACION } from "@/models";
 import { useInformacionEstudianteStore } from "@/store";
 
-export const useAprobacion = (
-  codigoEnServicioUC: UnidadCurricular["codigoEnServicioUC"],
-) => {
+export const useAprobacion = (codigo: UnidadCurricular["codigo"]) => {
   const tipoAprobacion = useInformacionEstudianteStore(
     (state) =>
-      state.informacionEstudiante.unidadesCurricularesAprobadas?.[
-        codigoEnServicioUC
-      ]?.tipoAprobacion,
+      state.informacionEstudiante.unidadesCurricularesAprobadas?.[codigo]
+        ?.tipoAprobacion,
   );
 
   const cursoAprobado =

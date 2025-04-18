@@ -8,7 +8,7 @@ import { capitalizeWords, cn } from "@/utils";
 
 type CreditosGrupoItemProps = ComponentPropsWithoutRef<"div"> & {
   grupo: Grupo;
-  creditos: UnidadCurricular["creditosUC"];
+  creditos: UnidadCurricular["creditos"];
 };
 
 export const CreditosGrupoItem = ({

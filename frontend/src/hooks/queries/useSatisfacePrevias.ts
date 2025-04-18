@@ -5,7 +5,7 @@ import type { UnidadCurricular } from "@/models";
 
 export const useSatisfacePrevias = () => {
   return useMutation({
-    mutationFn: (codigoEnServicioUC: UnidadCurricular["codigoEnServicioUC"]) =>
-      satisfacePrevias(codigoEnServicioUC),
+    mutationFn: (codigo: UnidadCurricular["codigo"]) =>
+      satisfacePrevias(codigo),
   });
 };

@@ -52,7 +52,7 @@ export const useInformacionEstudianteStore =
               ...state.informacionEstudiante,
               unidadesCurricularesAprobadas: {
                 ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-                [unidadCurricular.codigoEnServicioUC]: {
+                [unidadCurricular.codigo]: {
                   ...unidadCurricular,
                   tipoAprobacion: TIPO_APROBACION.CURSO,
                 },
@@ -66,17 +66,17 @@ export const useInformacionEstudianteStore =
               ...state.informacionEstudiante,
               unidadesCurricularesAprobadas: {
                 ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-                [unidadCurricular.codigoEnServicioUC]: {
+                [unidadCurricular.codigo]: {
                   ...unidadCurricular,
                   tipoAprobacion: TIPO_APROBACION.EXAMEN,
                 },
               },
               creditosTotales:
                 state.informacionEstudiante.creditosTotales +
-                unidadCurricular.creditosUC,
+                unidadCurricular.creditos,
               [unidadCurricular.nombreGrupoHijo]:
                 state.informacionEstudiante[unidadCurricular.nombreGrupoHijo] +
-                unidadCurricular.creditosUC,
+                unidadCurricular.creditos,
             },
           })),
 
@@ -84,16 +84,13 @@ export const useInformacionEstudianteStore =
           set((state) => {
             const examenAprobado =
               state.informacionEstudiante.unidadesCurricularesAprobadas[
-                unidadCurricular.codigoEnServicioUC
+                unidadCurricular.codigo
               ].tipoAprobacion === TIPO_APROBACION.EXAMEN;
 
             const updatedUCsAprobadas = Object.fromEntries(
               Object.entries(
                 state.informacionEstudiante.unidadesCurricularesAprobadas,
-              ).filter(
-                ([codigoEnServicioUC]) =>
-                  codigoEnServicioUC !== unidadCurricular.codigoEnServicioUC,
-              ),
+              ).filter(([codigo]) => codigo !== unidadCurricular.codigo),
             );
 
             return {
@@ -102,12 +99,12 @@ export const useInformacionEstudianteStore =
                 unidadesCurricularesAprobadas: updatedUCsAprobadas,
                 creditosTotales: examenAprobado
                   ? state.informacionEstudiante.creditosTotales -
-                    unidadCurricular.creditosUC
+                    unidadCurricular.creditos
                   : state.informacionEstudiante.creditosTotales,
                 [unidadCurricular.nombreGrupoHijo]: examenAprobado
                   ? state.informacionEstudiante[
                       unidadCurricular.nombreGrupoHijo
-                    ] - unidadCurricular.creditosUC
+                    ] - unidadCurricular.creditos
                   : state.informacionEstudiante[
                       unidadCurricular.nombreGrupoHijo
                     ],
@@ -121,19 +118,19 @@ export const useInformacionEstudianteStore =
               ...state.informacionEstudiante,
               unidadesCurricularesAprobadas: {
                 ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-                [unidadCurricular.codigoEnServicioUC]: {
+                [unidadCurricular.codigo]: {
                   ...state.informacionEstudiante.unidadesCurricularesAprobadas[
-                    unidadCurricular.codigoEnServicioUC
+                    unidadCurricular.codigo
                   ],
                   tipoAprobacion: TIPO_APROBACION.CURSO,
                 },
               },
               creditosTotales:
                 state.informacionEstudiante.creditosTotales -
-                unidadCurricular.creditosUC,
+                unidadCurricular.creditos,
               [unidadCurricular.nombreGrupoHijo]:
                 state.informacionEstudiante[unidadCurricular.nombreGrupoHijo] -
-                unidadCurricular.creditosUC,
+                unidadCurricular.creditos,
             },
           })),
 

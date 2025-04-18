@@ -1,17 +1,19 @@
 import fs from 'fs';
 
 import { UnidadCurricular } from '../types';
-import ucsFing from '../../data/ucs-fing.json';
+import unidadesCurriculares from '../../data/unidades-curriculares.json';
 
 const UBICACION_DESTINO = '../../data/ucs-grupos-actuales.json';
 
 const generarUCsGruposActualesJson = async (): Promise<void> => {
   try {
-    const ucsGrupos = obtenerUCsGruposActuales(ucsFing as UnidadCurricular[]);
+    const ucsGrupos = obtenerUCsGruposActuales(
+      unidadesCurriculares as UnidadCurricular[]
+    );
 
     fs.writeFileSync(
       UBICACION_DESTINO,
-      JSON.stringify(ucsGrupos, null, 2),
+      JSON.stringify(ucsGrupos, null, 4),
       'utf8'
     );
   } catch (error) {
@@ -40,9 +42,9 @@ const obtenerUCsGruposActuales = (
       }
 
       if (nombreGrupo === '') {
-        UCsGrupos['MATERIAS OPCIONALES']?.push(uc.codigoEnServicioUC);
+        UCsGrupos['MATERIAS OPCIONALES']?.push(uc.codigo);
       } else {
-        UCsGrupos[nombreGrupo]?.push(uc.codigoEnServicioUC);
+        UCsGrupos[nombreGrupo]?.push(uc.codigo);
       }
     });
 

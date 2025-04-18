@@ -2,7 +2,7 @@ import { UnidadCurricular } from '.';
 
 export type InformacionEstudiante = {
   unidadesCurricularesAprobadas: {
-    [key: UnidadCurricular['codigoEnServicioUC']]: UCAprobada;
+    [key: UnidadCurricular['codigo']]: UCAprobada;
   };
   creditosTotales: number;
   MATEMATICA: number;
@@ -29,11 +29,7 @@ export type TipoAprobacion =
 
 export type UCAprobada = Pick<
   UnidadCurricular,
-  | 'codigoEnServicioUC'
-  | 'creditosUC'
-  | 'nombreUC'
-  | 'nombreGrupoPadre'
-  | 'nombreGrupoHijo'
+  'codigo' | 'creditos' | 'nombre' | 'nombreGrupoPadre' | 'nombreGrupoHijo'
 > & {
   tipoAprobacion: TipoAprobacion;
   concepto?: string | null;

@@ -21,7 +21,7 @@ export const UnidadCurricularList = ({
       <div className="w-full flex flex-col gap-2">
         {unidadesCurriculares.map((unidadCurricular) => (
           <MemoizedUnidadCurricularItem
-            key={unidadCurricular.codigoEnServicioUC}
+            key={unidadCurricular.codigo}
             unidadCurricular={unidadCurricular}
           />
         ))}

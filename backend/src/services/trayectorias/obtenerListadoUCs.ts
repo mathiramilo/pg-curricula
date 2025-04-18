@@ -1,6 +1,6 @@
 import requisitosTitulo from '../../../data/requisitos-titulo.json';
 import ucsObligatorias from '../../../data/ucs-obligatorias.json';
-import ucsFing from '../../../data/ucs-fing.json';
+import unidadesCurricularesJson from '../../../data/unidades-curriculares.json';
 import ucsGruposActuales from '../../../data/ucs-grupos-actuales.json';
 import previaturas from '../../../data/previaturas.json';
 
@@ -28,8 +28,8 @@ export const obtenerListadoUCs = (
 
   const ucsObligatoriasFaltantes = ucsObligatoriasFiltradas
     .map((unidadCurricular) => {
-      return ucsFing.find(
-        (uc) => uc.codigoEnServicioUC === unidadCurricular.codigo
+      return unidadesCurricularesJson.find(
+        (uc) => uc.codigo === unidadCurricular.codigo
       ) as UnidadCurricular;
     })
     .filter((uc) => uc);
@@ -38,10 +38,7 @@ export const obtenerListadoUCs = (
   // Para que esto funcione el listado de materias obligatorias debe estar ordenado, empezando por las que tienen menos previas
   ucsObligatoriasFaltantes.forEach((unidadCurricular) => {
     if (
-      cumplePrevias(
-        informacionEstudiante,
-        previaturas[unidadCurricular.codigoEnServicioUC]
-      )
+      cumplePrevias(informacionEstudiante, previaturas[unidadCurricular.codigo])
     ) {
       listadoUCs.push(unidadCurricular);
 
@@ -72,11 +69,11 @@ export const obtenerListadoUCs = (
         Math.random() * codigoUCsGrupoFiltradas.length
       );
       const codigoUCAleatorio = codigoUCsGrupoFiltradas[indiceAleatorio];
-      const ucAleatoria = ucsFing.find(
-        (uc) => uc.codigoEnServicioUC === codigoUCAleatorio
+      const ucAleatoria = unidadesCurricularesJson.find(
+        (uc) => uc.codigo === codigoUCAleatorio
       ) as UnidadCurricular;
       const previaturasUCAleatoria = previaturas[
-        ucAleatoria.codigoEnServicioUC
+        ucAleatoria.codigo
       ] as ReglaPreviaturas;
 
       if (!cumplePrevias(informacionEstudiante, previaturasUCAleatoria))
@@ -105,18 +102,16 @@ export const obtenerListadoUCs = (
     );
     const codigoUCAleatorio =
       ucsGruposActuales[grupoAleatorio!][indiceAleatorio];
-    const ucAleatoria = ucsFing.find(
-      (uc) => uc.codigoEnServicioUC === codigoUCAleatorio
+    const ucAleatoria = unidadesCurricularesJson.find(
+      (uc) => uc.codigo === codigoUCAleatorio
     ) as UnidadCurricular;
     const previaturasUCAleatoria = previaturas[
-      ucAleatoria.codigoEnServicioUC
+      ucAleatoria.codigo
     ] as ReglaPreviaturas;
 
     if (
       !cumplePrevias(informacionEstudiante, previaturasUCAleatoria) ||
-      informacionEstudiante.unidadesCurricularesAprobadas[
-        ucAleatoria.codigoEnServicioUC
-      ]
+      informacionEstudiante.unidadesCurricularesAprobadas[ucAleatoria.codigo]
     )
       continue;
 

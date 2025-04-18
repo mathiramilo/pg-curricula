@@ -35,13 +35,13 @@ const UnidadCurricularItem = ({
   );
 
   const { cursoAprobado, examenAprobado } = useAprobacion(
-    unidadCurricular.codigoEnServicioUC,
+    unidadCurricular.codigo,
   );
 
   const unidadCurricularAprobada = {
-    codigoEnServicioUC: unidadCurricular.codigoEnServicioUC,
-    nombreUC: unidadCurricular.nombreUC,
-    creditosUC: unidadCurricular.creditosUC,
+    codigo: unidadCurricular.codigo,
+    nombre: unidadCurricular.nombre,
+    creditos: unidadCurricular.creditos,
     nombreGrupoPadre: unidadCurricular.nombreGrupoPadre,
     nombreGrupoHijo: unidadCurricular.nombreGrupoHijo,
   };
@@ -80,8 +80,7 @@ const UnidadCurricularItem = ({
           onClick={handleOpenModal}
           className="underline-offset-2 hover:underline text-sm text-fuente-principal font-light transition-all text-start line-clamp-1"
         >
-          {unidadCurricular.codigoEnServicioUC} -{" "}
-          {capitalizeWords(unidadCurricular.nombreUC)}
+          {unidadCurricular.codigo} - {capitalizeWords(unidadCurricular.nombre)}
         </button>
       </div>
 

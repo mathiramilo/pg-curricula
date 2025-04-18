@@ -32,16 +32,14 @@ export const generarGrafo = (
   let semestreActual = semestreInicial;
 
   for (const uc of listadoUCs) {
-    if (
-      cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
-    ) {
+    if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
       const seDictaEnSemestreActual = uc.semestres?.includes(semestreActual)!; // Ya nos aseguramos de que semestres no sea null en el paso anterior
 
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
 
-      grafo.addNode(uc.codigoEnServicioUC);
-      grafo.addEdge(NOMBRE_NODO_INICIO, uc.codigoEnServicioUC, valorArista);
-      grafo.addEdge(uc.codigoEnServicioUC, NOMBRE_NODO_FIN, 1); // TODO: Revisar como obtener la duracion de una unidad curricular (podriamos poner a todas 1 y proyecto de grado 2)
+      grafo.addNode(uc.codigo);
+      grafo.addEdge(NOMBRE_NODO_INICIO, uc.codigo, valorArista);
+      grafo.addEdge(uc.codigo, NOMBRE_NODO_FIN, 1); // TODO: Revisar como obtener la duracion de una unidad curricular (podriamos poner a todas 1 y proyecto de grado 2)
 
       listadoUCsPrevias.push(uc);
     } else {
@@ -65,39 +63,32 @@ export const generarGrafo = (
     listadoUCsPrevias = [];
 
     for (const uc of listadoUCsFaltantes) {
-      if (
-        cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
-      ) {
+      if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
         let codigosUCsPrevias = [];
 
-        obtenerCodigosUCsPrevias(
-          previaturas[uc.codigoEnServicioUC],
-          codigosUCsPrevias
-        );
+        obtenerCodigosUCsPrevias(previaturas[uc.codigo], codigosUCsPrevias);
         codigosUCsPrevias = codigosUCsPrevias.filter((codigoUC) =>
-          listadoUCsPreviasAux.find(
-            (ucPrevia) => ucPrevia.codigoEnServicioUC === codigoUC
-          )
+          listadoUCsPreviasAux.find((ucPrevia) => ucPrevia.codigo === codigoUC)
         );
 
-        grafo.addNode(uc.codigoEnServicioUC);
+        grafo.addNode(uc.codigo);
 
         codigosUCsPrevias.forEach((codigoUC) => {
           const ucPrevia = listadoUCsPreviasAux.find(
-            (ucPrevia) => ucPrevia.codigoEnServicioUC === codigoUC
+            (ucPrevia) => ucPrevia.codigo === codigoUC
           );
           const valorArista = calcularValorArista(
             ucPrevia?.semestres!,
             uc.semestres! // Ya nos aseguramos de que semestres no sea null en el paso anterior
           );
 
-          grafo.addEdge(codigoUC, uc.codigoEnServicioUC, valorArista);
+          grafo.addEdge(codigoUC, uc.codigo, valorArista);
         });
 
         grafo.addEdge(
-          uc.codigoEnServicioUC,
+          uc.codigo,
           NOMBRE_NODO_FIN,
-          ucsAnuales.includes(uc.codigoEnServicioUC) ? 2 : 1
+          ucsAnuales.includes(uc.codigo) ? 2 : 1
         );
 
         listadoUCsPrevias.push(uc);

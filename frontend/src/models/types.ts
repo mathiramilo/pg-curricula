@@ -22,25 +22,19 @@ export type TipoInstancia =
   (typeof TIPO_INSTANCIA)[keyof typeof TIPO_INSTANCIA];
 
 export interface UnidadCurricular {
-  codigoEnServicioUC: string;
-  nombreUC: string;
-  codigoUC: string;
-  tipoUC: string;
-  creditosUC: number;
+  codigo: string;
+  nombre: string;
+  creditos: number;
+  codigoGrupoPadre: string;
   nombreGrupoPadre: Area;
-  codigoGrupoPadre: number;
+  codigoGrupoHijo: string;
   nombreGrupoHijo: Grupo;
-  codigoGrupoHijo: number;
   semestres: number[];
 }
 
 export type UnidadCurricularAprobada = Pick<
   UnidadCurricular,
-  | "codigoEnServicioUC"
-  | "creditosUC"
-  | "nombreUC"
-  | "nombreGrupoPadre"
-  | "nombreGrupoHijo"
+  "codigo" | "creditos" | "nombre" | "nombreGrupoPadre" | "nombreGrupoHijo"
 > & {
   tipoAprobacion?: TipoAprobacion;
   concepto?: string | null;
@@ -49,7 +43,7 @@ export type UnidadCurricularAprobada = Pick<
 
 export type InformacionEstudiante = {
   unidadesCurricularesAprobadas: Record<
-    UnidadCurricular["codigoEnServicioUC"],
+    UnidadCurricular["codigo"],
     UnidadCurricularAprobada
   >;
   creditosTotales: number;

@@ -1,4 +1,4 @@
-from app.routers import escolaridades, scraper
+from app.routers import escolaridades, grupos, previaturas, unidades_curriculares
 from fastapi import FastAPI
 
 app = FastAPI(
@@ -6,4 +6,6 @@ app = FastAPI(
 )
 
 app.include_router(escolaridades.router, prefix="/api")
-app.include_router(scraper.router, prefix="/api/scraping")
+app.include_router(unidades_curriculares.router, prefix="/api/unidades-curriculares")
+app.include_router(grupos.router, prefix="/api/grupos")
+app.include_router(previaturas.router, prefix="/api/previaturas")

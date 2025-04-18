@@ -13,10 +13,10 @@
     "test": "jest",
     "format": "npx eslint . --fix",
     "lint": "npx eslint .",
-    "generate:previaturas": "cd src/database && ts-node generarPreviaturasJson.ts",
-    "generate:ucs-fing": "cd src/database && ts-node generarUCsFingJson.ts",
-    "generate:ucs-grupos": "cd src/database && ts-node generarUCsGruposJson.ts",
-    "generate:ucs-grupos-actuales": "cd src/database && ts-node generarUCsGruposActualesJson.ts"
+    "generate:previaturas": "cd src/scripts && ts-node generarPreviaturasJson.ts",
+    "generate:unidades-curriculares": "cd src/scripts && ts-node generarUnidadesCurricularesJson.ts",
+    "generate:ucs-grupos": "cd src/scripts && ts-node generarUCsGruposJson.ts",
+    "generate:ucs-grupos-actuales": "cd src/scripts && ts-node generarUCsGruposActualesJson.ts"
   },
   "keywords": [],
   "author": "",

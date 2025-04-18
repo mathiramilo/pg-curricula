@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import ucsFing from '../../data/ucs-fing.json';
+import unidadesCurriculares from '../../data/unidades-curriculares.json';
 
 import { env } from '../config';
 import { InformacionEstudiante } from '../types';
@@ -27,34 +27,33 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
   const unidadesCurricularesAprobadasActualizado = {};
 
   for (const nombreUC of nombresUCs) {
-    const ucs = ucsFing.filter((uc) => uc.nombreUC === nombreUC);
+    const ucs = unidadesCurriculares.filter((uc) => uc.nombre === nombreUC);
 
     // Buscamos una UC que tenga la misma cantidad de creditos
     const uc1 = ucs.find(
       (uc) =>
-        uc.creditosUC ===
-        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]
-          ?.creditosUC
+        uc.creditos ===
+        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]?.creditos
     );
 
     // Buscamos una UC que tenga la misma cantidad de creditos y se dicte actualmente
     const uc2 = ucs.find(
       (uc) =>
-        uc.creditosUC ===
+        uc.creditos ===
           informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]
-            ?.creditosUC && uc.semestres
+            ?.creditos && uc.semestres
     );
 
     // Si encontramos una UC que cumpla con las ultimas condiciones, la asociamos, sino, asociamos la primera que encontramos
     if (uc2) {
-      unidadesCurricularesAprobadasActualizado[uc2.codigoEnServicioUC] = {
+      unidadesCurricularesAprobadasActualizado[uc2.codigo] = {
         ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
-        codigoEnServicioUC: uc2.codigoEnServicioUC,
+        codigo: uc2.codigo,
       };
     } else if (uc1) {
-      unidadesCurricularesAprobadasActualizado[uc1.codigoEnServicioUC] = {
+      unidadesCurricularesAprobadasActualizado[uc1.codigo] = {
         ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
-        codigoEnServicioUC: uc1.codigoEnServicioUC,
+        cofigo: uc1.codigo,
       };
     }
   }

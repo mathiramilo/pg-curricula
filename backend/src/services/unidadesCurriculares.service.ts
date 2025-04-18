@@ -6,11 +6,11 @@ import {
 
 import previaturas from '../../data/previaturas.json';
 import trayectoriaSugerida from '../../data/trayectoria-sugerida.json';
-import ucsFing from '../../data/ucs-fing.json';
+import unidadesCurricularesJson from '../../data/unidades-curriculares.json';
 import { cumplePrevias } from './previas.service';
 
 type ObtenerUnidadesCurricularesFilter = Partial<{
-  nombre: string;
+  search: string;
   grupo: string;
   minCreditos: string;
   maxCreditos: string;
@@ -25,11 +25,13 @@ export const obtenerUnidadesCurriculares = (
   page: number,
   pageSize: number = 60
 ) => {
-  let unidadesCurriculares = ucsFing;
+  let unidadesCurriculares = unidadesCurricularesJson;
 
-  if (filter.nombre) {
-    unidadesCurriculares = unidadesCurriculares.filter((uc) =>
-      uc.nombreUC.toLowerCase().includes(filter.nombre!.toLowerCase())
+  if (filter.search) {
+    unidadesCurriculares = unidadesCurriculares.filter(
+      (uc) =>
+        uc.nombre.toLowerCase().includes(filter.search!.toLowerCase()) ||
+        uc.codigo.toLowerCase().includes(filter.search!.toLowerCase())
     );
   }
 
@@ -41,13 +43,13 @@ export const obtenerUnidadesCurriculares = (
 
   if (filter.minCreditos) {
     unidadesCurriculares = unidadesCurriculares.filter(
-      (uc) => uc.creditosUC >= +filter.minCreditos!
+      (uc) => uc.creditos >= +filter.minCreditos!
     );
   }
 
   if (filter.maxCreditos) {
     unidadesCurriculares = unidadesCurriculares.filter(
-      (uc) => uc.creditosUC <= +filter.maxCreditos!
+      (uc) => uc.creditos <= +filter.maxCreditos!
     );
   }
 
@@ -71,7 +73,7 @@ export const obtenerUnidadesCurriculares = (
     unidadesCurriculares = unidadesCurriculares.filter(
       (uc) =>
         uc.semestres &&
-        cumplePrevias(informacionEstudiante, previaturas[uc.codigoEnServicioUC])
+        cumplePrevias(informacionEstudiante, previaturas[uc.codigo])
     );
   }
 
@@ -80,7 +82,7 @@ export const obtenerUnidadesCurriculares = (
   if (aprobadas) {
     unidadesCurriculares = unidadesCurriculares.filter((uc) =>
       Object.keys(informacionEstudiante.unidadesCurricularesAprobadas).includes(
-        uc.codigoEnServicioUC
+        uc.codigo
       )
     );
   }
@@ -102,8 +104,8 @@ export const obtenerUnidadesCurriculares = (
 
 export const obtenerTrayectoriaSugerida = () => {
   const unidadesCurricularesMap = new Map<string, UnidadCurricular>();
-  for (const uc of ucsFing) {
-    unidadesCurricularesMap.set(uc.codigoEnServicioUC, uc as UnidadCurricular);
+  for (const uc of unidadesCurricularesJson) {
+    unidadesCurricularesMap.set(uc.codigo, uc as UnidadCurricular);
   }
 
   const codigosIncluidos = new Set<string>();
@@ -124,9 +126,7 @@ export const obtenerTrayectoriaSugerida = () => {
 
   const unidadesCurricularesNoIncluidas = Array.from(
     unidadesCurricularesMap.values()
-  ).filter(
-    (uc) => !codigosIncluidos.has(uc.codigoEnServicioUC) && uc.semestres
-  );
+  ).filter((uc) => !codigosIncluidos.has(uc.codigo) && uc.semestres);
 
   return [
     ...trayectoriaProcesada,

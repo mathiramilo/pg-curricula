@@ -28,7 +28,7 @@ const UnidadCurricularGrid = ({
       <div className="w-full grid lg:grid-cols-3 gap-x-12 gap-y-2">
         {unidadesCurriculares.map((unidadCurricular) => (
           <MemoizedUnidadCurricularItem
-            key={unidadCurricular.codigoEnServicioUC}
+            key={unidadCurricular.codigo}
             unidadCurricular={unidadCurricular}
           />
         ))}

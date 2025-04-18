@@ -19,7 +19,7 @@ import { capitalizeWords, getSemestresDeDictado } from "@/utils";
 export const UnidadCurricularModal = () => {
   const { unidadCurricular, show, close } = useUnidadCurricularModalStore();
 
-  const { data: previas } = usePrevias(unidadCurricular?.codigoEnServicioUC);
+  const { data: previas } = usePrevias(unidadCurricular?.codigo);
 
   console.log(previas);
 
@@ -30,8 +30,8 @@ export const UnidadCurricularModal = () => {
       <DialogContent className="bg-slate-50 justify-start">
         <DialogHeader>
           <DialogTitle>
-            {unidadCurricular.codigoEnServicioUC} -{" "}
-            {capitalizeWords(unidadCurricular.nombreUC)}
+            {unidadCurricular.codigo} -{" "}
+            {capitalizeWords(unidadCurricular.nombre)}
           </DialogTitle>
           <DialogDescription>
             Información de la unidad curricular
@@ -46,7 +46,7 @@ export const UnidadCurricularModal = () => {
           <CardContent>
             <CardDetail>
               <strong className="font-medium">Créditos:</strong>{" "}
-              {unidadCurricular.creditosUC}
+              {unidadCurricular.creditos}
             </CardDetail>
             <CardDetail>
               <strong className="font-medium">Grupo:</strong>{" "}

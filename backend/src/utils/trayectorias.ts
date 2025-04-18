@@ -12,20 +12,19 @@ export const actualizarInformacionEstudiante = (
   unidadCurricular: UnidadCurricular,
   grupo: GrupoHijo
 ): void => {
-  informacionEstudiante.unidadesCurricularesAprobadas[
-    unidadCurricular.codigoEnServicioUC
-  ] = {
-    codigoEnServicioUC: unidadCurricular.codigoEnServicioUC,
-    nombreUC: unidadCurricular.nombreUC,
-    creditosUC: unidadCurricular.creditosUC,
-    concepto: '',
-    nombreGrupoHijo: grupo,
-    nombreGrupoPadre: unidadCurricular.nombreGrupoPadre,
-    fecha: '',
-    tipoAprobacion: TIPO_APROBACION.EXAMEN,
-  };
-  informacionEstudiante[grupo] += unidadCurricular.creditosUC;
-  informacionEstudiante.creditosTotales += unidadCurricular.creditosUC;
+  informacionEstudiante.unidadesCurricularesAprobadas[unidadCurricular.codigo] =
+    {
+      codigo: unidadCurricular.codigo,
+      nombre: unidadCurricular.nombre,
+      creditos: unidadCurricular.creditos,
+      concepto: '',
+      nombreGrupoHijo: grupo,
+      nombreGrupoPadre: unidadCurricular.nombreGrupoPadre,
+      fecha: '',
+      tipoAprobacion: TIPO_APROBACION.EXAMEN,
+    };
+  informacionEstudiante[grupo] += unidadCurricular.creditos;
+  informacionEstudiante.creditosTotales += unidadCurricular.creditos;
 };
 
 export const obtenerSiguienteSemestre = (semestreActual: SemestreDeDictado) => {

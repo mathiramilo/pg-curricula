@@ -7,12 +7,6 @@ export const SEMESTRE_DE_DICTADO = {
 export type SemestreDeDictado =
   (typeof SEMESTRE_DE_DICTADO)[keyof typeof SEMESTRE_DE_DICTADO];
 
-export const TIPO_UC = {
-  GRADO: 'G',
-  POSGRADO: 'P',
-} as const;
-export type TipoUC = (typeof TIPO_UC)[keyof typeof TIPO_UC];
-
 export type UnidadCurricularCSV = {
   nombrep: string;
   codigogrupop: string;
@@ -26,16 +20,24 @@ export type UnidadCurricularCSV = {
 };
 
 export type UnidadCurricular = {
-  codigoEnServicioUC: string;
-  nombreUC: string;
-  codigoUC: number;
-  tipoUC: TipoUC;
-  creditosUC: number;
+  codigo: string;
+  nombre: string;
+  creditos: number;
+  codigoGrupoPadre: string;
   nombreGrupoPadre: GrupoPadre;
-  codigoGrupoPadre: number;
+  codigoGrupoHijo: string;
   nombreGrupoHijo: GrupoHijo;
-  codigoGrupoHijo: number;
   semestres: SemestreDeDictado[] | null;
+};
+
+export type UnidadCurricularResponse = {
+  codigo: string;
+  nombre: string;
+  creditos: number;
+  codigo_grupo_padre: string;
+  nombre_grupo_padre: GrupoPadre;
+  codigo_grupo_hijo: string;
+  nombre_grupo_hijo: GrupoHijo;
 };
 
 export type UnidadCurricularRelevamientoDeDatosCSV = {

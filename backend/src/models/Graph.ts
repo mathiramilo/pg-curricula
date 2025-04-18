@@ -1,4 +1,4 @@
-import ucsFing from '../../data/ucs-fing.json';
+import unidadesCurriculares from '../../data/unidades-curriculares.json';
 
 // Posibles valores para las aristas: 0, 1 o 2.
 export type EdgeValue = 0 | 1 | 2;
@@ -216,7 +216,7 @@ export class Graph {
       const nodeLine = nodesAtLevel
         .map(
           (node) =>
-            `[${node.id} - ${ucsFing.find((uc) => uc.codigoEnServicioUC === node.id)?.nombreUC}]`
+            `[${node.id} - ${unidadesCurriculares.find((uc) => uc.codigo === node.id)?.nombre}]`
         )
         .join('    ');
       diagram += nodeLine + '\n';
