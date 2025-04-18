@@ -10,12 +10,13 @@ import {
   MenuIcon,
   PathIcon,
   ProgressIcon,
+  SpeakerphoneIcon,
 } from ".";
 
 export const SideBar = () => {
   return (
     <>
-      <SideBarDesktop className="hidden sm:block" />
+      <SideBarDesktop className="hidden sm:flex" />
       <SideBarMobile className="sm:hidden" />
     </>
   );
@@ -25,7 +26,10 @@ const SideBarDesktop = ({
   className,
   ...props
 }: ComponentPropsWithoutRef<"aside">) => (
-  <aside className={cn("bg-principal p-4", className)} {...props}>
+  <aside
+    className={cn("bg-principal p-4 flex-col justify-between", className)}
+    {...props}
+  >
     <nav className="flex flex-col gap-4">
       <NavLink to={RUTAS.BASE}>
         {({ isActive }) => (
@@ -92,6 +96,17 @@ const SideBarDesktop = ({
           </Button>
         )}
       </NavLink>
+    </nav>
+
+    <nav className="flex flex-col gap-4">
+      <a href="https://google.com/" target="_blank" rel="noreferrer">
+        <Button
+          size="sm"
+          className="w-full justify-start pr-12 text-white/90 hover:bg-principal-400"
+        >
+          <SpeakerphoneIcon /> Feedback
+        </Button>
+      </a>
     </nav>
   </aside>
 );
