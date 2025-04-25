@@ -13,6 +13,7 @@
     "test": "jest",
     "format": "npx eslint . --fix",
     "lint": "npx eslint .",
+    "type-check": "tsc --noEmit",
     "generate:previaturas": "cd src/scripts && ts-node generarPreviaturasJson.ts",
     "generate:unidades-curriculares": "cd src/scripts && ts-node generarUnidadesCurricularesJson.ts",
     "generate:ucs-grupos": "cd src/scripts && ts-node generarUCsGruposJson.ts",

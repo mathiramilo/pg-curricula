@@ -1,5 +1,5 @@
 ## 🗒️ Summary
-<!-- Briefly describe the purpose of this PR. Reference any related issue/ticket. -->
+<!-- Briefly describe the purpose of this PR. -->
 Adds [feature/bugfix] to [component/module] to [achieve goal], improving [outcome].
 
 ## ⚙️ Changes
