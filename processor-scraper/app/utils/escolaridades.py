@@ -30,10 +30,10 @@ def line_is_unidad_curricular(line: str, with_intermediate_results: bool) -> boo
         bool: Retorna True si la linea corresponde a una unidad curricular, False en caso contrario.
     """
     # Se saltean las lineas que corresponden a unidades curriculares revalidadas
-    if (re.search(r'\*R\*NA', line)):
+    if re.search(r"\*R\*NA", line):
         return False
-    
-    if (re.match(r'^[A-ZÁÉÍÓÚÑ]+,\s+[A-ZÁÉÍÓÚÑ]+(?:\s+[A-ZÁÉÍÓÚÑ]+)?$', line)):
+
+    if re.match(r"^[A-ZÁÉÍÓÚÑ]+,\s+[A-ZÁÉÍÓÚÑ]+(?:\s+[A-ZÁÉÍÓÚÑ]+)?$", line):
         return False
 
     regex = (
@@ -53,20 +53,20 @@ def skip_line(line: str) -> bool:
     Returns:
         bool: Retorna True si la linea debe ser omitida, False en caso contrario.
     """
-    if re.match(r'^\d+:\d+:\d+$', line):
+    if re.match(r"^\d+:\d+:\d+$", line):
         return True
-    
-    if re.match(r'^\d{1,2}/\d{1,2}/\d{4}\s*CERTIFICADO DE ESCOLARIDAD', line):
+
+    if re.match(r"^\d{1,2}/\d{1,2}/\d{4}\s*CERTIFICADO DE ESCOLARIDAD", line):
         return True
-    
-    if re.match(r'^\d\*+\s\.*', line):
+
+    if re.match(r"^\d\*+\s\.*", line):
         return True
-    
+
     # Se saltean las lineas que corresponden a unidades curriculares revalidadas
-    if (re.search(r'\*R\*NA', line)):
+    if re.search(r"\*R\*NA", line):
         return True
-    
-    if (re.match(r'^[A-ZÁÉÍÓÚÑ]+,\s+[A-ZÁÉÍÓÚÑ]+(?:\s+[A-ZÁÉÍÓÚÑ]+)?$', line)):
+
+    if re.match(r"^[A-ZÁÉÍÓÚÑ]+,\s+[A-ZÁÉÍÓÚÑ]+(?:\s+[A-ZÁÉÍÓÚÑ]+)?$", line):
         return True
 
     for s in escolaridades.LINES_TO_SKIP:
@@ -79,12 +79,12 @@ def skip_line(line: str) -> bool:
 def get_nombre(text: str) -> str:
     """Expresión regular para encontrar el nombre de una unidad curricular en el texto.
 
-		Args:
-				text (str): El texto en el cual buscar el nombre de la unidad curricular.
+    Args:
+        text (str): El texto en el cual buscar el nombre de la unidad curricular.
 
-		Returns:
-				str: El nombre de la unidad curricular encontrado en el texto.
-	"""
+    Returns:
+        str: El nombre de la unidad curricular encontrado en el texto.
+    """
     regex = r"\d{2}/\d{2}/\d{4}\s+(\d+|S/N)(\s+\d+)?"
     nombre = re.sub(regex, "", text)
     return nombre.strip()
@@ -99,7 +99,11 @@ def get_concepto_y_nombre(text: str) -> tuple:
     Returns:
         (str, str): Retorna una tupla con el concepto y el nombre.
     """
-    match = re.match(r"(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)(.+)", text, re.IGNORECASE)
+    match = re.match(
+        r"(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)(.+)",
+        text,
+        re.IGNORECASE,
+    )
     if match:
         concepto = match.group(1).strip()
         nombre = match.group(2).strip()
@@ -117,11 +121,15 @@ def get_nombre_y_concepto(text: str) -> tuple:
     Returns:
         (str, str): Retorna una tupla con el nombre y el concepto.
     """
-    match = re.match(r"(.+?)(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)", text, re.IGNORECASE)
+    match = re.match(
+        r"(.+?)(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)",
+        text,
+        re.IGNORECASE,
+    )
     if match:
         nombre = match.group(1).strip()
         concepto = match.group(2).strip()
-        nombre = re.sub(r"\d+$", "", nombre).strip()
+        nombre = re.sub(r"^\d+$", "", nombre).strip()
         return nombre, concepto
     return text, ""
 
@@ -135,7 +143,11 @@ def get_nombre_creditos_y_concepto(text: str) -> tuple:
     Returns:
         (str, int, str): Retorna una tupla con el nombre, los creditos y el concepto.
     """
-    match = re.match(r"^(.*?)\s+(\d+)\s+(\d+)\s+(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)$", text, re.IGNORECASE)
+    match = re.match(
+        r"^(.*?)\s+(\d+)\s+(\d+)\s+(Excelente|Muy Bueno|Bueno|Aceptable|Insuficiente|Muy Insuficiente)$",
+        text,
+        re.IGNORECASE,
+    )
     if match:
         nombre = match.group(1).strip()
         creditos = int(match.group(3))
@@ -143,7 +155,7 @@ def get_nombre_creditos_y_concepto(text: str) -> tuple:
         nombre = re.sub(r"\d+$", "", nombre).strip()
         return nombre, creditos, concepto
     return text, 0, ""
-    
+
 
 def get_concepto_y_creditos(text: str) -> tuple:
     """Utilizada en UCs opcionales para obtener el concepto y los créditos.
@@ -161,4 +173,3 @@ def get_concepto_y_creditos(text: str) -> tuple:
         return concepto, int(creditos)
     else:
         raise ValueError("Formato de entrada incorrecto")
-
