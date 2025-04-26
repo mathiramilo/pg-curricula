@@ -1,7 +1,7 @@
 export const ie309 = {
   unidadesCurricularesAprobadas: {
     '1023': {
-      cofigo: '1023',
+      codigo: '1023',
       nombre: 'MATEMATICA DISCRETA 1',
       creditos: 9,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -9,7 +9,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1026': {
-      cofigo: '1026',
+      codigo: '1026',
       nombre: 'MATEMATICA DISCRETA 2',
       creditos: 9,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -17,7 +17,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1027': {
-      cofigo: '1027',
+      codigo: '1027',
       nombre: 'LOGICA',
       creditos: 12,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -25,7 +25,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1031': {
-      cofigo: '1031',
+      codigo: '1031',
       nombre: 'GEOMETRIA Y ALGEBRA LINEAL 2',
       creditos: 9,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -33,7 +33,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1224': {
-      cofigo: '1224',
+      codigo: '1224',
       nombre: 'ECONOMIA',
       creditos: 7,
       nombreGrupoPadre: 'MATERIAS COMPLEMENTARIAS',
@@ -41,7 +41,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1225': {
-      cofigo: '1225',
+      codigo: '1225',
       nombre: 'POLITICAS CIENTIFICAS EN INF.Y COMP.',
       creditos: 3,
       nombreGrupoPadre: 'MATERIAS COMPLEMENTARIAS',
@@ -49,7 +49,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1321': {
-      cofigo: '1321',
+      codigo: '1321',
       nombre: 'PROGRAMACION 2',
       creditos: 12,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -57,7 +57,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1323': {
-      cofigo: '1323',
+      codigo: '1323',
       nombre: 'PROGRAMACION 3',
       creditos: 15,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -65,7 +65,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1324': {
-      cofigo: '1324',
+      codigo: '1324',
       nombre: 'PROGRAMACION 4',
       creditos: 15,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -73,7 +73,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1325': {
-      cofigo: '1325',
+      codigo: '1325',
       nombre: 'TEORIA DE LENGUAJES',
       creditos: 12,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -81,7 +81,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1327': {
-      cofigo: '1327',
+      codigo: '1327',
       nombre: 'TALLER DE PROGRAMACION',
       creditos: 15,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -89,7 +89,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1340': {
-      cofigo: '1340',
+      codigo: '1340',
       nombre: 'PROGRAMACION LOGICA',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -97,7 +97,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1354': {
-      cofigo: '1354',
+      codigo: '1354',
       nombre: 'PROGRAMACION FUNCIONAL',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -105,7 +105,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1373': {
-      cofigo: '1373',
+      codigo: '1373',
       nombre: 'PROGRAMACION 1',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -113,7 +113,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1446': {
-      cofigo: '1446',
+      codigo: '1446',
       nombre: 'REDES DE COMPUTADORAS',
       creditos: 12,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -121,7 +121,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1466': {
-      cofigo: '1466',
+      codigo: '1466',
       nombre: 'ARQUITECTURA DE COMPUTADORAS',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -129,7 +129,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1610': {
-      cofigo: '1610',
+      codigo: '1610',
       nombre: 'INT. A LA INVESTIGACION DE OPERACIONES',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -137,7 +137,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1716': {
-      cofigo: '1716',
+      codigo: '1716',
       nombre: 'INT. A LA INGENIERIA DE SOFTWARE',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -145,7 +145,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1721': {
-      cofigo: '1721',
+      codigo: '1721',
       nombre: 'PROYECTO DE INGENIERIA DE SOFTWARE',
       creditos: 15,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -153,7 +153,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1911': {
-      cofigo: '1911',
+      codigo: '1911',
       nombre: 'FUNDAMENTOS DE BASES DE DATOS',
       creditos: 15,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -161,7 +161,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1944': {
-      cofigo: '1944',
+      codigo: '1944',
       nombre: 'ADMINISTRACION GENERAL PARA INGENIEROS',
       creditos: 5,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -169,7 +169,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     '1945': {
-      cofigo: '1945',
+      codigo: '1945',
       nombre: 'PRACTICA DE ADMINISTRACION PARA INGENIEROS',
       creditos: 5,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -177,7 +177,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     DMA03: {
-      cofigo: 'DMA03',
+      codigo: 'DMA03',
       nombre: 'GEOMETRÍA Y ÁLGEBRA LINEAL 1',
       creditos: 12,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -185,7 +185,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     REF04: {
-      cofigo: 'REF04',
+      codigo: 'REF04',
       nombre: 'FÍSICA 1',
       creditos: 10,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -193,7 +193,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     DMA01: {
-      cofigo: 'DMA01',
+      codigo: 'DMA01',
       nombre: 'CÁLCULO DIFERENCIAL E INTEGRAL EN UNA VARIABLE',
       creditos: 12,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -201,7 +201,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     DMA06: {
-      cofigo: 'DMA06',
+      codigo: 'DMA06',
       nombre: 'CALCULO DIFERENCIAL E INTEGRAL EN VARIAS VARIABLES',
       creditos: 13,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -209,7 +209,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     CH201: {
-      cofigo: 'CH201',
+      codigo: 'CH201',
       nombre: 'PROBABILIDAD Y ESTADÍSTICA',
       creditos: 10,
       nombreGrupoPadre: 'MATERIAS BASICAS',
@@ -217,7 +217,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     CIM20: {
-      cofigo: 'CIM20',
+      codigo: 'CIM20',
       nombre: 'MÉTODOS NUMÉRICOS',
       creditos: 10,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',
@@ -225,7 +225,7 @@ export const ie309 = {
       tipoAprobacion: 'Examen',
     },
     CP31: {
-      cofigo: 'CP31',
+      codigo: 'CP31',
       nombre: 'SISTEMAS OPERATIVOS',
       creditos: 12,
       nombreGrupoPadre: 'BASICO-TEC,TECNICAS E INTEG.',

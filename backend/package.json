@@ -1,7 +1,6 @@
 {
   "name": "pg-curricula-backend",
-  "version": "1.0.0",
-  "description": "Backend para el proyecto de grado curricula",
+  "version": "0.1.0-beta",
   "main": "server.js",
   "engines": {
     "pnpm": ">=9.0.0"
