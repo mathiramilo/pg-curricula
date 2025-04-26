@@ -1,12 +1,12 @@
-## 🗒️ Summary
-<!-- Briefly describe the purpose of this PR. -->
-Adds [feature/bugfix] to [component/module] to [achieve goal], improving [outcome].
+## 🗒️ Resumen
+<!-- Describe brevemente el propósito de este PR. -->
+Agrega [feature/bugfix] a [componente/módulo] para [lograr objetivo], mejorando [resultado].
 
-## ⚙️ Changes
-<!-- List the key changes introduced by this PR. -->
-- Implemented [new API or feature] in [area]
-- Updated [existing component/logic] to support [new requirement]
-- Added [tests/documentation/logging] for [feature]
+## ⚙️ Cambios
+<!-- Enumera los cambios clave introducidos por este PR. -->
+- Se implementó [nueva API o funcionalidad] en [área]  
+- Se actualizó [componente/lógica existente] para soportar [nuevo requisito]  
+- Se agregó [pruebas/documentación/logs] para [funcionalidad]  
 
-## 📸 Proof of Work
-<!-- Attach screenshots, logs, recordings, or links demonstrating the new behavior. -->
+## 📸 Evidencia
+<!-- Adjunta capturas de pantalla, registros, grabaciones o enlaces que demuestren el nuevo comportamiento. -->
