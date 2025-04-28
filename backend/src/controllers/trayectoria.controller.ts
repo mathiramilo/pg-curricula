@@ -1,12 +1,12 @@
 import { InformacionEstudiante, SEMESTRE_DE_DICTADO } from '../types';
 import { generarGrafo, obtenerListadoUCs } from '../services';
-import { ie389 } from '../tests/mocks';
+import { ie9, ie315, ie389 } from '../tests/mocks';
 
 const SEMESTRE_INICIAL = SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE;
 
-const informacionEstudiante = structuredClone(ie389);
+const informacionEstudiante = structuredClone(ie9);
 
-const listadoUCs = obtenerListadoUCs(ie389 as InformacionEstudiante);
+const listadoUCs = obtenerListadoUCs(ie9 as InformacionEstudiante);
 
 const grafo = generarGrafo(
   listadoUCs,
@@ -14,4 +14,12 @@ const grafo = generarGrafo(
   informacionEstudiante as InformacionEstudiante
 );
 
-grafo.drawGraph();
+grafo.draw();
+
+const { minimalDuration, ES, LS, slack, criticalPath } = grafo.criticalPath();
+
+console.log('Total Semesters:', minimalDuration);
+console.log('Earliest Start:', ES);
+console.log('Latest Start:', LS);
+console.log('Slack:', slack);
+console.log('Critical Nodes:', criticalPath);

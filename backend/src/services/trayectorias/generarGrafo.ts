@@ -39,7 +39,11 @@ export const generarGrafo = (
 
       grafo.addNode(uc.codigo);
       grafo.addEdge(NOMBRE_NODO_INICIO, uc.codigo, valorArista);
-      grafo.addEdge(uc.codigo, NOMBRE_NODO_FIN, 1); // TODO: Revisar como obtener la duracion de una unidad curricular (podriamos poner a todas 1 y proyecto de grado 2)
+      grafo.addEdge(
+        uc.codigo,
+        NOMBRE_NODO_FIN,
+        ucsAnuales.includes(uc.codigo) ? 2 : 1
+      );
 
       listadoUCsPrevias.push(uc);
     } else {
@@ -73,17 +77,29 @@ export const generarGrafo = (
 
         grafo.addNode(uc.codigo);
 
-        codigosUCsPrevias.forEach((codigoUC) => {
-          const ucPrevia = listadoUCsPreviasAux.find(
-            (ucPrevia) => ucPrevia.codigo === codigoUC
-          );
-          const valorArista = calcularValorArista(
-            ucPrevia?.semestres!,
-            uc.semestres! // Ya nos aseguramos de que semestres no sea null en el paso anterior
-          );
+        // TODO: Si la unidad curricular no tiene previaturas en este punto, podemos asumir que tiene previaturas de tipo creditos. Lo que se nos ocurrio hacer es agregarle una arista entrante desde todos los nodos del nivel anterior.
+        if (codigosUCsPrevias.length > 0) {
+          codigosUCsPrevias.forEach((codigoUC) => {
+            const ucPrevia = listadoUCsPreviasAux.find(
+              (ucPrevia) => ucPrevia.codigo === codigoUC
+            );
+            const valorArista = calcularValorArista(
+              ucPrevia?.semestres!,
+              uc.semestres!
+            );
 
-          grafo.addEdge(codigoUC, uc.codigo, valorArista);
-        });
+            grafo.addEdge(codigoUC, uc.codigo, valorArista);
+          });
+        } else {
+          listadoUCsPreviasAux.forEach((ucPrevia) => {
+            const valorArista = calcularValorArista(
+              ucPrevia.semestres!,
+              uc.semestres!
+            );
+
+            grafo.addEdge(ucPrevia.codigo, uc.codigo, valorArista);
+          });
+        }
 
         grafo.addEdge(
           uc.codigo,
