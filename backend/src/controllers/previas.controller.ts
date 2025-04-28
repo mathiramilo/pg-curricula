@@ -49,15 +49,6 @@ export const satisfacePreviasController: RequestHandler = (
         error: `No se encontró ninguna unidad curricular con código ${codigo}`,
       });
 
-    //? Si la UC ya fue aprobada por el estudiante, no es necesario verificar las previas. En este caso deberiamos devolver true (indicando que el estudiante esta habilitado para cursarla) o false (indicando que no la puede hacer denuevo debido a que ya la curso)?
-    if (
-      informacionEstudiante.unidadesCurricularesAprobadas?.hasOwnProperty(
-        codigo
-      )
-    ) {
-      return res.status(HTTP_STATUS_CODE.OK).json(false);
-    }
-
     const cumple = cumplePrevias(
       informacionEstudiante as InformacionEstudiante,
       previaturas[codigo]

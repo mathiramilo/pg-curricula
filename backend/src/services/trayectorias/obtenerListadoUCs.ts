@@ -1,7 +1,7 @@
 import requisitosTitulo from '../../../data/requisitos-titulo.json';
 import ucsObligatorias from '../../../data/ucs-obligatorias.json';
 import unidadesCurricularesJson from '../../../data/unidades-curriculares.json';
-import ucsGruposActuales from '../../../data/ucs-grupos-actuales.json';
+import ucsOptativasGruposActuales from '../../../data/ucs-optativas-grupos-actuales.json';
 import previaturas from '../../../data/previaturas.json';
 
 import {
@@ -12,6 +12,8 @@ import {
 } from '../../types';
 import { cumplePrevias } from '../previas.service';
 import { actualizarInformacionEstudiante } from '../../utils';
+
+const UCS_EXCEPCIONALES = [{ nombre: 'PROYECTO DE GRADO', codigo: '1730' }];
 
 export const obtenerListadoUCs = (
   informacionEstudiante: InformacionEstudiante
@@ -35,10 +37,14 @@ export const obtenerListadoUCs = (
     .filter((uc) => uc);
 
   // 2. Agregar las materias obligatorias al listado y actualizar informacionEstudiante
-  // Para que esto funcione el listado de materias obligatorias debe estar ordenado, empezando por las que tienen menos previas
+  // Para que esto funcione el listado de materias obligatorias debe estar ordenado, empezando por las que tienen menos previas, para que la funcion "cumplePrevias" retorne true.
   ucsObligatoriasFaltantes.forEach((unidadCurricular) => {
     if (
-      cumplePrevias(informacionEstudiante, previaturas[unidadCurricular.codigo])
+      cumplePrevias(
+        informacionEstudiante,
+        previaturas[unidadCurricular.codigo]
+      ) ||
+      UCS_EXCEPCIONALES.find((uc) => uc.codigo === unidadCurricular.codigo)
     ) {
       listadoUCs.push(unidadCurricular);
 
@@ -51,12 +57,12 @@ export const obtenerListadoUCs = (
   });
 
   // Por cada grupo
-  for (const grupo in ucsGruposActuales) {
+  for (const grupo in ucsOptativasGruposActuales) {
     // Si cumple los requisitos pasar al siguiente
     if (informacionEstudiante[grupo] >= requisitosTitulo[grupo]) continue;
 
     // 1. Eliminar de materias grupo las ya aprobadas
-    const codigoUCsGrupoFiltradas = ucsGruposActuales[grupo].filter(
+    const codigoUCsGrupoFiltradas = ucsOptativasGruposActuales[grupo].filter(
       (codigoUC) =>
         !informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
           codigoUC
@@ -76,7 +82,10 @@ export const obtenerListadoUCs = (
         ucAleatoria.codigo
       ] as ReglaPreviaturas;
 
-      if (!cumplePrevias(informacionEstudiante, previaturasUCAleatoria))
+      if (
+        !cumplePrevias(informacionEstudiante, previaturasUCAleatoria) ||
+        listadoUCs.find((uc) => uc.codigo === ucAleatoria.codigo)
+      )
         continue;
 
       listadoUCs.push(ucAleatoria);
@@ -91,17 +100,17 @@ export const obtenerListadoUCs = (
   // Hasta completar 450 creditos
   while (informacionEstudiante.creditosTotales < 450) {
     // 1. Seleccionar un grupo al azar
-    const grupos = Object.keys(ucsGruposActuales);
+    const grupos = Object.keys(ucsOptativasGruposActuales);
     const grupoAleatorio = grupos[
       Math.floor(Math.random() * grupos.length)
     ] as GrupoHijo;
 
     // 2. Seleccionar una unidad curricular del grupo al azar
     const indiceAleatorio = Math.floor(
-      Math.random() * ucsGruposActuales[grupoAleatorio!].length
+      Math.random() * ucsOptativasGruposActuales[grupoAleatorio!].length
     );
     const codigoUCAleatorio =
-      ucsGruposActuales[grupoAleatorio!][indiceAleatorio];
+      ucsOptativasGruposActuales[grupoAleatorio!][indiceAleatorio];
     const ucAleatoria = unidadesCurricularesJson.find(
       (uc) => uc.codigo === codigoUCAleatorio
     ) as UnidadCurricular;
@@ -111,7 +120,7 @@ export const obtenerListadoUCs = (
 
     if (
       !cumplePrevias(informacionEstudiante, previaturasUCAleatoria) ||
-      informacionEstudiante.unidadesCurricularesAprobadas[ucAleatoria.codigo]
+      listadoUCs.find((uc) => uc.codigo === ucAleatoria.codigo)
     )
       continue;
 

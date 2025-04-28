@@ -53,7 +53,7 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
     } else if (uc1) {
       unidadesCurricularesAprobadasActualizado[uc1.codigo] = {
         ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
-        cofigo: uc1.codigo,
+        codigo: uc1.codigo,
       };
     }
   }
