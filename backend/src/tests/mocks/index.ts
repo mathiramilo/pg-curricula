@@ -5,4 +5,5 @@ export * from './ie295';
 export * from './ie315';
 export * from './ie389';
 export * from './ie419';
+export * from './ie72';
 export * from './ie9';

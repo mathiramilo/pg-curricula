@@ -7,10 +7,6 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 const router = Router();
 
-router.post(
-  '/procesar-escolaridad',
-  upload.single('file'),
-  procesarEscolaridadController
-);
+router.post('/procesar', upload.single('file'), procesarEscolaridadController);
 
 export default router;
