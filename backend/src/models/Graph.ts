@@ -1,6 +1,10 @@
+import { SemestreDeDictado, UnidadCurricular } from '@/types';
 import unidadesCurriculares from '../../data/unidades-curriculares.json';
+import { seDictaEsteSemestre } from '../utils';
 
-export type EdgeValue = 0 | 1 | 2;
+const MAX_CREDITS_DEFAULT = 42;
+
+export type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 
 export interface Edge {
   source: string;
@@ -10,10 +14,24 @@ export interface Edge {
 
 interface Node {
   id: string;
+  unidadCurricular?: UnidadCurricular;
   outgoingEdges: Edge[];
   incomingEdges: Edge[];
   isInitial: boolean;
   isFinal: boolean;
+}
+
+interface AddNodeParams {
+  id: string;
+  unidadCurricular?: UnidadCurricular;
+  isInitial?: boolean;
+  isFinal?: boolean;
+}
+
+interface ScheduleObject {
+  semestre: number;
+  unidadesCurriculares: UnidadCurricular[];
+  creditos: number;
 }
 
 export class Graph {
@@ -23,13 +41,19 @@ export class Graph {
     this.nodes = new Map<string, Node>();
   }
 
-  public addNode(id: string, isInitial = false, isFinal = false): void {
+  public addNode({
+    id,
+    unidadCurricular,
+    isInitial = false,
+    isFinal = false,
+  }: AddNodeParams): void {
     if (this.nodes.has(id)) {
       throw new Error(`Ya existe un nodo con id '${id}'.`);
     }
 
     const newNode: Node = {
       id,
+      unidadCurricular,
       outgoingEdges: [],
       incomingEdges: [],
       isInitial,
@@ -71,6 +95,27 @@ export class Graph {
 
     fromNode.outgoingEdges.push(edge);
     toNode.incomingEdges.push(edge);
+  }
+
+  public updateEdgeDependingOnSemester(
+    targetNode: Node,
+    semester: number,
+    edge: Edge
+  ) {
+    const targetSemestres = targetNode.unidadCurricular?.semestres;
+    if (targetSemestres && targetSemestres.length > 0) {
+      const isOdd = semester % 2 === 1;
+      const isEven = semester % 2 === 0;
+
+      if (
+        (isOdd && targetSemestres[0] === '1') ||
+        (isEven && targetSemestres[0] === '2')
+      ) {
+        edge.value = 2;
+      } else {
+        edge.value = 1;
+      }
+    }
   }
 
   public getNode(id: string): Node | undefined {
@@ -184,6 +229,13 @@ export class Graph {
       }
     }
 
+    // Debug
+    // console.log('Duracion minima:', minimalDuration);
+    // console.log('Tiempos de inicio más temprano:', ES);
+    // console.log('Tiempos de inicio más tardío:', LS);
+    // console.log('Holgura:', slack);
+    // console.log('Camino crítico:', criticalPath);
+
     return {
       minimalDuration,
       ES,
@@ -191,6 +243,141 @@ export class Graph {
       slack,
       criticalPath,
     };
+  }
+
+  public schedule(
+    initialSemestre: SemestreDeDictado,
+    maxCredits: number = MAX_CREDITS_DEFAULT
+  ): ScheduleObject[] | boolean {
+    const MAX_CREDITS_THRESHOLD = 1.12;
+
+    const { ES, slack: holgura } = this.criticalPath();
+
+    ES.delete('inicio');
+    ES.delete('fin');
+
+    const plan: ScheduleObject[] = [];
+
+    let semester = initialSemestre === '1' ? 1 : 2;
+
+    while (ES.size > 0) {
+      // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
+      const available = Array.from(ES.entries())
+        .filter(([_, es]) => es === semester - 1)
+        .map(([id, es]) => ({
+          id,
+          es,
+          holgura: holgura.get(id)!,
+        }))
+        .sort((a, b) => a.holgura - b.holgura);
+
+      let scheduleObject: ScheduleObject = {
+        semestre: semester,
+        unidadesCurriculares: [],
+        creditos: 0,
+      };
+
+      const remaining = [...available];
+      let totalCredits = 0;
+
+      for (const node of available) {
+        const nodeObject = this.nodes.get(node.id);
+        const unidadCurricular = nodeObject!.unidadCurricular!;
+
+        // Si la unidad curricular tiene holgura 1 y no se dicta el proximo semestre, se agrega a la lista de unidades curriculares
+        const mustBeAdded =
+          node.holgura === 1 &&
+          !seDictaEsteSemestre(semester + 1, unidadCurricular.semestres!);
+
+        // Debug
+        // console.log('UnidadCurricular:', unidadCurricular.nombre);
+        // console.log('ES:', node.es);
+        // console.log('Holgura:', node.holgura);
+        // console.log('mustBeAdded:', mustBeAdded);
+        // console.log('Semestre:', semester);
+
+        if (node.holgura === 0 || mustBeAdded) {
+          scheduleObject.unidadesCurriculares.push(unidadCurricular);
+          scheduleObject.creditos += unidadCurricular!.creditos || 0;
+          totalCredits += unidadCurricular!.creditos || 0;
+          ES.delete(node.id);
+          remaining.splice(remaining.indexOf(node), 1);
+
+          if (nodeObject?.outgoingEdges.some((edge) => edge.value === 3)) {
+            // Modificamos el valor de la arista teniendo en cuenta el semestre actual  y los semestres de dictado del nodo destino
+            nodeObject.outgoingEdges.forEach((edge) => {
+              if (edge.value !== 3) return;
+
+              const targetNode = this.nodes.get(edge.target)!;
+              this.updateEdgeDependingOnSemester(targetNode, semester, edge);
+            });
+
+            return false;
+          }
+
+          continue;
+        }
+
+        // Si la unidad curricular no se dicta este semestre, se salta a la siguiente
+        if (!seDictaEsteSemestre(semester, unidadCurricular.semestres!)) {
+          continue;
+        }
+
+        if (
+          totalCredits + (unidadCurricular?.creditos || 0) <=
+          maxCredits * MAX_CREDITS_THRESHOLD
+        ) {
+          scheduleObject.unidadesCurriculares.push(unidadCurricular);
+          scheduleObject.creditos += unidadCurricular!.creditos || 0;
+          totalCredits += unidadCurricular!.creditos || 0;
+          ES.delete(node.id);
+          remaining.splice(remaining.indexOf(node), 1);
+
+          if (nodeObject?.outgoingEdges.some((edge) => edge.value === 3)) {
+            nodeObject.outgoingEdges.forEach((edge) => {
+              if (edge.value !== 3) return;
+
+              const targetNode = this.nodes.get(edge.target)!;
+              this.updateEdgeDependingOnSemester(targetNode, semester, edge);
+            });
+
+            return false;
+          }
+
+          continue;
+        }
+
+        // Si no se puede agregar la unidad curricular por exceso de creditos, se tiene que avanzar al siguiente semestre
+        break;
+      }
+
+      semester++;
+      totalCredits = 0;
+
+      remaining.forEach((node) => {
+        ES.set(node.id, node.es + 1);
+        holgura.set(node.id, node.holgura - 1);
+      });
+
+      plan.push(scheduleObject);
+    }
+
+    return plan;
+  }
+
+  public scheduleFinal(
+    initialSemestre: SemestreDeDictado,
+    maxCredits: number = MAX_CREDITS_DEFAULT
+  ) {
+    let plan = this.schedule(initialSemestre, maxCredits);
+
+    while (!plan) {
+      // this.draw(); // Debug
+
+      plan = this.schedule(initialSemestre, maxCredits);
+    }
+
+    return plan;
   }
 
   public print(): void {

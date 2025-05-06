@@ -24,8 +24,8 @@ export const generarGrafo = (
 ): Graph => {
   const grafo = new Graph();
 
-  grafo.addNode(NOMBRE_NODO_INICIO, true, false);
-  grafo.addNode(NOMBRE_NODO_FIN, false, true);
+  grafo.addNode({ id: NOMBRE_NODO_INICIO, isInitial: true, isFinal: false });
+  grafo.addNode({ id: NOMBRE_NODO_FIN, isInitial: false, isFinal: true });
 
   let listadoUCsFaltantes: UnidadCurricular[] = [];
   let listadoUCsPrevias: UnidadCurricular[] = [];
@@ -37,7 +37,7 @@ export const generarGrafo = (
 
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
 
-      grafo.addNode(uc.codigo);
+      grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
       grafo.addEdge(NOMBRE_NODO_INICIO, uc.codigo, valorArista);
       grafo.addEdge(
         uc.codigo,
@@ -59,28 +59,26 @@ export const generarGrafo = (
     );
   });
 
+  //? De aca en adelante no se utiliza mas, que debemos hacer?
   semestreActual = obtenerSiguienteSemestre(semestreActual);
 
-  let listadoUCsPreviasAux = [...listadoUCsPrevias];
-
   while (listadoUCsFaltantes.length > 0) {
-    listadoUCsPrevias = [];
-
     for (const uc of listadoUCsFaltantes) {
       if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
         let codigosUCsPrevias = [];
 
         obtenerCodigosUCsPrevias(previaturas[uc.codigo], codigosUCsPrevias);
         codigosUCsPrevias = codigosUCsPrevias.filter((codigoUC) =>
-          listadoUCsPreviasAux.find((ucPrevia) => ucPrevia.codigo === codigoUC)
+          listadoUCsPrevias.find((ucPrevia) => ucPrevia.codigo === codigoUC)
         );
 
-        grafo.addNode(uc.codigo);
+        grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
 
-        // TODO: Si la unidad curricular no tiene previaturas en este punto, podemos asumir que tiene previaturas de tipo creditos. Lo que se nos ocurrio hacer es agregarle una arista entrante desde todos los nodos del nivel anterior.
+        //* Si la unidad curricular no tiene previaturas en este punto, podemos asumir que tiene previaturas de tipo creditos. Lo que se nos ocurrio hacer es agregarle una arista entrante desde todos los nodos del nivel anterior.
+        // TODO: Debemos crear un pool separado para estas unidades curriculares.
         if (codigosUCsPrevias.length > 0) {
           codigosUCsPrevias.forEach((codigoUC) => {
-            const ucPrevia = listadoUCsPreviasAux.find(
+            const ucPrevia = listadoUCsPrevias.find(
               (ucPrevia) => ucPrevia.codigo === codigoUC
             );
             const valorArista = calcularValorArista(
@@ -91,7 +89,7 @@ export const generarGrafo = (
             grafo.addEdge(codigoUC, uc.codigo, valorArista);
           });
         } else {
-          listadoUCsPreviasAux.forEach((ucPrevia) => {
+          listadoUCsPrevias.forEach((ucPrevia) => {
             const valorArista = calcularValorArista(
               ucPrevia.semestres!,
               uc.semestres!
@@ -122,8 +120,6 @@ export const generarGrafo = (
         uc.nombreGrupoHijo
       );
     });
-
-    listadoUCsPreviasAux = [...listadoUCsPrevias];
   }
 
   return grafo;
