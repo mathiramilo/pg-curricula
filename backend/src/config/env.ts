@@ -13,4 +13,5 @@ export const env = {
     Number(process.env.COMMON_RATE_LIMIT_MAX_REQUESTS) || 20,
   PDF_PROCESSOR_SERVICE_URL:
     process.env.PDF_PROCESSOR_SERVICE_URL || 'http://localhost:8000/api',
+  API_KEY: process.env.API_KEY,
 };
