@@ -6,7 +6,10 @@ export const env = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   PUERTO: process.env.PUERTO || 3000,
   HOST: process.env.HOST || 'localhost',
-  CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  CORS_ORIGIN:
+    process.env.NODE_ENV === 'production'
+      ? process.env.CORS_ORIGIN
+      : 'http://localhost:5173',
   COMMON_RATE_LIMIT_WINDOW_MS:
     Number(process.env.COMMON_RATE_LIMIT_WINDOW_MS) || 1000,
   COMMON_RATE_LIMIT_MAX_REQUESTS:
