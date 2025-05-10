@@ -21,7 +21,7 @@ export const Router = () => {
         path={RUTAS.SIGUIENTE_SEMESTRE}
         element={<ProximoSemestreScreen />}
       />
-      <Route path={RUTAS.TRAYECTORIA} element={<TrayectoriaScreen />} />
+      <Route path={RUTAS.PLAN_CARRERA} element={<TrayectoriaScreen />} />
 
       <Route path="*" element={<Navigate to={RUTAS.BASE} />} />
     </Routes>

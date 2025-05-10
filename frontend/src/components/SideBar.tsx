@@ -37,7 +37,7 @@ const SideBarDesktop = ({
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
@@ -50,7 +50,7 @@ const SideBarDesktop = ({
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
@@ -63,7 +63,7 @@ const SideBarDesktop = ({
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
@@ -71,12 +71,12 @@ const SideBarDesktop = ({
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.TRAYECTORIA}>
+      <NavLink to={RUTAS.PLAN_CARRERA}>
         {({ isActive }) => (
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
@@ -89,7 +89,7 @@ const SideBarDesktop = ({
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
@@ -103,7 +103,7 @@ const SideBarDesktop = ({
       <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
         <Button
           size="sm"
-          className="w-full justify-start pr-12 text-white/90 hover:bg-principal-400"
+          className="w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400"
         >
           <SpeakerphoneIcon /> Feedback
         </Button>
@@ -149,7 +149,7 @@ const SideBarMobile = ({
         <MenuIcon className="size-6 text-white/90" />
       </NavLink>
       <NavLink
-        to={RUTAS.TRAYECTORIA}
+        to={RUTAS.PLAN_CARRERA}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
