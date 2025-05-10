@@ -12,7 +12,7 @@ RUN pnpm run build
 
 FROM nginx:alpine
 
-# Remove default config (optional, to replace with your own)
+# Remove default config
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Simple SPA config—falls back to index.html
