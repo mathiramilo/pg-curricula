@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import React from "react";
 
 import { useAprobacion } from "@/hooks";
-import type { UnidadCurricular } from "@/models";
+import type { UnidadCurricular, UnidadCurricularItemType } from "@/models";
 import {
   useInformacionEstudianteStore,
   useUnidadCurricularModalStore,
@@ -12,10 +12,12 @@ import { Checkbox } from "../ui";
 
 type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   unidadCurricular: UnidadCurricular;
+  type?: UnidadCurricularItemType;
 };
 
 const UnidadCurricularItem = ({
   unidadCurricular,
+  type = "aprobacion",
   className,
   ...props
 }: UnidadCurricularItemProps) => {
@@ -84,22 +86,30 @@ const UnidadCurricularItem = ({
         </button>
       </div>
 
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
-          C{" "}
-          <Checkbox
-            checked={cursoAprobado}
-            onCheckedChange={handleCheckedChangeCurso}
-          />
+      {type === "aprobacion" && (
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
+            C{" "}
+            <Checkbox
+              checked={cursoAprobado}
+              onCheckedChange={handleCheckedChangeCurso}
+            />
+          </div>
+          <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
+            E{" "}
+            <Checkbox
+              checked={examenAprobado}
+              onCheckedChange={handleCheckedChangeExamen}
+            />
+          </div>
         </div>
-        <div className="flex items-center gap-1 text-sm text-fuente-principal font-light">
-          E{" "}
-          <Checkbox
-            checked={examenAprobado}
-            onCheckedChange={handleCheckedChangeExamen}
-          />
-        </div>
-      </div>
+      )}
+
+      {type === "creditos" && (
+        <span className="text-sm text-principal font-medium">
+          {unidadCurricular.creditos}
+        </span>
+      )}
     </div>
   );
 };

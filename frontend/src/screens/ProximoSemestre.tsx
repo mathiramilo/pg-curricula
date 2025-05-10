@@ -13,7 +13,7 @@ import { useBoolean, useUnidadesCurriculares } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
 import { obtenerSemestreActual } from "@/utils";
 
-export const SiguienteSemestreScreen = () => {
+export const ProximoSemestreScreen = () => {
   const { value: soloHabilitadas, setValue: setSoloHabilitadas } =
     useBoolean(false);
 
@@ -31,7 +31,7 @@ export const SiguienteSemestreScreen = () => {
 
   return (
     <ScreenLayout>
-      <ScreenHeader title="UCs Semestre">
+      <ScreenHeader title="Próximo Semestre">
         <SwitchField
           id="solo-habilitadas"
           checked={soloHabilitadas}

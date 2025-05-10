@@ -1,4 +1,4 @@
-export * from "./axios";
-export * from "./escolaridad";
-export * from "./previas";
+export * from "./escolaridades";
+export * from "./planes";
+export * from "./previaturas";
 export * from "./unidadesCurriculares";

@@ -2,7 +2,7 @@ import { SemestreDeDictado, UnidadCurricular } from '@/types';
 import unidadesCurriculares from '../../data/unidades-curriculares.json';
 import { seDictaEsteSemestre } from '../utils';
 
-const MAX_CREDITS_DEFAULT = 42;
+const MAX_CREDITS_DEFAULT = 45;
 
 export type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 

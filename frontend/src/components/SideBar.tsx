@@ -54,7 +54,7 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <LoopIcon /> Busqueda
+            <LoopIcon /> Búsqueda
           </Button>
         )}
       </NavLink>
@@ -67,7 +67,7 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <MenuIcon /> Semestre
+            <MenuIcon /> Próximo Semestre
           </Button>
         )}
       </NavLink>
@@ -80,7 +80,7 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <PathIcon /> Trayectoria
+            <PathIcon /> Plan de Carrera
           </Button>
         )}
       </NavLink>
