@@ -5,7 +5,7 @@ export const DOMINIO_ESCOLARIDAD = "escolaridad";
 
 export const procesarEscolaridad = async (formData: FormData) => {
   const res = await api.post<InformacionEstudiante>(
-    "/escolaridad/procesar",
+    "/escolaridades",
     formData,
     {
       headers: {

@@ -5,9 +5,7 @@ import {
   satisfacePreviasController,
 } from '../controllers';
 
-const router = Router();
+export const previaturasRouter = Router();
 
-router.get('/:codigo', obtenerPreviasController);
-router.post('/:codigo/satisface', satisfacePreviasController);
-
-export default router;
+previaturasRouter.get('/:codigo', obtenerPreviasController);
+previaturasRouter.post('/:codigo/satisface', satisfacePreviasController);

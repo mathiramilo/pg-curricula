@@ -5,9 +5,10 @@ import {
   obtenerTrayectoriaSugeridaController,
 } from '../controllers';
 
-const router = Router();
+export const unidadesCurricularesRouter = Router();
 
-router.post('/', obtenerUnidadesCurricularesController);
-router.get('/trayectoria-sugerida', obtenerTrayectoriaSugeridaController);
-
-export default router;
+unidadesCurricularesRouter.post('/', obtenerUnidadesCurricularesController);
+unidadesCurricularesRouter.get(
+  '/trayectoria-sugerida',
+  obtenerTrayectoriaSugeridaController
+);

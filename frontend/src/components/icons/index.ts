@@ -16,6 +16,7 @@ export * from "./Path";
 export * from "./Pdf";
 export * from "./Progress";
 export * from "./Restart";
+export * from "./School";
 export * from "./Speakerphone";
 export * from "./Upload";
 export * from "./User";

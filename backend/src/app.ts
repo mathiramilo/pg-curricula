@@ -14,9 +14,10 @@ import {
   rateLimiterMiddleware,
 } from './middleware';
 import {
-  escolaridadRouter,
-  previasRouter,
+  escolaridadesRouter,
+  previaturasRouter,
   unidadesCurricularesRouter,
+  planesRouter,
 } from './routes';
 
 const app: Express = express();
@@ -52,9 +53,10 @@ app.use(authMiddleware);
 if (env.NODE_ENV === 'production') app.use(rateLimiterMiddleware);
 
 // Rutas
-app.use('/api/previas', previasRouter);
-app.use('/api/escolaridad', escolaridadRouter);
+app.use('/api/previaturas', previaturasRouter);
+app.use('/api/escolaridades', escolaridadesRouter);
 app.use('/api/unidades-curriculares', unidadesCurricularesRouter);
+app.use('/api/planes', planesRouter);
 
 app.get('*', (_req, res) => {
   res.status(HTTP_STATUS_CODE.NOT_FOUND).json({ error: 'Ruta no encontrada' });

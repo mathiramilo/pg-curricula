@@ -1,19 +1,28 @@
-import { InformacionEstudiante, SEMESTRE_DE_DICTADO } from '../types';
-import { generarGrafo, obtenerListadoUCs } from '../services';
-import { ie9, ie72, ie315, ie389, ie115 } from '../tests/mocks';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 
-const SEMESTRE_INICIAL = SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE;
+import { InformacionEstudiante } from '../types';
+import { ie72 } from '../tests/mocks';
+import { HTTP_STATUS_CODE } from '../constants';
+import { generarPlan } from '../services/trayectorias/generarPlan';
 
-const informacionEstudiante = structuredClone(ie72);
+export const generarPlanController: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { informacionEstudiante, creditosPorSemestre } = req.body;
 
-const listadoUCs = obtenerListadoUCs(ie72 as InformacionEstudiante);
+  try {
+    const trayectoriaSugerida = await generarPlan(
+      informacionEstudiante,
+      creditosPorSemestre
+    );
+    res.status(HTTP_STATUS_CODE.OK).json(trayectoriaSugerida);
+  } catch (error) {
+    next(error);
+  }
+};
 
-const grafo = generarGrafo(
-  listadoUCs,
-  SEMESTRE_INICIAL,
-  informacionEstudiante as InformacionEstudiante
-);
-
-const plan = grafo.scheduleFinal(SEMESTRE_INICIAL, 30);
+const plan = generarPlan(ie72 as InformacionEstudiante, 45);
 
 console.log('Plan de cursado:', JSON.stringify(plan, null, 4));

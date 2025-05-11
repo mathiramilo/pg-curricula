@@ -103,3 +103,11 @@ export type ReglaPreviaturas =
   | ReglaCreditosGrupo
   | ReglaCreditosPlan
   | undefined;
+
+export type UnidadCurricularItemType = "aprobacion" | "creditos";
+
+export interface ScheduleObject {
+  semestre: number;
+  unidadesCurriculares: UnidadCurricular[];
+  creditos: number;
+}

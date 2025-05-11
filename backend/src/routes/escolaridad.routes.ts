@@ -5,8 +5,10 @@ import { procesarEscolaridadController } from '../controllers';
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-const router = Router();
+export const escolaridadesRouter = Router();
 
-router.post('/procesar', upload.single('file'), procesarEscolaridadController);
-
-export default router;
+escolaridadesRouter.post(
+  '/',
+  upload.single('file'),
+  procesarEscolaridadController
+);

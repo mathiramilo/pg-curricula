@@ -33,7 +33,7 @@ export const HeaderBusqueda = () => {
 
   return (
     <ScreenHeader
-      title="Busqueda"
+      title="Búsqueda"
       rightElement={
         <Button variant="outline" onClick={clearFilters}>
           <FilterMinusIcon />

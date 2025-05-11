@@ -1,3 +1,4 @@
-export { default as escolaridadRouter } from './escolaridad.routes';
-export { default as previasRouter } from './previas.routes';
-export { default as unidadesCurricularesRouter } from './unidadesCurriculares.routes';
+export * from './escolaridad.routes';
+export * from './planes.routes';
+export * from './previas.routes';
+export * from './unidadesCurriculares.routes';

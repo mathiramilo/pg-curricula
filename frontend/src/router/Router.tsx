@@ -5,7 +5,7 @@ import {
   GrupoScreen,
   InicioScreen,
   ProgresoScreen,
-  SiguienteSemestreScreen,
+  ProximoSemestreScreen,
   TrayectoriaScreen,
 } from "@/screens";
 import { RUTAS } from ".";
@@ -19,9 +19,9 @@ export const Router = () => {
       <Route path={RUTAS.PROGRESO} element={<ProgresoScreen />} />
       <Route
         path={RUTAS.SIGUIENTE_SEMESTRE}
-        element={<SiguienteSemestreScreen />}
+        element={<ProximoSemestreScreen />}
       />
-      <Route path={RUTAS.TRAYECTORIA} element={<TrayectoriaScreen />} />
+      <Route path={RUTAS.PLAN_CARRERA} element={<TrayectoriaScreen />} />
 
       <Route path="*" element={<Navigate to={RUTAS.BASE} />} />
     </Routes>

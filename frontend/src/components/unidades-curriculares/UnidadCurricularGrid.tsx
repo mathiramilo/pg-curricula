@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import React from "react";
 
-import type { UnidadCurricular } from "@/models";
+import type { UnidadCurricular, UnidadCurricularItemType } from "@/models";
 import { cn } from "@/utils";
 import { MemoizedUnidadCurricularItem } from "./UnidadCurricularItem";
 
@@ -9,12 +9,14 @@ type UnidadCurricularGridProps = ComponentPropsWithoutRef<"div"> & {
   unidadesCurriculares: UnidadCurricular[];
   titulo?: string;
   rightElement?: React.ReactNode;
+  type?: UnidadCurricularItemType;
 };
 
 const UnidadCurricularGrid = ({
   unidadesCurriculares,
   titulo,
   rightElement,
+  type = "aprobacion",
   className,
   ...props
 }: UnidadCurricularGridProps) => {
@@ -30,6 +32,7 @@ const UnidadCurricularGrid = ({
           <MemoizedUnidadCurricularItem
             key={unidadCurricular.codigo}
             unidadCurricular={unidadCurricular}
+            type={type}
           />
         ))}
       </div>
