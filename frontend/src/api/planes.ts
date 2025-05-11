@@ -4,7 +4,7 @@ import { api } from "./axios";
 
 export const DOMINIO_PLANES = "planes";
 
-export const generatePlan = async (creditosPorSemestre: string) => {
+export const generatePlan = async (creditosPorSemestre: number) => {
   const informacionEstudiante =
     useInformacionEstudianteStore.getState().informacionEstudiante;
 

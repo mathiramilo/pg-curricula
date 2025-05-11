@@ -12,7 +12,7 @@ export const TrayectoriaScreen = () => {
 
   const { data, mutate, isLoading, isSuccess, isError } = useGeneratePlan();
 
-  const handleGenerate = () => mutate(creditos);
+  const handleGenerate = () => mutate(Number(creditos));
 
   const handleDownload = () => {
     console.log("handleDownload");

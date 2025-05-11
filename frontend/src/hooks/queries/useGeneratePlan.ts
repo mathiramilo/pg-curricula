@@ -4,7 +4,7 @@ import { generatePlan } from "@/api";
 
 export const useGeneratePlan = () => {
   return useMutation({
-    mutationFn: (creditosPorSemestre: string) =>
+    mutationFn: (creditosPorSemestre: number) =>
       generatePlan(creditosPorSemestre),
   });
 };
