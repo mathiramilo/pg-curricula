@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import { InformacionEstudiante } from '../types';
-import { ie72 } from '../tests/mocks';
+import { ie72, ie9 } from '../tests/mocks';
 import { HTTP_STATUS_CODE } from '../constants';
 import { generarPlan } from '../services/trayectorias/generarPlan';
 
@@ -23,6 +23,6 @@ export const generarPlanController: RequestHandler = async (
   }
 };
 
-const plan = generarPlan(ie72 as InformacionEstudiante, 45);
+const plan = generarPlan(ie9 as InformacionEstudiante, 40);
 
 console.log('Plan de cursado:', JSON.stringify(plan, null, 4));

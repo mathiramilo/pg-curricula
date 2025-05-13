@@ -59,24 +59,23 @@ export const generarGrafo = (
     );
   });
 
-  //? De aca en adelante no se utiliza mas, que debemos hacer?
+  //? De aca en adelante no se utiliza mas, que debemos hacer? (Creemos que solo es necesario para el valor de las aristas salientes del nodo inicial)
   semestreActual = obtenerSiguienteSemestre(semestreActual);
 
   while (listadoUCsFaltantes.length > 0) {
     for (const uc of listadoUCsFaltantes) {
       if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
-        let codigosUCsPrevias = [];
+        let codigosUCsPrevias: string[] = [];
 
         obtenerCodigosUCsPrevias(previaturas[uc.codigo], codigosUCsPrevias);
         codigosUCsPrevias = codigosUCsPrevias.filter((codigoUC) =>
           listadoUCsPrevias.find((ucPrevia) => ucPrevia.codigo === codigoUC)
         );
 
-        grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
-
-        //* Si la unidad curricular no tiene previaturas en este punto, podemos asumir que tiene previaturas de tipo creditos. Lo que se nos ocurrio hacer es agregarle una arista entrante desde todos los nodos del nivel anterior.
-        // TODO: Debemos crear un pool separado para estas unidades curriculares.
+        //* Si tiene previas en el grafo, se conecta con ellas. Caso contrario, se agrega al pool de UCs sin previas
         if (codigosUCsPrevias.length > 0) {
+          grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
+
           codigosUCsPrevias.forEach((codigoUC) => {
             const ucPrevia = listadoUCsPrevias.find(
               (ucPrevia) => ucPrevia.codigo === codigoUC
@@ -88,29 +87,24 @@ export const generarGrafo = (
 
             grafo.addEdge(codigoUC, uc.codigo, valorArista);
           });
+
+          grafo.addEdge(
+            uc.codigo,
+            NOMBRE_NODO_FIN,
+            ucsAnuales.includes(uc.codigo) ? 2 : 1
+          );
+
+          listadoUCsPrevias.push(uc);
         } else {
-          listadoUCsPrevias.forEach((ucPrevia) => {
-            const valorArista = calcularValorArista(
-              ucPrevia.semestres!,
-              uc.semestres!
-            );
-
-            grafo.addEdge(ucPrevia.codigo, uc.codigo, valorArista);
-          });
+          grafo.addUnidadCurricularSinPrevias(uc);
         }
-
-        grafo.addEdge(
-          uc.codigo,
-          NOMBRE_NODO_FIN,
-          ucsAnuales.includes(uc.codigo) ? 2 : 1
-        );
-
-        listadoUCsPrevias.push(uc);
       }
     }
 
     listadoUCsFaltantes = listadoUCsFaltantes.filter(
-      (uc) => !listadoUCsPrevias.includes(uc)
+      (uc) =>
+        !listadoUCsPrevias.includes(uc) &&
+        !grafo.getUnidadesCurricularesSinPrevias().includes(uc)
     );
 
     listadoUCsPrevias.forEach((uc) => {
