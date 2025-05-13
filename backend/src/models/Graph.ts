@@ -1,6 +1,13 @@
-import { SemestreDeDictado, UnidadCurricular } from '@/types';
 import unidadesCurriculares from '../../data/unidades-curriculares.json';
-import { seDictaEsteSemestre } from '../utils';
+import previaturas from '../../data/previaturas.json';
+
+import {
+  InformacionEstudiante,
+  SemestreDeDictado,
+  UnidadCurricular,
+} from '../types';
+import { actualizarInformacionEstudiante, seDictaEsteSemestre } from '../utils';
+import { cumplePrevias } from '../services';
 
 const MAX_CREDITS_DEFAULT = 45;
 
@@ -36,9 +43,11 @@ interface ScheduleObject {
 
 export class Graph {
   private nodes: Map<string, Node>;
+  private unidadesCurricularesSinPrevias: UnidadCurricular[]; // Utilizamos este array para almacenar las unidades curriculares que no tienen previaturas en el grafo (ej: unidades curriculares con previaturas de creditos). Las iremos agregando a la planificacion a medida se vayan encontrando huecos.
 
   constructor() {
     this.nodes = new Map<string, Node>();
+    this.unidadesCurricularesSinPrevias = [];
   }
 
   public addNode({
@@ -124,6 +133,16 @@ export class Graph {
 
   public getAllNodes(): Node[] {
     return Array.from(this.nodes.values());
+  }
+
+  public addUnidadCurricularSinPrevias(
+    unidadCurricular: UnidadCurricular
+  ): void {
+    this.unidadesCurricularesSinPrevias.push(unidadCurricular);
+  }
+
+  public getUnidadesCurricularesSinPrevias() {
+    return this.unidadesCurricularesSinPrevias;
   }
 
   /**
@@ -247,7 +266,8 @@ export class Graph {
 
   public schedule(
     initialSemestre: SemestreDeDictado,
-    maxCredits: number = MAX_CREDITS_DEFAULT
+    maxCredits: number = MAX_CREDITS_DEFAULT,
+    informacionEstudiante: InformacionEstudiante
   ): ScheduleObject[] | boolean {
     const MAX_CREDITS_THRESHOLD = 1.12;
 
@@ -260,7 +280,7 @@ export class Graph {
 
     let semester = initialSemestre === '1' ? 1 : 2;
 
-    while (ES.size > 0) {
+    while (ES.size > 0 || this.getUnidadesCurricularesSinPrevias().length > 0) {
       // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
       const available = Array.from(ES.entries())
         .filter(([_, es]) => es === semester - 1)
@@ -303,6 +323,12 @@ export class Graph {
           ES.delete(node.id);
           remaining.splice(remaining.indexOf(node), 1);
 
+          actualizarInformacionEstudiante(
+            informacionEstudiante,
+            unidadCurricular,
+            unidadCurricular.nombreGrupoHijo
+          );
+
           if (nodeObject?.outgoingEdges.some((edge) => edge.value === 3)) {
             // Modificamos el valor de la arista teniendo en cuenta el semestre actual  y los semestres de dictado del nodo destino
             nodeObject.outgoingEdges.forEach((edge) => {
@@ -333,6 +359,12 @@ export class Graph {
           ES.delete(node.id);
           remaining.splice(remaining.indexOf(node), 1);
 
+          actualizarInformacionEstudiante(
+            informacionEstudiante,
+            unidadCurricular,
+            unidadCurricular.nombreGrupoHijo
+          );
+
           if (nodeObject?.outgoingEdges.some((edge) => edge.value === 3)) {
             nodeObject.outgoingEdges.forEach((edge) => {
               if (edge.value !== 3) return;
@@ -351,6 +383,32 @@ export class Graph {
         break;
       }
 
+      // Buscamos si podemos agregar alguna del pool de UCs sin previas
+      const ucsAvailableToAdd = this.unidadesCurricularesSinPrevias.filter(
+        (uc) =>
+          cumplePrevias(informacionEstudiante, previaturas[uc.codigo]) &&
+          seDictaEsteSemestre(semester, uc.semestres!)
+      );
+
+      for (const uc of ucsAvailableToAdd) {
+        if (totalCredits + uc.creditos > maxCredits * MAX_CREDITS_THRESHOLD)
+          continue;
+
+        scheduleObject.unidadesCurriculares.push(uc);
+        scheduleObject.creditos += uc.creditos || 0;
+        totalCredits += uc.creditos || 0;
+        this.unidadesCurricularesSinPrevias.splice(
+          this.unidadesCurricularesSinPrevias.indexOf(uc),
+          1
+        );
+
+        actualizarInformacionEstudiante(
+          informacionEstudiante,
+          uc,
+          uc.nombreGrupoHijo
+        );
+      }
+
       semester++;
       totalCredits = 0;
 
@@ -367,14 +425,23 @@ export class Graph {
 
   public scheduleFinal(
     initialSemestre: SemestreDeDictado,
-    maxCredits: number = MAX_CREDITS_DEFAULT
+    maxCredits: number = MAX_CREDITS_DEFAULT,
+    informacionEstudiante: InformacionEstudiante
   ) {
-    let plan = this.schedule(initialSemestre, maxCredits);
+    const informacionEstudianteCopy = { ...informacionEstudiante };
+
+    let plan = this.schedule(
+      initialSemestre,
+      maxCredits,
+      informacionEstudianteCopy
+    );
 
     while (!plan) {
-      // this.draw(); // Debug
-
-      plan = this.schedule(initialSemestre, maxCredits);
+      plan = this.schedule(
+        initialSemestre,
+        maxCredits,
+        informacionEstudianteCopy
+      );
     }
 
     return plan;
