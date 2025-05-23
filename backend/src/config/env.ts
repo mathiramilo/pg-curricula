@@ -13,7 +13,7 @@ export const env = {
   COMMON_RATE_LIMIT_WINDOW_MS:
     Number(process.env.COMMON_RATE_LIMIT_WINDOW_MS) || 1000,
   COMMON_RATE_LIMIT_MAX_REQUESTS:
-    Number(process.env.COMMON_RATE_LIMIT_MAX_REQUESTS) || 20,
+    Number(process.env.COMMON_RATE_LIMIT_MAX_REQUESTS) || 200,
   PDF_PROCESSOR_SERVICE_URL:
     process.env.PDF_PROCESSOR_SERVICE_URL || 'http://localhost:8000/api',
   API_KEY: process.env.API_KEY,

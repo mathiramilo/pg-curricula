@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { ENV } from "@/config";
+
 export interface PaginatedResponse<T> {
   data: T;
   page: number;
@@ -8,9 +10,9 @@ export interface PaginatedResponse<T> {
 }
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL as string,
+  baseURL: ENV.API_URL,
   headers: {
     "Content-Type": "application/json",
-    "x-api-key": import.meta.env.VITE_API_KEY as string,
+    "x-api-key": ENV.API_KEY,
   },
 });
