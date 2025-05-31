@@ -1,5 +1,6 @@
 import unidadesCurriculares from '../../data/unidades-curriculares.json';
 import previaturas from '../../data/previaturas.json';
+import ucsAnuales from '../../data/ucs-anuales.json';
 
 import {
   InformacionEstudiante,
@@ -280,6 +281,9 @@ export class Graph {
 
     let semester = initialSemestre === '1' ? 1 : 2;
 
+    let creditosProxSemetre = 0;
+    let ucProxSemetre: UnidadCurricular | null = null;
+
     while (ES.size > 0 || this.getUnidadesCurricularesSinPrevias().length > 0) {
       // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
       const available = Array.from(ES.entries())
@@ -298,72 +302,43 @@ export class Graph {
       };
 
       const remaining = [...available];
-      let totalCredits = 0;
+      let totalCredits = creditosProxSemetre;
+      ucProxSemetre ? scheduleObject.unidadesCurriculares.push(ucProxSemetre) : null;
+      scheduleObject.creditos += creditosProxSemetre;
+      ucProxSemetre = null;
+      creditosProxSemetre = 0;
 
       for (const node of available) {
         const nodeObject = this.nodes.get(node.id);
         const unidadCurricular = nodeObject!.unidadCurricular!;
-
-        // Si la unidad curricular tiene holgura 1 y no se dicta el proximo semestre, se agrega a la lista de unidades curriculares
-        const mustBeAdded =
-          node.holgura === 1 &&
-          !seDictaEsteSemestre(semester + 1, unidadCurricular.semestres!);
-
-        // Debug
-        // console.log('UnidadCurricular:', unidadCurricular.nombre);
-        // console.log('ES:', node.es);
-        // console.log('Holgura:', node.holgura);
-        // console.log('mustBeAdded:', mustBeAdded);
-        // console.log('Semestre:', semester);
-
-        if (node.holgura === 0 || mustBeAdded) {
-          scheduleObject.unidadesCurriculares.push(unidadCurricular);
-          scheduleObject.creditos += unidadCurricular!.creditos || 0;
-          totalCredits += unidadCurricular!.creditos || 0;
-          ES.delete(node.id);
-          remaining.splice(remaining.indexOf(node), 1);
-
-          actualizarInformacionEstudiante(
-            informacionEstudiante,
-            unidadCurricular,
-            unidadCurricular.nombreGrupoHijo
-          );
-
-          if (nodeObject?.outgoingEdges.some((edge) => edge.value === 3)) {
-            // Modificamos el valor de la arista teniendo en cuenta el semestre actual  y los semestres de dictado del nodo destino
-            nodeObject.outgoingEdges.forEach((edge) => {
-              if (edge.value !== 3) return;
-
-              const targetNode = this.nodes.get(edge.target)!;
-              this.updateEdgeDependingOnSemester(targetNode, semester, edge);
-            });
-
-            return false;
-          }
-
-          continue;
-        }
 
         // Si la unidad curricular no se dicta este semestre, se salta a la siguiente
         if (!seDictaEsteSemestre(semester, unidadCurricular.semestres!)) {
           continue;
         }
 
+        const esAnual = ucsAnuales.includes(unidadCurricular.codigo);
         if (
-          totalCredits + (unidadCurricular?.creditos || 0) <=
+          esAnual ? totalCredits + unidadCurricular.creditos / 2 <=
+          maxCredits * MAX_CREDITS_THRESHOLD : totalCredits + unidadCurricular.creditos <=
           maxCredits * MAX_CREDITS_THRESHOLD
         ) {
           scheduleObject.unidadesCurriculares.push(unidadCurricular);
-          scheduleObject.creditos += unidadCurricular!.creditos || 0;
-          totalCredits += unidadCurricular!.creditos || 0;
+
+          // chequear si la unidad curricular es anual
+          if (esAnual) {
+            scheduleObject.creditos += unidadCurricular!.creditos / 2 || 0;
+            totalCredits += unidadCurricular!.creditos / 2 || 0;
+            // agregar la otra mitad para el siguiente semestre
+            creditosProxSemetre = unidadCurricular!.creditos / 2 || 0;
+            ucProxSemetre = unidadCurricular
+          } else {
+            scheduleObject.creditos += unidadCurricular!.creditos || 0;
+            totalCredits += unidadCurricular!.creditos || 0;
+          }
+
           ES.delete(node.id);
           remaining.splice(remaining.indexOf(node), 1);
-
-          actualizarInformacionEstudiante(
-            informacionEstudiante,
-            unidadCurricular,
-            unidadCurricular.nombreGrupoHijo
-          );
 
           if (nodeObject?.outgoingEdges.some((edge) => edge.value === 3)) {
             nodeObject.outgoingEdges.forEach((edge) => {
@@ -388,7 +363,7 @@ export class Graph {
         (uc) =>
           cumplePrevias(informacionEstudiante, previaturas[uc.codigo]) &&
           seDictaEsteSemestre(semester, uc.semestres!)
-      );
+      ); 
 
       for (const uc of ucsAvailableToAdd) {
         if (totalCredits + uc.creditos > maxCredits * MAX_CREDITS_THRESHOLD)
@@ -401,13 +376,16 @@ export class Graph {
           this.unidadesCurricularesSinPrevias.indexOf(uc),
           1
         );
+      }
 
+      // Actualizamos la informacion del estudiante
+      scheduleObject.unidadesCurriculares.forEach((uc) => {
         actualizarInformacionEstudiante(
           informacionEstudiante,
           uc,
           uc.nombreGrupoHijo
         );
-      }
+      });
 
       semester++;
       totalCredits = 0;
