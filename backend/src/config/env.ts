@@ -10,11 +10,8 @@ export const env = {
     process.env.NODE_ENV === 'production'
       ? process.env.CORS_ORIGIN
       : 'http://localhost:5173',
-  COMMON_RATE_LIMIT_WINDOW_MS:
-    Number(process.env.COMMON_RATE_LIMIT_WINDOW_MS) || 1000,
-  COMMON_RATE_LIMIT_MAX_REQUESTS:
-    Number(process.env.COMMON_RATE_LIMIT_MAX_REQUESTS) || 200,
-  PDF_PROCESSOR_SERVICE_URL:
-    process.env.PDF_PROCESSOR_SERVICE_URL || 'http://localhost:8000/api',
+  RATE_LIMIT_WINDOW_SECS: Number(process.env.COMMON_RATE_LIMIT_WINDOW_SECS),
+  RATE_LIMIT_MAX_REQUESTS: Number(process.env.RATE_LIMIT_MAX_REQUESTS),
+  PDF_PROCESSOR_SERVICE_URL: process.env.PDF_PROCESSOR_SERVICE_URL,
   API_KEY: process.env.API_KEY,
 };
