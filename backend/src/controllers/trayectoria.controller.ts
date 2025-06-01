@@ -23,6 +23,6 @@ export const generarPlanController: RequestHandler = async (
   }
 };
 
-const plan = generarPlan(ie9 as InformacionEstudiante, 20);
+const plan = generarPlan(ie9 as InformacionEstudiante, 30);
 
 console.log('Plan de cursado:', JSON.stringify(plan, null, 4));

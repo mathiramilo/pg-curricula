@@ -266,7 +266,7 @@ export class Graph {
   }
 
   public schedule(
-    initialSemestre: SemestreDeDictado,
+    initialSemester: SemestreDeDictado,
     maxCredits: number = MAX_CREDITS_DEFAULT,
     informacionEstudiante: InformacionEstudiante
   ): ScheduleObject[] | boolean {
@@ -279,10 +279,11 @@ export class Graph {
 
     const plan: ScheduleObject[] = [];
 
-    let semester = initialSemestre === '1' ? 1 : 2;
+    let semester = initialSemester === '1' ? 1 : 2;
 
-    let creditosProxSemetre = 0;
-    let ucProxSemetre: UnidadCurricular | null = null;
+    // REVIEW: Es posible que tengamos para asignar 2 unidades curriculares anuales en el proximo semestre?
+    let creditsNextSemester = 0;
+    let ucNextSemester: UnidadCurricular | null = null;
 
     while (ES.size > 0 || this.getUnidadesCurricularesSinPrevias().length > 0) {
       // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
@@ -302,11 +303,16 @@ export class Graph {
       };
 
       const remaining = [...available];
-      let totalCredits = creditosProxSemetre;
-      ucProxSemetre ? scheduleObject.unidadesCurriculares.push(ucProxSemetre) : null;
-      scheduleObject.creditos += creditosProxSemetre;
-      ucProxSemetre = null;
-      creditosProxSemetre = 0;
+
+      let totalCredits = creditsNextSemester;
+
+      if (ucNextSemester)
+        scheduleObject.unidadesCurriculares.push(ucNextSemester);
+
+      scheduleObject.creditos += creditsNextSemester;
+
+      creditsNextSemester = 0;
+      ucNextSemester = null;
 
       for (const node of available) {
         const nodeObject = this.nodes.get(node.id);
@@ -317,24 +323,27 @@ export class Graph {
           continue;
         }
 
-        const esAnual = ucsAnuales.includes(unidadCurricular.codigo);
+        const isAnual = ucsAnuales.includes(unidadCurricular.codigo);
+
         if (
-          esAnual ? totalCredits + unidadCurricular.creditos / 2 <=
-          maxCredits * MAX_CREDITS_THRESHOLD : totalCredits + unidadCurricular.creditos <=
-          maxCredits * MAX_CREDITS_THRESHOLD
+          isAnual
+            ? totalCredits + unidadCurricular.creditos / 2 <=
+              maxCredits * MAX_CREDITS_THRESHOLD
+            : totalCredits + unidadCurricular.creditos <=
+              maxCredits * MAX_CREDITS_THRESHOLD
         ) {
           scheduleObject.unidadesCurriculares.push(unidadCurricular);
 
-          // chequear si la unidad curricular es anual
-          if (esAnual) {
-            scheduleObject.creditos += unidadCurricular!.creditos / 2 || 0;
-            totalCredits += unidadCurricular!.creditos / 2 || 0;
-            // agregar la otra mitad para el siguiente semestre
-            creditosProxSemetre = unidadCurricular!.creditos / 2 || 0;
-            ucProxSemetre = unidadCurricular
+          // Si la unidad curricular es anual se le suman la mitad de los creditos al semestre actual y la otra mitad al proximo
+          if (isAnual) {
+            scheduleObject.creditos += unidadCurricular.creditos / 2;
+            totalCredits += unidadCurricular.creditos / 2;
+
+            creditsNextSemester = unidadCurricular.creditos / 2;
+            ucNextSemester = unidadCurricular;
           } else {
-            scheduleObject.creditos += unidadCurricular!.creditos || 0;
-            totalCredits += unidadCurricular!.creditos || 0;
+            scheduleObject.creditos += unidadCurricular.creditos;
+            totalCredits += unidadCurricular.creditos;
           }
 
           ES.delete(node.id);
@@ -363,7 +372,7 @@ export class Graph {
         (uc) =>
           cumplePrevias(informacionEstudiante, previaturas[uc.codigo]) &&
           seDictaEsteSemestre(semester, uc.semestres!)
-      ); 
+      );
 
       for (const uc of ucsAvailableToAdd) {
         if (totalCredits + uc.creditos > maxCredits * MAX_CREDITS_THRESHOLD)
@@ -378,7 +387,7 @@ export class Graph {
         );
       }
 
-      // Actualizamos la informacion del estudiante
+      // Actualizamos la informacion del estudiante al terminar de asignar las unidades curriculares al semestre
       scheduleObject.unidadesCurriculares.forEach((uc) => {
         actualizarInformacionEstudiante(
           informacionEstudiante,
@@ -402,21 +411,21 @@ export class Graph {
   }
 
   public scheduleFinal(
-    initialSemestre: SemestreDeDictado,
+    initialSemester: SemestreDeDictado,
     maxCredits: number = MAX_CREDITS_DEFAULT,
     informacionEstudiante: InformacionEstudiante
   ) {
     const informacionEstudianteCopy = { ...informacionEstudiante };
 
     let plan = this.schedule(
-      initialSemestre,
+      initialSemester,
       maxCredits,
       informacionEstudianteCopy
     );
 
     while (!plan) {
       plan = this.schedule(
-        initialSemestre,
+        initialSemester,
         maxCredits,
         informacionEstudianteCopy
       );
