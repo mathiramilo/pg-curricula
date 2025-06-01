@@ -19,7 +19,7 @@ export const HeaderInicio = () => {
 
   return (
     <ScreenHeader title="Progreso de Carrera">
-      <div className="sm:w-[calc(100vw-230px)] flex flex-col gap-2">
+      <div className="sm:w-[calc(100vw-274px)] flex flex-col gap-2">
         <TotalProgress />
 
         <div className="flex items-center justify-between gap-x-6 gap-y-1">

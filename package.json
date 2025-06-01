@@ -4,7 +4,9 @@
   "description": "Proyecto de grado, curricula dinamica para estudiantes de ingenieria.",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:dev": "docker-compose up --build -d",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up --build -d"
   },
   "author": "",
   "license": "ISC",
