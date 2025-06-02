@@ -118,7 +118,7 @@ const SideBarMobile = ({
 }: ComponentPropsWithoutRef<"div">) => (
   <div
     className={cn(
-      "fixed bottom-4 inset-x-4 bg-principal py-4 px-12 z-50 rounded-xl",
+      "fixed bottom-4 inset-x-4 bg-principal py-4 px-6 z-50 rounded-xl",
       className,
     )}
     {...props}
