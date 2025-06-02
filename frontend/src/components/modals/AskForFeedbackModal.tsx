@@ -33,9 +33,11 @@ export const AskForFeedbackModal = () => {
         </div>
 
         <DialogFooter className="mt-auto">
-          <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
-            <Button onClick={closeModal}>Enviar Feedback</Button>
-          </a>
+          <Button onClick={closeModal} asChild>
+            <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
+              Enviar Feedback
+            </a>
+          </Button>
           <Button variant="outline" onClick={closeModal}>
             Cerrar
           </Button>

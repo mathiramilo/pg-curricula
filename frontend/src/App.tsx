@@ -12,7 +12,7 @@ const App = () => {
     <>
       <div className="flex h-screen w-full overflow-hidden">
         <SideBar />
-        <div className="h-full w-full bg-slate-50">
+        <div className="h-full w-full bg-slate-50 overflow-hidden">
           <NavBar />
           <Router />
         </div>
