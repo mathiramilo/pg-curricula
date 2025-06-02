@@ -23,7 +23,7 @@ services:
       - backend
     ports:
       - '80:80'
-      - '433:433'
+      - '443:443'
     restart: unless-stopped
     volumes:
       - ./certbot/conf:/etc/letsencrypt
