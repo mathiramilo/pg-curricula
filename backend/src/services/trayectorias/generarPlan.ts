@@ -1,8 +1,4 @@
-import {
-  InformacionEstudiante,
-  SEMESTRE_DE_DICTADO,
-  SemestreDeDictado,
-} from '../../types';
+import { InformacionEstudiante, SemestreDeDictado } from '../../types';
 import { obtenerListadoUCs } from './obtenerListadoUCs';
 import { generarGrafo } from './generarGrafo';
 

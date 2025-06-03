@@ -103,40 +103,8 @@ export const CREDITOS_POR_SEMESTRE_OPTIONS = [
     value: "60",
   },
   {
-    label: "65",
-    value: "65",
-  },
-  {
-    label: "70",
-    value: "70",
-  },
-  {
-    label: "75",
-    value: "75",
-  },
-  {
-    label: "80",
-    value: "80",
-  },
-  {
-    label: "85",
-    value: "85",
-  },
-  {
-    label: "90",
-    value: "90",
-  },
-  {
-    label: "95",
-    value: "95",
-  },
-  {
-    label: "100",
-    value: "100",
-  },
-  {
     label: "Sin Limite",
-    value: "Infinity",
+    value: "100",
   },
 ];
 
