@@ -82,10 +82,15 @@ export const useInformacionEstudianteStore =
 
         removeUnidadCurricularCurso: (unidadCurricular) =>
           set((state) => {
-            const examenAprobado =
+            const ucAprobada =
               state.informacionEstudiante.unidadesCurricularesAprobadas[
                 unidadCurricular.codigo
-              ].tipoAprobacion === TIPO_APROBACION.EXAMEN;
+              ];
+
+            if (!ucAprobada) return { informacionEstudiante: state.informacionEstudiante };
+
+            const examenAprobado =
+              ucAprobada.tipoAprobacion === TIPO_APROBACION.EXAMEN;
 
             const updatedUCsAprobadas = Object.fromEntries(
               Object.entries(
@@ -113,26 +118,33 @@ export const useInformacionEstudianteStore =
           }),
 
         removeUnidadCurricularExamen: (unidadCurricular) =>
-          set((state) => ({
-            informacionEstudiante: {
-              ...state.informacionEstudiante,
-              unidadesCurricularesAprobadas: {
-                ...state.informacionEstudiante.unidadesCurricularesAprobadas,
-                [unidadCurricular.codigo]: {
-                  ...state.informacionEstudiante.unidadesCurricularesAprobadas[
-                    unidadCurricular.codigo
-                  ],
-                  tipoAprobacion: TIPO_APROBACION.CURSO,
+          set((state) => {
+            const ucAprobada =
+              state.informacionEstudiante.unidadesCurricularesAprobadas[
+                unidadCurricular.codigo
+              ];
+
+            if (!ucAprobada) return { informacionEstudiante: state.informacionEstudiante };
+
+            return {
+              informacionEstudiante: {
+                ...state.informacionEstudiante,
+                unidadesCurricularesAprobadas: {
+                  ...state.informacionEstudiante.unidadesCurricularesAprobadas,
+                  [unidadCurricular.codigo]: {
+                    ...ucAprobada,
+                    tipoAprobacion: TIPO_APROBACION.CURSO,
+                  },
                 },
+                creditosTotales:
+                  state.informacionEstudiante.creditosTotales -
+                  unidadCurricular.creditos,
+                [unidadCurricular.nombreGrupoHijo]:
+                  state.informacionEstudiante[unidadCurricular.nombreGrupoHijo] -
+                  unidadCurricular.creditos,
               },
-              creditosTotales:
-                state.informacionEstudiante.creditosTotales -
-                unidadCurricular.creditos,
-              [unidadCurricular.nombreGrupoHijo]:
-                state.informacionEstudiante[unidadCurricular.nombreGrupoHijo] -
-                unidadCurricular.creditos,
-            },
-          })),
+            };
+          }),
 
         resetInformacionEstudiante: () =>
           set(() => ({
