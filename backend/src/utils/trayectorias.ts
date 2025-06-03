@@ -12,6 +12,14 @@ export const actualizarInformacionEstudiante = (
   unidadCurricular: UnidadCurricular,
   grupo: GrupoHijo
 ): void => {
+  if (
+    Object.hasOwn(
+      informacionEstudiante.unidadesCurricularesAprobadas,
+      unidadCurricular.codigo
+    )
+  )
+    return;
+
   informacionEstudiante.unidadesCurricularesAprobadas[unidadCurricular.codigo] =
     {
       codigo: unidadCurricular.codigo,
@@ -69,4 +77,13 @@ export const seDictaEsteSemestre = (
     return true;
 
   return false;
+};
+
+export const getInitialYear = (initialSemester: SemestreDeDictado) => {
+  const actualMonth = new Date().getMonth() + 1;
+  const initialYear =
+    new Date().getFullYear() +
+    (initialSemester === '1' && actualMonth >= 5 && actualMonth <= 9 ? 1 : 0);
+
+  return initialYear;
 };

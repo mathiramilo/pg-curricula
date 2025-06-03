@@ -7,7 +7,11 @@ import {
   SemestreDeDictado,
   UnidadCurricular,
 } from '../types';
-import { actualizarInformacionEstudiante, seDictaEsteSemestre } from '../utils';
+import {
+  actualizarInformacionEstudiante,
+  getInitialYear,
+  seDictaEsteSemestre,
+} from '../utils';
 import { cumplePrevias } from '../services';
 
 const MAX_CREDITS_DEFAULT = 45;
@@ -40,6 +44,7 @@ interface ScheduleObject {
   semestre: number;
   unidadesCurriculares: UnidadCurricular[];
   creditos: number;
+  label?: string;
 }
 
 export class Graph {
@@ -280,6 +285,7 @@ export class Graph {
     const plan: ScheduleObject[] = [];
 
     let semester = initialSemester === '1' ? 1 : 2;
+    let actualYear = getInitialYear(initialSemester);
 
     // REVIEW: Es posible que tengamos para asignar 2 unidades curriculares anuales en el proximo semestre?
     let creditsNextSemester = 0;
@@ -288,7 +294,7 @@ export class Graph {
     while (ES.size > 0 || this.getUnidadesCurricularesSinPrevias().length > 0) {
       // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
       const available = Array.from(ES.entries())
-        .filter(([_, es]) => es === semester - 1)
+        .filter(([_, es]) => es <= semester - 1)
         .map(([id, es]) => ({
           id,
           es,
@@ -300,6 +306,7 @@ export class Graph {
         semestre: semester,
         unidadesCurriculares: [],
         creditos: 0,
+        label: `${semester % 2 === 1 ? '1er' : '2do'} Semestre ${actualYear}`,
       };
 
       const remaining = [...available];
@@ -397,6 +404,7 @@ export class Graph {
       });
 
       semester++;
+      actualYear += semester % 2 === 1 ? 1 : 0;
       totalCredits = 0;
 
       remaining.forEach((node) => {
@@ -415,19 +423,17 @@ export class Graph {
     maxCredits: number = MAX_CREDITS_DEFAULT,
     informacionEstudiante: InformacionEstudiante
   ) {
-    const informacionEstudianteCopy = { ...informacionEstudiante };
-
     let plan = this.schedule(
       initialSemester,
       maxCredits,
-      informacionEstudianteCopy
+      structuredClone(informacionEstudiante)
     );
 
     while (!plan) {
       plan = this.schedule(
         initialSemester,
         maxCredits,
-        informacionEstudianteCopy
+        structuredClone(informacionEstudiante)
       );
     }
 

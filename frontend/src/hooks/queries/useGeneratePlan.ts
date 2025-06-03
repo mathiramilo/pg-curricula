@@ -1,10 +1,10 @@
 import { useMutation } from "react-query";
 
+import type { GeneratePlanParams } from "@/api";
 import { generatePlan } from "@/api";
 
 export const useGeneratePlan = () => {
   return useMutation({
-    mutationFn: (creditosPorSemestre: number) =>
-      generatePlan(creditosPorSemestre),
+    mutationFn: (params: GeneratePlanParams) => generatePlan(params),
   });
 };

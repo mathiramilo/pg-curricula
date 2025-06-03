@@ -139,3 +139,14 @@ export const CREDITOS_POR_SEMESTRE_OPTIONS = [
     value: "Infinity",
   },
 ];
+
+export const SEMESTRE_INICIAL_OPTIONS = [
+  {
+    label: "Primer semestre",
+    value: SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
+  },
+  {
+    label: "Segundo semestre",
+    value: SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE,
+  },
+];

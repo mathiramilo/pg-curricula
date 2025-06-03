@@ -59,6 +59,8 @@ export const generarGrafo = (
     );
   });
 
+  const listadoUCsSinPrevias: UnidadCurricular[] = [];
+
   //? De aca en adelante no se utiliza mas, que debemos hacer? (Creemos que solo es necesario para el valor de las aristas salientes del nodo inicial)
   semestreActual = obtenerSiguienteSemestre(semestreActual);
 
@@ -97,6 +99,7 @@ export const generarGrafo = (
           listadoUCsPrevias.push(uc);
         } else {
           grafo.addUnidadCurricularSinPrevias(uc);
+          listadoUCsSinPrevias.push(uc);
         }
       }
     }
@@ -104,10 +107,19 @@ export const generarGrafo = (
     listadoUCsFaltantes = listadoUCsFaltantes.filter(
       (uc) =>
         !listadoUCsPrevias.includes(uc) &&
+        !listadoUCsSinPrevias.includes(uc) &&
         !grafo.getUnidadesCurricularesSinPrevias().includes(uc)
     );
 
     listadoUCsPrevias.forEach((uc) => {
+      actualizarInformacionEstudiante(
+        informacionEstudiante,
+        uc,
+        uc.nombreGrupoHijo
+      );
+    });
+
+    listadoUCsSinPrevias.forEach((uc) => {
       actualizarInformacionEstudiante(
         informacionEstudiante,
         uc,

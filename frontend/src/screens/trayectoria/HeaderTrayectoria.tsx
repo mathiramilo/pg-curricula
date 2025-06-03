@@ -7,30 +7,33 @@ import {
   PdfIcon,
   SchoolIcon,
   ScreenHeader,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+  SelectField,
 } from "@/components";
 import { useBoolean } from "@/hooks";
-import type { ScheduleObject } from "@/models";
-import { CREDITOS_POR_SEMESTRE_OPTIONS } from "@/models";
+import type { ScheduleObject, SemestreDeDictado } from "@/models";
+import {
+  CREDITOS_POR_SEMESTRE_OPTIONS,
+  SEMESTRE_INICIAL_OPTIONS,
+} from "@/models";
 
 interface HeaderTrayectoriaProps {
   creditos: string;
+  semestreInicial: SemestreDeDictado;
   trayectoria?: ScheduleObject[];
   setCreditos: (value: string) => void;
-  handleGenerate: () => void;
-  handleDownload: () => void;
+  setSemestreInicial: (value: SemestreDeDictado) => void;
+  onGenerate: () => void;
+  onDownload: () => void;
 }
 
 export const HeaderTrayectoria = ({
   creditos,
+  semestreInicial,
   trayectoria,
   setCreditos,
-  handleGenerate,
-  handleDownload,
+  setSemestreInicial,
+  onGenerate,
+  onDownload,
 }: HeaderTrayectoriaProps) => {
   const {
     value: show,
@@ -49,42 +52,39 @@ export const HeaderTrayectoria = ({
           </Button>
         }
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between sm:gap-6 gap-4">
-          <div className="flex flex-col gap-1.5 flex-1">
-            <label
-              htmlFor="creditos-select"
-              className="text-fuente-principal text-sm xl:w-52"
-            >
-              Créditos por semestre:
-            </label>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-6 gap-4">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:gap-4 gap-2 flex-1">
+            <SelectField
+              label="Créditos por semestre:"
+              options={CREDITOS_POR_SEMESTRE_OPTIONS}
+              value={creditos}
+              onValueChange={setCreditos}
+              id="creditos-select"
+              placeholder="Selecciona una cantidad de créditos"
+              containerClassName="flex-1 lg:max-w-60"
+            />
 
-            <Select value={creditos} onValueChange={setCreditos}>
-              <SelectTrigger
-                id="creditos-select"
-                className="lg:w-7/12 xl:max-w-md"
-              >
-                <SelectValue placeholder="Selecciona una cantidad de créditos" />
-              </SelectTrigger>
-              <SelectContent>
-                {CREDITOS_POR_SEMESTRE_OPTIONS.map(({ label, value }) => (
-                  <SelectItem key={value} value={value}>
-                    {label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <SelectField
+              label="Semestre inicial:"
+              options={SEMESTRE_INICIAL_OPTIONS}
+              value={semestreInicial}
+              onValueChange={setSemestreInicial}
+              id="semestre-inicial-select"
+              placeholder="Selecciona el semestre inicial"
+              containerClassName="flex-1 lg:max-w-60"
+            />
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-2">
-            <Button onClick={handleGenerate}>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-4 gap-2">
+            <Button onClick={onGenerate}>
               <SchoolIcon />
               <span>Generar Plan</span>
             </Button>
 
             <Button
               variant="outline"
-              onClick={handleDownload}
-              disabled={!trayectoria}
+              onClick={onDownload}
+              disabled={!trayectoria || true}
             >
               <PdfIcon />
               <span>Descargar Plan</span>
