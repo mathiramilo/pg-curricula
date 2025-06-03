@@ -84,7 +84,7 @@ export const HeaderTrayectoria = ({
             <Button
               variant="outline"
               onClick={onDownload}
-              disabled={!trayectoria}
+              disabled={!trayectoria || true}
             >
               <PdfIcon />
               <span>Descargar Plan</span>
