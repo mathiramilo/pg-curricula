@@ -8,12 +8,20 @@ export const generarPlanController: RequestHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { informacionEstudiante, creditosPorSemestre } = req.body;
+  const { informacionEstudiante, creditosPorSemestre, semestreInicial } =
+    req.body;
+
+  if (!informacionEstudiante || !creditosPorSemestre || !semestreInicial) {
+    return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
+      error: 'Faltan datos necesarios para generar el plan de estudios',
+    });
+  }
 
   try {
     const trayectoriaSugerida = await generarPlan(
       informacionEstudiante,
-      creditosPorSemestre
+      creditosPorSemestre,
+      semestreInicial
     );
     res.status(HTTP_STATUS_CODE.OK).json(trayectoriaSugerida);
   } catch (error) {

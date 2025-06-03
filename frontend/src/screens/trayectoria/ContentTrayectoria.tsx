@@ -34,16 +34,18 @@ export const ContentTrayectoria = ({
   return (
     <section className="grid gap-8 lg:gap-12 lg:grid-cols-3">
       {isSuccess &&
-        trayectoria.map(({ semestre, unidadesCurriculares, creditos }) => {
-          return (
-            <UnidadCurricularList
-              key={semestre}
-              unidadesCurriculares={unidadesCurriculares}
-              titulo={`Primer Semestre 2026 (${creditos} créditos)`}
-              type="creditos"
-            />
-          );
-        })}
+        trayectoria.map(
+          ({ semestre, unidadesCurriculares, creditos, label }) => {
+            return (
+              <UnidadCurricularList
+                key={semestre}
+                unidadesCurriculares={unidadesCurriculares}
+                titulo={`${label} (${creditos} créditos)`}
+                type="creditos"
+              />
+            );
+          },
+        )}
     </section>
   );
 };
