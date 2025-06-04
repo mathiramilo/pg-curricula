@@ -1,6 +1,20 @@
-﻿# PG Curricula
+﻿<h1 align="center">
+  <img alt="logo" src="./frontend/public/fing.svg" width="96px" style="padding: 30px"/><br/>
+  PG Curricula
+</h1>
 
-Proyecto de Grado, curricula dinamica para estudiantes de ingenieria.
+<p align="center">
+Este proyecto busca ayudar a los estudiantes de ingeniería a planificar su avance académico de manera efectiva. Proporciona una herramienta web para gestionar las unidades curriculares, las previaturas y los grupos, y permite generar planes de estudio personalizados y actualizados automáticamente.
+</p>
+
+## Acerca de este README
+
+En este archivo encontrarás:
+
+- **Configuración del entorno de desarrollo**: instrucciones para crear los archivos de configuración y ejecutar el proyecto en un entorno local utilizando Docker.
+- **Generación de datos**: cómo generar y actualizar los archivos JSON necesarios mediante web scraping y comandos específicos.
+- **Scripts de scraping**: cómo ejecutar los scripts de scraping para obtener la información más reciente de las unidades curriculares, previaturas y grupos.
+- **Comandos útiles**: listado de comandos disponibles para el procesamiento de datos.
 
 ## Configuracion del entorno de desarrollo
 
