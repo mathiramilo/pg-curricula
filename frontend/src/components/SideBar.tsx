@@ -5,12 +5,12 @@ import { FEEDBACK_FORM_URL } from "@/config";
 import { RUTAS } from "@/router";
 import { cn } from "@/utils";
 import {
+  AcademicCapIcon,
+  BookIcon,
   Button,
+  CompassIcon,
   HomeIcon,
-  LoopIcon,
-  MenuIcon,
-  PathIcon,
-  ProgressIcon,
+  ListSearchIcon,
   SpeakerphoneIcon,
 } from ".";
 
@@ -32,7 +32,7 @@ const SideBarDesktop = ({
     {...props}
   >
     <nav className="flex flex-col gap-4">
-      <NavLink to={RUTAS.BASE}>
+      <NavLink to={RUTAS.INICIO}>
         {({ isActive }) => (
           <Button
             size="sm"
@@ -45,7 +45,8 @@ const SideBarDesktop = ({
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.BUSQUEDA}>
+
+      <NavLink to={RUTAS.BUSCAR_CURSOS}>
         {({ isActive }) => (
           <Button
             size="sm"
@@ -54,11 +55,12 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <LoopIcon /> Búsqueda
+            <ListSearchIcon /> Buscar Cursos
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.SIGUIENTE_SEMESTRE}>
+
+      <NavLink to={RUTAS.MI_PLAN}>
         {({ isActive }) => (
           <Button
             size="sm"
@@ -67,11 +69,12 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <MenuIcon /> Próximo Semestre
+            <CompassIcon /> Mi Plan
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.PLAN_CARRERA}>
+
+      <NavLink to={RUTAS.OFERTA_ACADEMICA}>
         {({ isActive }) => (
           <Button
             size="sm"
@@ -80,11 +83,12 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <PathIcon /> Plan de Carrera
+            <BookIcon /> Oferta Académica
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.PROGRESO}>
+
+      <NavLink to={RUTAS.RESUMEN_CARRERA}>
         {({ isActive }) => (
           <Button
             size="sm"
@@ -93,7 +97,7 @@ const SideBarDesktop = ({
               isActive && "bg-principal-400",
             )}
           >
-            <ProgressIcon /> Progreso
+            <AcademicCapIcon /> Resumen Carrera
           </Button>
         )}
       </NavLink>
@@ -125,44 +129,48 @@ const SideBarMobile = ({
   >
     <nav className="flex items-center justify-between gap-4">
       <NavLink
-        to={RUTAS.BASE}
+        to={RUTAS.INICIO}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
         <HomeIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.BUSQUEDA}
+        to={RUTAS.BUSCAR_CURSOS}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <LoopIcon className="size-6 text-white/90" />
+        <ListSearchIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.SIGUIENTE_SEMESTRE}
+        to={RUTAS.MI_PLAN}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <MenuIcon className="size-6 text-white/90" />
+        <CompassIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.PLAN_CARRERA}
+        to={RUTAS.OFERTA_ACADEMICA}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <PathIcon className="size-6 text-white/90" />
+        <BookIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.PROGRESO}
+        to={RUTAS.RESUMEN_CARRERA}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <ProgressIcon className="size-6 text-white/90" />
+        <AcademicCapIcon className="size-6 text-white/90" />
       </NavLink>
     </nav>
   </div>

@@ -19,12 +19,12 @@ const steps = [
   {
     title: "Selección aleatoria",
     description:
-      "Elegimos una combinación de unidades curriculares válidas que cumplen con los requisitos del título.",
+      "Elegimos una combinación de cursos válidos que cumplen con los requisitos del título.",
   },
   {
     title: "Organización por semestres",
     description:
-      "Ordenamos las materias respetando el máximo de créditos por semestre que configuraste.",
+      "Ordenamos los cursos respetando el máximo de créditos por semestre que configuraste.",
   },
   {
     title: "Optimización del tiempo",

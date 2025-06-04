@@ -1,12 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import {
-  BusquedaScreen,
+  BuscarCursosScreen,
   GrupoScreen,
   InicioScreen,
-  ProgresoScreen,
-  ProximoSemestreScreen,
-  TrayectoriaScreen,
+  MiPlanScreen,
+  OfertaAcademicaScreen,
+  ResumenCarreraScreen,
 } from "@/screens";
 import { RUTAS } from ".";
 
@@ -14,16 +14,21 @@ export const Router = () => {
   return (
     <Routes>
       <Route index element={<InicioScreen />} />
-      <Route path={RUTAS.BUSQUEDA} element={<BusquedaScreen />} />
-      <Route path={RUTAS.GRUPO} element={<GrupoScreen />} />
-      <Route path={RUTAS.PROGRESO} element={<ProgresoScreen />} />
-      <Route
-        path={RUTAS.SIGUIENTE_SEMESTRE}
-        element={<ProximoSemestreScreen />}
-      />
-      <Route path={RUTAS.PLAN_CARRERA} element={<TrayectoriaScreen />} />
 
-      <Route path="*" element={<Navigate to={RUTAS.BASE} />} />
+      <Route path={RUTAS.BUSCAR_CURSOS} element={<BuscarCursosScreen />} />
+
+      <Route path={RUTAS.MI_PLAN} element={<MiPlanScreen />} />
+
+      <Route
+        path={RUTAS.OFERTA_ACADEMICA}
+        element={<OfertaAcademicaScreen />}
+      />
+
+      <Route path={RUTAS.RESUMEN_CARRERA} element={<ResumenCarreraScreen />} />
+
+      <Route path={RUTAS.GRUPO} element={<GrupoScreen />} />
+
+      <Route path="*" element={<Navigate to={RUTAS.INICIO} />} />
     </Routes>
   );
 };

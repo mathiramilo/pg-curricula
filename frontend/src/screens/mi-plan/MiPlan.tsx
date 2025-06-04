@@ -4,12 +4,12 @@ import { useGeneratePlan } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
 import type { SemestreDeDictado } from "@/models";
 import { SEMESTRE_DE_DICTADO } from "@/models";
-import { ContentTrayectoria } from "./ContentTrayectoria";
-import { HeaderTrayectoria } from "./HeaderTrayectoria";
+import { ContentMiPlan } from "./ContentMiPlan";
+import { HeaderMiPlan } from "./HeaderMiPlan";
 
-const CREDITOS_POR_SEMESTRE_DEFAULT = "45";
+const CREDITOS_POR_SEMESTRE_DEFAULT = "40";
 
-export const TrayectoriaScreen = () => {
+export const MiPlanScreen = () => {
   const [creditos, setCreditos] = useState(CREDITOS_POR_SEMESTRE_DEFAULT);
   const [semestreInicial, setSemestreInicial] = useState<SemestreDeDictado>(
     SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
@@ -29,7 +29,7 @@ export const TrayectoriaScreen = () => {
 
   return (
     <ScreenLayout>
-      <HeaderTrayectoria
+      <HeaderMiPlan
         creditos={creditos}
         semestreInicial={semestreInicial}
         trayectoria={data}
@@ -38,7 +38,7 @@ export const TrayectoriaScreen = () => {
         onGenerate={handleGenerate}
         onDownload={handleDownload}
       />
-      <ContentTrayectoria
+      <ContentMiPlan
         trayectoria={data}
         isLoading={isLoading}
         isSuccess={isSuccess}

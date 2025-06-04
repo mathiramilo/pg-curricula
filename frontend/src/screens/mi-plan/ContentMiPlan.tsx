@@ -4,19 +4,19 @@ import { EmptyState, ErrorState, UnidadCurricularList } from "@/components";
 import type { ScheduleObject } from "@/models";
 import { TrayectoriaSugeridaLoading } from "../inicio/TrayectoriaSugeridaLoading";
 
-interface ContentTrayectoriaProps {
+interface ContentMiPlanProps {
   trayectoria?: ScheduleObject[];
   isLoading: boolean;
   isSuccess: boolean;
   isError: boolean;
 }
 
-export const ContentTrayectoria = ({
+export const ContentMiPlan = ({
   trayectoria,
   isLoading,
   isSuccess,
   isError,
-}: ContentTrayectoriaProps) => {
+}: ContentMiPlanProps) => {
   if (isLoading) {
     return <TrayectoriaSugeridaLoading />;
   }
@@ -27,7 +27,7 @@ export const ContentTrayectoria = ({
 
   if (!trayectoria?.length) {
     return (
-      <EmptyState message="Selecciona la cantidad de créditos por semestre y clickea en generar plan para poder visualizar tu plan personalizado" />
+      <EmptyState message='Selecciona la cantidad de créditos por semestre y clickea en "Generar Plan" para poder visualizar tu plan personalizado' />
     );
   }
 

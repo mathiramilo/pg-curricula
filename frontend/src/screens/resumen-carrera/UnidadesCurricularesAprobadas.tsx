@@ -26,7 +26,7 @@ export const UnidadesCurricularesAprobadas = () => {
   if (isSuccess && data.data.length > 0) {
     return (
       <MemoizedUnidadCurricularGrid
-        titulo="Unidades curriculares aprobadas"
+        titulo="Cursos aprobados"
         unidadesCurriculares={data.data}
         rightElement={
           <Pagination

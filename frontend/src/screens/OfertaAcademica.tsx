@@ -13,7 +13,7 @@ import { useBoolean, useUnidadesCurriculares } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
 import { obtenerSemestreActual } from "@/utils";
 
-export const ProximoSemestreScreen = () => {
+export const OfertaAcademicaScreen = () => {
   const { value: soloHabilitadas, setValue: setSoloHabilitadas } =
     useBoolean(false);
 
@@ -31,12 +31,15 @@ export const ProximoSemestreScreen = () => {
 
   return (
     <ScreenLayout>
-      <ScreenHeader title="Próximo Semestre">
+      <ScreenHeader
+        title="Oferta Académica"
+        description="Consulta los cursos disponibles para el próximo semestre. Puedes filtrar por los que estás habilitado a cursar."
+      >
         <SwitchField
           id="solo-habilitadas"
           checked={soloHabilitadas}
           onCheckedChange={setSoloHabilitadas}
-          label="Mostrar solamente habilitadas"
+          label="Mostrar solamente habilitados"
         />
       </ScreenHeader>
 
@@ -50,7 +53,7 @@ export const ProximoSemestreScreen = () => {
 
       {isSuccess && data.data.length > 0 && (
         <MemoizedUnidadCurricularGrid
-          titulo="Listado de unidades curriculares"
+          titulo="Cursos disponibles"
           unidadesCurriculares={data.data}
           rightElement={
             <Pagination

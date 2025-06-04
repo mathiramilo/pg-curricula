@@ -16,7 +16,7 @@ import {
   SEMESTRE_INICIAL_OPTIONS,
 } from "@/models";
 
-interface HeaderTrayectoriaProps {
+interface HeaderMiPlanProps {
   creditos: string;
   semestreInicial: SemestreDeDictado;
   trayectoria?: ScheduleObject[];
@@ -26,7 +26,7 @@ interface HeaderTrayectoriaProps {
   onDownload: () => void;
 }
 
-export const HeaderTrayectoria = ({
+export const HeaderMiPlan = ({
   creditos,
   semestreInicial,
   trayectoria,
@@ -34,7 +34,7 @@ export const HeaderTrayectoria = ({
   setSemestreInicial,
   onGenerate,
   onDownload,
-}: HeaderTrayectoriaProps) => {
+}: HeaderMiPlanProps) => {
   const {
     value: show,
     setTrue: openModal,
@@ -45,6 +45,7 @@ export const HeaderTrayectoria = ({
     <>
       <ScreenHeader
         title="Generar Plan de Carrera"
+        description="Solicita un plan de carrera personalizado basado en tus créditos y semestre inicial. Puedes descargar el plan una vez generado."
         rightElement={
           <Button variant="outline" onClick={openModal}>
             <InfoCircleIcon />
@@ -65,7 +66,7 @@ export const HeaderTrayectoria = ({
             />
 
             <SelectField
-              label="Semestre inicial:"
+              label="Semestre de inicio:"
               options={SEMESTRE_INICIAL_OPTIONS}
               value={semestreInicial}
               onValueChange={setSemestreInicial}
