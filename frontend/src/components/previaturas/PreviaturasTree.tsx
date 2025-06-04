@@ -22,7 +22,7 @@ function ruleLabel(rule: ReglaPreviaturas): string {
     case "UC":
       return `${rule.tipoInstancia === "C" ? "Curso" : "Examen"}: ${rule.codigo} – ${capitalizeWords(rule.nombre)}`;
     case "CREDITOS_GRUPO":
-      return `${rule.cantidad} créditos del grupo ${capitalizeWords(rule.nombre)}`;
+      return `${rule.cantidad} créditos en el grupo ${capitalizeWords(rule.nombre)}`;
     case "CREDITOS_PLAN":
       return `${rule.cantidad} créditos en la carrera`;
     default:

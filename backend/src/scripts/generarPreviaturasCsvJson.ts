@@ -195,7 +195,7 @@ const generarRegla = (
         : [];
       return {
         regla: TIPO_REGLA.SOME,
-        cantidad,
+        cantidad: cantidad!,
         previas: BPrevs.map((prev) =>
           generarRegla(prev, previasDeTipoB, previasFormateadas)
         ),
@@ -204,23 +204,23 @@ const generarRegla = (
     case TIPO_PREVIA.M || TIPO_PREVIA.N: {
       return {
         regla: TIPO_REGLA.UC,
-        codigo: codigoEnServicioPrevia,
-        nombre: nombrePrevia,
-        tipoInstancia,
+        codigo: codigoEnServicioPrevia!,
+        nombre: nombrePrevia!,
+        tipoInstancia: tipoInstancia!,
       };
     }
     case TIPO_PREVIA.D: {
       return {
         regla: TIPO_REGLA.CREDITOS_GRUPO,
-        codigo: codigoGrupo,
-        nombre: nombreGrupo,
-        cantidad: cantidadCreditos,
+        codigo: codigoGrupo!,
+        nombre: nombreGrupo!,
+        cantidad: cantidadCreditos!,
       };
     }
     case TIPO_PREVIA.R: {
       return {
         regla: TIPO_REGLA.CREDITOS_PLAN,
-        cantidad: cantidadCreditos,
+        cantidad: cantidadCreditos!,
       };
     }
     default: {

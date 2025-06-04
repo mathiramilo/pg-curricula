@@ -5,12 +5,12 @@ import { FEEDBACK_FORM_URL } from "@/config";
 import { RUTAS } from "@/router";
 import { cn } from "@/utils";
 import {
+  AcademicCapIcon,
+  BookIcon,
   Button,
+  CompassIcon,
   HomeIcon,
-  LoopIcon,
-  MenuIcon,
-  PathIcon,
-  ProgressIcon,
+  ListSearchIcon,
   SpeakerphoneIcon,
 } from ".";
 
@@ -32,12 +32,12 @@ const SideBarDesktop = ({
     {...props}
   >
     <nav className="flex flex-col gap-4">
-      <NavLink to={RUTAS.BASE}>
+      <NavLink to={RUTAS.INICIO}>
         {({ isActive }) => (
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
@@ -45,55 +45,59 @@ const SideBarDesktop = ({
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.BUSQUEDA}>
+
+      <NavLink to={RUTAS.BUSCAR_CURSOS}>
         {({ isActive }) => (
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
-            <LoopIcon /> Busqueda
+            <ListSearchIcon /> Buscar Cursos
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.SIGUIENTE_SEMESTRE}>
+
+      <NavLink to={RUTAS.MI_PLAN}>
         {({ isActive }) => (
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
-            <MenuIcon /> Semestre
+            <CompassIcon /> Mi Plan
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.TRAYECTORIA}>
+
+      <NavLink to={RUTAS.OFERTA_ACADEMICA}>
         {({ isActive }) => (
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
-            <PathIcon /> Trayectoria
+            <BookIcon /> Oferta Académica
           </Button>
         )}
       </NavLink>
-      <NavLink to={RUTAS.PROGRESO}>
+
+      <NavLink to={RUTAS.RESUMEN_CARRERA}>
         {({ isActive }) => (
           <Button
             size="sm"
             className={cn(
-              "w-full justify-start pr-12 text-white/90 hover:bg-principal-400",
+              "w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400",
               isActive && "bg-principal-400",
             )}
           >
-            <ProgressIcon /> Progreso
+            <AcademicCapIcon /> Resumen Carrera
           </Button>
         )}
       </NavLink>
@@ -103,7 +107,7 @@ const SideBarDesktop = ({
       <a href={FEEDBACK_FORM_URL} target="_blank" rel="noreferrer">
         <Button
           size="sm"
-          className="w-full justify-start pr-12 text-white/90 hover:bg-principal-400"
+          className="w-full justify-start pr-12 text-white/90 enabled:hover:bg-principal-400"
         >
           <SpeakerphoneIcon /> Feedback
         </Button>
@@ -118,51 +122,55 @@ const SideBarMobile = ({
 }: ComponentPropsWithoutRef<"div">) => (
   <div
     className={cn(
-      "fixed bottom-4 inset-x-4 bg-principal py-4 px-12 z-50 rounded-xl",
+      "fixed bottom-4 inset-x-4 bg-principal py-4 px-6 z-50 rounded-xl",
       className,
     )}
     {...props}
   >
     <nav className="flex items-center justify-between gap-4">
       <NavLink
-        to={RUTAS.BASE}
+        to={RUTAS.INICIO}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
         <HomeIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.BUSQUEDA}
+        to={RUTAS.BUSCAR_CURSOS}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <LoopIcon className="size-6 text-white/90" />
+        <ListSearchIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.SIGUIENTE_SEMESTRE}
+        to={RUTAS.MI_PLAN}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <MenuIcon className="size-6 text-white/90" />
+        <CompassIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.TRAYECTORIA}
+        to={RUTAS.OFERTA_ACADEMICA}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <PathIcon className="size-6 text-white/90" />
+        <BookIcon className="size-6 text-white/90" />
       </NavLink>
+
       <NavLink
-        to={RUTAS.PROGRESO}
+        to={RUTAS.RESUMEN_CARRERA}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
       >
-        <ProgressIcon className="size-6 text-white/90" />
+        <AcademicCapIcon className="size-6 text-white/90" />
       </NavLink>
     </nav>
   </div>

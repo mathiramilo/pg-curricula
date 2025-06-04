@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    env_file:
+      - ./backend/.env.prod
+    depends_on:
+      - processor-scraper
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    env_file:
+      - ./frontend/.env.prod
+    depends_on:
+      - backend
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: unless-stopped
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: >
+      sh -c "trap exit TERM;
+        while :; do
+          certbot certonly --webroot \
+            --webroot-path=/var/www/certbot \
+            --email mathiramilo2290@gmail.com \
+            --agree-tos \
+            --no-eff-email \
+            -d pg-curricula.web.elasticloud.uy;
+          sleep 12h;
+        done"
+    restart: unless-stopped
+
+  processor-scraper:
+    build:
+      context: ./processor-scraper
+      dockerfile: Dockerfile.prod
+    ports:
+      - '8000:8000'
+    restart: unless-stopped

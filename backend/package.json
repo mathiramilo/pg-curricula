@@ -1,7 +1,6 @@
 {
   "name": "pg-curricula-backend",
   "version": "1.0.0",
-  "description": "Backend para el proyecto de grado curricula",
   "main": "server.js",
   "engines": {
     "pnpm": ">=9.0.0"
@@ -13,6 +12,7 @@
     "test": "jest",
     "format": "npx eslint . --fix",
     "lint": "npx eslint .",
+    "type-check": "tsc --noEmit",
     "generate:previaturas": "cd src/scripts && ts-node generarPreviaturasJson.ts",
     "generate:unidades-curriculares": "cd src/scripts && ts-node generarUnidadesCurricularesJson.ts",
     "generate:ucs-grupos": "cd src/scripts && ts-node generarUCsGruposJson.ts",

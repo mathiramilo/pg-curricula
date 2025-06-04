@@ -18,8 +18,11 @@ export const HeaderInicio = () => {
   );
 
   return (
-    <ScreenHeader title="Progreso de Carrera">
-      <div className="sm:w-[calc(100vw-230px)] flex flex-col gap-2">
+    <ScreenHeader
+      title="Progreso de Carrera"
+      description='Visualiza tu avance académico, marca tus cursos aprobados y planifica tu carrera. Sube tu escolaridad como punto de partida usando la opción "Cargar Progreso".'
+    >
+      <div className="sm:w-[calc(100vw-290px)] flex flex-col gap-2">
         <TotalProgress />
 
         <div className="flex items-center justify-between gap-x-6 gap-y-1">
@@ -34,7 +37,7 @@ export const HeaderInicio = () => {
           </div>
 
           <Button asChild variant="link" className="px-0">
-            <Link to={RUTAS.PROGRESO}>
+            <Link to={RUTAS.RESUMEN_CARRERA}>
               Ver Todo
               <ChevronRightIcon className="text-principal" />
             </Link>

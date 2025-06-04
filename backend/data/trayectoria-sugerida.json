@@ -69,7 +69,7 @@
     "unidadesCurriculares": [
       {
         "codigo": "1716",
-        "nombre": "INTRODUCCIÓN A LA INGENIERÍA DE SOFTWARE"
+        "nombre": "INT. A LA INGENIERIA DE SOFTWARE"
       },
       { "codigo": "1354", "nombre": "PROGRAMACIÓN FUNCIONAL" },
       { "codigo": "1340", "nombre": "PROGRAMACIÓN LÓGICA" },

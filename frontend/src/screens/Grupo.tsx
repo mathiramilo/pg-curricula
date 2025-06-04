@@ -34,12 +34,15 @@ export const GrupoScreen = () => {
 
   return (
     <ScreenLayout>
-      <ScreenHeader title={title}>
+      <ScreenHeader
+        title={title}
+        description="Consulta los cursos disponibles para el grupo seleccionado. Puedes filtrar por los que estás habilitado a cursar."
+      >
         <SwitchField
           id="solo-habilitadas"
           checked={soloHabilitadas}
           onCheckedChange={setSoloHabilitadas}
-          label="Mostrar solamente habilitadas"
+          label="Mostrar solamente habilitados"
         />
       </ScreenHeader>
 
@@ -53,7 +56,7 @@ export const GrupoScreen = () => {
 
       {isSuccess && data.data.length > 0 && (
         <MemoizedUnidadCurricularGrid
-          titulo="Listado de unidades curriculares"
+          titulo="Cursos disponibles"
           unidadesCurriculares={data.data}
           rightElement={
             <Pagination

@@ -1,39 +1,41 @@
+version: '3.8'
+
 services:
   backend:
     build: ./backend
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-      - /app/dist
-    working_dir: /app
     env_file:
       - ./backend/.env
     depends_on:
       - processor-scraper
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - /app/dist
+    ports:
+      - '3000:3000'
     restart: unless-stopped
 
   frontend:
     build: ./frontend
-    ports:
-      - '5173:5173'
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/dist
-    working_dir: /app
     env_file:
       - ./frontend/.env
     depends_on:
       - backend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/dist
+    ports:
+      - '5173:5173'
     restart: unless-stopped
 
   processor-scraper:
     build: ./processor-scraper
-    ports:
-      - '8000:8000'
+    working_dir: /app
     volumes:
       - ./processor-scraper:/app
-    working_dir: /app
+    ports:
+      - '8000:8000'
     restart: unless-stopped

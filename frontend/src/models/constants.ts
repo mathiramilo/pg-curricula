@@ -64,3 +64,57 @@ export const REQUISITOS_TITULO = {
   [GRUPO.CIENCIAS_HUMANAS_Y_SOCIALES]: 10,
   [GRUPO.MATERIAS_OPCIONALES]: 0,
 };
+
+export const CREDITOS_POR_SEMESTRE_OPTIONS = [
+  {
+    label: "20",
+    value: "20",
+  },
+  {
+    label: "25",
+    value: "25",
+  },
+  {
+    label: "30",
+    value: "30",
+  },
+  {
+    label: "35",
+    value: "35",
+  },
+  {
+    label: "40",
+    value: "40",
+  },
+  {
+    label: "45",
+    value: "45",
+  },
+  {
+    label: "50",
+    value: "50",
+  },
+  {
+    label: "55",
+    value: "55",
+  },
+  {
+    label: "60",
+    value: "60",
+  },
+  {
+    label: "Sin Limite",
+    value: "100",
+  },
+];
+
+export const SEMESTRE_INICIAL_OPTIONS = [
+  {
+    label: "Primer semestre",
+    value: SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
+  },
+  {
+    label: "Segundo semestre",
+    value: SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE,
+  },
+];

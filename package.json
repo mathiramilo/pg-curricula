@@ -1,0 +1,16 @@
+{
+  "name": "pg-curricula",
+  "version": "1.0.0",
+  "description": "Proyecto de grado, curricula dinamica para estudiantes de ingenieria.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "docker:dev": "docker-compose up --build -d",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up --build -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

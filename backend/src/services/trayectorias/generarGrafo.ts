@@ -24,8 +24,8 @@ export const generarGrafo = (
 ): Graph => {
   const grafo = new Graph();
 
-  grafo.addNode(NOMBRE_NODO_INICIO, true, false);
-  grafo.addNode(NOMBRE_NODO_FIN, false, true);
+  grafo.addNode({ id: NOMBRE_NODO_INICIO, isInitial: true, isFinal: false });
+  grafo.addNode({ id: NOMBRE_NODO_FIN, isInitial: false, isFinal: true });
 
   let listadoUCsFaltantes: UnidadCurricular[] = [];
   let listadoUCsPrevias: UnidadCurricular[] = [];
@@ -37,9 +37,13 @@ export const generarGrafo = (
 
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
 
-      grafo.addNode(uc.codigo);
+      grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
       grafo.addEdge(NOMBRE_NODO_INICIO, uc.codigo, valorArista);
-      grafo.addEdge(uc.codigo, NOMBRE_NODO_FIN, 1); // TODO: Revisar como obtener la duracion de una unidad curricular (podriamos poner a todas 1 y proyecto de grado 2)
+      grafo.addEdge(
+        uc.codigo,
+        NOMBRE_NODO_FIN,
+        ucsAnuales.includes(uc.codigo) ? 2 : 1
+      );
 
       listadoUCsPrevias.push(uc);
     } else {
@@ -55,48 +59,56 @@ export const generarGrafo = (
     );
   });
 
+  const listadoUCsSinPrevias: UnidadCurricular[] = [];
+
+  //? De aca en adelante no se utiliza mas, que debemos hacer? (Creemos que solo es necesario para el valor de las aristas salientes del nodo inicial)
   semestreActual = obtenerSiguienteSemestre(semestreActual);
 
-  let listadoUCsPreviasAux = [...listadoUCsPrevias];
-
   while (listadoUCsFaltantes.length > 0) {
-    listadoUCsPrevias = [];
-
     for (const uc of listadoUCsFaltantes) {
       if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
-        let codigosUCsPrevias = [];
+        let codigosUCsPrevias: string[] = [];
 
         obtenerCodigosUCsPrevias(previaturas[uc.codigo], codigosUCsPrevias);
         codigosUCsPrevias = codigosUCsPrevias.filter((codigoUC) =>
-          listadoUCsPreviasAux.find((ucPrevia) => ucPrevia.codigo === codigoUC)
+          listadoUCsPrevias.find((ucPrevia) => ucPrevia.codigo === codigoUC)
         );
 
-        grafo.addNode(uc.codigo);
+        //* Si tiene previas en el grafo, se conecta con ellas. Caso contrario, se agrega al pool de UCs sin previas
+        if (codigosUCsPrevias.length > 0) {
+          grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
 
-        codigosUCsPrevias.forEach((codigoUC) => {
-          const ucPrevia = listadoUCsPreviasAux.find(
-            (ucPrevia) => ucPrevia.codigo === codigoUC
+          codigosUCsPrevias.forEach((codigoUC) => {
+            const ucPrevia = listadoUCsPrevias.find(
+              (ucPrevia) => ucPrevia.codigo === codigoUC
+            );
+            const valorArista = calcularValorArista(
+              ucPrevia?.semestres!,
+              uc.semestres!
+            );
+
+            grafo.addEdge(codigoUC, uc.codigo, valorArista);
+          });
+
+          grafo.addEdge(
+            uc.codigo,
+            NOMBRE_NODO_FIN,
+            ucsAnuales.includes(uc.codigo) ? 2 : 1
           );
-          const valorArista = calcularValorArista(
-            ucPrevia?.semestres!,
-            uc.semestres! // Ya nos aseguramos de que semestres no sea null en el paso anterior
-          );
 
-          grafo.addEdge(codigoUC, uc.codigo, valorArista);
-        });
-
-        grafo.addEdge(
-          uc.codigo,
-          NOMBRE_NODO_FIN,
-          ucsAnuales.includes(uc.codigo) ? 2 : 1
-        );
-
-        listadoUCsPrevias.push(uc);
+          listadoUCsPrevias.push(uc);
+        } else {
+          grafo.addUnidadCurricularSinPrevias(uc);
+          listadoUCsSinPrevias.push(uc);
+        }
       }
     }
 
     listadoUCsFaltantes = listadoUCsFaltantes.filter(
-      (uc) => !listadoUCsPrevias.includes(uc)
+      (uc) =>
+        !listadoUCsPrevias.includes(uc) &&
+        !listadoUCsSinPrevias.includes(uc) &&
+        !grafo.getUnidadesCurricularesSinPrevias().includes(uc)
     );
 
     listadoUCsPrevias.forEach((uc) => {
@@ -107,7 +119,13 @@ export const generarGrafo = (
       );
     });
 
-    listadoUCsPreviasAux = [...listadoUCsPrevias];
+    listadoUCsSinPrevias.forEach((uc) => {
+      actualizarInformacionEstudiante(
+        informacionEstudiante,
+        uc,
+        uc.nombreGrupoHijo
+      );
+    });
   }
 
   return grafo;

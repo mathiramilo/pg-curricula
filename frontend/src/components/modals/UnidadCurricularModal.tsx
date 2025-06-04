@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import {
   Button,
   Card,
@@ -6,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -32,9 +35,7 @@ export const UnidadCurricularModal = () => {
             {unidadCurricular.codigo} -{" "}
             {capitalizeWords(unidadCurricular.nombre)}
           </DialogTitle>
-          <DialogDescription>
-            Información de la unidad curricular
-          </DialogDescription>
+          <DialogDescription>Información del curso</DialogDescription>
         </DialogHeader>
 
         <Card>
@@ -48,8 +49,15 @@ export const UnidadCurricularModal = () => {
               {unidadCurricular.creditos}
             </CardDetail>
             <CardDetail>
-              <strong className="font-medium">Grupo:</strong>{" "}
-              {capitalizeWords(unidadCurricular.nombreGrupoHijo)}
+              <DialogClose asChild>
+                <Link
+                  to={`/grupo/${unidadCurricular.nombreGrupoHijo.toLowerCase()}`}
+                  className="hover:underline"
+                >
+                  <strong className="font-medium">Grupo:</strong>{" "}
+                  {capitalizeWords(unidadCurricular.nombreGrupoHijo)}
+                </Link>
+              </DialogClose>
             </CardDetail>
             <CardDetail>
               <strong className="font-medium">Semestre:</strong>{" "}

@@ -19,7 +19,7 @@ export const TrayectoriaSugerida = () => {
     return <TrayectoriaSugeridaLoading />;
   }
 
-  if (isError) {
+  if (isError || !trayectoriaSugerida) {
     return <ErrorState className="mt-8" />;
   }
 

@@ -12,6 +12,14 @@ export const actualizarInformacionEstudiante = (
   unidadCurricular: UnidadCurricular,
   grupo: GrupoHijo
 ): void => {
+  if (
+    Object.hasOwn(
+      informacionEstudiante.unidadesCurricularesAprobadas,
+      unidadCurricular.codigo
+    )
+  )
+    return;
+
   informacionEstudiante.unidadesCurricularesAprobadas[unidadCurricular.codigo] =
     {
       codigo: unidadCurricular.codigo,
@@ -37,8 +45,13 @@ export const calcularValorArista = (
   semestresPrevias: SemestreDeDictado[],
   semestresActuales: SemestreDeDictado[]
 ) => {
-  if (semestresActuales.length === 2 || semestresPrevias.length === 2) {
+  if (semestresActuales.length === 2) {
     return 1;
+  }
+
+  //! REVIEW: Esta informacion no la tenemos en este punto, recien la tenemos al momento de asignar unidades curriculares a semestres
+  if (semestresPrevias.length === 2 && semestresActuales.length === 1) {
+    return 3;
   }
 
   if (semestresActuales[0] === semestresPrevias[0]) {
@@ -46,4 +59,31 @@ export const calcularValorArista = (
   } else {
     return 1;
   }
+};
+
+export const seDictaEsteSemestre = (
+  semestreActual: number,
+  semestres: SemestreDeDictado[]
+) => {
+  if (!semestres.length) return false;
+  if (semestres.length === 2) return true;
+
+  const esImpar = semestreActual % 2 === 1;
+  const esPar = semestreActual % 2 === 0;
+
+  if (semestres[0] === SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE && esImpar)
+    return true;
+  if (semestres[0] === SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE && esPar)
+    return true;
+
+  return false;
+};
+
+export const getInitialYear = (initialSemester: SemestreDeDictado) => {
+  const actualMonth = new Date().getMonth() + 1;
+  const initialYear =
+    new Date().getFullYear() +
+    (initialSemester === '1' && actualMonth >= 5 && actualMonth <= 9 ? 1 : 0);
+
+  return initialYear;
 };

@@ -62,27 +62,27 @@ export const capitalizeWords = (text: string): string => {
 export const getSemestreTitle = (semestre: number | null) => {
   switch (semestre) {
     case 1:
-      return "Primer Semestre";
+      return "Primer semestre";
     case 2:
-      return "Segundo Semestre";
+      return "Segundo semestre";
     case 3:
-      return "Tercer Semestre";
+      return "Tercer semestre";
     case 4:
-      return "Cuarto Semestre";
+      return "Cuarto semestre";
     case 5:
-      return "Quinto Semestre";
+      return "Quinto semestre";
     case 6:
-      return "Sexto Semestre";
+      return "Sexto semestre";
     case 7:
-      return "Séptimo Semestre";
+      return "Séptimo semestre";
     case 8:
-      return "Octavo Semestre";
+      return "Octavo semestre";
     case 9:
-      return "Noveno Semestre";
+      return "Noveno semestre";
     case 10:
-      return "Décimo Semestre";
+      return "Décimo semestre";
     default:
-      return "Materias Opcionales";
+      return "Cursos opcionales";
   }
 };
 

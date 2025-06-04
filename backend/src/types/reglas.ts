@@ -15,24 +15,24 @@ export type ReglaPreviaturas =
     }
   | {
       regla: typeof TIPO_REGLA.SOME;
-      cantidad: number | null;
+      cantidad: number;
       previas: ReglaPreviaturas[];
     }
   | {
       regla: typeof TIPO_REGLA.UC;
-      codigo: string | null;
-      nombre: string | null;
-      tipoInstancia: TipoInstancia | null;
+      codigo: string;
+      nombre: string;
+      tipoInstancia: TipoInstancia;
     }
   | {
       regla: typeof TIPO_REGLA.CREDITOS_GRUPO;
-      codigo: number | null;
-      nombre: string | null;
-      cantidad: number | null;
+      codigo: number;
+      nombre: string;
+      cantidad: number;
     }
   | {
       regla: typeof TIPO_REGLA.CREDITOS_PLAN;
-      cantidad: number | null;
+      cantidad: number;
     }
   | undefined;
 
