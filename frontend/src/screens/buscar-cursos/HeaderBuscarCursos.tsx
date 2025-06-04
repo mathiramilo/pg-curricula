@@ -16,7 +16,7 @@ import { MAX_CREDITOS, MIN_CREDITOS, useBusquedaContext } from "@/contexts";
 import { GRUPO_VALUES, SEMESTRE_DE_DICTADO } from "@/models";
 import { capitalizeWords } from "@/utils";
 
-export const HeaderBusqueda = () => {
+export const HeaderBuscarCursos = () => {
   const {
     query,
     grupo,
@@ -33,7 +33,8 @@ export const HeaderBusqueda = () => {
 
   return (
     <ScreenHeader
-      title="Búsqueda"
+      title="Buscar Cursos"
+      description="Busca cursos por nombre, grupo, créditos, habilitación y semestre de dictado."
       rightElement={
         <Button variant="outline" onClick={clearFilters}>
           <FilterMinusIcon />
@@ -44,7 +45,7 @@ export const HeaderBusqueda = () => {
       <Input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Ingresa el nombre de la UC"
+        placeholder="Ingresa el nombre del curso"
       />
 
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-8">
@@ -77,7 +78,7 @@ export const HeaderBusqueda = () => {
           id="solo-habilitadas"
           checked={soloHabilitadas}
           onCheckedChange={setSoloHabilitadas}
-          label="Mostrar solamente habilitadas"
+          label="Mostrar solamente habilitados"
         />
       </div>
 

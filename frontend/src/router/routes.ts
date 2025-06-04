@@ -1,8 +1,8 @@
 export const RUTAS = {
-  BASE: "/",
-  BUSQUEDA: "/busqueda",
-  PLAN_CARRERA: "/plan-carrera",
-  SIGUIENTE_SEMESTRE: "/siguiente-semestre",
-  PROGRESO: "/progreso",
+  INICIO: "/",
+  BUSCAR_CURSOS: "/buscar-cursos",
+  MI_PLAN: "/mi-plan",
+  OFERTA_ACADEMICA: "/oferta-academica",
+  RESUMEN_CARRERA: "/resumen-carrera",
   GRUPO: "/grupo/:slug",
 };

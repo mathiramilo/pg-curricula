@@ -14,8 +14,6 @@ import {
 } from '../utils';
 import { cumplePrevias } from '../services';
 
-const MAX_CREDITS_DEFAULT = 45;
-
 export type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 
 export interface Edge {
@@ -254,13 +252,6 @@ export class Graph {
       }
     }
 
-    // Debug
-    // console.log('Duracion minima:', minimalDuration);
-    // console.log('Tiempos de inicio más temprano:', ES);
-    // console.log('Tiempos de inicio más tardío:', LS);
-    // console.log('Holgura:', slack);
-    // console.log('Camino crítico:', criticalPath);
-
     return {
       minimalDuration,
       ES,
@@ -272,7 +263,7 @@ export class Graph {
 
   public schedule(
     initialSemester: SemestreDeDictado,
-    maxCredits: number = MAX_CREDITS_DEFAULT,
+    maxCredits: number,
     informacionEstudiante: InformacionEstudiante
   ): ScheduleObject[] | boolean {
     const MAX_CREDITS_THRESHOLD = 1.12;
@@ -291,7 +282,11 @@ export class Graph {
     let creditsNextSemester = 0;
     let ucNextSemester: UnidadCurricular | null = null;
 
-    while (ES.size > 0 || this.getUnidadesCurricularesSinPrevias().length > 0) {
+    while (
+      ES.size > 0 ||
+      this.getUnidadesCurricularesSinPrevias().length > 0 ||
+      creditsNextSemester > 0
+    ) {
       // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
       const available = Array.from(ES.entries())
         .filter(([_, es]) => es <= semester - 1)
@@ -306,7 +301,7 @@ export class Graph {
         semestre: semester,
         unidadesCurriculares: [],
         creditos: 0,
-        label: `${semester % 2 === 1 ? '1er' : '2do'} Semestre ${actualYear}`,
+        label: `${semester % 2 === 1 ? '1er' : '2do'} semestre ${actualYear}`,
       };
 
       const remaining = [...available];
@@ -325,8 +320,14 @@ export class Graph {
         const nodeObject = this.nodes.get(node.id);
         const unidadCurricular = nodeObject!.unidadCurricular!;
 
-        // Si la unidad curricular no se dicta este semestre, se salta a la siguiente
-        if (!seDictaEsteSemestre(semester, unidadCurricular.semestres!)) {
+        // Si la unidad curricular no se dicta en el semestre actual o no cumple con las previas, se salta a la siguiente
+        if (
+          !seDictaEsteSemestre(semester, unidadCurricular.semestres!) ||
+          !cumplePrevias(
+            informacionEstudiante,
+            previaturas[unidadCurricular.codigo]
+          )
+        ) {
           continue;
         }
 
@@ -420,7 +421,7 @@ export class Graph {
 
   public scheduleFinal(
     initialSemester: SemestreDeDictado,
-    maxCredits: number = MAX_CREDITS_DEFAULT,
+    maxCredits: number,
     informacionEstudiante: InformacionEstudiante
   ) {
     let plan = this.schedule(

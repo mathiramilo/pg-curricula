@@ -1,4 +1,4 @@
-export * from './escolaridad.routes';
+export * from './escolaridades.routes';
 export * from './planes.routes';
-export * from './previas.routes';
+export * from './previaturas.routes';
 export * from './unidadesCurriculares.routes';

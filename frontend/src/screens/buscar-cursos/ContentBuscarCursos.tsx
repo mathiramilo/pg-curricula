@@ -10,7 +10,7 @@ import {
 import { useBusquedaContext } from "@/contexts";
 import { useUnidadesCurriculares } from "@/hooks";
 
-export const ContentBusqueda = () => {
+export const ContentBuscarCursos = () => {
   const {
     debouncedQuery,
     grupo,
@@ -64,7 +64,7 @@ export const ContentBusqueda = () => {
 
   return (
     <MemoizedUnidadCurricularGrid
-      titulo="Resultados"
+      titulo="Resultados de la búsqueda"
       unidadesCurriculares={unidadesCurriculares}
       rightElement={
         <Pagination

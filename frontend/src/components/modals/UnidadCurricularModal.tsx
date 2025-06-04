@@ -35,9 +35,7 @@ export const UnidadCurricularModal = () => {
             {unidadCurricular.codigo} -{" "}
             {capitalizeWords(unidadCurricular.nombre)}
           </DialogTitle>
-          <DialogDescription>
-            Información de la unidad curricular
-          </DialogDescription>
+          <DialogDescription>Información del curso</DialogDescription>
         </DialogHeader>
 
         <Card>
