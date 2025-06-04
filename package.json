@@ -1,6 +1,6 @@
 {
   "name": "pg-curricula",
-  "version": "0.1.0-beta",
+  "version": "1.0.0",
   "description": "Proyecto de grado, curricula dinamica para estudiantes de ingenieria.",
   "main": "index.js",
   "scripts": {

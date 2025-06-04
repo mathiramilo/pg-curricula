@@ -1,6 +1,6 @@
 {
   "name": "pg-curricula-backend",
-  "version": "0.1.0-beta",
+  "version": "1.0.0",
   "main": "server.js",
   "engines": {
     "pnpm": ">=9.0.0"
