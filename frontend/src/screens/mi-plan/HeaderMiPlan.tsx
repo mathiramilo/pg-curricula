@@ -18,6 +18,8 @@ import {
 } from "@/models";
 import { useMiPlanStore } from "@/store";
 
+const PDF_FILE_NAME = "plan-carrera-computacion.pdf";
+
 interface HeaderMiPlanProps {
   onGenerate: () => void;
 }
@@ -79,7 +81,7 @@ export const HeaderMiPlan = ({ onGenerate }: HeaderMiPlanProps) => {
 
             <PDFDownloadLink
               document={<PlanPdf plan={plan} />}
-              fileName="plan-carrera-computacion.pdf"
+              fileName={PDF_FILE_NAME}
             >
               <Button variant="outline" disabled={!plan}>
                 <PdfIcon />
