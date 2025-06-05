@@ -1,4 +1,4 @@
-import type { ScheduleObject, SemestreDeDictado } from "@/models";
+import type { PlanCarrera, SemestreDeDictado } from "@/models";
 import { useInformacionEstudianteStore } from "@/store";
 import { api } from "./axios";
 
@@ -16,7 +16,7 @@ export const generatePlan = async ({
   const informacionEstudiante =
     useInformacionEstudianteStore.getState().informacionEstudiante;
 
-  const res = await api.post<ScheduleObject[]>("/planes", {
+  const res = await api.post<PlanCarrera>("/planes", {
     informacionEstudiante,
     creditosPorSemestre,
     semestreInicial,
