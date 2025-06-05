@@ -1,45 +1,38 @@
 import React from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import {
   Button,
   HowPlanGenerationWorksModal,
   InfoCircleIcon,
   PdfIcon,
+  PlanPdf,
   SchoolIcon,
   ScreenHeader,
   SelectField,
 } from "@/components";
-import { useBoolean } from "@/hooks";
-import type { ScheduleObject, SemestreDeDictado } from "@/models";
+import { useBoolean, useSatisfaceRequisitos } from "@/hooks";
 import {
   CREDITOS_POR_SEMESTRE_OPTIONS,
   SEMESTRE_INICIAL_OPTIONS,
 } from "@/models";
+import { useMiPlanStore } from "@/store";
 
 interface HeaderMiPlanProps {
-  creditos: string;
-  semestreInicial: SemestreDeDictado;
-  trayectoria?: ScheduleObject[];
-  setCreditos: (value: string) => void;
-  setSemestreInicial: (value: SemestreDeDictado) => void;
   onGenerate: () => void;
-  onDownload: () => void;
 }
 
-export const HeaderMiPlan = ({
-  creditos,
-  semestreInicial,
-  trayectoria,
-  setCreditos,
-  setSemestreInicial,
-  onGenerate,
-  onDownload,
-}: HeaderMiPlanProps) => {
+export const HeaderMiPlan = ({ onGenerate }: HeaderMiPlanProps) => {
+  const { creditos, semestreInicial, plan, setCreditos, setSemestreInicial } =
+    useMiPlanStore();
+
   const {
     value: show,
     setTrue: openModal,
     setFalse: closeModal,
   } = useBoolean(false);
+
+  const { satisfaceRequisitos } = useSatisfaceRequisitos();
 
   return (
     <>
@@ -60,6 +53,7 @@ export const HeaderMiPlan = ({
               options={CREDITOS_POR_SEMESTRE_OPTIONS}
               value={creditos}
               onValueChange={setCreditos}
+              disabled={satisfaceRequisitos}
               id="creditos-select"
               placeholder="Selecciona una cantidad de créditos"
               containerClassName="flex-1 lg:max-w-60"
@@ -70,6 +64,7 @@ export const HeaderMiPlan = ({
               options={SEMESTRE_INICIAL_OPTIONS}
               value={semestreInicial}
               onValueChange={setSemestreInicial}
+              disabled={satisfaceRequisitos}
               id="semestre-inicial-select"
               placeholder="Selecciona el semestre inicial"
               containerClassName="flex-1 lg:max-w-60"
@@ -77,19 +72,20 @@ export const HeaderMiPlan = ({
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-4 gap-2">
-            <Button onClick={onGenerate}>
+            <Button onClick={onGenerate} disabled={satisfaceRequisitos}>
               <SchoolIcon />
               <span>Generar Plan</span>
             </Button>
 
-            <Button
-              variant="outline"
-              onClick={onDownload}
-              disabled={!trayectoria || true}
+            <PDFDownloadLink
+              document={<PlanPdf plan={plan} />}
+              fileName="plan-carrera-computacion.pdf"
             >
-              <PdfIcon />
-              <span>Descargar Plan</span>
-            </Button>
+              <Button variant="outline" disabled={!plan}>
+                <PdfIcon />
+                <span>Descargar Plan</span>
+              </Button>
+            </PDFDownloadLink>
           </div>
         </div>
       </ScreenHeader>
