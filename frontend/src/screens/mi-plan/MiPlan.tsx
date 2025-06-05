@@ -1,49 +1,46 @@
-import { useState } from "react";
+import { toast } from "sonner";
 
+import { AlertTriangleIcon, ConfettiIcon } from "@/components";
 import { useGeneratePlan } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
-import type { SemestreDeDictado } from "@/models";
-import { SEMESTRE_DE_DICTADO } from "@/models";
+import { useMiPlanStore } from "@/store";
 import { ContentMiPlan } from "./ContentMiPlan";
 import { HeaderMiPlan } from "./HeaderMiPlan";
 
-const CREDITOS_POR_SEMESTRE_DEFAULT = "40";
-
 export const MiPlanScreen = () => {
-  const [creditos, setCreditos] = useState(CREDITOS_POR_SEMESTRE_DEFAULT);
-  const [semestreInicial, setSemestreInicial] = useState<SemestreDeDictado>(
-    SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
-  );
+  const { creditos, semestreInicial, setPlan } = useMiPlanStore();
 
-  const { data, mutate, isLoading, isSuccess, isError } = useGeneratePlan();
+  const { mutate, isLoading, isError } = useGeneratePlan();
 
-  const handleGenerate = () =>
-    mutate({
-      creditosPorSemestre: Number(creditos),
-      semestreInicial,
-    });
+  const handleGenerate = () => {
+    mutate(
+      {
+        creditosPorSemestre: Number(creditos),
+        semestreInicial,
+      },
+      {
+        onError: () => {
+          toast.error("Ha ocurrido un error al generar tu plan", {
+            icon: <AlertTriangleIcon className="size-5" />,
+            description: "Por favor intenta nuevamente en unos minutos.",
+          });
+        },
+        onSuccess: (data) => {
+          setPlan(data);
 
-  const handleDownload = () => {
-    console.log("handleDownload");
+          toast.success("Tu plan ha sido generado con éxito", {
+            icon: <ConfettiIcon className="size-5" />,
+            description: "Ahora puedes explorarlo y descargarlo!",
+          });
+        },
+      },
+    );
   };
 
   return (
     <ScreenLayout>
-      <HeaderMiPlan
-        creditos={creditos}
-        semestreInicial={semestreInicial}
-        trayectoria={data}
-        setCreditos={setCreditos}
-        setSemestreInicial={setSemestreInicial}
-        onGenerate={handleGenerate}
-        onDownload={handleDownload}
-      />
-      <ContentMiPlan
-        trayectoria={data}
-        isLoading={isLoading}
-        isSuccess={isSuccess}
-        isError={isError}
-      />
+      <HeaderMiPlan onGenerate={handleGenerate} />
+      <ContentMiPlan isLoading={isLoading} isError={isError} />
     </ScreenLayout>
   );
 };

@@ -140,7 +140,7 @@ export const useInformacionEstudianteStore =
           })),
       }),
       {
-        name: "store",
+        name: "informacion-estudiante-store",
       },
     ),
   );
