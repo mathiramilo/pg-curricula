@@ -83,7 +83,7 @@ export const HeaderMiPlan = ({ onGenerate }: HeaderMiPlanProps) => {
               document={<PlanPdf plan={plan} />}
               fileName={PDF_FILE_NAME}
             >
-              <Button variant="outline" disabled={!plan}>
+              <Button variant="outline" disabled={!plan} className="w-full">
                 <PdfIcon />
                 <span>Descargar Plan</span>
               </Button>
