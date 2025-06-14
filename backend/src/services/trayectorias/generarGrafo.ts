@@ -7,7 +7,10 @@ import {
   UnidadCurricular,
 } from '../../types';
 import { Graph } from '../../models';
-import { cumplePrevias, obtenerCodigosUCsPrevias } from '../previas.service';
+import {
+  cumplePreviaturas,
+  obtenerCodigosUCsPrevias,
+} from '../previaturas.service';
 import {
   actualizarInformacionEstudiante,
   calcularValorArista,
@@ -32,7 +35,7 @@ export const generarGrafo = (
   let semestreActual = semestreInicial;
 
   for (const uc of listadoUCs) {
-    if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
+    if (cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo])) {
       const seDictaEnSemestreActual = uc.semestres?.includes(semestreActual)!; // Ya nos aseguramos de que semestres no sea null en el paso anterior
 
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
@@ -66,7 +69,7 @@ export const generarGrafo = (
 
   while (listadoUCsFaltantes.length > 0) {
     for (const uc of listadoUCsFaltantes) {
-      if (cumplePrevias(informacionEstudiante, previaturas[uc.codigo])) {
+      if (cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo])) {
         let codigosUCsPrevias: string[] = [];
 
         obtenerCodigosUCsPrevias(previaturas[uc.codigo], codigosUCsPrevias);

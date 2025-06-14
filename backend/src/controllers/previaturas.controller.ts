@@ -3,10 +3,10 @@ import { NextFunction, Request, RequestHandler, Response } from 'express';
 import previaturas from '../../data/previaturas.json';
 
 import { HTTP_STATUS_CODE } from '../constants';
-import { cumplePrevias } from '../services';
+import { cumplePreviaturas } from '../services';
 import { type InformacionEstudiante } from '../types';
 
-export const obtenerPreviasController: RequestHandler = (
+export const obtenerPreviaturasController: RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -20,9 +20,7 @@ export const obtenerPreviasController: RequestHandler = (
       });
 
     if (!previaturas[codigo])
-      return res.status(HTTP_STATUS_CODE.NOT_FOUND).json({
-        error: `No se encontró ninguna unidad curricular con código ${codigo}`,
-      });
+      return res.status(HTTP_STATUS_CODE.NO_CONTENT).json(null);
 
     return res.status(HTTP_STATUS_CODE.OK).json(previaturas[codigo]);
   } catch (error) {
@@ -30,7 +28,7 @@ export const obtenerPreviasController: RequestHandler = (
   }
 };
 
-export const satisfacePreviasController: RequestHandler = (
+export const satisfacePreviaturasController: RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -44,12 +42,9 @@ export const satisfacePreviasController: RequestHandler = (
         error: 'No se proporcionó el código de la unidad curricular a chequear',
       });
 
-    if (!previaturas[codigo])
-      return res.status(HTTP_STATUS_CODE.NOT_FOUND).json({
-        error: `No se encontró ninguna unidad curricular con código ${codigo}`,
-      });
+    if (!previaturas[codigo]) return res.status(HTTP_STATUS_CODE.OK).json(true);
 
-    const cumple = cumplePrevias(
+    const cumple = cumplePreviaturas(
       informacionEstudiante as InformacionEstudiante,
       previaturas[codigo]
     );

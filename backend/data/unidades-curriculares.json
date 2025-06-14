@@ -1,6 +1,6 @@
 [
     {
-        "nombre": "PROCESAMIENTO CUÁNTICO DE LA INFORMACIÓN",
+        "nombre": "PROCESAMIENTO CUANTICO DE LA INFORMACION",
         "codigo": "1158",
         "creditos": 10,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -1241,7 +1241,17 @@
         "semestres": null
     },
     {
-        "nombre": "BIOQUÍMICA I",
+        "nombre": "INT. A LA FÍSICA MODERNA",
+        "codigo": "1159",
+        "creditos": 10,
+        "nombreGrupoPadre": "MATERIAS BASICAS",
+        "codigoGrupoPadre": "2436",
+        "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
+        "codigoGrupoHijo": "4442",
+        "semestres": null
+    },
+    {
+        "nombre": "BIOQUÍMICA I (2025-",
         "codigo": "MHC39",
         "creditos": 11,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -1361,7 +1371,7 @@
         "semestres": null
     },
     {
-        "nombre": "BIOQUÍMICA 1 (2020-",
+        "nombre": "BIOQUÍMICA 1 (2020-2024)",
         "codigo": "MHC16",
         "creditos": 13,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -1381,7 +1391,7 @@
         "semestres": null
     },
     {
-        "nombre": "GENÓMICA",
+        "nombre": "GENÓMICA (2021-2024)",
         "codigo": "MHC20",
         "creditos": 10,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -2563,6 +2573,16 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "PROGRAMACION",
         "codigoGrupoHijo": "4580",
+        "semestres": null
+    },
+    {
+        "nombre": "DISEÑO LOGICO",
+        "codigo": "2512",
+        "creditos": 12,
+        "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
+        "codigoGrupoPadre": "3215",
+        "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
+        "codigoGrupoHijo": "4428",
         "semestres": null
     },
     {
@@ -4606,7 +4626,7 @@
     {
         "nombre": "TALLER DE INTERACCIÓN",
         "codigo": "O6311",
-        "creditos": 6,
+        "creditos": 7,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
@@ -6107,6 +6127,435 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
+        "semestres": null
+    },
+    {
+        "nombre": "INTRODUCCIÓN A LA VIDA UNIVERSITARIA (IVU)",
+        "codigo": "SO001",
+        "creditos": 1,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TALLER BASICO DE ESTRATEGIAS Y ORIENTACION (TBEO)",
+        "codigo": "1275",
+        "creditos": 3,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "CREDITOS ASIGNADOS POR REVALIDAS",
+        "codigo": "MOP4",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "ESTRATEGIAS PARA APRENDER: DESARROLLANDO ESTRATEGIAS P/ESTUDIAR EN LA UNIV.",
+        "codigo": "M014",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "INGLES PARA FINES UNIVERSITARIOS I",
+        "codigo": "INFU1",
+        "creditos": 8,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TUTORIAS ENTRE PARES ACADEMICAS PROGRESA/FING",
+        "codigo": "5005",
+        "creditos": 8,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "SEMINARIO SOBRE ENCUENTROS ENTRE ARTE Y TECNOLOGIAS",
+        "codigo": "1236",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "2"
+        ]
+    },
+    {
+        "nombre": "SENSIBILIZACIÓN E INTERCAMBIO PARA LA EQUIDAD",
+        "codigo": "AT001",
+        "creditos": 2,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "COMPRENSIÓN LECTORA DE INGLÉS",
+        "codigo": "SRN22",
+        "creditos": 8,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TALLER INTERDISCIPLINARIO",
+        "codigo": "SRN25",
+        "creditos": 2,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TRATAMIENTO DE IMAGENES POR COMPUTADORA",
+        "codigo": "5828",
+        "creditos": 10,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1"
+        ]
+    },
+    {
+        "nombre": "BIOINFORMÁTICA",
+        "codigo": "736EU",
+        "creditos": 7,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "BIONFORMÁTICA ESTRUCTURAL",
+        "codigo": "836EU",
+        "creditos": 7,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "PRODUCCIÓN GRÁFICA 3D II",
+        "codigo": "AT023",
+        "creditos": 6,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "PRODUCCIÓN AUDIOVISUAL INTERACTIVA II",
+        "codigo": "AT021",
+        "creditos": 6,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "INGLES CIENTÍFICO",
+        "codigo": "816EU",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TALLER DE COMUNICACIÓN ORAL Y ESCRITA",
+        "codigo": "2107A",
+        "creditos": 1,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "PROBLEMAS DE DISEÑO",
+        "codigo": "AT003",
+        "creditos": 7,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "MODELADO 3D PARA PRODUCCION DIGITAL (PERFIL PRODUCTO)",
+        "codigo": "AT009",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+        "codigo": "MOP8",
+        "creditos": 8,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TUTORIAS ENTRE PARES 2",
+        "codigo": "2217",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "nombre": "TUTORIAS ENTRE PARES 1",
+        "codigo": "2216",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "nombre": "TALLER: HERRAMIENTAS PARA LA INNOVACION",
+        "codigo": "1951",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TALLER ENCARARE: CREAR",
+        "codigo": "1216",
+        "creditos": 8,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "REDACC. TEC. DE TESIS Y ART. CIENTIF.",
+        "codigo": "GP4",
+        "creditos": 5,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA",
+        "codigo": "2040",
+        "creditos": 6,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "nombre": "APLICACIONES DE TEORIA DE LA INFORMACION AL PROC. DE IMAG.",
+        "codigo": "1438",
+        "creditos": 6,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1"
+        ]
+    },
+    {
+        "nombre": "IMAGENES MEDICAS: ADQUISICION, INSTRUMENTACION Y GESTION",
+        "codigo": "5707",
+        "creditos": 8,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1"
+        ]
+    },
+    {
+        "nombre": "IMAGENES MEDICAS:ADQ. INSTRUM. Y GESTION",
+        "codigo": "5709",
+        "creditos": 6,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "MODULO DE EXTENSION A",
+        "codigo": "1760",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "MODULO DE EXTENSION B",
+        "codigo": "1761",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "MODULO DE EXTENSION C",
+        "codigo": "1762",
+        "creditos": 3,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "MODULO DE EXTENSION D",
+        "codigo": "1763",
+        "creditos": 3,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "PLANIFICACION DE CLASES: DISEÑO DE UNID.DIDACT.",
+        "codigo": "1213",
+        "creditos": 2,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": [
+            "1"
+        ]
+    },
+    {
+        "nombre": "TALLER ENCARARE 1:CREATIVIDAD E INNOVAC.",
+        "codigo": "2034",
+        "creditos": 5,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TALLER ENCARARE 2:PLANIF.DE LA FUT.EMPR.",
+        "codigo": "2036",
+        "creditos": 5,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "TEATRO Y MATEMATICA",
+        "codigo": "2222",
+        "creditos": 6,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+        "codigo": "MOP1",
+        "creditos": 4,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+        "codigo": "MOP10",
+        "creditos": 10,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+        "codigo": "MOP20",
+        "creditos": 20,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
+        "semestres": null
+    },
+    {
+        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+        "codigo": "MOP30",
+        "creditos": 30,
+        "nombreGrupoPadre": "MATERIAS OPCIONALES",
+        "codigoGrupoPadre": "3582",
+        "nombreGrupoHijo": "MATERIAS OPCIONALES",
+        "codigoGrupoHijo": "3582",
         "semestres": null
     }
 ]
