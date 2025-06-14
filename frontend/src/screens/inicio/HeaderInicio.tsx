@@ -9,7 +9,7 @@ import {
   TotalProgress,
 } from "@/components";
 import { GRUPO_VALUES } from "@/models";
-import { RUTAS } from "@/router";
+import { ROUTES } from "@/router";
 import { useInformacionEstudianteStore } from "@/store";
 
 export const HeaderInicio = () => {
@@ -37,7 +37,7 @@ export const HeaderInicio = () => {
           </div>
 
           <Button asChild variant="link" className="px-0">
-            <Link to={RUTAS.RESUMEN_CARRERA}>
+            <Link to={ROUTES.RESUMEN_CARRERA}>
               Ver Todo
               <ChevronRightIcon className="text-principal" />
             </Link>

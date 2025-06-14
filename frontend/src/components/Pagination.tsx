@@ -1,6 +1,12 @@
 import { ChevronRightIcon } from "lucide-react";
 
-import { Button, ChevronLeftIcon } from "@/components";
+import {
+  Button,
+  ChevronLeftIcon,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components";
 
 interface PaginationProps {
   page: number;
@@ -28,18 +34,33 @@ export const Pagination = ({
 
   return (
     <div className="flex items-center gap-2">
-      <Button variant="outline" disabled={inFirstPage} onClick={previous}>
-        <ChevronLeftIcon />
-        {previousLabel && (
-          <span className="hidden md:inline-block">{previousLabel}</span>
-        )}
-      </Button>
-      <Button variant="outline" disabled={inLastPage} onClick={next}>
-        {nextLabel && (
-          <span className="hidden md:inline-block">{nextLabel}</span>
-        )}
-        <ChevronRightIcon />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="outline" disabled={inFirstPage} onClick={previous}>
+            <ChevronLeftIcon />
+            {previousLabel && (
+              <span className="hidden md:inline-block">{previousLabel}</span>
+            )}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          {inFirstPage ? "Estás en la primera página" : "Página anterior"}
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="outline" disabled={inLastPage} onClick={next}>
+            {nextLabel && (
+              <span className="hidden md:inline-block">{nextLabel}</span>
+            )}
+            <ChevronRightIcon />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          {inLastPage ? "Estás en la última página" : "Página siguiente"}
+        </TooltipContent>
+      </Tooltip>
     </div>
   );
 };

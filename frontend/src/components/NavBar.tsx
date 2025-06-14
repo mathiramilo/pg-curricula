@@ -3,6 +3,7 @@ import {
   Button,
   DownloadIcon,
   DownloadProgressAlert,
+  Logo,
   ResetProgressAlert,
   RestartIcon,
   SubirArchivoModal,
@@ -28,11 +29,12 @@ export const NavBar = () => {
 
   return (
     <>
-      <header className="flex w-full justify-between border-b border-borde bg-white px-5 py-3">
-        <div className="flex items-center gap-2">
-          <img src="/fing.svg" alt="Logo" className="size-6" />
-          <span className="font-medium">PG Curricula</span>
-        </div>
+      <header className="flex w-full justify-between items-center border-b border-borde bg-white px-5 py-3">
+        <Logo className="md:hidden" />
+
+        <p className="font-light text-fuente-principal text-sm hidden md:inline-block line-clamp-1 h-5">
+          Ingeniería en Computación
+        </p>
 
         <nav className="flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={openModal}>
