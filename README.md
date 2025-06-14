@@ -44,8 +44,9 @@ Utilizamos archivos JSON para persistir los datos.
 ### Comandos
 
 - `pnpm generate:previaturas` Genera las previaturas de las carreras.
-- `pnpm generate:ucs-fing` Genera las UCS de la FING.
+- `pnpm generate:unidades-curriculares` Genera las UCS de la FING.
 - `pnpm generate:ucs-grupos` Genera los grupos de las UCS.
+- `pnpm generate:ucs-grupos-actuales` Genera las UCs de los grupos actuales.
 
 ### Actualizar los datos mediante web scraping
 
@@ -58,10 +59,10 @@ generar los archivos JSON utilizados por el backend.
 
    ```bash
    docker-compose exec processor-scraper \
-     python scripts/scrape_previatures.py
+     python -m scripts.scrape_previatures
 
    docker-compose exec processor-scraper \
-     python scripts/scrape_groups_and_subjects.py
+     python -m scripts.scrape_groups_and_subjects
    ```
 
    Los datos obtenidos se guardarán en `processor-scraper/data`.
@@ -70,8 +71,9 @@ generar los archivos JSON utilizados por el backend.
 
    ```bash
    docker-compose exec backend pnpm generate:previaturas
-   docker-compose exec backend pnpm generate:ucs-fing
+   docker-compose exec backend pnpm generate:unidades-curriculares
    docker-compose exec backend pnpm generate:ucs-grupos
+   docker-compose exec backend pnpm generate:ucs-grupos-actuales
    ```
 
    Los nuevos archivos se almacenarán en `backend/data`.

@@ -11,7 +11,7 @@ import {
  * @param previas
  * @returns `true` si cumple con las previaturas, `false` si no cumple
  */
-export const cumplePrevias = (
+export const cumplePreviaturas = (
   informacionEstudiante: InformacionEstudiante,
   previas: ReglaPreviaturas
 ): boolean => {
@@ -20,22 +20,22 @@ export const cumplePrevias = (
   try {
     switch (previas.regla) {
       case TIPO_REGLA.NOT: {
-        return !cumplePrevias(informacionEstudiante, previas.previas);
+        return !cumplePreviaturas(informacionEstudiante, previas.previas);
       }
       case TIPO_REGLA.OR: {
         return previas.previas.some((prev) =>
-          cumplePrevias(informacionEstudiante, prev)
+          cumplePreviaturas(informacionEstudiante, prev)
         );
       }
       case TIPO_REGLA.AND: {
         return previas.previas.every((prev) =>
-          cumplePrevias(informacionEstudiante, prev)
+          cumplePreviaturas(informacionEstudiante, prev)
         );
       }
       case TIPO_REGLA.SOME: {
         return (
           previas.previas.filter((prev) =>
-            cumplePrevias(informacionEstudiante, prev)
+            cumplePreviaturas(informacionEstudiante, prev)
           ).length >= previas.cantidad!
         );
       }

@@ -1,5 +1,5 @@
 export * from "./useGeneratePlan";
-export * from "./usePrevias";
+export * from "./usePreviaturas";
 export * from "./useProcesarEscolaridad";
 export * from "./useSatisfacePrevias";
 export * from "./useTrayectoriaSugerida";

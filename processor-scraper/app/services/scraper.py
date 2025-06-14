@@ -307,6 +307,40 @@ def scrape_groups_and_subjects():
                 "li", attrs={"data-nodetype": "Grupo"}
             )
 
+            # If there are no child groups, we assume this is "Materias Opcionales" group
+            if not child_group_elements:
+                subject_elements = group_element.find_all(
+                    "li", attrs={"data-nodetype": "Materia"}
+                )
+
+                for subject_element in subject_elements:
+                    subject_content = subject_element.find(
+                        "div", class_="ui-treenode-content"
+                    )
+                    subject_data = subject_content.find(
+                        "span", class_="ui-treenode-label"
+                    ).text.strip()
+
+                    match = re.search(SUBJECT_PATTERN, subject_data, re.IGNORECASE)
+                    if match:
+                        subject_code = match.group("code")
+                        subject_name = match.group("name")
+                        credits = match.group("credits")
+
+                        subjects.append(
+                            UnidadCurricular(
+                                codigo=subject_code,
+                                nombre=subject_name,
+                                creditos=credits,
+                                codigo_grupo_padre=parent_group_code,
+                                nombre_grupo_padre=parent_group_name,
+                                codigo_grupo_hijo=parent_group_code,
+                                nombre_grupo_hijo=parent_group_name,
+                            )
+                        )
+                    else:
+                        print("No match found (Subject)")
+
             for child_group_element in child_group_elements:
                 child_content = child_group_element.find(
                     "div", class_="ui-treenode-content"

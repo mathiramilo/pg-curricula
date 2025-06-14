@@ -10,7 +10,7 @@ import {
   ReglaPreviaturas,
   UnidadCurricular,
 } from '../../types';
-import { cumplePrevias } from '../previas.service';
+import { cumplePreviaturas } from '../previaturas.service';
 import { actualizarInformacionEstudiante } from '../../utils';
 
 const UCS_EXCEPCIONALES = [{ nombre: 'PROYECTO DE GRADO', codigo: '1730' }];
@@ -40,7 +40,7 @@ export const obtenerListadoUCs = (
   // Para que esto funcione el listado de materias obligatorias debe estar ordenado, empezando por las que tienen menos previas, para que la funcion "cumplePrevias" retorne true.
   ucsObligatoriasFaltantes.forEach((unidadCurricular) => {
     if (
-      cumplePrevias(
+      cumplePreviaturas(
         informacionEstudiante,
         previaturas[unidadCurricular.codigo]
       ) ||
@@ -83,7 +83,7 @@ export const obtenerListadoUCs = (
       ] as ReglaPreviaturas;
 
       if (
-        !cumplePrevias(informacionEstudiante, previaturasUCAleatoria) ||
+        !cumplePreviaturas(informacionEstudiante, previaturasUCAleatoria) ||
         listadoUCs.find((uc) => uc.codigo === ucAleatoria.codigo)
       )
         continue;
@@ -119,7 +119,7 @@ export const obtenerListadoUCs = (
     ] as ReglaPreviaturas;
 
     if (
-      !cumplePrevias(informacionEstudiante, previaturasUCAleatoria) ||
+      !cumplePreviaturas(informacionEstudiante, previaturasUCAleatoria) ||
       listadoUCs.find((uc) => uc.codigo === ucAleatoria.codigo)
     )
       continue;
