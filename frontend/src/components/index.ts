@@ -1,4 +1,5 @@
 export * from "./ComingSoon";
+export * from "./Logo";
 export * from "./NavBar";
 export * from "./Pagination";
 export * from "./ScreenHeader";

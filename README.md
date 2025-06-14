@@ -1,6 +1,6 @@
 ﻿<h1 align="center">
   <img alt="logo" src="./frontend/public/fing.svg" width="96px" style="padding: 30px"/><br/>
-  PG Curricula
+  Curricula+
 </h1>
 
 <p align="center">

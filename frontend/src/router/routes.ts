@@ -1,4 +1,4 @@
-export const RUTAS = {
+export const ROUTES = {
   INICIO: "/",
   BUSCAR_CURSOS: "/buscar-cursos",
   MI_PLAN: "/mi-plan",
