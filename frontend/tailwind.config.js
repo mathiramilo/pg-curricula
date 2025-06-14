@@ -4,6 +4,9 @@ export default {
   plugins: [require("tailwindcss-animate")],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       colors: {
         principal: {
           DEFAULT: "#004a87",

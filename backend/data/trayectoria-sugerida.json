@@ -36,7 +36,7 @@
     "unidadesCurriculares": [
       { "codigo": "1025", "nombre": "PROBABILIDAD Y ESTADÍSTICA" },
       { "codigo": "1323", "nombre": "PROGRAMACIÓN 3" },
-      { "codigo": "1443", "nombre": "ARQUITECTURA DE COMPUTADORAS" },
+      { "codigo": "1466", "nombre": "ARQUITECTURA DE COMPUTADORAS" },
       { "codigo": "1033", "nombre": "MÉTODOS NUMÉRICOS" }
     ]
   },
@@ -68,8 +68,8 @@
     "semestre": 7,
     "unidadesCurriculares": [
       {
-        "codigo": "1716",
-        "nombre": "INT. A LA INGENIERIA DE SOFTWARE"
+        "codigo": "1783",
+        "nombre": "TALLER INTRODUCTORIO DE INGENIERÍA DE SOFTWARE"
       },
       { "codigo": "1354", "nombre": "PROGRAMACIÓN FUNCIONAL" },
       { "codigo": "1340", "nombre": "PROGRAMACIÓN LÓGICA" },

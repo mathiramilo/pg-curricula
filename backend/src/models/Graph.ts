@@ -12,7 +12,7 @@ import {
   getInitialYear,
   seDictaEsteSemestre,
 } from '../utils';
-import { cumplePrevias } from '../services';
+import { cumplePreviaturas } from '../services';
 
 export type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 
@@ -323,7 +323,7 @@ export class Graph {
         // Si la unidad curricular no se dicta en el semestre actual o no cumple con las previas, se salta a la siguiente
         if (
           !seDictaEsteSemestre(semester, unidadCurricular.semestres!) ||
-          !cumplePrevias(
+          !cumplePreviaturas(
             informacionEstudiante,
             previaturas[unidadCurricular.codigo]
           )
@@ -378,7 +378,7 @@ export class Graph {
       // Buscamos si podemos agregar alguna del pool de UCs sin previas
       const ucsAvailableToAdd = this.unidadesCurricularesSinPrevias.filter(
         (uc) =>
-          cumplePrevias(informacionEstudiante, previaturas[uc.codigo]) &&
+          cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo]) &&
           seDictaEsteSemestre(semester, uc.semestres!)
       );
 

@@ -7,7 +7,7 @@ import {
 import previaturas from '../../data/previaturas.json';
 import trayectoriaSugerida from '../../data/trayectoria-sugerida.json';
 import unidadesCurricularesJson from '../../data/unidades-curriculares.json';
-import { cumplePrevias } from './previas.service';
+import { cumplePreviaturas } from './previaturas.service';
 
 type ObtenerUnidadesCurricularesFilter = Partial<{
   search: string;
@@ -73,7 +73,7 @@ export const obtenerUnidadesCurriculares = (
     unidadesCurriculares = unidadesCurriculares.filter(
       (uc) =>
         uc.semestres &&
-        cumplePrevias(informacionEstudiante, previaturas[uc.codigo])
+        cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo])
     );
   }
 

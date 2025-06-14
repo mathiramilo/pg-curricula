@@ -9,7 +9,7 @@ import {
   TotalProgress,
 } from "@/components";
 import { GRUPO_VALUES } from "@/models";
-import { RUTAS } from "@/router";
+import { ROUTES } from "@/router";
 import { useInformacionEstudianteStore } from "@/store";
 
 export const HeaderInicio = () => {
@@ -22,7 +22,7 @@ export const HeaderInicio = () => {
       title="Progreso de Carrera"
       description='Visualiza tu avance académico, marca tus cursos aprobados y planifica tu carrera. Sube tu escolaridad como punto de partida usando la opción "Cargar Progreso".'
     >
-      <div className="sm:w-[calc(100vw-290px)] flex flex-col gap-2">
+      <div className="md:w-[calc(100vw-290px)] flex flex-col gap-2">
         <TotalProgress />
 
         <div className="flex items-center justify-between gap-x-6 gap-y-1">
@@ -37,7 +37,7 @@ export const HeaderInicio = () => {
           </div>
 
           <Button asChild variant="link" className="px-0">
-            <Link to={RUTAS.RESUMEN_CARRERA}>
+            <Link to={ROUTES.RESUMEN_CARRERA}>
               Ver Todo
               <ChevronRightIcon className="text-principal" />
             </Link>
