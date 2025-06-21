@@ -1,8 +1,8 @@
 import {
-  type InformacionEstudiante,
   ReglaPreviaturas,
   TIPO_REGLA,
-} from '../types';
+  type InformacionEstudiante,
+} from "@/types";
 
 /**
  * Verifica si el estudiante cumple con las previaturas de una unidad curricular
@@ -13,7 +13,7 @@ import {
  */
 export const cumplePreviaturas = (
   informacionEstudiante: InformacionEstudiante,
-  previas: ReglaPreviaturas
+  previas: ReglaPreviaturas,
 ): boolean => {
   if (!previas) return true;
 
@@ -24,18 +24,18 @@ export const cumplePreviaturas = (
       }
       case TIPO_REGLA.OR: {
         return previas.previas.some((prev) =>
-          cumplePreviaturas(informacionEstudiante, prev)
+          cumplePreviaturas(informacionEstudiante, prev),
         );
       }
       case TIPO_REGLA.AND: {
         return previas.previas.every((prev) =>
-          cumplePreviaturas(informacionEstudiante, prev)
+          cumplePreviaturas(informacionEstudiante, prev),
         );
       }
       case TIPO_REGLA.SOME: {
         return (
           previas.previas.filter((prev) =>
-            cumplePreviaturas(informacionEstudiante, prev)
+            cumplePreviaturas(informacionEstudiante, prev),
           ).length >= previas.cantidad!
         );
       }
@@ -43,15 +43,18 @@ export const cumplePreviaturas = (
         return informacionEstudiante.creditosTotales >= previas.cantidad;
       }
       case TIPO_REGLA.CREDITOS_GRUPO: {
+        // @ts-expect-error Necessary to access the property dynamically
         return informacionEstudiante[previas.nombre] >= previas.cantidad;
       }
       case TIPO_REGLA.UC: {
-        return informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
-          previas.codigo
+        return Object.hasOwn(
+          informacionEstudiante.unidadesCurricularesAprobadas,
+          previas.codigo,
         );
       }
     }
   } catch (error) {
+    console.error("Error al verificar previaturas:", error);
     return false;
   }
 };
@@ -63,7 +66,7 @@ export const cumplePreviaturas = (
  */
 export const obtenerCodigosUCsPrevias = (
   previas: ReglaPreviaturas,
-  listadoCodigosUCs: string[]
+  listadoCodigosUCs: string[],
 ) => {
   if (!previas) return;
 
@@ -71,17 +74,17 @@ export const obtenerCodigosUCsPrevias = (
     switch (previas.regla) {
       case TIPO_REGLA.OR: {
         return previas.previas.forEach((prev) =>
-          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
+          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs),
         );
       }
       case TIPO_REGLA.AND: {
         return previas.previas.forEach((prev) =>
-          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
+          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs),
         );
       }
       case TIPO_REGLA.SOME: {
         return previas.previas.forEach((prev) =>
-          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs)
+          obtenerCodigosUCsPrevias(prev, listadoCodigosUCs),
         );
       }
       case TIPO_REGLA.UC: {
@@ -93,6 +96,7 @@ export const obtenerCodigosUCsPrevias = (
       }
     }
   } catch (error) {
+    console.error("Error al obtener códigos de UCs previas:", error);
     return;
   }
 };

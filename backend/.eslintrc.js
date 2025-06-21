@@ -1,37 +1,36 @@
 module.exports = {
-  plugins: ['prettier', '@typescript-eslint', 'import', 'simple-import-sort'],
-  parser: '@typescript-eslint/parser',
+  root: true,
+  env: {
+    node: true,
+    es2022: true,
+  },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+    ecmaVersion: 2022,
+    sourceType: "module",
   },
-  rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        arrowParens: 'avoid',
-        semi: true,
-        trailingComma: 'none',
-      },
-    ], // Prettier requiere punto y coma
-    'no-console': ['warn', 'error'],
-    'no-debugger': 'error',
-    semi: ['error', 'always'], // ESLint requiere punto y coma
-    quotes: ['error', 'single'],
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
-    '@typescript-eslint/explicit-module-boundary-types': 'warn',
-    '@typescript-eslint/no-explicit-any': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
-    'object-shorthand': 'error',
-    'import/newline-after-import': 'error',
-    'import/no-duplicates': 'error',
-    'import/first': 'error',
-  },
-  overrides: [
-    {
-      files: ['**/*.ts', '**/*.tsx'],
-    },
+  plugins: ["@typescript-eslint"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
   ],
+  rules: {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+      },
+    ],
+
+    "no-console": "warn",
+    "no-debugger": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "error",
+    eqeqeq: ["error", "always"],
+    "no-duplicate-imports": "error",
+  },
+  ignorePatterns: ["dist", "node_modules", "data"],
 };

@@ -1,15 +1,16 @@
 {
   "name": "pg-curricula-frontend",
-  "private": true,
   "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
+    "format:check": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",

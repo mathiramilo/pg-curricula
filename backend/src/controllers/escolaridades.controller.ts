@@ -1,16 +1,16 @@
-import type { NextFunction, Request, RequestHandler, Response } from 'express';
+import type { NextFunction, Request, Response } from "express";
 
-import { HTTP_STATUS_CODE } from '../constants';
-import { procesarEscolaridad } from '../services';
+import { HTTP_STATUS_CODE } from "@/constants";
+import { procesarEscolaridad } from "@/services";
 
-export const procesarEscolaridadController: RequestHandler = async (
+export const procesarEscolaridadController = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   if (!req.file) {
     return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
-      error: 'No se subió ningún archivo',
+      error: "No se subió ningún archivo",
     });
   }
 

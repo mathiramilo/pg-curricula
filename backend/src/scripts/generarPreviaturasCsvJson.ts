@@ -1,17 +1,18 @@
-import fs from 'fs';
+import fs from "fs";
 
 import {
-  type Previa,
-  type PreviaCSV,
-  type ReglaPreviaturas,
   TIPO_INSTANCIA,
   TIPO_PREVIA,
   TIPO_REGLA,
-} from '../types';
-import { leerCSV } from '../utils/csv';
+  TipoPrevia,
+  type Previa,
+  type PreviaCSV,
+  type ReglaPreviaturas,
+} from "@/types";
+import { leerCSV } from "@/utils";
 
-const UBICACION_CSV_PREVIATURAS = '../../data/csv/previaturas.csv';
-const UBICACION_DESTINO = '../../data/previaturas.json';
+const UBICACION_CSV_PREVIATURAS = "../../data/csv/previaturas.csv";
+const UBICACION_DESTINO = "../../data/previaturas.json";
 
 const generarPreviaturasJson = async (): Promise<void> => {
   try {
@@ -22,7 +23,7 @@ const generarPreviaturasJson = async (): Promise<void> => {
     fs.writeFileSync(
       UBICACION_DESTINO,
       JSON.stringify(sistemaPreviaturas, null, 2),
-      'utf8'
+      "utf8",
     );
   } catch (error) {
     console.error(error);
@@ -30,9 +31,9 @@ const generarPreviaturasJson = async (): Promise<void> => {
 };
 
 const parsearPreviasCSV = (
-  rows: PreviaCSV[]
-): { [key: Previa['codigoEnServicioUC']]: Previa[] } => {
-  const UCs: { [key: Previa['codigoEnServicioUC']]: Previa[] } = {};
+  rows: PreviaCSV[],
+): { [key: Previa["codigoEnServicioUC"]]: Previa[] } => {
+  const UCs: { [key: Previa["codigoEnServicioUC"]]: Previa[] } = {};
 
   rows.forEach((fila) => {
     // Ignorar las filas que corresponden a Examenes
@@ -54,7 +55,9 @@ const parsearPreviasCSV = (
         ? parseInt(fila.cod_condicion_padre)
         : null,
       tipo:
-        fila.tipo === 'N' ? TIPO_PREVIA.M : TIPO_PREVIA[fila.tipo] || fila.tipo, // Convertimos las filas de tipo 'N' a 'M' ya que entendemos que son lo mismo
+        fila.tipo === "N"
+          ? TIPO_PREVIA.M
+          : TIPO_PREVIA[fila.tipo as TipoPrevia] || fila.tipo, // Convertimos las filas de tipo 'N' a 'M' ya que entendemos que son lo mismo
       cantidad: fila.cantmaterias ? parseInt(fila.cantmaterias) : null,
       codigoPlan: fila.cod_plan ? parseInt(fila.cod_plan) : null,
       cantidadCreditos: fila.cantcreditos ? parseInt(fila.cantcreditos) : null,
@@ -62,13 +65,13 @@ const parsearPreviasCSV = (
       nombreGrupo: fila.nombre_grupo || null,
       codigoElemento: fila.cod_elemento ? parseInt(fila.cod_elemento) : null,
       tipoInstancia:
-        fila.tipo_instancia === 'C'
+        fila.tipo_instancia === "C"
           ? TIPO_INSTANCIA.CURSO
-          : fila.tipo_instancia === 'E'
+          : fila.tipo_instancia === "E"
             ? TIPO_INSTANCIA.EXAMEN
             : null,
-      nombrePrevia: fila['nombre_mat-2'] || null,
-      codigoEnServicioPrevia: fila['codenservicio_mat-2'] || null,
+      nombrePrevia: fila["nombre_mat-2"] || null,
+      codigoEnServicioPrevia: fila["codenservicio_mat-2"] || null,
     });
   });
 
@@ -77,7 +80,7 @@ const parsearPreviasCSV = (
 
 const agruparPorCampo = (
   previas: Previa[],
-  field: keyof Previa
+  field: keyof Previa,
 ): {
   [key: string]: Previa[];
 } => {
@@ -90,17 +93,17 @@ const agruparPorCampo = (
       previasAgrupadas[clave].push(uc);
       return previasAgrupadas;
     },
-    {} as { [key: string]: Previa[] }
+    {} as { [key: string]: Previa[] },
   );
 };
 
 const generarSistemaPreviaturas = (previasAgrupadas: {
   [codigoEnServicioUC: string]: Previa[];
 }): { [codigoEnServicioUC: string]: ReglaPreviaturas } => {
-  const sistemaPreviaturas = {};
+  const sistemaPreviaturas: Record<string, ReglaPreviaturas> = {};
   Object.entries(previasAgrupadas).forEach(
     ([codigoEnServicioUC, previasUC]) =>
-      (sistemaPreviaturas[codigoEnServicioUC] = generarReglaRaiz(previasUC))
+      (sistemaPreviaturas[codigoEnServicioUC] = generarReglaRaiz(previasUC)),
   );
 
   return sistemaPreviaturas;
@@ -108,16 +111,16 @@ const generarSistemaPreviaturas = (previasAgrupadas: {
 
 const generarReglaRaiz = (previas: Previa[]): ReglaPreviaturas => {
   const filaRaiz = previas.find((p) => !p.codigoCondicionPadre);
-  if (!filaRaiz) throw new Error('No se encontro el nodo raiz');
+  if (!filaRaiz) throw new Error("No se encontro el nodo raiz");
 
   // Agrupar filas de tipo B por cod_condicion y dejar solo una fila en previas
   const filasDeTipoB = previas.filter((p) => p.tipo === TIPO_PREVIA.B);
   const filasAgrupadasPorCodCondicion = agruparPorCampo(
     filasDeTipoB,
-    'codigoCondicion'
+    "codigoCondicion",
   );
   const filasAgrupadasPorCodCondicionKeys = Object.keys(
-    filasAgrupadasPorCodCondicion
+    filasAgrupadasPorCodCondicion,
   );
 
   const previasFormateadas = previas.filter((p) => p.tipo !== TIPO_PREVIA.B);
@@ -125,21 +128,21 @@ const generarReglaRaiz = (previas: Previa[]): ReglaPreviaturas => {
     const previas = filasAgrupadasPorCodCondicion[codCondicion];
     if (previas && previas.length > 0) {
       const previa = previas[0];
-      previa && previasFormateadas.push(previa);
+      if (previa) previasFormateadas.push(previa);
     }
   });
 
   return generarRegla(
     filaRaiz,
     filasAgrupadasPorCodCondicion,
-    previasFormateadas
+    previasFormateadas,
   );
 };
 
 const generarRegla = (
   row: Previa,
   previasDeTipoB: { [codigoCondicion: string]: Previa[] },
-  previasFormateadas: Previa[]
+  previasFormateadas: Previa[],
 ): ReglaPreviaturas => {
   const {
     cantidadCreditos,
@@ -156,29 +159,29 @@ const generarRegla = (
   switch (tipo) {
     case TIPO_PREVIA.AND: {
       const ANDfilteredPrevs = previasFormateadas.filter(
-        (p) => p.codigoCondicionPadre === codigoCondicion
+        (p) => p.codigoCondicionPadre === codigoCondicion,
       );
       return {
         regla: TIPO_REGLA.AND,
         previas: ANDfilteredPrevs.map((prev) =>
-          generarRegla(prev, previasDeTipoB, previasFormateadas)
+          generarRegla(prev, previasDeTipoB, previasFormateadas),
         ),
       };
     }
     case TIPO_PREVIA.OR: {
       const ORfilteredPrevs = previasFormateadas.filter(
-        (p) => p.codigoCondicionPadre === codigoCondicion
+        (p) => p.codigoCondicionPadre === codigoCondicion,
       );
       return {
         regla: TIPO_REGLA.OR,
         previas: ORfilteredPrevs.map((prev) =>
-          generarRegla(prev, previasDeTipoB, previasFormateadas)
+          generarRegla(prev, previasDeTipoB, previasFormateadas),
         ),
       };
     }
     case TIPO_PREVIA.NOT: {
       const NOTPrev = previasFormateadas.find(
-        (p) => p.codigoCondicionPadre === codigoCondicion
+        (p) => p.codigoCondicionPadre === codigoCondicion,
       );
       if (!NOTPrev) return;
       return {
@@ -197,7 +200,7 @@ const generarRegla = (
         regla: TIPO_REGLA.SOME,
         cantidad: cantidad!,
         previas: BPrevs.map((prev) =>
-          generarRegla(prev, previasDeTipoB, previasFormateadas)
+          generarRegla(prev, previasDeTipoB, previasFormateadas),
         ),
       };
     }
@@ -224,8 +227,7 @@ const generarRegla = (
       };
     }
     default: {
-      // TODO: Ver que hacer con las filas de tipo C, I y K
-      console.log('Tipo de regla desconocido:', tipo);
+      console.error("Tipo de regla desconocido:", tipo);
     }
   }
 };

@@ -13,8 +13,8 @@ export type PreviaCSV = {
   nombre_grupo: string;
   cod_elemento: string;
   tipo_instancia: string;
-  'nombre_mat-2': string;
-  'codenservicio_mat-2': string;
+  "nombre_mat-2": string;
+  "codenservicio_mat-2": string;
 };
 
 export type Previa = {
@@ -36,19 +36,20 @@ export type Previa = {
 };
 
 export const TIPO_INSTANCIA = {
-  CURSO: 'C',
-  EXAMEN: 'E'
+  CURSO: "C",
+  EXAMEN: "E",
 } as const;
-export type TipoInstancia = (typeof TIPO_INSTANCIA)[keyof typeof TIPO_INSTANCIA];
+export type TipoInstancia =
+  (typeof TIPO_INSTANCIA)[keyof typeof TIPO_INSTANCIA];
 
 export const TIPO_PREVIA = {
-  AND: 'AND',
-  OR: 'OR',
-  NOT: 'NOT',
-  B: 'B',
-  M: 'M',
-  N: 'N',
-  D: 'D',
-  R: 'R'
+  AND: "AND",
+  OR: "OR",
+  NOT: "NOT",
+  B: "B",
+  M: "M",
+  N: "N",
+  D: "D",
+  R: "R",
 } as const;
 export type TipoPrevia = (typeof TIPO_PREVIA)[keyof typeof TIPO_PREVIA];
