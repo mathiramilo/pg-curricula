@@ -1,18 +1,20 @@
-import unidadesCurriculares from '../../data/unidades-curriculares.json';
-import previaturas from '../../data/previaturas.json';
-import ucsAnuales from '../../data/ucs-anuales.json';
-
+import previaturas from "@/data/previaturas.json";
+import ucsAnuales from "@/data/ucs-anuales.json";
+import unidadesCurriculares from "@/data/unidades-curriculares.json";
+import { cumplePreviaturas } from "@/services";
 import {
   InformacionEstudiante,
+  ReglaPreviaturas,
   SemestreDeDictado,
   UnidadCurricular,
-} from '../types';
+} from "@/types";
 import {
   actualizarInformacionEstudiante,
   getInitialYear,
   seDictaEsteSemestre,
-} from '../utils';
-import { cumplePreviaturas } from '../services';
+} from "@/utils";
+
+const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 
 export type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 
@@ -82,13 +84,13 @@ export class Graph {
 
     if (!fromNode || !toNode) {
       throw new Error(
-        `No se puede crear la arista. Uno de los nodos (${from}, ${to}) no existe.`
+        `No se puede crear la arista. Uno de los nodos (${from}, ${to}) no existe.`,
       );
     }
 
     if (fromNode.isInitial && !(value === 0 || value === 1)) {
       throw new Error(
-        `El nodo inicial solo puede tener aristas con valor 0 o 1.`
+        `El nodo inicial solo puede tener aristas con valor 0 o 1.`,
       );
     }
 
@@ -113,7 +115,7 @@ export class Graph {
   public updateEdgeDependingOnSemester(
     targetNode: Node,
     semester: number,
-    edge: Edge
+    edge: Edge,
   ) {
     const targetSemestres = targetNode.unidadCurricular?.semestres;
     if (targetSemestres && targetSemestres.length > 0) {
@@ -121,8 +123,8 @@ export class Graph {
       const isEven = semester % 2 === 0;
 
       if (
-        (isOdd && targetSemestres[0] === '1') ||
-        (isEven && targetSemestres[0] === '2')
+        (isOdd && targetSemestres[0] === "1") ||
+        (isEven && targetSemestres[0] === "2")
       ) {
         edge.value = 2;
       } else {
@@ -140,7 +142,7 @@ export class Graph {
   }
 
   public addUnidadCurricularSinPrevias(
-    unidadCurricular: UnidadCurricular
+    unidadCurricular: UnidadCurricular,
   ): void {
     this.unidadesCurricularesSinPrevias.push(unidadCurricular);
   }
@@ -206,11 +208,11 @@ export class Graph {
 
                 if (predES === undefined)
                   throw new Error(
-                    `El nodo ${edge.source} no tiene un tiempo de finalización definido.`
+                    `El nodo ${edge.source} no tiene un tiempo de finalización definido.`,
                   );
 
                 return predES + edge.value;
-              })
+              }),
             )
           : 0;
 
@@ -228,11 +230,11 @@ export class Graph {
 
                 if (succLS === undefined)
                   throw new Error(
-                    `El nodo ${edge.target} no tiene un tiempo de inicio definido.`
+                    `El nodo ${edge.target} no tiene un tiempo de inicio definido.`,
                   );
 
                 return succLS - edge.value;
-              })
+              }),
             )
           : minimalDuration;
 
@@ -264,18 +266,18 @@ export class Graph {
   public schedule(
     initialSemester: SemestreDeDictado,
     maxCredits: number,
-    informacionEstudiante: InformacionEstudiante
+    informacionEstudiante: InformacionEstudiante,
   ): ScheduleObject[] | boolean {
     const MAX_CREDITS_THRESHOLD = 1.12;
 
     const { ES, slack: holgura } = this.criticalPath();
 
-    ES.delete('inicio');
-    ES.delete('fin');
+    ES.delete("inicio");
+    ES.delete("fin");
 
     const plan: ScheduleObject[] = [];
 
-    let semester = initialSemester === '1' ? 1 : 2;
+    let semester = initialSemester === "1" ? 1 : 2;
     let actualYear = getInitialYear(initialSemester);
 
     // REVIEW: Es posible que tengamos para asignar 2 unidades curriculares anuales en el proximo semestre?
@@ -297,11 +299,11 @@ export class Graph {
         }))
         .sort((a, b) => a.holgura - b.holgura);
 
-      let scheduleObject: ScheduleObject = {
+      const scheduleObject: ScheduleObject = {
         semestre: semester,
         unidadesCurriculares: [],
         creditos: 0,
-        label: `${semester % 2 === 1 ? '1er' : '2do'} semestre ${actualYear}`,
+        label: `${semester % 2 === 1 ? "1er" : "2do"} semestre ${actualYear}`,
       };
 
       const remaining = [...available];
@@ -325,7 +327,7 @@ export class Graph {
           !seDictaEsteSemestre(semester, unidadCurricular.semestres!) ||
           !cumplePreviaturas(
             informacionEstudiante,
-            previaturas[unidadCurricular.codigo]
+            previaturasTyped[unidadCurricular.codigo],
           )
         ) {
           continue;
@@ -378,8 +380,10 @@ export class Graph {
       // Buscamos si podemos agregar alguna del pool de UCs sin previas
       const ucsAvailableToAdd = this.unidadesCurricularesSinPrevias.filter(
         (uc) =>
-          cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo]) &&
-          seDictaEsteSemestre(semester, uc.semestres!)
+          cumplePreviaturas(
+            informacionEstudiante,
+            previaturasTyped[uc.codigo],
+          ) && seDictaEsteSemestre(semester, uc.semestres!),
       );
 
       for (const uc of ucsAvailableToAdd) {
@@ -391,7 +395,7 @@ export class Graph {
         totalCredits += uc.creditos || 0;
         this.unidadesCurricularesSinPrevias.splice(
           this.unidadesCurricularesSinPrevias.indexOf(uc),
-          1
+          1,
         );
       }
 
@@ -400,7 +404,7 @@ export class Graph {
         actualizarInformacionEstudiante(
           informacionEstudiante,
           uc,
-          uc.nombreGrupoHijo
+          uc.nombreGrupoHijo,
         );
       });
 
@@ -422,19 +426,19 @@ export class Graph {
   public scheduleFinal(
     initialSemester: SemestreDeDictado,
     maxCredits: number,
-    informacionEstudiante: InformacionEstudiante
+    informacionEstudiante: InformacionEstudiante,
   ) {
     let plan = this.schedule(
       initialSemester,
       maxCredits,
-      structuredClone(informacionEstudiante)
+      structuredClone(informacionEstudiante),
     );
 
     while (!plan) {
       plan = this.schedule(
         initialSemester,
         maxCredits,
-        structuredClone(informacionEstudiante)
+        structuredClone(informacionEstudiante),
       );
     }
 
@@ -444,32 +448,32 @@ export class Graph {
   public print(): void {
     this.nodes.forEach((node) => {
       const etiquetas: string[] = [];
-      if (node.isInitial) etiquetas.push('Inicio');
-      if (node.isFinal) etiquetas.push('Final');
+      if (node.isInitial) etiquetas.push("Inicio");
+      if (node.isFinal) etiquetas.push("Final");
 
       console.log(
-        `Nodo: ${node.id} ${etiquetas.length ? `(${etiquetas.join(', ')})` : ''}`
+        `Nodo: ${node.id} ${etiquetas.length ? `(${etiquetas.join(", ")})` : ""}`,
       );
 
-      console.log('  Aristas salientes:');
+      console.log("  Aristas salientes:");
       if (node.outgoingEdges.length === 0) {
-        console.log('    Ninguna');
+        console.log("    Ninguna");
       } else {
         node.outgoingEdges.forEach((edge) => {
           console.log(`    -> ${edge.target} (valor: ${edge.value})`);
         });
       }
 
-      console.log('  Aristas entrantes:');
+      console.log("  Aristas entrantes:");
       if (node.incomingEdges.length === 0) {
-        console.log('    Ninguna');
+        console.log("    Ninguna");
       } else {
         node.incomingEdges.forEach((edge) => {
           console.log(`    <- ${edge.source} (valor: ${edge.value})`);
         });
       }
 
-      console.log('-------------------------------------');
+      console.log("-------------------------------------");
     });
   }
 
@@ -509,16 +513,16 @@ export class Graph {
 
     const sortedLevels = Array.from(levelsMap.keys()).sort((a, b) => a - b);
 
-    let diagram = '';
+    let diagram = "";
     sortedLevels.forEach((lvl, index) => {
       const nodesAtLevel = levelsMap.get(lvl)!;
       const nodeLine = nodesAtLevel
         .map(
           (node) =>
-            `[${node.id} - ${unidadesCurriculares.find((uc) => uc.codigo === node.id)?.nombre}]`
+            `[${node.id} - ${unidadesCurriculares.find((uc) => uc.codigo === node.id)?.nombre}]`,
         )
-        .join('    ');
-      diagram += nodeLine + '\n';
+        .join("    ");
+      diagram += nodeLine + "\n";
 
       if (index < sortedLevels.length - 1) {
         nodesAtLevel.forEach((node) => {

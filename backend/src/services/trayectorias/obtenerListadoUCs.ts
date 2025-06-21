@@ -1,37 +1,43 @@
-import requisitosTitulo from '../../../data/requisitos-titulo.json';
-import ucsObligatorias from '../../../data/ucs-obligatorias.json';
-import unidadesCurricularesJson from '../../../data/unidades-curriculares.json';
-import ucsOptativasGruposActuales from '../../../data/ucs-optativas-grupos-actuales.json';
-import previaturas from '../../../data/previaturas.json';
-
+import previaturas from "@/data/previaturas.json";
+import requisitosTitulo from "@/data/requisitos-titulo.json";
+import ucsObligatorias from "@/data/ucs-obligatorias.json";
+import ucsOptativasGruposActuales from "@/data/ucs-optativas-grupos-actuales.json";
+import unidadesCurricularesJson from "@/data/unidades-curriculares.json";
 import {
   GrupoHijo,
   InformacionEstudiante,
   ReglaPreviaturas,
   UnidadCurricular,
-} from '../../types';
-import { cumplePreviaturas } from '../previaturas.service';
-import { actualizarInformacionEstudiante } from '../../utils';
+} from "@/types";
+import { actualizarInformacionEstudiante } from "@/utils";
+import { cumplePreviaturas } from "../previaturas.service";
 
-const UCS_EXCEPCIONALES = [{ nombre: 'PROYECTO DE GRADO', codigo: '1730' }];
+const UCS_EXCEPCIONALES = [{ nombre: "PROYECTO DE GRADO", codigo: "1730" }];
+
+const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
+const ucsOptativasGruposActualesTyped = ucsOptativasGruposActuales as Record<
+  string,
+  string[]
+>;
 
 export const obtenerListadoUCs = (
-  informacionEstudiante: InformacionEstudiante
+  informacionEstudiante: InformacionEstudiante,
 ): UnidadCurricular[] => {
   const listadoUCs: UnidadCurricular[] = [];
 
   // 1. Eliminar de materias obligatorias las ya aprobadas
   const ucsObligatoriasFiltradas = ucsObligatorias.filter(
     (unidadCurricular) =>
-      !informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
-        unidadCurricular.codigo
-      )
+      !Object.hasOwn(
+        informacionEstudiante.unidadesCurricularesAprobadas,
+        unidadCurricular.codigo,
+      ),
   );
 
   const ucsObligatoriasFaltantes = ucsObligatoriasFiltradas
     .map((unidadCurricular) => {
       return unidadesCurricularesJson.find(
-        (uc) => uc.codigo === unidadCurricular.codigo
+        (uc) => uc.codigo === unidadCurricular.codigo,
       ) as UnidadCurricular;
     })
     .filter((uc) => uc);
@@ -42,7 +48,7 @@ export const obtenerListadoUCs = (
     if (
       cumplePreviaturas(
         informacionEstudiante,
-        previaturas[unidadCurricular.codigo]
+        previaturasTyped[unidadCurricular.codigo],
       ) ||
       UCS_EXCEPCIONALES.find((uc) => uc.codigo === unidadCurricular.codigo)
     ) {
@@ -51,34 +57,40 @@ export const obtenerListadoUCs = (
       actualizarInformacionEstudiante(
         informacionEstudiante,
         unidadCurricular,
-        unidadCurricular.nombreGrupoHijo
+        unidadCurricular.nombreGrupoHijo,
       );
     }
   });
 
   // Por cada grupo
-  for (const grupo in ucsOptativasGruposActuales) {
+  for (const grupo in ucsOptativasGruposActualesTyped) {
     // Si cumple los requisitos pasar al siguiente
+    // @ts-expect-error Necessary to access the property dynamically
     if (informacionEstudiante[grupo] >= requisitosTitulo[grupo]) continue;
 
     // 1. Eliminar de materias grupo las ya aprobadas
-    const codigoUCsGrupoFiltradas = ucsOptativasGruposActuales[grupo].filter(
+    // @ts-expect-error Necessary to access the property dynamically
+    const codigoUCsGrupoFiltradas = ucsOptativasGruposActualesTyped[
+      grupo
+    ].filter(
       (codigoUC) =>
-        !informacionEstudiante.unidadesCurricularesAprobadas.hasOwnProperty(
-          codigoUC
-        )
+        !Object.hasOwn(
+          informacionEstudiante.unidadesCurricularesAprobadas,
+          codigoUC,
+        ),
     );
 
     // 2. Seleccionar una materia al azar, agregarla al listado y actualizar informacionEstudiante
+    // @ts-expect-error Necessary to access the property dynamically
     while (informacionEstudiante[grupo] < requisitosTitulo[grupo]) {
       const indiceAleatorio = Math.floor(
-        Math.random() * codigoUCsGrupoFiltradas.length
+        Math.random() * codigoUCsGrupoFiltradas.length,
       );
-      const codigoUCAleatorio = codigoUCsGrupoFiltradas[indiceAleatorio];
+      const codigoUCAleatorio = codigoUCsGrupoFiltradas?.[indiceAleatorio];
       const ucAleatoria = unidadesCurricularesJson.find(
-        (uc) => uc.codigo === codigoUCAleatorio
+        (uc) => uc.codigo === codigoUCAleatorio,
       ) as UnidadCurricular;
-      const previaturasUCAleatoria = previaturas[
+      const previaturasUCAleatoria = previaturasTyped[
         ucAleatoria.codigo
       ] as ReglaPreviaturas;
 
@@ -92,7 +104,7 @@ export const obtenerListadoUCs = (
       actualizarInformacionEstudiante(
         informacionEstudiante,
         ucAleatoria,
-        grupo as GrupoHijo
+        grupo as GrupoHijo,
       );
     }
   }
@@ -107,14 +119,15 @@ export const obtenerListadoUCs = (
 
     // 2. Seleccionar una unidad curricular del grupo al azar
     const indiceAleatorio = Math.floor(
-      Math.random() * ucsOptativasGruposActuales[grupoAleatorio!].length
+      // @ts-expect-error Necessary to access the property dynamically
+      Math.random() * ucsOptativasGruposActualesTyped[grupoAleatorio].length,
     );
     const codigoUCAleatorio =
-      ucsOptativasGruposActuales[grupoAleatorio!][indiceAleatorio];
+      ucsOptativasGruposActualesTyped[grupoAleatorio!]?.[indiceAleatorio];
     const ucAleatoria = unidadesCurricularesJson.find(
-      (uc) => uc.codigo === codigoUCAleatorio
+      (uc) => uc.codigo === codigoUCAleatorio,
     ) as UnidadCurricular;
-    const previaturasUCAleatoria = previaturas[
+    const previaturasUCAleatoria = previaturasTyped[
       ucAleatoria.codigo
     ] as ReglaPreviaturas;
 
@@ -129,7 +142,7 @@ export const obtenerListadoUCs = (
     actualizarInformacionEstudiante(
       informacionEstudiante,
       ucAleatoria,
-      grupoAleatorio!
+      grupoAleatorio!,
     );
   }
 

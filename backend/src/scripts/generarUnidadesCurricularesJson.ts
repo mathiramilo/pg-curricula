@@ -1,22 +1,22 @@
-import fs from 'fs';
+import fs from "fs";
+import axios from "axios";
 
+import { env } from "@/config";
 import {
   SEMESTRE_DE_DICTADO,
   SemestreDeDictado,
   UnidadCurricular,
   UnidadCurricularRelevamientoDeDatosCSV,
   UnidadCurricularResponse,
-} from '../types';
-import { leerCSV } from '../utils';
-import axios from 'axios';
-import { env } from '../config';
+} from "@/types";
+import { leerCSV } from "@/utils";
 
 const UBICACION_CSV_UCS_ACTUALES_PRIMER_SEMESTRE =
-  '../../data/csv/ucs-actuales-primer-semestre.csv';
+  "../../data/csv/ucs-actuales-primer-semestre.csv";
 const UBICACION_CSV_UCS_ACTUALES_SEGUNDO_SEMESTRE =
-  '../../data/csv/ucs-actuales-segundo-semestre.csv';
+  "../../data/csv/ucs-actuales-segundo-semestre.csv";
 
-const UBICACION_DESTINO = '../../data/unidades-curriculares.json';
+const UBICACION_DESTINO = "../../data/unidades-curriculares.json";
 
 const generarUnidadesCurricularesJson = async (): Promise<void> => {
   try {
@@ -25,7 +25,7 @@ const generarUnidadesCurricularesJson = async (): Promise<void> => {
     fs.writeFileSync(
       UBICACION_DESTINO,
       JSON.stringify(unidadesCurriculares, null, 4),
-      'utf8'
+      "utf8",
     );
   } catch (error) {
     console.error(error);
@@ -34,10 +34,10 @@ const generarUnidadesCurricularesJson = async (): Promise<void> => {
 
 const obtenerUnidadesCurriculares = async (): Promise<UnidadCurricular[]> => {
   const ucsActualesPrimerSemestre = (await leerCSV(
-    UBICACION_CSV_UCS_ACTUALES_PRIMER_SEMESTRE
+    UBICACION_CSV_UCS_ACTUALES_PRIMER_SEMESTRE,
   )) as UnidadCurricularRelevamientoDeDatosCSV[];
   const ucsActualesSegundoSemestre = (await leerCSV(
-    UBICACION_CSV_UCS_ACTUALES_SEGUNDO_SEMESTRE
+    UBICACION_CSV_UCS_ACTUALES_SEGUNDO_SEMESTRE,
   )) as UnidadCurricularRelevamientoDeDatosCSV[];
 
   const url = `${env.PDF_PROCESSOR_SERVICE_URL}/unidades-curriculares`;
@@ -46,24 +46,24 @@ const obtenerUnidadesCurriculares = async (): Promise<UnidadCurricular[]> => {
 
   if (!data) {
     throw new Error(
-      'Ha ocurrido un error al fetchear las unidades curriculares'
+      "Ha ocurrido un error al fetchear las unidades curriculares",
     );
   }
 
   const unidadesCurriculares: UnidadCurricular[] = [];
 
   for (const unidadCurricular of data) {
-    let semestres: SemestreDeDictado[] = [];
+    const semestres: SemestreDeDictado[] = [];
     if (
       ucsActualesPrimerSemestre.find(
-        (uc) => uc.codigo === unidadCurricular.codigo
+        (uc) => uc.codigo === unidadCurricular.codigo,
       )
     ) {
       semestres.push(SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE);
     }
     if (
       ucsActualesSegundoSemestre.find(
-        (uc) => uc.codigo === unidadCurricular.codigo
+        (uc) => uc.codigo === unidadCurricular.codigo,
       )
     ) {
       semestres.push(SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE);

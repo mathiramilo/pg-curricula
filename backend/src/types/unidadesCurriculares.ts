@@ -1,8 +1,8 @@
-import { GrupoHijo, GrupoPadre } from '.';
+import { GrupoHijo, GrupoPadre } from ".";
 
 export const SEMESTRE_DE_DICTADO = {
-  PRIMER_SEMESTRE: '1',
-  SEGUNDO_SEMESTRE: '2',
+  PRIMER_SEMESTRE: "1",
+  SEGUNDO_SEMESTRE: "2",
 } as const;
 export type SemestreDeDictado =
   (typeof SEMESTRE_DE_DICTADO)[keyof typeof SEMESTRE_DE_DICTADO];

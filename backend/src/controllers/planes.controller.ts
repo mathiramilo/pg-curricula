@@ -1,19 +1,19 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
-import { HTTP_STATUS_CODE } from '../constants';
-import { generarPlan } from '../services/trayectorias/generarPlan';
+import { HTTP_STATUS_CODE } from "@/constants";
+import { generarPlan } from "@/services";
 
-export const generarPlanController: RequestHandler = async (
+export const generarPlanController = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const { informacionEstudiante, creditosPorSemestre, semestreInicial } =
     req.body;
 
   if (!informacionEstudiante || !creditosPorSemestre || !semestreInicial) {
     return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
-      error: 'Faltan datos necesarios para generar el plan de estudios',
+      error: "Faltan datos necesarios para generar el plan de estudios",
     });
   }
 
@@ -21,7 +21,7 @@ export const generarPlanController: RequestHandler = async (
     const trayectoriaSugerida = await generarPlan(
       informacionEstudiante,
       creditosPorSemestre,
-      semestreInicial
+      semestreInicial,
     );
     res.status(HTTP_STATUS_CODE.OK).json(trayectoriaSugerida);
   } catch (error) {

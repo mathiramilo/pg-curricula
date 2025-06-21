@@ -6,6 +6,7 @@ fi
 
 cd backend
 pnpm type-check
-cd ../frontend
 pnpm lint
+cd ../frontend
 pnpm type-check
+pnpm lint

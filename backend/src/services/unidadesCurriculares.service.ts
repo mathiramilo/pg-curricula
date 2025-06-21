@@ -1,13 +1,12 @@
+import previaturas from "@/data/previaturas.json";
+import trayectoriaSugerida from "@/data/trayectoria-sugerida.json";
+import unidadesCurricularesJson from "@/data/unidades-curriculares.json";
 import {
   SemestreDeDictado,
   UnidadCurricular,
   type InformacionEstudiante,
-} from '@/types';
-
-import previaturas from '../../data/previaturas.json';
-import trayectoriaSugerida from '../../data/trayectoria-sugerida.json';
-import unidadesCurricularesJson from '../../data/unidades-curriculares.json';
-import { cumplePreviaturas } from './previaturas.service';
+} from "@/types";
+import { cumplePreviaturas } from "./previaturas.service";
 
 type ObtenerUnidadesCurricularesFilter = Partial<{
   search: string;
@@ -23,7 +22,7 @@ export const obtenerUnidadesCurriculares = (
   informacionEstudiante: InformacionEstudiante,
   filter: ObtenerUnidadesCurricularesFilter,
   page: number,
-  pageSize: number = 60
+  pageSize: number = 60,
 ) => {
   let unidadesCurriculares = unidadesCurricularesJson;
 
@@ -31,30 +30,30 @@ export const obtenerUnidadesCurriculares = (
     unidadesCurriculares = unidadesCurriculares.filter(
       (uc) =>
         uc.nombre.toLowerCase().includes(filter.search!.toLowerCase()) ||
-        uc.codigo.toLowerCase().includes(filter.search!.toLowerCase())
+        uc.codigo.toLowerCase().includes(filter.search!.toLowerCase()),
     );
   }
 
   if (filter.grupo) {
     unidadesCurriculares = unidadesCurriculares.filter(
-      (uc) => uc.nombreGrupoHijo.toLowerCase() === filter.grupo?.toLowerCase()
+      (uc) => uc.nombreGrupoHijo.toLowerCase() === filter.grupo?.toLowerCase(),
     );
   }
 
   if (filter.minCreditos) {
     unidadesCurriculares = unidadesCurriculares.filter(
-      (uc) => uc.creditos >= +filter.minCreditos!
+      (uc) => uc.creditos >= +filter.minCreditos!,
     );
   }
 
   if (filter.maxCreditos) {
     unidadesCurriculares = unidadesCurriculares.filter(
-      (uc) => uc.creditos <= +filter.maxCreditos!
+      (uc) => uc.creditos <= +filter.maxCreditos!,
     );
   }
 
   const semestres = JSON.parse(
-    filter.semestresDeDictado || '[]'
+    filter.semestresDeDictado || "[]",
   ) as SemestreDeDictado[];
 
   if (semestres.length) {
@@ -62,28 +61,29 @@ export const obtenerUnidadesCurriculares = (
       (uc) =>
         uc.semestres &&
         uc.semestres.some((semestre) =>
-          semestres.includes(semestre as SemestreDeDictado)
-        )
+          semestres.includes(semestre as SemestreDeDictado),
+        ),
     );
   }
 
-  const soloHabilitadas = filter.habilitadas === 'true';
+  const soloHabilitadas = filter.habilitadas === "true";
 
   if (soloHabilitadas) {
     unidadesCurriculares = unidadesCurriculares.filter(
       (uc) =>
         uc.semestres &&
-        cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo])
+        // @ts-expect-error Necessary to access the property dynamically
+        cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo]),
     );
   }
 
-  const aprobadas = filter.aprobadas === 'true';
+  const aprobadas = filter.aprobadas === "true";
 
   if (aprobadas) {
     unidadesCurriculares = unidadesCurriculares.filter((uc) =>
       Object.keys(informacionEstudiante.unidadesCurricularesAprobadas).includes(
-        uc.codigo
-      )
+        uc.codigo,
+      ),
     );
   }
 
@@ -91,7 +91,7 @@ export const obtenerUnidadesCurriculares = (
   const startIndex = (page - 1) * pageSize;
   const paginatedData = unidadesCurriculares.slice(
     startIndex,
-    startIndex + pageSize
+    startIndex + pageSize,
   );
 
   return {
@@ -115,7 +115,7 @@ export const obtenerTrayectoriaSugerida = () => {
       ({ codigo }) => {
         codigosIncluidos.add(codigo);
         return unidadesCurricularesMap.get(codigo);
-      }
+      },
     );
 
     return {
@@ -125,7 +125,7 @@ export const obtenerTrayectoriaSugerida = () => {
   });
 
   const unidadesCurricularesNoIncluidas = Array.from(
-    unidadesCurricularesMap.values()
+    unidadesCurricularesMap.values(),
   ).filter((uc) => !codigosIncluidos.has(uc.codigo) && uc.semestres);
 
   return [

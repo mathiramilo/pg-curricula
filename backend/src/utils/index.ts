@@ -1,3 +1,3 @@
-export * from './csv';
-export * from './texts';
-export * from './trayectorias';
+export * from "./csv";
+export * from "./texts";
+export * from "./trayectorias";
