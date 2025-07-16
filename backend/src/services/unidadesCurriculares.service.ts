@@ -96,9 +96,9 @@ export const obtenerUnidadesCurriculares = (
 
   return {
     data: paginatedData,
+    total: totalItems,
     page,
     pageSize,
-    totalItems,
   };
 };
 
@@ -136,3 +136,5 @@ export const obtenerTrayectoriaSugerida = () => {
     },
   ];
 };
+
+

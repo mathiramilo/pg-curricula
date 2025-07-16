@@ -1,6 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 
 import { HTTP_STATUS_CODE } from "@/constants";
+import ucsObligatorias from "@/data/ucs-obligatorias.json";
 import {
   obtenerTrayectoriaSugerida,
   obtenerUnidadesCurriculares,
@@ -41,6 +42,18 @@ export const obtenerTrayectoriaSugeridaController = async (
   try {
     const trayectoriaSugerida = await obtenerTrayectoriaSugerida();
     res.status(HTTP_STATUS_CODE.OK).json(trayectoriaSugerida);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const obtenerUnidadesCurricularesObligatoriasController = async (
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    res.status(HTTP_STATUS_CODE.OK).json(ucsObligatorias);
   } catch (error) {
     next(error);
   }
