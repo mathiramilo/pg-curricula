@@ -19,9 +19,7 @@ export interface GetUnidadesCurricularesFilter {
   aprobadas?: boolean;
 }
 
-export type GetUnidadesCurricularesResponse = PaginatedResponse<
-  UnidadCurricular[]
->;
+type GetUnidadesCurricularesResponse = PaginatedResponse<UnidadCurricular[]>;
 
 export const getUnidadesCurriculares = async (
   filter: GetUnidadesCurricularesFilter,

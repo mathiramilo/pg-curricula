@@ -49,6 +49,7 @@ export const HeaderBuscarCursos = () => {
       />
 
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-8">
+        {/* REVIEW: <SelectField /> */}
         <Select value={grupo} onValueChange={setGrupo}>
           <SelectTrigger className="xl:w-7/12 xl:max-w-md">
             <SelectValue placeholder="Selecciona un grupo" />

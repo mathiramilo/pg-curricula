@@ -1,0 +1,102 @@
+[
+    {
+        "codigo": "736EU",
+        "nombre": "BIOINFORMÁTICA"
+    },
+    {
+        "codigo": "836EU",
+        "nombre": "BIONFORMÁTICA ESTRUCTURAL"
+    },
+    {
+        "codigo": "MC10",
+        "nombre": "CÁLCULO I"
+    },
+    {
+        "codigo": "24CIA",
+        "nombre": "COMUNICACIÓN E INTELIGENCIA ARTIFICIAL (PPP)"
+    },
+    {
+        "codigo": "O1145",
+        "nombre": "COMUNICACIÓN ESTRATÉGICA"
+    },
+    {
+        "codigo": "A42",
+        "nombre": "DISEÑO ORGANIZACIONAL"
+    },
+    {
+        "codigo": "C216",
+        "nombre": "EPISTEMOLOGIA, ETICA Y EDUCACION"
+    },
+    {
+        "codigo": "M014",
+        "nombre": "ESTRATEGIAS PARA APRENDER: DESARROLLANDO ESTRATEGIAS P/ESTUDIAR EN LA UNIV."
+    },
+    {
+        "codigo": "FD1",
+        "nombre": "ETICA I"
+    },
+    {
+        "codigo": "D84",
+        "nombre": "FORMULACIÓN Y EVALUACIÓN DE PROYECTOS DE INVERSIÓN"
+    },
+    {
+        "codigo": "MHC24",
+        "nombre": "GENÉTICA GENERAL"
+    },
+    {
+        "codigo": "A62",
+        "nombre": "GESTIÓN DE LA INNOVACIÓN Y LA TECNOLOGÍA"
+    },
+    {
+        "codigo": "A66",
+        "nombre": "GESTIÓN DE PROYECTOS"
+    },
+    {
+        "codigo": "203EU",
+        "nombre": "INTRODUCCIÓN A LAS CIENCIAS BIOLÓGICAS II (TEÓRICO)"
+    },
+    {
+        "codigo": "A65",
+        "nombre": "INTRODUCCIÓN AL EMPRENDEDURISMO"
+    },
+    {
+        "codigo": "AT002",
+        "nombre": "METODOLOGÍAS DE INVESTIGACIÓN"
+    },
+    {
+        "codigo": "AT009",
+        "nombre": "MODELADO 3D PARA PRODUCCION DIGITAL (PERFIL PRODUCTO)"
+    },
+    {
+        "codigo": "AT003",
+        "nombre": "PROBLEMAS DE DISEÑO"
+    },
+    {
+        "codigo": "I87",
+        "nombre": "PROSPECTIVA ESTRATÉGICA: CON LA MIRADA EN EL FUTURO"
+    },
+    {
+        "codigo": "S42",
+        "nombre": "SOCIOLOGÍA DE LA EMPRESA Y MANAGEMENT"
+    },
+    {
+        "codigo": "I546",
+        "nombre": "TALLER: DISEÑO DE PROY P/LA GESTIÓN UNIV"
+    },
+    {
+        "codigo": "O6311",
+        "nombre": "TALLER DE INTERACCIÓN"
+    },
+    {
+        "codigo": "O7246",
+        "nombre": "TECNOLOGÍAS DE DIGITALIZACIÓN Y TRANSCODIFICACIÓN. IDENTIFICACIÓN Y PRESERVACIÓN"
+    },
+    {
+        "codigo": "D87",
+        "nombre": "TEORÍA DE JUEGOS"
+    },
+    {
+        "codigo": "O6521",
+        "nombre": "TEORÍAS Y PRÁCTICAS DE LA ACCESIBILIDAD EN LA COMUNICACIÓN - LIM"
+    }
+]

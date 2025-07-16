@@ -2,6 +2,7 @@ import json
 import os
 
 from app.services.scraper import scrape_groups_and_subjects
+from app.utils.print import print_success
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
             indent=4,
             ensure_ascii=False,
         )
-    print(f"Parent groups saved to {parent_groups_path}")
+    print_success(f"Parent groups saved to {parent_groups_path}")
 
     child_groups_path = os.path.join("data", "child_groups.json")
     with open(child_groups_path, "w", encoding="utf-8") as f:
@@ -27,7 +28,7 @@ def main():
             indent=4,
             ensure_ascii=False,
         )
-    print(f"Child groups saved to {child_groups_path}")
+    print_success(f"Child groups saved to {child_groups_path}")
 
     subjects_path = os.path.join("data", "subjects.json")
     with open(subjects_path, "w", encoding="utf-8") as f:
@@ -38,7 +39,7 @@ def main():
             indent=4,
             ensure_ascii=False,
         )
-    print(f"Subjects saved to {subjects_path}")
+    print_success(f"Subjects saved to {subjects_path}")
 
 
 if __name__ == "__main__":

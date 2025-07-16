@@ -22,8 +22,7 @@ export const TIPO_APROBACION = {
   EXAMEN: "Examen",
   CURSO: "Curso",
 } as const;
-export type TipoAprobacion =
-  (typeof TIPO_APROBACION)[keyof typeof TIPO_APROBACION];
+type TipoAprobacion = (typeof TIPO_APROBACION)[keyof typeof TIPO_APROBACION];
 
 export type UCAprobada = Pick<
   UnidadCurricular,

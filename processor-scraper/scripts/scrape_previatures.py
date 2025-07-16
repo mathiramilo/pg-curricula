@@ -2,6 +2,7 @@ import json
 import os
 
 from app.services.scraper import scrape_previatures
+from app.utils.print import print_success
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
             indent=4,
             ensure_ascii=False,
         )
-    print(f"Previatures saved to {output_path}")
+    print_success(f"Previatures saved to {output_path}")
 
 
 if __name__ == "__main__":

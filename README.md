@@ -44,6 +44,8 @@ Utilizamos archivos JSON para persistir los datos.
 ### Comandos
 
 - `pnpm generate:previaturas` Genera las previaturas de las carreras.
+- `pnpm generate:ucs-primer-semestre` Genera las unidades curriculares que se dictan el primer semestre.
+- `pnpm generate:ucs-segundo-semestre` Genera las unidades curriculares que se dictan el segundo semestre.
 - `pnpm generate:unidades-curriculares` Genera las UCS de la FING.
 - `pnpm generate:ucs-grupos` Genera los grupos de las UCS.
 - `pnpm generate:ucs-grupos-actuales` Genera las UCs de los grupos actuales.
@@ -63,6 +65,12 @@ generar los archivos JSON utilizados por el backend.
 
    docker-compose exec processor-scraper \
      python -m scripts.scrape_groups_and_subjects
+
+   docker-compose exec processor-scraper \
+     python -m scripts.scrape_first_semester_subjects
+
+   docker-compose exec processor-scraper \
+     python -m scripts.scrape_second_semester_subjects
    ```
 
    Los datos obtenidos se guardarán en `processor-scraper/data`.
@@ -71,6 +79,8 @@ generar los archivos JSON utilizados por el backend.
 
    ```bash
    docker-compose exec backend pnpm generate:previaturas
+   docker-compose exec backend pnpm generate:ucs-primer-semestre
+   docker-compose exec backend pnpm generate:ucs-segundo-semestre
    docker-compose exec backend pnpm generate:unidades-curriculares
    docker-compose exec backend pnpm generate:ucs-grupos
    docker-compose exec backend pnpm generate:ucs-grupos-actuales

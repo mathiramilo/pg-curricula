@@ -1,7 +1,7 @@
 import fs from "fs";
 
-import unidadesCurriculares from "@/data/unidades-curriculares.json";
-import { UnidadCurricular } from "@/types";
+import unidadesCurriculares from "../../data/unidades-curriculares.json";
+import { UnidadCurricular } from "../types";
 
 const UBICACION_DESTINO = "../../data/ucs-grupos.json";
 
@@ -15,6 +15,10 @@ const generarUCsGruposJson = async (): Promise<void> => {
       UBICACION_DESTINO,
       JSON.stringify(ucsGrupos, null, 4),
       "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de UCs grupos generado correctamente en ${UBICACION_DESTINO}`,
     );
   } catch (error) {
     console.error(error);
