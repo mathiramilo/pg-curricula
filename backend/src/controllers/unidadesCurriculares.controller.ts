@@ -4,6 +4,7 @@ import { HTTP_STATUS_CODE } from "@/constants";
 import {
   obtenerTrayectoriaSugerida,
   obtenerUnidadesCurriculares,
+  obtenerUnidadesCurricularesObligatorias,
 } from "@/services";
 
 export const obtenerUnidadesCurricularesController = async (
@@ -41,6 +42,19 @@ export const obtenerTrayectoriaSugeridaController = async (
   try {
     const trayectoriaSugerida = await obtenerTrayectoriaSugerida();
     res.status(HTTP_STATUS_CODE.OK).json(trayectoriaSugerida);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const obtenerUnidadesCurricularesObligatoriasController = async (
+  _req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const ucsObligatorias = obtenerUnidadesCurricularesObligatorias();
+    res.status(HTTP_STATUS_CODE.OK).json(ucsObligatorias);
   } catch (error) {
     next(error);
   }

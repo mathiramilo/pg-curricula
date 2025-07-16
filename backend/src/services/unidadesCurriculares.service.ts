@@ -1,5 +1,6 @@
 import previaturas from "@/data/previaturas.json";
 import trayectoriaSugerida from "@/data/trayectoria-sugerida.json";
+import ucsObligatoriasJson from "@/data/ucs-obligatorias.json";
 import unidadesCurricularesJson from "@/data/unidades-curriculares.json";
 import {
   SemestreDeDictado,
@@ -135,4 +136,10 @@ export const obtenerTrayectoriaSugerida = () => {
       unidadesCurriculares: unidadesCurricularesNoIncluidas,
     },
   ];
+};
+
+export const obtenerUnidadesCurricularesObligatorias = () => {
+  return ucsObligatoriasJson.map((uc) =>
+    unidadesCurricularesJson.find((u) => u.codigo === uc.codigo),
+  );
 };

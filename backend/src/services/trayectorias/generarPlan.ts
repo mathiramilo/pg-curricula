@@ -1,13 +1,28 @@
-import { InformacionEstudiante, SemestreDeDictado } from "@/types";
+import {
+  InformacionEstudiante,
+  SemestreDeDictado,
+  UnidadCurricular,
+} from "@/types";
 import { generarGrafo } from "./generarGrafo";
-import { obtenerListadoUCs } from "./obtenerListadoUCs";
+import { verificarRequisitosParaTitulo } from "./verificarRequisitos";
 
 export const generarPlan = (
   informacionEstudiante: InformacionEstudiante,
+  listadoUCs: UnidadCurricular[],
   creditosPorSemestre: number,
   semestreInicial: SemestreDeDictado,
 ) => {
-  const listadoUCs = obtenerListadoUCs(structuredClone(informacionEstudiante));
+  const result = verificarRequisitosParaTitulo(
+    informacionEstudiante,
+    listadoUCs,
+  );
+
+  if (!result.success) {
+    return {
+      success: false,
+      errors: result.errors,
+    };
+  }
 
   const grafo = generarGrafo(
     listadoUCs,
@@ -21,5 +36,8 @@ export const generarPlan = (
     structuredClone(informacionEstudiante),
   );
 
-  return plan;
+  return {
+    success: true,
+    plan,
+  };
 };
