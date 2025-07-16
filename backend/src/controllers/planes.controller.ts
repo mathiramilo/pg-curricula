@@ -35,9 +35,11 @@ export const generarPlanController = async (
     );
 
     if (!result.success)
-      return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json(result);
+      return res
+        .status(HTTP_STATUS_CODE.UNPROCESSABLE_CONTENT)
+        .json(result.errors);
 
-    res.status(HTTP_STATUS_CODE.OK).json(result);
+    res.status(HTTP_STATUS_CODE.OK).json(result.plan);
   } catch (error) {
     next(error);
   }

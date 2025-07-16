@@ -7,5 +7,5 @@ import {
 
 export const planesRouter = Router();
 
-planesRouter.get("/", generarPlanController);
+planesRouter.post("/", generarPlanController);
 planesRouter.get("/generar-listado", generarListadoUCsController);

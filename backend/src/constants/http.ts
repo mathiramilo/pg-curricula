@@ -6,6 +6,7 @@ export const HTTP_STATUS_CODE = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
   NOT_FOUND: 404,
+  UNPROCESSABLE_CONTENT: 422,
   INTERNAL_SERVER_ERROR: 500,
 } as const;
 export type HttpStatusCode =
