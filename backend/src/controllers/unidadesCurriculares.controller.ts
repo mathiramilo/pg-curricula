@@ -1,10 +1,10 @@
 import type { NextFunction, Request, Response } from "express";
 
 import { HTTP_STATUS_CODE } from "@/constants";
-import ucsObligatorias from "@/data/ucs-obligatorias.json";
 import {
   obtenerTrayectoriaSugerida,
   obtenerUnidadesCurriculares,
+  obtenerUnidadesCurricularesObligatorias,
 } from "@/services";
 
 export const obtenerUnidadesCurricularesController = async (
@@ -53,6 +53,7 @@ export const obtenerUnidadesCurricularesObligatoriasController = async (
   next: NextFunction,
 ) => {
   try {
+    const ucsObligatorias = obtenerUnidadesCurricularesObligatorias();
     res.status(HTTP_STATUS_CODE.OK).json(ucsObligatorias);
   } catch (error) {
     next(error);

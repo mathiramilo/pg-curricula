@@ -1,11 +1,11 @@
 import { Router } from "express";
 
-import { 
+import {
+  generarListadoUCsController,
   generarPlanController,
-  obtenerUnidadesCurricularesParaPlanController,
 } from "@/controllers";
 
 export const planesRouter = Router();
 
 planesRouter.get("/", generarPlanController);
-planesRouter.get("/unidades-curriculares", obtenerUnidadesCurricularesParaPlanController);
+planesRouter.get("/generar-listado", generarListadoUCsController);
