@@ -117,11 +117,11 @@ def login(driver, ci, password):
     submit_button.click()
 
     try:
-        error_message = WebDriverWait(driver, 10).until(
+        error_message = WebDriverWait(driver, 3).until(
             EC.presence_of_element_located((By.CLASS_NAME, "form-error"))
         )
         if error_message.is_displayed():
-            raise ValueError("Login failed. Please check your CI and password.")
+            raise ValueError("Login failed. Please check your credentials.")
     except TimeoutException:
         pass
 

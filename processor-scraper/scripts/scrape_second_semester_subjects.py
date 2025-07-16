@@ -8,6 +8,9 @@ from app.utils.print import print_success
 def main():
     second_semester_subjects = scrape_current_subjects()
 
+    if not second_semester_subjects or len(second_semester_subjects) == 0:
+        return
+
     output_path = os.path.join("data", "second_semester_subjects.json")
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(

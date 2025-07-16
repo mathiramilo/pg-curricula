@@ -1,3 +1,4 @@
+import getpass
 import re
 import time
 from typing import List
@@ -92,7 +93,7 @@ def expand_tree(driver):
             toggle_div.click()
             time.sleep(1)
         except Exception as e:
-            print_error("Error clicking the toggle:", e)
+            print_error(f"Error clicking the toggle: {e}")
 
     expand_tree(driver)
 
@@ -479,7 +480,7 @@ def scrape_current_subjects():
     start_time = time.time()
 
     ci = input("Enter your CI: ")
-    password = input("Enter your password: ")
+    password = getpass.getpass("Enter your password: ")
 
     if not ci or not password:
         raise ValueError("CI and password must be provided.")
