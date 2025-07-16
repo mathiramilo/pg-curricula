@@ -18,3 +18,31 @@ def get_unidades_curriculares():
         return subjects
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/primer-semestre")
+def get_ucs_primer_semestre():
+    try:
+        data_dir = Path(__file__).resolve().parents[2] / "data"
+        subjects_file = data_dir / "first_semester_subjects.json"
+
+        with subjects_file.open("r", encoding="utf-8") as f:
+            subjects = json.load(f)
+
+        return subjects
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/segundo-semestre")
+def get_ucs_segundo_semestre():
+    try:
+        data_dir = Path(__file__).resolve().parents[2] / "data"
+        subjects_file = data_dir / "second_semester_subjects.json"
+
+        with subjects_file.open("r", encoding="utf-8") as f:
+            subjects = json.load(f)
+
+        return subjects
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

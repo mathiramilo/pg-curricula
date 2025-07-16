@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import type { UnidadCurricular } from "@/models";
 
-export interface UnidadCurricularModalStore {
+interface UnidadCurricularModalStore {
   unidadCurricular?: UnidadCurricular;
   show: boolean;
   open: () => void;

@@ -44,7 +44,7 @@ export default [
   ...pluginQuery.configs["flat/recommended"],
   {
     plugins: {
-      "@typescript-eslint": fixupPluginRules(typescriptEslint),
+      typescript: fixupPluginRules(typescriptEslint),
       import: fixupPluginRules(_import),
     },
 
@@ -76,9 +76,9 @@ export default [
 
     rules: {
       "react/prop-types": "off",
-      "@typescript-eslint/unbound-method": "off",
+      "typescript/unbound-method": "off",
 
-      "@typescript-eslint/no-unused-vars": [
+      "typescript/no-unused-vars": [
         "error",
         {
           argsIgnorePattern: "^_",
@@ -86,7 +86,7 @@ export default [
         },
       ],
 
-      "@typescript-eslint/consistent-type-imports": [
+      "typescript/consistent-type-imports": [
         "warn",
         {
           prefer: "type-imports",
@@ -94,7 +94,7 @@ export default [
         },
       ],
 
-      "@typescript-eslint/no-misused-promises": [
+      "typescript/no-misused-promises": [
         2,
         {
           checksVoidReturn: {

@@ -8,7 +8,7 @@ import type {
   UnidadCurricularAprobada,
 } from "@/models";
 
-export interface InformacionEstudianteStore {
+interface InformacionEstudianteStore {
   informacionEstudiante: InformacionEstudiante;
   setInformacionEstudiante: (
     informacionEstudiante: InformacionEstudiante,

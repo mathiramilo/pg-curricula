@@ -7,18 +7,6 @@ export const SEMESTRE_DE_DICTADO = {
 export type SemestreDeDictado =
   (typeof SEMESTRE_DE_DICTADO)[keyof typeof SEMESTRE_DE_DICTADO];
 
-export type UnidadCurricularCSV = {
-  nombrep: string;
-  codigogrupop: string;
-  nombreh: string;
-  codigogrupoh: string;
-  nombre_mat: string;
-  codigo_materia: string;
-  codenservicio_mat: string;
-  tipo_mat: string;
-  creditos_mat: string;
-};
-
 export type UnidadCurricular = {
   codigo: string;
   nombre: string;
@@ -38,11 +26,4 @@ export type UnidadCurricularResponse = {
   nombre_grupo_padre: GrupoPadre;
   codigo_grupo_hijo: string;
   nombre_grupo_hijo: GrupoHijo;
-};
-
-export type UnidadCurricularRelevamientoDeDatosCSV = {
-  instituto: string;
-  nombre: string;
-  codigo: string;
-  inscriptos: string;
 };

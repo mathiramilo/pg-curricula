@@ -54,42 +54,42 @@ export interface TrayectoriaSugeridaSemestre {
   unidadesCurriculares: UnidadCurricular[];
 }
 
-export interface ReglaAnd {
+interface ReglaAnd {
   regla: typeof TIPO_REGLA.AND;
   previas: ReglaPreviaturas[];
 }
 
-export interface ReglaOr {
+interface ReglaOr {
   regla: typeof TIPO_REGLA.OR;
   previas: ReglaPreviaturas[];
 }
 
-export interface ReglaNot {
+interface ReglaNot {
   regla: typeof TIPO_REGLA.NOT;
   previas: ReglaPreviaturas;
 }
 
-export interface ReglaSome {
+interface ReglaSome {
   regla: typeof TIPO_REGLA.SOME;
   cantidad: number;
   previas: ReglaPreviaturas[];
 }
 
-export interface ReglaUc {
+interface ReglaUc {
   regla: typeof TIPO_REGLA.UC;
   codigo: string;
   nombre: string;
   tipoInstancia: TipoInstancia;
 }
 
-export interface ReglaCreditosGrupo {
+interface ReglaCreditosGrupo {
   regla: typeof TIPO_REGLA.CREDITOS_GRUPO;
   codigo: number;
   nombre: string;
   cantidad: number;
 }
 
-export interface ReglaCreditosPlan {
+interface ReglaCreditosPlan {
   regla: typeof TIPO_REGLA.CREDITOS_PLAN;
   cantidad: number;
 }
@@ -106,7 +106,7 @@ export type ReglaPreviaturas =
 
 export type UnidadCurricularItemType = "aprobacion" | "creditos";
 
-export interface SemestrePlanCarrera {
+interface SemestrePlanCarrera {
   semestre: number;
   unidadesCurriculares: UnidadCurricular[];
   creditos: number;

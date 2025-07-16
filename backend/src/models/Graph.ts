@@ -16,9 +16,9 @@ import {
 
 const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 
-export type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
+type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 
-export interface Edge {
+interface Edge {
   source: string;
   target: string;
   value: EdgeValue;

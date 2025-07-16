@@ -1,8 +1,8 @@
 import fs from "fs";
 
-import unidadesCurricularesObligatorias from "@/data/ucs-obligatorias.json";
-import unidadesCurriculares from "@/data/unidades-curriculares.json";
-import { UnidadCurricular } from "@/types";
+import unidadesCurricularesObligatorias from "../../data/ucs-obligatorias.json";
+import unidadesCurriculares from "../../data/unidades-curriculares.json";
+import { UnidadCurricular } from "../types";
 
 const UBICACION_DESTINO_1 = "../../data/ucs-grupos-actuales.json";
 const UBICACION_DESTINO_2 = "../../data/ucs-optativas-grupos-actuales.json";
@@ -17,6 +17,10 @@ const generarUCsGruposActualesJson = async (): Promise<void> => {
       UBICACION_DESTINO_1,
       JSON.stringify(ucsGrupos, null, 4),
       "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de UCs grupos actuales generado correctamente en ${UBICACION_DESTINO_1}`,
     );
   } catch (error) {
     console.error(error);
@@ -42,6 +46,10 @@ const generarUCsOptativasGruposActualesJson = async (): Promise<void> => {
       UBICACION_DESTINO_2,
       JSON.stringify(ucsGrupos, null, 4),
       "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de UCs optativas grupos actuales generado correctamente en ${UBICACION_DESTINO_2}`,
     );
   } catch (error) {
     console.error(error);

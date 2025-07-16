@@ -1,8 +1,8 @@
 import fs from "fs";
 import axios from "axios";
 
-import { env } from "@/config";
-import { ReglaPreviaturas } from "@/types";
+import { env } from "../config";
+import { ReglaPreviaturas } from "../types";
 
 const UBICACION_DESTINO = "../../data/previaturas.json";
 
@@ -20,6 +20,10 @@ const generarPreviaturasJson = async () => {
       UBICACION_DESTINO,
       JSON.stringify(previaturas, null, 4),
       "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de previaturas generado correctamente en ${UBICACION_DESTINO}`,
     );
   } catch (error) {
     console.error("Error al generar el JSON de previaturas:", error);

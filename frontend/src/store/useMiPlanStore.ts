@@ -6,7 +6,7 @@ import type { PlanCarrera, SemestreDeDictado } from "@/models";
 
 const CREDITOS_POR_SEMESTRE_DEFAULT = "40";
 
-export interface MiPlanStore {
+interface MiPlanStore {
   creditos: string;
   semestreInicial: SemestreDeDictado;
   plan?: PlanCarrera;

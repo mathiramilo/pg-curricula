@@ -1,20 +1,15 @@
 import fs from "fs";
 import axios from "axios";
 
-import { env } from "@/config";
+import ucsPrimerSemestre from "../../data/ucs-primer-semestre.json";
+import ucsSegundoSemestre from "../../data/ucs-segundo-semestre.json";
+import { env } from "../config";
 import {
   SEMESTRE_DE_DICTADO,
   SemestreDeDictado,
   UnidadCurricular,
-  UnidadCurricularRelevamientoDeDatosCSV,
   UnidadCurricularResponse,
-} from "@/types";
-import { leerCSV } from "@/utils";
-
-const UBICACION_CSV_UCS_ACTUALES_PRIMER_SEMESTRE =
-  "../../data/csv/ucs-actuales-primer-semestre.csv";
-const UBICACION_CSV_UCS_ACTUALES_SEGUNDO_SEMESTRE =
-  "../../data/csv/ucs-actuales-segundo-semestre.csv";
+} from "../types";
 
 const UBICACION_DESTINO = "../../data/unidades-curriculares.json";
 
@@ -27,19 +22,16 @@ const generarUnidadesCurricularesJson = async (): Promise<void> => {
       JSON.stringify(unidadesCurriculares, null, 4),
       "utf8",
     );
+
+    console.log(
+      `Archivo JSON de unidades curriculares generado correctamente en ${UBICACION_DESTINO}`,
+    );
   } catch (error) {
     console.error(error);
   }
 };
 
 const obtenerUnidadesCurriculares = async (): Promise<UnidadCurricular[]> => {
-  const ucsActualesPrimerSemestre = (await leerCSV(
-    UBICACION_CSV_UCS_ACTUALES_PRIMER_SEMESTRE,
-  )) as UnidadCurricularRelevamientoDeDatosCSV[];
-  const ucsActualesSegundoSemestre = (await leerCSV(
-    UBICACION_CSV_UCS_ACTUALES_SEGUNDO_SEMESTRE,
-  )) as UnidadCurricularRelevamientoDeDatosCSV[];
-
   const url = `${env.PDF_PROCESSOR_SERVICE_URL}/unidades-curriculares`;
 
   const { data } = await axios.get<UnidadCurricularResponse[]>(url);
@@ -54,17 +46,11 @@ const obtenerUnidadesCurriculares = async (): Promise<UnidadCurricular[]> => {
 
   for (const unidadCurricular of data) {
     const semestres: SemestreDeDictado[] = [];
-    if (
-      ucsActualesPrimerSemestre.find(
-        (uc) => uc.codigo === unidadCurricular.codigo,
-      )
-    ) {
+    if (ucsPrimerSemestre.find((uc) => uc.codigo === unidadCurricular.codigo)) {
       semestres.push(SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE);
     }
     if (
-      ucsActualesSegundoSemestre.find(
-        (uc) => uc.codigo === unidadCurricular.codigo,
-      )
+      ucsSegundoSemestre.find((uc) => uc.codigo === unidadCurricular.codigo)
     ) {
       semestres.push(SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE);
     }
