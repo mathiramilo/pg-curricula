@@ -13,11 +13,15 @@ import { Checkbox } from "../ui";
 type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   unidadCurricular: UnidadCurricular;
   type?: UnidadCurricularItemType;
+  selected?: boolean;
+  onSelectChange?: (uc: UnidadCurricular, selected: boolean) => void;
 };
 
 const UnidadCurricularItem = ({
   unidadCurricular,
   type = "aprobacion",
+  selected,
+  onSelectChange,
   className,
   ...props
 }: UnidadCurricularItemProps) => {
@@ -105,11 +109,27 @@ const UnidadCurricularItem = ({
         </div>
       )}
 
-      {type === "creditos" && (
+    {type === "creditos" && (
+      <div className="flex items-center gap-2">
         <span className="text-sm text-principal font-medium">
           {unidadCurricular.creditos}
         </span>
-      )}
+      </div>
+    )}
+
+    {type === "seleccion" && (
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-principal font-medium">
+          {unidadCurricular.creditos}
+        </span>
+        <Checkbox
+          checked={selected}
+          onCheckedChange={(value) =>
+            onSelectChange?.(unidadCurricular, Boolean(value))
+          }
+        />
+      </div>
+    )}
     </div>
   );
 };

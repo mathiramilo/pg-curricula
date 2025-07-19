@@ -10,7 +10,6 @@ import {
   SchoolIcon,
   ScreenHeader,
   SelectField,
-  TotalProgress
 } from "@/components";
 import { useBoolean, useSatisfaceRequisitos } from "@/hooks";
 import {
@@ -66,79 +65,60 @@ export const HeaderMiPlan = ({ onGenerate, activeView, onViewChange }: HeaderMiP
           </Button>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between">
-          {/* Subtítulo dinámico */}
-          <h2 className="font-medium text-fuente-principal">
-            {activeView === "plan-estudios"
-              ? "Plan de estudios"
-              : "Seleccionar cursos"}
-          </h2>
+        {activeView === "plan-estudios" && (
+          <div>
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between">
+              <h2 className="font-medium text-fuente-principal">
+                {"Plan de estudios" }
+              </h2>
 
-          {/* Botones contextuales */}
-          <div className="mt-2 lg:mt-0 flex gap-2">
-            {activeView === "plan-estudios" ? (
-              <>
-                <Button onClick={onGenerate} disabled={satisfaceRequisitos}>
-                  <SchoolIcon />
-                  <span>Generar Plan</span>
-                </Button>
+              {/* Botones contextuales */}
+              <div className="mt-2 lg:mt-0 flex gap-2">
+                  <>
+                    <Button onClick={onGenerate} disabled={satisfaceRequisitos}>
+                      <SchoolIcon />
+                      <span>Generar Plan</span>
+                    </Button>
 
-                <PDFDownloadLink
-                  document={<PlanPdf plan={plan} />}
-                  fileName={PDF_FILE_NAME}
-                >
-                  <Button variant="outline" disabled={!plan}>
-                    <PdfIcon />
-                    <span>Descargar Plan</span>
-                  </Button>
-                </PDFDownloadLink>
-              </>
-            ) : (
-              <>
-                <Button variant="outline" onClick={() => console.log("Generar al azar")}>
-                  Generar selección al azar
-                </Button>
-                <Button variant="destructive" onClick={() => console.log("Reiniciar selección")}>
-                  Reiniciar selección
-                </Button>
-              </>
-            )}
-          </div>
-        </div>
-
-        {activeView === "plan-estudios" ? (
-          <div className="flex gap-4">
-            <SelectField
-              label="Créditos por semestre:"
-              options={CREDITOS_POR_SEMESTRE_OPTIONS}
-              value={creditos}
-              onValueChange={setCreditos}
-              disabled={satisfaceRequisitos}
-              id="creditos-select"
-              placeholder="Selecciona una cantidad de créditos"
-              containerClassName="flex-1"
-            />
-
-            <SelectField
-              label="Semestre de inicio:"
-              options={SEMESTRE_INICIAL_OPTIONS}
-              value={semestreInicial}
-              onValueChange={setSemestreInicial}
-              disabled={satisfaceRequisitos}
-              id="semestre-inicial-select"
-              placeholder="Selecciona el semestre inicial"
-              containerClassName="flex-1"
-            />
-          </div>
-        ) : (
-          <>
-            <div className="mb-4">
-              <TotalProgress />
+                    <PDFDownloadLink
+                      document={<PlanPdf plan={plan} />}
+                      fileName={PDF_FILE_NAME}
+                    >
+                      <Button variant="outline" disabled={!plan}>
+                        <PdfIcon />
+                        <span>Descargar Plan</span>
+                      </Button>
+                    </PDFDownloadLink>
+                  </>
+              </div>
             </div>
-          </>
+
+              <div className="flex gap-4">
+                <SelectField
+                  label="Créditos por semestre:"
+                  options={CREDITOS_POR_SEMESTRE_OPTIONS}
+                  value={creditos}
+                  onValueChange={setCreditos}
+                  disabled={satisfaceRequisitos}
+                  id="creditos-select"
+                  placeholder="Selecciona una cantidad de créditos"
+                  containerClassName="flex-1"
+                />
+
+                <SelectField
+                  label="Semestre de inicio:"
+                  options={SEMESTRE_INICIAL_OPTIONS}
+                  value={semestreInicial}
+                  onValueChange={setSemestreInicial}
+                  disabled={satisfaceRequisitos}
+                  id="semestre-inicial-select"
+                  placeholder="Selecciona el semestre inicial"
+                  containerClassName="flex-1"
+                />
+              </div>
+          </div>
         )}
       </ScreenHeader>
-
       <HowPlanGenerationWorksModal open={show} onClose={closeModal} />
     </>
   );

@@ -5,10 +5,21 @@ import { REQUISITOS_TITULO } from "@/models";
 import { useInformacionEstudianteStore } from "@/store";
 import { calculatePercentage } from "@/utils";
 
-export const TotalProgress = () => {
-  const creditosTotales = useInformacionEstudianteStore(
-    (state) => state.informacionEstudiante.creditosTotales,
-  );
+type TotalProgressProps = {
+  creditos?: number;
+  type?: "seleccionarCursos";
+};
+
+export const TotalProgress = ({creditos, type} : TotalProgressProps) => {
+  let creditosTotales = 0
+  if (type === "seleccionarCursos") {
+    creditosTotales = creditos || 0;
+  }
+  else { creditosTotales =
+    useInformacionEstudianteStore(
+      (state) => state.informacionEstudiante.creditosTotales,
+    );
+  }
 
   const progressPercentage = calculatePercentage(
     creditosTotales,
