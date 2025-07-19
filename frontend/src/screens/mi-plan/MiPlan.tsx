@@ -1,16 +1,19 @@
 import { toast } from "sonner";
-
+import { useState } from "react";
 import { AlertTriangleIcon, ConfettiIcon } from "@/components";
 import { useGeneratePlan } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
 import { useMiPlanStore } from "@/store";
 import { ContentMiPlan } from "./ContentMiPlan";
 import { HeaderMiPlan } from "./HeaderMiPlan";
+import { SeleccionarCursos } from "./SeleccionarCursos";
 
 export const MiPlanScreen = () => {
   const { creditos, semestreInicial, setPlan } = useMiPlanStore();
 
   const { mutate, isLoading, isError } = useGeneratePlan();
+
+  const [activeView, setActiveView] = useState("plan-estudios");
 
   const handleGenerate = () => {
     mutate(
@@ -39,8 +42,16 @@ export const MiPlanScreen = () => {
 
   return (
     <ScreenLayout>
-      <HeaderMiPlan onGenerate={handleGenerate} />
-      <ContentMiPlan isLoading={isLoading} isError={isError} />
+      <HeaderMiPlan 
+        onGenerate={handleGenerate}
+        activeView={activeView}
+        onViewChange={setActiveView}
+      />
+      {activeView === "plan-estudios" ? (
+        <ContentMiPlan isLoading={isLoading} isError={isError} />
+      ) : (
+        <SeleccionarCursos />
+      )}
     </ScreenLayout>
   );
 };
