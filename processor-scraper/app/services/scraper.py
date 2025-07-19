@@ -279,8 +279,8 @@ def get_list_of_current_subjects(html) -> List[tuple]:
     for row in rows:
         columns = row.find_all("td")
 
-        _, code = columns[0].text.split(" - ", 1)
-        code = code.strip()
+        values = columns[0].text.split(" - ", 1)
+        code = values[1].strip() if len(values) > 1 else values[0].strip()
 
         name = columns[1].text.strip()
 

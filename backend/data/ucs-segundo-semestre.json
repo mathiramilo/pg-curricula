@@ -1,5 +1,29 @@
 [
     {
+        "codigo": "5914",
+        "nombre": "ALGEBRA LINEAL NUMERICA"
+    },
+    {
+        "codigo": "1641",
+        "nombre": "ALGORITMOS DE APROXIMACION"
+    },
+    {
+        "codigo": "1637",
+        "nombre": "ALGORITMOS EVOLUTIVOS"
+    },
+    {
+        "codigo": "1440",
+        "nombre": "ANALISIS Y DISEÑO DE ALGORIT.DISTRIB.EN REDES"
+    },
+    {
+        "codigo": "1866",
+        "nombre": "APRENDIZAJE AUTOMATICO"
+    },
+    {
+        "codigo": "1466",
+        "nombre": "ARQUITECTURA DE COMPUTADORAS"
+    },
+    {
         "codigo": "736EU",
         "nombre": "BIOINFORMÁTICA"
     },
@@ -8,8 +32,24 @@
         "nombre": "BIONFORMÁTICA ESTRUCTURAL"
     },
     {
+        "codigo": "1061",
+        "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE"
+    },
+    {
+        "codigo": "1062",
+        "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES"
+    },
+    {
+        "codigo": "1063",
+        "nombre": "CALCULO VECTORIAL"
+    },
+    {
         "codigo": "MC10",
         "nombre": "CÁLCULO I"
+    },
+    {
+        "codigo": "1349",
+        "nombre": "COMPUTACION GRAFICA AVANZADA"
     },
     {
         "codigo": "24CIA",
@@ -20,8 +60,20 @@
         "nombre": "COMUNICACIÓN ESTRATÉGICA"
     },
     {
+        "codigo": "1347",
+        "nombre": "CONST.FORMAL DE PROGR.EN TEORIA DE TIPOS"
+    },
+    {
+        "codigo": "1510",
+        "nombre": "CONTROL DE CALIDAD"
+    },
+    {
         "codigo": "A42",
         "nombre": "DISEÑO ORGANIZACIONAL"
+    },
+    {
+        "codigo": "1224",
+        "nombre": "ECONOMIA"
     },
     {
         "codigo": "C216",
@@ -36,12 +88,40 @@
         "nombre": "ETICA I"
     },
     {
+        "codigo": "1151",
+        "nombre": "FISICA 1"
+    },
+    {
+        "codigo": "1152",
+        "nombre": "FISICA 2"
+    },
+    {
+        "codigo": "1153",
+        "nombre": "FISICA 3"
+    },
+    {
         "codigo": "D84",
         "nombre": "FORMULACIÓN Y EVALUACIÓN DE PROYECTOS DE INVERSIÓN"
     },
     {
+        "codigo": "5852",
+        "nombre": "FUNDAMENTOS DE APRENDIZAJE AUTOMATICO Y RECONOCIMIENTO DE PATRONES"
+    },
+    {
+        "codigo": "1911",
+        "nombre": "FUNDAMENTOS DE BASES DE DATOS"
+    },
+    {
         "codigo": "MHC24",
         "nombre": "GENÉTICA GENERAL"
+    },
+    {
+        "codigo": "1030",
+        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1"
+    },
+    {
+        "codigo": "1031",
+        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2"
     },
     {
         "codigo": "A62",
@@ -52,6 +132,46 @@
         "nombre": "GESTIÓN DE PROYECTOS"
     },
     {
+        "codigo": "3207",
+        "nombre": "HERRAMIENTAS P/EL DISEÑO Y ANALISIS DE REDES DE TRANSP.URB DE PASAJEROS"
+    },
+    {
+        "codigo": "2418",
+        "nombre": "INGENIERIA DE ONTOLOGIAS"
+    },
+    {
+        "codigo": "2417",
+        "nombre": "INGENIERIA DE SOFTWARE BASADA EN EVIDENCIAS"
+    },
+    {
+        "codigo": "816EU",
+        "nombre": "INGLES CIENTÍFICO"
+    },
+    {
+        "codigo": "2040",
+        "nombre": "INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA"
+    },
+    {
+        "codigo": "1064",
+        "nombre": "INT. A LAS ECUACIONES DIFERENCIALES"
+    },
+    {
+        "codigo": "1926",
+        "nombre": "INT. A LOS SIST. DE INFOR. GEOGRAFICA"
+    },
+    {
+        "codigo": "1543",
+        "nombre": "INT. AL NEGOCIO DEL SOFTWARE"
+    },
+    {
+        "codigo": "1828",
+        "nombre": "INT. AL PROCESAMIENTO DE LENG. NATURAL"
+    },
+    {
+        "codigo": "1941",
+        "nombre": "INTEGRACION DE DATOS"
+    },
+    {
         "codigo": "203EU",
         "nombre": "INTRODUCCIÓN A LAS CIENCIAS BIOLÓGICAS II (TEÓRICO)"
     },
@@ -60,20 +180,108 @@
         "nombre": "INTRODUCCIÓN AL EMPRENDEDURISMO"
     },
     {
+        "codigo": "1779",
+        "nombre": "INVESTIGACION DE OPER.Y GEST. DE RIESGOS"
+    },
+    {
+        "codigo": "1023",
+        "nombre": "MATEMATICA DISCRETA 1"
+    },
+    {
+        "codigo": "1026",
+        "nombre": "MATEMATICA DISCRETA 2"
+    },
+    {
+        "codigo": "MI2",
+        "nombre": "MATEMATICA INICIAL"
+    },
+    {
         "codigo": "AT002",
         "nombre": "METODOLOGÍAS DE INVESTIGACIÓN"
+    },
+    {
+        "codigo": "1033",
+        "nombre": "METODOS NUMERICOS"
+    },
+    {
+        "codigo": "1624",
+        "nombre": "MODELADO Y OPTIMIZACION"
     },
     {
         "codigo": "AT009",
         "nombre": "MODELADO 3D PARA PRODUCCION DIGITAL (PERFIL PRODUCTO)"
     },
     {
+        "codigo": "1868",
+        "nombre": "MODELOS ESTADISTICOS PARA CLASIF. Y REGRESION"
+    },
+    {
+        "codigo": "1640",
+        "nombre": "OPTIMIZACION CONTINUA Y APLICACIONES"
+    },
+    {
+        "codigo": "1225",
+        "nombre": "POLITICAS CIENTIFICAS EN INF.Y COMP."
+    },
+    {
+        "codigo": "1945",
+        "nombre": "PRACTICA DE ADMINISTRACION PARA INGENIEROS"
+    },
+    {
+        "codigo": "1025",
+        "nombre": "PROBABILIDAD Y ESTADISTICA"
+    },
+    {
         "codigo": "AT003",
         "nombre": "PROBLEMAS DE DISEÑO"
     },
     {
+        "codigo": "1354",
+        "nombre": "PROGRAMACION FUNCIONAL"
+    },
+    {
+        "codigo": "1350",
+        "nombre": "PROGRAMACION FUNCIONAL AVANZADA"
+    },
+    {
+        "codigo": "1373",
+        "nombre": "PROGRAMACION 1"
+    },
+    {
+        "codigo": "1321",
+        "nombre": "PROGRAMACION 2"
+    },
+    {
+        "codigo": "1323",
+        "nombre": "PROGRAMACION 3"
+    },
+    {
         "codigo": "I87",
         "nombre": "PROSPECTIVA ESTRATÉGICA: CON LA MIRADA EN EL FUTURO"
+    },
+    {
+        "codigo": "1730",
+        "nombre": "PROYECTO DE GRADO"
+    },
+    {
+        "codigo": "1721",
+        "nombre": "PROYECTO DE INGENIERIA DE SOFTWARE"
+    },
+    {
+        "codigo": "1446",
+        "nombre": "REDES DE COMPUTADORAS"
+    },
+    {
+        "codigo": "1887",
+        "nombre": "REDES NEURONALES PARA LENGUAJE NATURAL"
+    },
+    {
+        "codigo": "5907",
+        "nombre": "REDES OPTICAS"
+    },
+    {
+        "codigo": "1848",
+        "nombre": "ROBOTICA BASADA EN COMPORTAMIENTOS"
     },
     {
         "codigo": "S42",
@@ -88,8 +296,32 @@
         "nombre": "TALLER DE INTERACCIÓN"
     },
     {
+        "codigo": "1327",
+        "nombre": "TALLER DE PROGRAMACION"
+    },
+    {
+        "codigo": "1891",
+        "nombre": "TALLER DE SEGURIDAD INFORMÁTICA"
+    },
+    {
+        "codigo": "1952",
+        "nombre": "TALLER DE SISTEMAS CIBER-FISICOS"
+    },
+    {
+        "codigo": "1775",
+        "nombre": "TALLER DE SISTEMAS EMPRESARIALES"
+    },
+    {
         "codigo": "O7246",
         "nombre": "TECNOLOGÍAS DE DIGITALIZACIÓN Y TRANSCODIFICACIÓN. IDENTIFICACIÓN Y PRESERVACIÓN"
+    },
+    {
+        "codigo": "1899",
+        "nombre": "TEMAS AVANZADOS EN CODIGOS PARA CORRECCION DE ERRORES"
+    },
+    {
+        "codigo": "1633",
+        "nombre": "TEORIA, ALGORIT. Y APLIC. DE GEST. LOGIS"
     },
     {
         "codigo": "D87",
