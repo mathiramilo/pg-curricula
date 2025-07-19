@@ -1,4 +1,4 @@
-import type { ReglaPreviaturas, UnidadCurricular } from "@/models";
+import type { InformacionEstudiante, ReglaPreviaturas, UnidadCurricular } from "@/models";
 import { useInformacionEstudianteStore } from "@/store";
 import { api } from "./axios";
 
@@ -12,8 +12,9 @@ export const getPreviaturas = async (codigo?: UnidadCurricular["codigo"]) => {
 
 export const satisfacePreviaturas = async (
   codigo: UnidadCurricular["codigo"],
+  informacionEstudianteTemporal?: InformacionEstudiante
 ) => {
-  const informacionEstudiante =
+  const informacionEstudiante = informacionEstudianteTemporal ? informacionEstudianteTemporal :
     useInformacionEstudianteStore.getState().informacionEstudiante;
 
   const res = await api.post<boolean>(`/previaturas/${codigo}/satisface`, {

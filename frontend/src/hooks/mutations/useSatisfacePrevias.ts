@@ -1,11 +1,17 @@
 import { useMutation } from "react-query";
 
 import { satisfacePreviaturas } from "@/api";
-import type { UnidadCurricular } from "@/models";
+import type { InformacionEstudiante, UnidadCurricular } from "@/models";
+
+type satisfacePreviaturasParams = {
+  codigo: UnidadCurricular["codigo"];
+  informacionEstudianteTemporal: InformacionEstudiante;
+};
 
 export const useSatisfacePrevias = () => {
   return useMutation({
-    mutationFn: (codigo: UnidadCurricular["codigo"]) =>
-      satisfacePreviaturas(codigo),
+    mutationFn: ({ codigo, informacionEstudianteTemporal }: satisfacePreviaturasParams) =>
+      satisfacePreviaturas(codigo, informacionEstudianteTemporal),
   });
 };
+

@@ -6,9 +6,10 @@ import { DOMINIO_UNIDADES_CURRICULARES, getUnidadesCurriculares } from "@/api";
 export const useUnidadesCurriculares = (
   filter: GetUnidadesCurricularesFilter,
   page: number,
+  pageSize?: number,
 ) => {
   return useQuery({
-    queryKey: [DOMINIO_UNIDADES_CURRICULARES, filter, page],
-    queryFn: () => getUnidadesCurriculares(filter, page),
+    queryKey: [DOMINIO_UNIDADES_CURRICULARES, filter, page, pageSize],
+    queryFn: () => getUnidadesCurriculares(filter, page, pageSize),
   });
 };

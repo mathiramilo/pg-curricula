@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { useState } from "react";
 import { AlertTriangleIcon, ConfettiIcon } from "@/components";
-import { useGeneratePlan } from "@/hooks";
+import { useGeneratePlan, useListadoUcsAleatorio } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
 import { useMiPlanStore } from "@/store";
 import { ContentMiPlan } from "./ContentMiPlan";
@@ -13,13 +13,23 @@ export const MiPlanScreen = () => {
 
   const { mutate, isLoading, isError } = useGeneratePlan();
 
+  const {data: listadoUcsAleatorio} = useListadoUcsAleatorio(); //PARA MI NO TIENE SENTIDO ESTO, Q SE HAGA DIRECTO EN BACK
+
   const [activeView, setActiveView] = useState("plan-estudios");
 
   const handleGenerate = () => {
+    if (!listadoUcsAleatorio || listadoUcsAleatorio.length === 0) {
+      toast.error("No se pudo obtener el listado de cursos", {
+        icon: <AlertTriangleIcon className="size-5" />,
+        description: "Asegurate de haber seleccionado los cursos correctamente.",
+      });
+      return;
+    }
     mutate(
       {
         creditosPorSemestre: Number(creditos),
         semestreInicial,
+        listadoUcs: listadoUcsAleatorio || [],
       },
       {
         onError: () => {

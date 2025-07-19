@@ -116,17 +116,18 @@ const UnidadCurricularItem = ({
         </span>
       </div>
     )}
-
+ 
     {type === "seleccion" && (
       <div className="flex items-center gap-2">
         <span className="text-sm text-principal font-medium">
           {unidadCurricular.creditos}
         </span>
         <Checkbox
-          checked={selected}
+          checked={selected || cursoAprobado} //TODO: capaz tendria que chequear examen tambien
           onCheckedChange={(value) =>
             onSelectChange?.(unidadCurricular, Boolean(value))
           }
+          disabled={unidadCurricular.esObligatoria && selected}
         />
       </div>
     )}
