@@ -6,6 +6,5 @@ export const useListadoUcsAleatorio = () => {
   return useQuery({
     queryKey: [DOMINIO_UNIDADES_CURRICULARES],
     queryFn: () => getListadoUCsAleatorio(),
-    enabled: Boolean(),
   });
 };
