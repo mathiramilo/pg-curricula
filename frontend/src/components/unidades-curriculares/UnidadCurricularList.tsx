@@ -4,6 +4,7 @@ import type { UnidadCurricular, UnidadCurricularItemType, } from "@/models";
 import { REQUISITOS_TITULO } from "@/models";
 import { cn } from "@/utils";
 import { MemoizedUnidadCurricularItem } from "./UnidadCurricularItem";
+import { useInformacionEstudianteStore } from "@/store";
 
 type UnidadCurricularListProps = ComponentPropsWithoutRef<"div"> & {
   unidadesCurriculares: UnidadCurricular[];
@@ -24,11 +25,16 @@ export const UnidadCurricularList = ({
   mostrarCreditosGrupo,
   ...props
 }: UnidadCurricularListProps) => {
-  const creditosSeleccionados = selectedUcs
-  ? unidadesCurriculares
-      .filter((uc) => selectedUcs.includes(uc.codigo))
-      .reduce((sum, uc) => sum + uc.creditos, 0)
-  : 0;
+  const ucsAprobadas = useInformacionEstudianteStore.getState().informacionEstudiante.unidadesCurricularesAprobadas;
+
+  const creditosAprobadasNoIncluidas = Object.entries(ucsAprobadas)
+    .filter(([_, uc]) => ucsAprobadas[uc.codigo]?.nombreGrupoHijo === unidadesCurriculares[0]?.nombreGrupoHijo)
+    .reduce((sum, [, datos]) => sum + (datos.creditos || 0), 0);
+
+  const creditosSeleccionados = unidadesCurriculares
+    .filter((uc) => selectedUcs?.includes(uc.codigo) && !ucsAprobadas[uc.codigo])
+    .reduce((sum, uc) => sum + uc.creditos, 0);
+  const creditosSeleccionadosYAprobados = creditosSeleccionados + creditosAprobadasNoIncluidas;
 
   const grupo = unidadesCurriculares[0]?.nombreGrupoHijo; // asumimos que todas las UCs del bloque son del mismo grupo
 
@@ -41,12 +47,12 @@ export const UnidadCurricularList = ({
           <span
             className={cn(
               "text-sm font-semibold",
-              creditosSeleccionados >= REQUISITOS_TITULO[grupo]
+              creditosSeleccionadosYAprobados >= REQUISITOS_TITULO[grupo]
                 ? "text-green-600"
                 : "text-red-500"
             )}
           >
-            {creditosSeleccionados} / {REQUISITOS_TITULO[grupo]}
+            {creditosSeleccionadosYAprobados} / {REQUISITOS_TITULO[grupo]}
           </span>
         )}
       </h2>

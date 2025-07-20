@@ -21,7 +21,7 @@ import { useMiPlanStore, useInformacionEstudianteStore } from "@/store";
 export const SeleccionarCursos = () => {
   const [selected, setSelected] = useState<string[]>([]);
   const { creditos, semestreInicial, setPlan } = useMiPlanStore();
-  const informacionEstudiante  = useInformacionEstudianteStore.getState().informacionEstudiante;
+  const ucsAprobadas = useInformacionEstudianteStore.getState().informacionEstudiante.unidadesCurricularesAprobadas;
   
   const toggleSeleccion = (uc: UnidadCurricular, selected: boolean) => {
     setSelected((prev) =>
@@ -70,9 +70,25 @@ export const SeleccionarCursos = () => {
   }, {} as Record<string, UnidadCurricular[]>);
 
   // 5. Calcular créditos seleccionados
-  const creditosTotalesSeleccionados = unidadesCurriculares
-    .filter((uc) => selected.includes(uc.codigo))
+
+  // Créditos de aprobadas (que no están en unidadesCurriculares)
+  const creditosAprobadasNoIncluidas = Object.entries(ucsAprobadas)
+    .reduce((sum, [, datos]) => sum + (datos.creditos || 0), 0);
+
+  const yaExistePorNombre = (nuevaUc: UnidadCurricular) => { 
+    return Object.values(ucsAprobadas).some(
+      (uc) => uc.nombre === nuevaUc.nombre
+    );
+  }
+
+  const creditosSeleccionadas = unidadesCurriculares
+    .filter((uc) => selected.includes(uc.codigo) && !ucsAprobadas[uc.codigo] && !yaExistePorNombre(uc)) 
+    // TODO: hay un issue con las que se cursaron pero no tienen mismo codigo, como hacemos?
     .reduce((sum, uc) => sum + uc.creditos, 0);
+
+  // Total
+  const creditosTotalesSeleccionados = creditosSeleccionadas + creditosAprobadasNoIncluidas;
+
 
   const handleReset = () => {
     setSelected([]);

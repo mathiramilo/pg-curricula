@@ -123,7 +123,7 @@ const UnidadCurricularItem = ({
           {unidadCurricular.creditos}
         </span>
         <Checkbox
-          checked={selected || cursoAprobado} //TODO: capaz tendria que chequear examen tambien
+          checked={selected || cursoAprobado || examenAprobado}
           onCheckedChange={(value) =>
             onSelectChange?.(unidadCurricular, Boolean(value))
           }
