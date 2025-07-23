@@ -29,7 +29,7 @@ export const MiPlanScreen = () => {
       {
         creditosPorSemestre: Number(creditos),
         semestreInicial,
-        listadoUcs: listadoUcsAleatorio || [],
+        listadoUCs: listadoUcsAleatorio || [],
       },
       {
         onError: () => {

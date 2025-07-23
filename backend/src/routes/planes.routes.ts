@@ -8,4 +8,4 @@ import {
 export const planesRouter = Router();
 
 planesRouter.post("/", generarPlanController);
-planesRouter.get("/generar-listado", generarListadoUCsController);
+planesRouter.post("/generar-listado", generarListadoUCsController);

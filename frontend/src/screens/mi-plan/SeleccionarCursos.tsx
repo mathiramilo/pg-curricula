@@ -96,7 +96,7 @@ export const SeleccionarCursos = () => {
 
     // 6. Obtener las unidades seleccionadas completas
   const unidadesSeleccionadas = unidadesCurricularesRaw.filter((uc) =>
-    selected.includes(uc.codigo)
+    selected.includes(uc.codigo) && !ucsAprobadas[uc.codigo]
   );
 
   const handleGenerate = async () => {
@@ -148,7 +148,7 @@ export const SeleccionarCursos = () => {
       {
         creditosPorSemestre: Number(creditos),
         semestreInicial,
-        listadoUcs: unidadesSeleccionadas,
+        listadoUCs: unidadesSeleccionadas,
       },
       {
         onError: () => {
@@ -185,7 +185,6 @@ export const SeleccionarCursos = () => {
         </div>
       </div>
 
-      {isLoading && <UnidadCurricularGridSkeleton itemsAmount={60} />}
       {isError && <ErrorState />}
 
       <div className="mb-4">
@@ -193,6 +192,8 @@ export const SeleccionarCursos = () => {
           <TotalProgress creditos={creditosTotalesSeleccionados} type={"seleccionarCursos"} />
         </div>
       </div>
+
+      {isLoading && <UnidadCurricularGridSkeleton itemsAmount={60} />}
 
       <section className="grid gap-8 lg:gap-12 lg:grid-cols-3 pt-4">
         {Object.entries(unidadesPorGrupoHijo).map(([area, unidades]) => (

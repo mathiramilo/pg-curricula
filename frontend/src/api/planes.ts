@@ -7,13 +7,13 @@ export const DOMINIO_PLANES = "planes";
 export interface GeneratePlanParams {
   creditosPorSemestre: number;
   semestreInicial: SemestreDeDictado;
-  listadoUcs: UnidadCurricular[];
+  listadoUCs: UnidadCurricular[];
 }
 
 export const generatePlan = async ({
   creditosPorSemestre,
   semestreInicial,
-  listadoUcs,
+  listadoUCs,
 }: GeneratePlanParams) => {
   const informacionEstudiante =
     useInformacionEstudianteStore.getState().informacionEstudiante;
@@ -22,7 +22,7 @@ export const generatePlan = async ({
     informacionEstudiante,
     creditosPorSemestre,
     semestreInicial,
-    listadoUcs,
+    listadoUCs,
   });
 
   return res.data;
