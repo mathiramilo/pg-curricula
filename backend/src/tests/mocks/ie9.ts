@@ -10,6 +10,8 @@ export const ie9 = {
     },
   },
   creditosTotales: 9,
+  modulosTaller: 0,
+  modulosExtension: 0,
   MATEMATICA: 9,
   "CIENCIAS EXPERIMENTALES": 0,
   PROGRAMACION: 0,

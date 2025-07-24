@@ -234,6 +234,8 @@ export const ie295 = {
     },
   },
   creditosTotales: 295,
+  modulosTaller: 0,
+  modulosExtension: 0,
   MATEMATICA: 98,
   "CIENCIAS EXPERIMENTALES": 20,
   PROGRAMACION: 84,

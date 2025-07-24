@@ -11,11 +11,7 @@ import {
   SemestreDeDictado,
   UnidadCurricular,
 } from "@/types";
-import {
-  actualizarInformacionEstudiante,
-  calcularValorArista,
-  obtenerSiguienteSemestre,
-} from "@/utils";
+import { actualizarInformacionEstudiante, calcularValorArista } from "@/utils";
 
 const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 
@@ -34,12 +30,10 @@ export const generarGrafo = (
 
   let listadoUCsFaltantes: UnidadCurricular[] = [];
   const listadoUCsPrevias: UnidadCurricular[] = [];
-  let semestreActual = semestreInicial;
 
   for (const uc of listadoUCs) {
     if (cumplePreviaturas(informacionEstudiante, previaturasTyped[uc.codigo])) {
-      const seDictaEnSemestreActual = uc.semestres?.includes(semestreActual); // Ya nos aseguramos de que semestres no sea null en el paso anterior
-
+      const seDictaEnSemestreActual = uc.semestres?.includes(semestreInicial);
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
 
       grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
@@ -65,9 +59,6 @@ export const generarGrafo = (
   });
 
   const listadoUCsSinPrevias: UnidadCurricular[] = [];
-
-  // REVIEW: De aca en adelante no se utiliza mas, que debemos hacer? (Creemos que solo es necesario para el valor de las aristas salientes del nodo inicial)
-  semestreActual = obtenerSiguienteSemestre(semestreActual);
 
   while (listadoUCsFaltantes.length > 0) {
     for (const uc of listadoUCsFaltantes) {

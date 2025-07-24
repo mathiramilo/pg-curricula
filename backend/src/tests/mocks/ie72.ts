@@ -58,6 +58,8 @@ export const ie72 = {
     },
   },
   creditosTotales: 72,
+  modulosTaller: 0,
+  modulosExtension: 0,
   MATEMATICA: 62,
   "CIENCIAS EXPERIMENTALES": 0,
   PROGRAMACION: 10,
