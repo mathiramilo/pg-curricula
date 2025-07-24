@@ -10,7 +10,7 @@ import {
   SchoolIcon,
   SelectField,
 } from "@/components";
-import { useGeneratePlan, useSatisfaceRequisitos } from "@/hooks";
+import { useGeneratePlan } from "@/hooks";
 import {
   CREDITOS_POR_SEMESTRE_OPTIONS,
   SEMESTRE_INICIAL_OPTIONS,
@@ -30,8 +30,6 @@ export const PlanEstudios = () => {
     semestreInicial,
     setSemestreInicial,
   } = useMiPlanStore();
-
-  const { satisfaceRequisitos } = useSatisfaceRequisitos();
 
   const { mutate, isLoading, isError } = useGeneratePlan();
 
@@ -91,7 +89,6 @@ export const PlanEstudios = () => {
             options={CREDITOS_POR_SEMESTRE_OPTIONS}
             value={creditos}
             onValueChange={setCreditos}
-            disabled={satisfaceRequisitos}
             id="creditos-select"
             placeholder="Selecciona una cantidad de créditos"
             containerClassName="flex-1"
@@ -102,7 +99,6 @@ export const PlanEstudios = () => {
             options={SEMESTRE_INICIAL_OPTIONS}
             value={semestreInicial}
             onValueChange={setSemestreInicial}
-            disabled={satisfaceRequisitos}
             id="semestre-inicial-select"
             placeholder="Selecciona el semestre inicial"
             containerClassName="flex-1"

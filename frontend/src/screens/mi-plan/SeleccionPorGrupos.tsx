@@ -10,7 +10,7 @@ import {
 } from "@/hooks";
 import { GRUPO_VALUES, REQUISITOS_TITULO, SEMESTRE_DE_DICTADO } from "@/models";
 import { useInformacionEstudianteStore, useMiPlanStore } from "@/store";
-import { capitalizeWords } from "@/utils";
+import { capitalizeWords, cn } from "@/utils";
 
 export const SeleccionPorGrupos = () => {
   const {
@@ -75,12 +75,19 @@ export const SeleccionPorGrupos = () => {
         const unidadesCurricularesGrupo = unidadesCurriculares?.data.filter(
           (uc) => uc.nombreGrupoHijo === grupo,
         );
+        const satisfaceRequisitos =
+          informacionEstudiante[grupo] >= REQUISITOS_TITULO[grupo];
 
         return (
           <section key={grupo} className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-2">
               <h3 className="font-medium">{capitalizeWords(grupo)}</h3>
-              <span className="font-medium">
+              <span
+                className={cn(
+                  "font-medium",
+                  satisfaceRequisitos ? "text-green-500" : "text-red-500",
+                )}
+              >
                 {informacionEstudiante[grupo]}/{REQUISITOS_TITULO[grupo]}
               </span>
             </div>

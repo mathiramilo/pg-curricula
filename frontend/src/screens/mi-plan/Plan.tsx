@@ -1,6 +1,6 @@
 import { EmptyState, ErrorState, UnidadCurricularList } from "@/components";
 import { useSatisfaceRequisitos } from "@/hooks";
-import { useMiPlanStore } from "@/store";
+import { useInformacionEstudianteStore, useMiPlanStore } from "@/store";
 import { TrayectoriaSugeridaLoading } from "../inicio/TrayectoriaSugeridaLoading";
 
 interface PlanProps {
@@ -11,7 +11,11 @@ interface PlanProps {
 export const Plan = ({ isLoading, isError }: PlanProps) => {
   const plan = useMiPlanStore((state) => state.plan);
 
-  const { satisfaceRequisitos } = useSatisfaceRequisitos();
+  const informacionEstudiante = useInformacionEstudianteStore(
+    (state) => state.informacionEstudiante,
+  );
+
+  const { satisfaceRequisitos } = useSatisfaceRequisitos(informacionEstudiante);
 
   if (satisfaceRequisitos) {
     return (
