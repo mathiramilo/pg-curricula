@@ -21,13 +21,13 @@ export const OfertaAcademicaScreen = () => {
 
   const semestreActual = obtenerSemestreActual();
 
-  const { data, isLoading, isError, isSuccess } = useUnidadesCurriculares(
-    {
+  const { data, isLoading, isError, isSuccess } = useUnidadesCurriculares({
+    filter: {
       semestresDeDictado: [semestreActual],
       habilitadas: soloHabilitadas,
     },
     page,
-  );
+  });
 
   return (
     <ScreenLayout>

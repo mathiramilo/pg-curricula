@@ -59,4 +59,4 @@ export const getUnidadesCurricularesObligatorias = async () => {
   );
 
   return res.data;
-}
+};

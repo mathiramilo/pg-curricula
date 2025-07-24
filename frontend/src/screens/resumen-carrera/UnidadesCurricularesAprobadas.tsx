@@ -10,10 +10,10 @@ import { useUnidadesCurriculares } from "@/hooks";
 export const UnidadesCurricularesAprobadas = () => {
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, isError, isSuccess } = useUnidadesCurriculares(
-    { aprobadas: true },
+  const { data, isLoading, isError, isSuccess } = useUnidadesCurriculares({
+    filter: { aprobadas: true },
     page,
-  );
+  });
 
   if (isLoading) {
     return <UnidadCurricularGridSkeleton itemsAmount={60} />;

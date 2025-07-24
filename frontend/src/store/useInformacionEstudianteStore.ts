@@ -28,7 +28,7 @@ interface InformacionEstudianteStore {
   resetInformacionEstudiante: () => void;
 }
 
-const initialInformacionEstudiante: InformacionEstudiante = {
+export const initialInformacionEstudiante: InformacionEstudiante = {
   unidadesCurricularesAprobadas: {},
   creditosTotales: 0,
   modulosTaller: 0,

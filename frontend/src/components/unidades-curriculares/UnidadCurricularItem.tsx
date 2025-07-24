@@ -14,14 +14,16 @@ type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   unidadCurricular: UnidadCurricular;
   type?: UnidadCurricularItemType;
   selected?: boolean;
-  onSelectChange?: (uc: UnidadCurricular, selected: boolean) => void;
+  onSelectedChange?: (value: boolean) => void;
+  selectionDisabled?: boolean;
 };
 
 const UnidadCurricularItem = ({
   unidadCurricular,
   type = "aprobacion",
   selected,
-  onSelectChange,
+  onSelectedChange,
+  selectionDisabled = false,
   className,
   ...props
 }: UnidadCurricularItemProps) => {
@@ -109,28 +111,26 @@ const UnidadCurricularItem = ({
         </div>
       )}
 
-    {type === "creditos" && (
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-principal font-medium">
-          {unidadCurricular.creditos}
-        </span>
-      </div>
-    )}
- 
-    {type === "seleccion" && (
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-principal font-medium">
-          {unidadCurricular.creditos}
-        </span>
-        <Checkbox
-          checked={selected || cursoAprobado || examenAprobado}
-          onCheckedChange={(value) =>
-            onSelectChange?.(unidadCurricular, Boolean(value))
-          }
-          disabled={unidadCurricular.esObligatoria && selected}
-        />
-      </div>
-    )}
+      {type === "creditos" && (
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-principal font-medium">
+            {unidadCurricular.creditos}
+          </span>
+        </div>
+      )}
+
+      {type === "seleccion" && (
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-principal font-medium">
+            {unidadCurricular.creditos}
+          </span>
+          <Checkbox
+            checked={selected}
+            onCheckedChange={onSelectedChange}
+            disabled={selectionDisabled}
+          />
+        </div>
+      )}
     </div>
   );
 };

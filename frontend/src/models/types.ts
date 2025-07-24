@@ -30,7 +30,6 @@ export interface UnidadCurricular {
   codigoGrupoHijo: string;
   nombreGrupoHijo: Grupo;
   semestres: number[];
-  esObligatoria?: boolean;
 }
 
 export type UnidadCurricularAprobada = Pick<

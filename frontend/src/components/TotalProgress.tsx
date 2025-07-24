@@ -1,38 +1,24 @@
-import React from "react";
-
-import { Progress } from "@/components";
 import { REQUISITOS_TITULO } from "@/models";
-import { useInformacionEstudianteStore } from "@/store";
 import { calculatePercentage } from "@/utils";
+import { Progress } from "./ui";
 
-type TotalProgressProps = {
-  creditos?: number;
-  type?: "seleccionarCursos";
-};
+interface TotalProgressProps {
+  creditos: number;
+}
 
-export const TotalProgress = ({creditos, type} : TotalProgressProps) => {
-  let creditosTotales = 0
-  if (type === "seleccionarCursos") {
-    creditosTotales = creditos || 0;
-  }
-  else { creditosTotales =
-    useInformacionEstudianteStore(
-      (state) => state.informacionEstudiante.creditosTotales,
-    );
-  }
-
+export const TotalProgress = ({ creditos }: TotalProgressProps) => {
   const progressPercentage = calculatePercentage(
-    creditosTotales,
+    creditos,
     REQUISITOS_TITULO.CREDITOS_TOTALES,
   );
 
   const satisfaceCreditosTotales =
-    creditosTotales >= REQUISITOS_TITULO.CREDITOS_TOTALES;
+    creditos >= REQUISITOS_TITULO.CREDITOS_TOTALES;
 
   return (
     <div>
       <p className="text-sm text-fuente-principal">
-        {creditosTotales}/{REQUISITOS_TITULO.CREDITOS_TOTALES} creditos
+        {creditos}/{REQUISITOS_TITULO.CREDITOS_TOTALES} creditos
       </p>
       <Progress
         value={progressPercentage}
