@@ -322,7 +322,6 @@ export class Graph {
         const nodeObject = this.nodes.get(node.id);
         const unidadCurricular = nodeObject!.unidadCurricular!;
 
-        // Si la unidad curricular no se dicta en el semestre actual o no cumple con las previas, se salta a la siguiente
         if (
           !seDictaEsteSemestre(semester, unidadCurricular.semestres!) ||
           !cumplePreviaturas(

@@ -10,7 +10,7 @@ export const ProgresoPorGrupo = () => {
   return (
     <section className="flex flex-col gap-4">
       <h2 className="font-medium text-lg text-fuente-principal">
-        Creditos por grupo:
+        Créditos por grupo
       </h2>
 
       <div className="w-full grid lg:grid-cols-3 gap-x-12 gap-y-2">

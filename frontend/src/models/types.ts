@@ -47,6 +47,8 @@ export type InformacionEstudiante = {
     UnidadCurricularAprobada
   >;
   creditosTotales: number;
+  modulosTaller: number;
+  modulosExtension: number;
 } & Record<Grupo, number>;
 
 export interface TrayectoriaSugeridaSemestre {

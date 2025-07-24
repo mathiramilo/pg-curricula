@@ -31,6 +31,8 @@ interface InformacionEstudianteStore {
 const initialInformacionEstudiante: InformacionEstudiante = {
   unidadesCurricularesAprobadas: {},
   creditosTotales: 0,
+  modulosTaller: 0,
+  modulosExtension: 0,
   ...(Object.fromEntries(GRUPO_VALUES.map((grupo) => [grupo, 0])) as Record<
     Grupo,
     number

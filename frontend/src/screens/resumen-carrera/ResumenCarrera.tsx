@@ -1,5 +1,6 @@
 import { ScreenHeader, TotalProgress } from "@/components";
 import { ScreenLayout } from "@/layouts";
+import { ModulosTallerExtension } from "./ModulosTallerExtension";
 import { ProgresoPorGrupo } from "./ProgresoPorGrupo";
 import { UnidadesCurricularesAprobadas } from "./UnidadesCurricularesAprobadas";
 
@@ -14,7 +15,7 @@ export const ResumenCarreraScreen = () => {
       </ScreenHeader>
 
       <ProgresoPorGrupo />
-
+      <ModulosTallerExtension />
       <UnidadesCurricularesAprobadas />
     </ScreenLayout>
   );

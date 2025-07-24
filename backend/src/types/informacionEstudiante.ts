@@ -3,6 +3,8 @@ import { UnidadCurricular } from ".";
 export type InformacionEstudiante = {
   unidadesCurricularesAprobadas: Record<UnidadCurricular["codigo"], UCAprobada>;
   creditosTotales: number;
+  modulosTaller: number;
+  modulosExtension: number;
   MATEMATICA: number;
   "CIENCIAS EXPERIMENTALES": number;
   PROGRAMACION: number;

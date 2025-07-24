@@ -25,6 +25,8 @@ class InformacionEstudiante(BaseModel):
         ..., alias="unidadesCurricularesAprobadas"
     )
     creditos_totales: int = Field(..., alias="creditosTotales")
+    modulos_taller: int = Field(..., alias="modulosTaller")
+    modulos_extension: int = Field(..., alias="modulosExtension")
     matematica: int = Field(..., alias="MATEMATICA")
     ciencias_experimentales: int = Field(..., alias="CIENCIAS EXPERIMENTALES")
     programacion: int = Field(..., alias="PROGRAMACION")
