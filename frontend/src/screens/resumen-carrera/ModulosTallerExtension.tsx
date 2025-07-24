@@ -42,7 +42,8 @@ export const ModulosTallerExtension = () => {
       useInformacionEstudianteStore.setState((state) => ({
         informacionEstudiante: {
           ...state.informacionEstudiante,
-          modulosTaller: previousValue,
+          [type === TIPO_MODULO.TALLER ? "modulosTaller" : "modulosExtension"]:
+            previousValue,
         },
       }));
     }
@@ -67,7 +68,7 @@ export const ModulosTallerExtension = () => {
             type="number"
             min={0}
             max={18}
-            defaultValue={informacionEstudiante.modulosTaller}
+            value={informacionEstudiante.modulosTaller}
             onChange={(e) => handleChange(e, TIPO_MODULO.TALLER)}
           />
         </div>
@@ -83,7 +84,7 @@ export const ModulosTallerExtension = () => {
             type="number"
             min={0}
             max={18}
-            defaultValue={informacionEstudiante.modulosExtension}
+            value={informacionEstudiante.modulosExtension}
             onChange={(e) => handleChange(e, TIPO_MODULO.EXTENSION)}
           />
         </div>
