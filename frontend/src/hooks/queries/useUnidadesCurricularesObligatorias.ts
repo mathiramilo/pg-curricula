@@ -7,7 +7,7 @@ import {
 
 export const useUnidadesCurricularesObligatorias = () => {
   return useQuery({
-    queryKey: [DOMINIO_UNIDADES_CURRICULARES],
+    queryKey: [DOMINIO_UNIDADES_CURRICULARES, "obligatorias"],
     queryFn: () => getUnidadesCurricularesObligatorias(),
   });
 };

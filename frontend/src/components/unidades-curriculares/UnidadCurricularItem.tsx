@@ -8,7 +8,7 @@ import {
   useUnidadCurricularModalStore,
 } from "@/store";
 import { capitalizeWords, cn } from "@/utils";
-import { Checkbox } from "../ui";
+import { Checkbox, Tooltip, TooltipContent, TooltipTrigger } from "../ui";
 
 type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   unidadCurricular: UnidadCurricular;
@@ -124,11 +124,22 @@ const UnidadCurricularItem = ({
           <span className="text-sm text-principal font-medium">
             {unidadCurricular.creditos}
           </span>
-          <Checkbox
-            checked={selected}
-            onCheckedChange={onSelectedChange}
-            disabled={selectionDisabled}
-          />
+          <Tooltip>
+            <TooltipTrigger>
+              <Checkbox
+                checked={selected}
+                onCheckedChange={onSelectedChange}
+                disabled={selectionDisabled}
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              {selectionDisabled
+                ? "Curso obligatorio"
+                : selected
+                  ? "Deseleccionar curso"
+                  : "Seleccionar curso"}
+            </TooltipContent>
+          </Tooltip>
         </div>
       )}
     </div>

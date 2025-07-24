@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import {
   MemoizedUnidadCurricularItem,
   UnidadCurricularGridSkeleton,
@@ -18,10 +16,12 @@ export const SeleccionPorGrupos = () => {
     hasUnidadCurricular,
     addUnidadCurricular,
     removeUnidadCurricular,
+    addUCToListado,
+    removeUCFromListado,
   } = useMiPlanStore();
 
-  const unidadesCurricularesAprobadas = useInformacionEstudianteStore(
-    (state) => state.informacionEstudiante.unidadesCurricularesAprobadas,
+  const hasUnidadCurricularExamen = useInformacionEstudianteStore(
+    (state) => state.hasUnidadCurricularExamen,
   );
 
   const {
@@ -44,19 +44,6 @@ export const SeleccionPorGrupos = () => {
     page: 1,
     pageSize: 1000,
   });
-
-  useEffect(() => {
-    unidadesCurricularesObligatorias?.forEach((uc) => {
-      if (!hasUnidadCurricular(uc)) {
-        addUnidadCurricular(uc);
-      }
-    });
-    Object.values(unidadesCurricularesAprobadas).forEach((uc) => {
-      if (!hasUnidadCurricular(uc)) {
-        addUnidadCurricular(uc);
-      }
-    });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const isLoading = isLoadingUCs || isLoadingUCsObligatorias;
   const isError = isErrorUCs || isErrorUCsObligatorias;
@@ -94,17 +81,28 @@ export const SeleccionPorGrupos = () => {
 
             <div className="max-h-64 overflow-y-auto flex flex-col gap-1">
               {unidadesCurricularesGrupo
-                ?.sort((uc) => (hasUnidadCurricular(uc) ? -1 : 1))
+                ?.sort((uc) => (hasUnidadCurricular(uc.codigo) ? -1 : 1))
                 .map((uc) => {
-                  const selected = hasUnidadCurricular(uc);
+                  const isObligatoria = Boolean(
+                    unidadesCurricularesObligatorias?.find(
+                      (ucObligatoria) => ucObligatoria.codigo === uc.codigo,
+                    ),
+                  );
+
+                  const selected = hasUnidadCurricular(uc.codigo);
                   const onSelectedChange = (value: boolean) => {
                     if (value) {
+                      addUCToListado(uc);
                       addUnidadCurricular(uc);
                     } else {
+                      removeUCFromListado(uc);
                       removeUnidadCurricular(uc);
                     }
                   };
-                  const disabled = false;
+                  const disabled = isObligatoria;
+
+                  // RATIONALE: si el curso ya fue aprobado con examen, no se muestra
+                  if (hasUnidadCurricularExamen(uc)) return null;
 
                   return (
                     <MemoizedUnidadCurricularItem

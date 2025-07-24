@@ -13,6 +13,9 @@ interface InformacionEstudianteStore {
   setInformacionEstudiante: (
     informacionEstudiante: InformacionEstudiante,
   ) => void;
+  hasUnidadCurricularExamen: (
+    unidadCurricular: UnidadCurricularAprobada,
+  ) => boolean;
   addUnidadCurricularCurso: (
     unidadCurricular: UnidadCurricularAprobada,
   ) => void;
@@ -42,11 +45,18 @@ export const initialInformacionEstudiante: InformacionEstudiante = {
 export const useInformacionEstudianteStore =
   create<InformacionEstudianteStore>()(
     persist(
-      (set) => ({
+      (set, get) => ({
         informacionEstudiante: initialInformacionEstudiante,
 
         setInformacionEstudiante: (informacionEstudiante) =>
           set({ informacionEstudiante }),
+
+        hasUnidadCurricularExamen: (unidadCurricular) =>
+          Boolean(
+            get().informacionEstudiante.unidadesCurricularesAprobadas[
+              unidadCurricular.codigo
+            ]?.tipoAprobacion === TIPO_APROBACION.EXAMEN,
+          ),
 
         addUnidadCurricularCurso: (unidadCurricular) =>
           set((state) => ({

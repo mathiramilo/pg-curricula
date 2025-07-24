@@ -3,9 +3,11 @@ import { useMiPlanStore } from "@/store";
 import { SeleccionPorGrupos } from "./SeleccionPorGrupos";
 
 export const SeleccionCursos = () => {
-  const creditosTotales = useMiPlanStore(
-    (state) => state.informacionEstudiante.creditosTotales,
-  );
+  const {
+    informacionEstudiante,
+    syncInformacionEstudiante,
+    generateRandomSelection,
+  } = useMiPlanStore();
 
   return (
     <section className="flex flex-col gap-8">
@@ -15,21 +17,24 @@ export const SeleccionCursos = () => {
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-4 gap-2">
             <Button
-              onClick={() => console.log("Generar selección al azar")}
+              onClick={() => void generateRandomSelection()}
               variant="outline"
             >
               <SchoolIcon />
               <span>Generar selección al azar</span>
             </Button>
 
-            <Button variant="destructive">
+            <Button
+              onClick={() => void syncInformacionEstudiante()}
+              variant="destructive"
+            >
               <RestartIcon />
               <span>Reiniciar selección</span>
             </Button>
           </div>
         </div>
 
-        <TotalProgress creditos={creditosTotales} />
+        <TotalProgress creditos={informacionEstudiante.creditosTotales} />
       </header>
 
       <SeleccionPorGrupos />

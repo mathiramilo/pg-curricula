@@ -33,6 +33,19 @@ export const generatePlan = async ({
   return res.data;
 };
 
+export const getListadoUCsInicial = async (
+  informacionEstudiante: InformacionEstudiante,
+) => {
+  const res = await api.post<UnidadCurricular[]>(
+    "/planes/inicializar-listado",
+    {
+      informacionEstudiante,
+    },
+  );
+
+  return res.data;
+};
+
 export const getListadoUCsAleatorio = async (
   informacionEstudiante: InformacionEstudiante,
 ) => {

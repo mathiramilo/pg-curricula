@@ -1,5 +1,8 @@
-import type { ReglaPreviaturas, UnidadCurricular } from "@/models";
-import { useInformacionEstudianteStore } from "@/store";
+import type {
+  InformacionEstudiante,
+  ReglaPreviaturas,
+  UnidadCurricular,
+} from "@/models";
 import { api } from "./axios";
 
 export const DOMINIO_PREVIATURAS = "previaturas";
@@ -11,11 +14,9 @@ export const getPreviaturas = async (codigo?: UnidadCurricular["codigo"]) => {
 };
 
 export const satisfacePreviaturas = async (
+  informacionEstudiante: InformacionEstudiante,
   codigo: UnidadCurricular["codigo"],
 ) => {
-  const informacionEstudiante =
-    useInformacionEstudianteStore.getState().informacionEstudiante;
-
   const res = await api.post<boolean>(`/previaturas/${codigo}/satisface`, {
     informacionEstudiante,
   });
