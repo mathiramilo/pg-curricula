@@ -1,7 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 
 import { HTTP_STATUS_CODE } from "@/constants";
-import { generarPlan, obtenerListadoUCs } from "@/services";
+import {
+  generarPlan,
+  inicializarListadoUCs,
+  obtenerListadoUCs,
+} from "@/services";
 
 export const generarPlanController = async (
   req: Request,
@@ -40,6 +44,27 @@ export const generarPlanController = async (
         .json(result.errors);
 
     res.status(HTTP_STATUS_CODE.OK).json(result.plan);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const inicializarListadoUCsController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const { informacionEstudiante } = req.body;
+
+  if (!informacionEstudiante) {
+    return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
+      error: "No se proporcionó la información del estudiante",
+    });
+  }
+
+  try {
+    const listadoUCs = inicializarListadoUCs(informacionEstudiante);
+    res.status(HTTP_STATUS_CODE.OK).json(listadoUCs);
   } catch (error) {
     next(error);
   }

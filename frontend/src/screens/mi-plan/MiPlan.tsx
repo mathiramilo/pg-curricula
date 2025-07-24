@@ -1,46 +1,27 @@
-import { toast } from "sonner";
+import { useEffect } from "react";
 
-import { AlertTriangleIcon, ConfettiIcon } from "@/components";
-import { useGeneratePlan } from "@/hooks";
 import { ScreenLayout } from "@/layouts";
-import { useMiPlanStore } from "@/store";
+import { useInformacionEstudianteStore, useMiPlanStore } from "@/store";
 import { ContentMiPlan } from "./ContentMiPlan";
 import { HeaderMiPlan } from "./HeaderMiPlan";
 
 export const MiPlanScreen = () => {
-  const { creditos, semestreInicial, setPlan } = useMiPlanStore();
+  const informacionEstudiante = useInformacionEstudianteStore(
+    (state) => state.informacionEstudiante,
+  );
 
-  const { mutate, isLoading, isError } = useGeneratePlan();
+  const syncInformacionEstudiante = useMiPlanStore(
+    (state) => state.syncInformacionEstudiante,
+  );
 
-  const handleGenerate = () => {
-    mutate(
-      {
-        creditosPorSemestre: Number(creditos),
-        semestreInicial,
-      },
-      {
-        onError: () => {
-          toast.error("Ha ocurrido un error al generar tu plan", {
-            icon: <AlertTriangleIcon className="size-5" />,
-            description: "Por favor intenta nuevamente en unos minutos.",
-          });
-        },
-        onSuccess: (data) => {
-          setPlan(data);
-
-          toast.success("Tu plan ha sido generado con éxito", {
-            icon: <ConfettiIcon className="size-5" />,
-            description: "Ahora puedes explorarlo y descargarlo!",
-          });
-        },
-      },
-    );
-  };
+  useEffect(() => {
+    void syncInformacionEstudiante();
+  }, [syncInformacionEstudiante, informacionEstudiante]);
 
   return (
     <ScreenLayout>
-      <HeaderMiPlan onGenerate={handleGenerate} />
-      <ContentMiPlan isLoading={isLoading} isError={isError} />
+      <HeaderMiPlan />
+      <ContentMiPlan />
     </ScreenLayout>
   );
 };

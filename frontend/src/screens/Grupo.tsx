@@ -22,13 +22,13 @@ export const GrupoScreen = () => {
 
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, isError, isSuccess } = useUnidadesCurriculares(
-    {
+  const { data, isLoading, isError, isSuccess } = useUnidadesCurriculares({
+    filter: {
       grupo: slug,
       habilitadas: soloHabilitadas,
     },
     page,
-  );
+  });
 
   const title = capitalizeWords(slug ?? "");
 

@@ -1,3 +1,3 @@
 export * from "./useGeneratePlan";
 export * from "./useProcesarEscolaridad";
-export * from "./useSatisfacePrevias";
+export * from "./useSatisfacePreviaturas";

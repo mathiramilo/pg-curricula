@@ -3,9 +3,11 @@ import { Router } from "express";
 import {
   generarListadoUCsController,
   generarPlanController,
+  inicializarListadoUCsController,
 } from "@/controllers";
 
 export const planesRouter = Router();
 
 planesRouter.post("/", generarPlanController);
-planesRouter.get("/generar-listado", generarListadoUCsController);
+planesRouter.post("/inicializar-listado", inicializarListadoUCsController);
+planesRouter.post("/generar-listado", generarListadoUCsController);

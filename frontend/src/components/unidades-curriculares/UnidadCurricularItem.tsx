@@ -8,16 +8,22 @@ import {
   useUnidadCurricularModalStore,
 } from "@/store";
 import { capitalizeWords, cn } from "@/utils";
-import { Checkbox } from "../ui";
+import { Checkbox, Tooltip, TooltipContent, TooltipTrigger } from "../ui";
 
 type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   unidadCurricular: UnidadCurricular;
   type?: UnidadCurricularItemType;
+  selected?: boolean;
+  onSelectedChange?: (value: boolean) => void;
+  selectionDisabled?: boolean;
 };
 
 const UnidadCurricularItem = ({
   unidadCurricular,
   type = "aprobacion",
+  selected,
+  onSelectedChange,
+  selectionDisabled = false,
   className,
   ...props
 }: UnidadCurricularItemProps) => {
@@ -106,9 +112,35 @@ const UnidadCurricularItem = ({
       )}
 
       {type === "creditos" && (
-        <span className="text-sm text-principal font-medium">
-          {unidadCurricular.creditos}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-principal font-medium">
+            {unidadCurricular.creditos}
+          </span>
+        </div>
+      )}
+
+      {type === "seleccion" && (
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-principal font-medium">
+            {unidadCurricular.creditos}
+          </span>
+          <Tooltip>
+            <TooltipTrigger>
+              <Checkbox
+                checked={selected}
+                onCheckedChange={onSelectedChange}
+                disabled={selectionDisabled}
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              {selectionDisabled
+                ? "Curso obligatorio"
+                : selected
+                  ? "Deseleccionar curso"
+                  : "Seleccionar curso"}
+            </TooltipContent>
+          </Tooltip>
+        </div>
       )}
     </div>
   );

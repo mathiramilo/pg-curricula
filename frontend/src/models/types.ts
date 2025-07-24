@@ -106,7 +106,7 @@ export type ReglaPreviaturas =
   | ReglaCreditosPlan
   | undefined;
 
-export type UnidadCurricularItemType = "aprobacion" | "creditos";
+export type UnidadCurricularItemType = "aprobacion" | "creditos" | "seleccion";
 
 interface SemestrePlanCarrera {
   semestre: number;

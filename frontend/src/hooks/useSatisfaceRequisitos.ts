@@ -1,13 +1,11 @@
 import { useMemo } from "react";
 
+import type { InformacionEstudiante } from "@/models";
 import { GRUPO_VALUES, REQUISITOS_TITULO } from "@/models";
-import { useInformacionEstudianteStore } from "@/store";
 
-export const useSatisfaceRequisitos = () => {
-  const informacionEstudiante = useInformacionEstudianteStore(
-    (state) => state.informacionEstudiante,
-  );
-
+export const useSatisfaceRequisitos = (
+  informacionEstudiante: InformacionEstudiante,
+) => {
   return useMemo(() => {
     const satisfaceCreditosTotales =
       informacionEstudiante.creditosTotales >=
