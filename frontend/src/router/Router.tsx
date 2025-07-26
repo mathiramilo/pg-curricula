@@ -4,8 +4,8 @@ import {
   BuscarCursosScreen,
   GrupoScreen,
   InicioScreen,
-  MiPlanScreen,
   OfertaAcademicaScreen,
+  PlanificarCarreraScreen,
   ResumenCarreraScreen,
 } from "@/screens";
 import { ROUTES } from ".";
@@ -17,7 +17,10 @@ export const Router = () => {
 
       <Route path={ROUTES.BUSCAR_CURSOS} element={<BuscarCursosScreen />} />
 
-      <Route path={ROUTES.MI_PLAN} element={<MiPlanScreen />} />
+      <Route
+        path={ROUTES.PLANIFICAR_CARRERA}
+        element={<PlanificarCarreraScreen />}
+      />
 
       <Route
         path={ROUTES.OFERTA_ACADEMICA}

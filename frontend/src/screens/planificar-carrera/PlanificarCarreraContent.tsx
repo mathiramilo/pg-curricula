@@ -12,7 +12,7 @@ const TAB_VALUE = {
 } as const;
 type TabValue = (typeof TAB_VALUE)[keyof typeof TAB_VALUE];
 
-export const ContentMiPlan = () => {
+export const PlanificarCarreraContent = () => {
   const [tab, setTab] = useState<TabValue>(TAB_VALUE.SELECCION);
 
   const informacionEstudiante = useInformacionEstudianteStore(

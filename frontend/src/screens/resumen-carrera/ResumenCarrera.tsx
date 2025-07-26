@@ -13,7 +13,7 @@ export const ResumenCarreraScreen = () => {
   return (
     <ScreenLayout>
       <ScreenHeader
-        title="Resumen de Carrera"
+        title="Resumen Carrera"
         description="Visualiza tu progreso en la carrera, incluyendo cantidad de créditos por grupo, unidades curriculares y más."
       >
         <TotalProgress creditos={creditosTotales} />
