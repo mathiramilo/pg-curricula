@@ -15,7 +15,8 @@ type UnidadCurricularItemProps = ComponentPropsWithoutRef<"div"> & {
   type?: UnidadCurricularItemType;
   selected?: boolean;
   onSelectedChange?: (value: boolean) => void;
-  selectionDisabled?: boolean;
+  isObligatoria?: boolean;
+  noSatisfacePreviaturas?: boolean;
 };
 
 const UnidadCurricularItem = ({
@@ -23,7 +24,8 @@ const UnidadCurricularItem = ({
   type = "aprobacion",
   selected,
   onSelectedChange,
-  selectionDisabled = false,
+  isObligatoria = false,
+  noSatisfacePreviaturas = false,
   className,
   ...props
 }: UnidadCurricularItemProps) => {
@@ -129,15 +131,17 @@ const UnidadCurricularItem = ({
               <Checkbox
                 checked={selected}
                 onCheckedChange={onSelectedChange}
-                disabled={selectionDisabled}
+                disabled={isObligatoria || noSatisfacePreviaturas}
               />
             </TooltipTrigger>
             <TooltipContent>
-              {selectionDisabled
+              {isObligatoria
                 ? "Curso obligatorio"
-                : selected
-                  ? "Deseleccionar curso"
-                  : "Seleccionar curso"}
+                : noSatisfacePreviaturas
+                  ? "No satisface previaturas"
+                  : selected
+                    ? "Deseleccionar curso"
+                    : "Seleccionar curso"}
             </TooltipContent>
           </Tooltip>
         </div>

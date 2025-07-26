@@ -17,14 +17,14 @@ import {
 
 const steps = [
   {
-    title: "Selección aleatoria",
+    title: "Selección de cursos",
     description:
-      "Elegimos una combinación de cursos válidos que cumplen con los requisitos del título.",
+      "Debes seleccionar una combinación de cursos válidos que cumplan con los requisitos de la carrera. Puedes ayudarte con la opción de completar automáticamente.",
   },
   {
     title: "Organización por semestres",
     description:
-      "Ordenamos los cursos respetando el máximo de créditos por semestre que configuraste.",
+      "Ordenamos los cursos seleccionados respetando el máximo de créditos por semestre que configuraste.",
   },
   {
     title: "Optimización del tiempo",
@@ -53,8 +53,8 @@ export const HowPlanGenerationWorksModal = ({
         <DialogHeader>
           <DialogTitle>¿Cómo funciona?</DialogTitle>
           <DialogDescription>
-            A continuación te explicamos cómo funciona la generación de tu
-            trayectoria académica.
+            A continuación te explicamos cómo funciona la generación de tu plan
+            de estudios.
           </DialogDescription>
         </DialogHeader>
 

@@ -12,7 +12,13 @@ import {
 import { actualizarInformacionEstudiante } from "@/utils";
 import { cumplePreviaturas } from "../previaturas.service";
 
-const UCS_EXCEPCIONALES = [{ nombre: "PROYECTO DE GRADO", codigo: "1730" }];
+const UCS_EXCEPCIONALES = [
+  { nombre: "PROYECTO DE GRADO", codigo: "1730" },
+] as const;
+const PROGRAMACION_FUNCIONAL_OR_LOGICA = [
+  { nombre: "PROGRAMACION FUNCIONAL", codigo: "1354" },
+  { nombre: "PROGRAMACION LOGICA", codigo: "1340" },
+] as const;
 
 const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 const ucsOptativasGruposActualesTyped = ucsOptativasGruposActuales as Record<
@@ -61,6 +67,21 @@ export const obtenerListadoUCs = (
       );
     }
   });
+
+  // 3. Agregamos Programación Funcional o Lógica ya que es obligatorio tener una de las dos
+  const randomIndex = Math.floor(
+    Math.random() * PROGRAMACION_FUNCIONAL_OR_LOGICA.length,
+  );
+  const progFuncionalOrLogica = unidadesCurricularesJson.find(
+    (uc) => uc.codigo === PROGRAMACION_FUNCIONAL_OR_LOGICA[randomIndex]?.codigo,
+  ) as UnidadCurricular;
+
+  listadoUCs.push(progFuncionalOrLogica);
+  actualizarInformacionEstudiante(
+    informacionEstudiante,
+    progFuncionalOrLogica,
+    progFuncionalOrLogica.nombreGrupoHijo,
+  );
 
   // Por cada grupo
   for (const grupo in ucsOptativasGruposActualesTyped) {

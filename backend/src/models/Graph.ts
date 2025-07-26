@@ -311,7 +311,10 @@ export class Graph {
       let totalCredits = creditsNextSemester;
 
       if (ucNextSemester)
-        scheduleObject.unidadesCurriculares.push(ucNextSemester);
+        scheduleObject.unidadesCurriculares.push({
+          ...ucNextSemester,
+          creditos: ucNextSemester.creditos / 2,
+        });
 
       scheduleObject.creditos += creditsNextSemester;
 
@@ -341,7 +344,14 @@ export class Graph {
             : totalCredits + unidadCurricular.creditos <=
               maxCredits * MAX_CREDITS_THRESHOLD
         ) {
-          scheduleObject.unidadesCurriculares.push(unidadCurricular);
+          scheduleObject.unidadesCurriculares.push(
+            isAnual
+              ? {
+                  ...unidadCurricular,
+                  creditos: unidadCurricular.creditos / 2,
+                }
+              : unidadCurricular,
+          );
 
           // Si la unidad curricular es anual se le suman la mitad de los creditos al semestre actual y la otra mitad al proximo
           if (isAnual) {

@@ -35,7 +35,7 @@ export const satisfacePreviaturasController = (
   next: NextFunction,
 ) => {
   const { codigo } = req.params;
-  const informacionEstudiante = req.body;
+  const { informacionEstudiante } = req.body;
 
   try {
     if (!codigo)

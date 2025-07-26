@@ -16,11 +16,11 @@ import {
   SEMESTRE_INICIAL_OPTIONS,
 } from "@/models";
 import { useMiPlanStore } from "@/store";
-import { Plan } from "./Plan";
+import { PlanDisplay } from "./PlanDisplay";
 
 const PDF_FILE_NAME = "plan-carrera-computacion.pdf";
 
-export const PlanEstudios = () => {
+export const PlanTab = () => {
   const {
     listadoUCs,
     creditos,
@@ -68,7 +68,7 @@ export const PlanEstudios = () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-4 gap-2">
             <Button onClick={handleGenerate} disabled={false}>
               <SchoolIcon />
-              <span>Generar Plan</span>
+              <span>{plan ? "Regenerar Plan" : "Generar Plan"}</span>
             </Button>
 
             <PDFDownloadLink
@@ -106,7 +106,7 @@ export const PlanEstudios = () => {
         </div>
       </header>
 
-      <Plan isLoading={isLoading} isError={isError} />
+      <PlanDisplay isLoading={isLoading} isError={isError} />
     </section>
   );
 };
