@@ -70,6 +70,7 @@ def get_student_data_with_intermediate_results(
                 ):
                     continue
                 else:
+                    print(line)
                     break
 
             final_results = [
