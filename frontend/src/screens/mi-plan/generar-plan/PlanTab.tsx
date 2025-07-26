@@ -31,7 +31,7 @@ export const PlanTab = () => {
     setSemestreInicial,
   } = useMiPlanStore();
 
-  const { mutate, isLoading, isError } = useGeneratePlan();
+  const { mutate, isPending, isError } = useGeneratePlan();
 
   const handleGenerate = () => {
     mutate(
@@ -106,7 +106,7 @@ export const PlanTab = () => {
         </div>
       </header>
 
-      <PlanDisplay isLoading={isLoading} isError={isError} />
+      <PlanDisplay isPending={isPending} isError={isError} />
     </section>
   );
 };

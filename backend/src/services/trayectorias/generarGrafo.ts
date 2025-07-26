@@ -15,6 +15,8 @@ import { actualizarInformacionEstudiante, calcularValorArista } from "@/utils";
 
 const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 
+const MAX_ITERATIONS = 1000;
+
 const NOMBRE_NODO_INICIO = "inicio";
 const NOMBRE_NODO_FIN = "fin";
 
@@ -60,7 +62,16 @@ export const generarGrafo = (
 
   const listadoUCsSinPrevias: UnidadCurricular[] = [];
 
+  let iterations = 0;
   while (listadoUCsFaltantes.length > 0) {
+    if (iterations >= MAX_ITERATIONS) {
+      console.warn(
+        "Max iterations reached while generating the graph. Stopping.",
+      );
+      break;
+    }
+    iterations++;
+
     for (const uc of listadoUCsFaltantes) {
       if (
         cumplePreviaturas(informacionEstudiante, previaturasTyped[uc.codigo])

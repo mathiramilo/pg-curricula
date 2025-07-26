@@ -1,7 +1,11 @@
-import { QueryClient } from "react-query";
+import { QueryClient } from "@tanstack/react-query";
 import { create } from "zustand";
 
-import { getListadoUCsAleatorio, getListadoUCsInicial } from "@/api";
+import {
+  DOMINIO_PLANES,
+  getListadoUCsAleatorio,
+  getListadoUCsInicial,
+} from "@/api";
 import { SEMESTRE_DE_DICTADO, TIPO_APROBACION } from "@/models";
 import type {
   InformacionEstudiante,
@@ -56,6 +60,11 @@ export const useMiPlanStore = create<MiPlanStore>((set, get) => ({
     });
 
     const listadoUCsInicial = await queryClient.fetchQuery({
+      queryKey: [
+        DOMINIO_PLANES,
+        "listado-inicial",
+        get().informacionEstudiante,
+      ],
       queryFn: () => getListadoUCsInicial(get().informacionEstudiante),
     });
 
@@ -70,6 +79,11 @@ export const useMiPlanStore = create<MiPlanStore>((set, get) => ({
     const queryClient = new QueryClient();
 
     const listadoUCsAleatorio = await queryClient.fetchQuery({
+      queryKey: [
+        DOMINIO_PLANES,
+        "listado-aleatorio",
+        get().informacionEstudiante,
+      ],
       queryFn: () => getListadoUCsAleatorio(get().informacionEstudiante),
     });
 

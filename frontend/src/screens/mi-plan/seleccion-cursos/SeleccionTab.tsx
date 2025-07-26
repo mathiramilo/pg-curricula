@@ -7,10 +7,13 @@ import {
   ArrowRightIcon,
   ArrowsShuffleIcon,
   Button,
+  ErrorState,
   RestartIcon,
   TotalProgress,
+  UnidadCurricularListSkeleton,
 } from "@/components";
-import { useSatisfaceRequisitos } from "@/hooks";
+import { useSatisfaceRequisitos, useUnidadesCurriculares } from "@/hooks";
+import { SEMESTRE_DE_DICTADO } from "@/models";
 import { useMiPlanStore } from "@/store";
 import { SeleccionGrupos } from "./SeleccionGrupos";
 
@@ -28,6 +31,22 @@ export const SeleccionTab = ({ onNavigateToPlan }: SeleccionTabProps) => {
   const { satisfaceRequisitos, errors } = useSatisfaceRequisitos(
     informacionEstudiante,
   );
+
+  const {
+    data: unidadesCurriculares,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useUnidadesCurriculares({
+    filter: {
+      semestresDeDictado: [
+        SEMESTRE_DE_DICTADO.PRIMER_SEMESTRE,
+        SEMESTRE_DE_DICTADO.SEGUNDO_SEMESTRE,
+      ],
+    },
+    page: 1,
+    pageSize: 1000,
+  });
 
   return (
     <section className="flex flex-col gap-8">
@@ -58,48 +77,65 @@ export const SeleccionTab = ({ onNavigateToPlan }: SeleccionTabProps) => {
         <TotalProgress creditos={informacionEstudiante.creditosTotales} />
       </header>
 
-      <SeleccionGrupos />
+      {isLoading && (
+        <section className="w-full grid lg:grid-cols-3 gap-12">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <UnidadCurricularListSkeleton key={index} />
+          ))}
+        </section>
+      )}
 
-      <footer className="flex flex-col gap-4">
-        {!satisfaceRequisitos && (
-          <Alert variant="destructive" className="flex-col gap-3 lg:flex-row">
-            <div className="flex gap-2 grow">
-              <AlertTriangleIcon className="shrink-0 size-4 translate-y-0.5" />
-              <AlertContent>
-                <AlertTitle>
-                  Aún no has alcanzado los requisitos necesarios
-                </AlertTitle>
-                <AlertDescription>
-                  <ul className="list-inside list-disc">
-                    {errors.map((error, index) => (
-                      <li key={index}>{error}</li>
-                    ))}
-                  </ul>
-                </AlertDescription>
-              </AlertContent>
-            </div>
+      {isError && <ErrorState className="lg:h-96" />}
+
+      {isSuccess && (
+        <>
+          <SeleccionGrupos unidadesCurriculares={unidadesCurriculares.data} />
+
+          <footer className="flex flex-col gap-4">
+            {!satisfaceRequisitos && (
+              <Alert
+                variant="destructive"
+                className="flex-col gap-3 lg:flex-row"
+              >
+                <div className="flex gap-2 grow">
+                  <AlertTriangleIcon className="shrink-0 size-4 translate-y-0.5" />
+                  <AlertContent>
+                    <AlertTitle>
+                      Aún no has alcanzado los requisitos necesarios
+                    </AlertTitle>
+                    <AlertDescription>
+                      <ul className="list-inside list-disc">
+                        {errors.map((error, index) => (
+                          <li key={index}>{error}</li>
+                        ))}
+                      </ul>
+                    </AlertDescription>
+                  </AlertContent>
+                </div>
+
+                <Button
+                  variant="outline"
+                  disabled={satisfaceRequisitos}
+                  onClick={() => void generateRandomSelection()}
+                  className="self-center w-full lg:w-auto"
+                >
+                  <ArrowsShuffleIcon />
+                  <span>Completar selección</span>
+                </Button>
+              </Alert>
+            )}
 
             <Button
-              variant="outline"
-              disabled={satisfaceRequisitos}
-              onClick={() => void generateRandomSelection()}
-              className="self-center w-full lg:w-auto"
+              disabled={!satisfaceRequisitos}
+              onClick={onNavigateToPlan}
+              className="w-full lg:w-auto lg:self-end"
             >
-              <ArrowsShuffleIcon />
-              <span>Completar selección</span>
+              Ir a plan de estudios
+              <ArrowRightIcon />
             </Button>
-          </Alert>
-        )}
-
-        <Button
-          disabled={!satisfaceRequisitos}
-          onClick={onNavigateToPlan}
-          className="w-full lg:w-auto lg:self-end"
-        >
-          Ir a plan de estudios
-          <ArrowRightIcon />
-        </Button>
-      </footer>
+          </footer>
+        </>
+      )}
     </section>
   );
 };

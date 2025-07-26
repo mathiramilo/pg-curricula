@@ -26,9 +26,12 @@ const ucsOptativasGruposActualesTyped = ucsOptativasGruposActuales as Record<
   string[]
 >;
 
+const MAX_ITERATIONS = 1000;
+
 export const obtenerListadoUCs = (
   informacionEstudiante: InformacionEstudiante,
 ): UnidadCurricular[] => {
+  let iterations = 0;
   const listadoUCs: UnidadCurricular[] = [];
 
   // 1. Eliminar de materias obligatorias las ya aprobadas
@@ -102,8 +105,17 @@ export const obtenerListadoUCs = (
     );
 
     // 2. Seleccionar una materia al azar, agregarla al listado y actualizar informacionEstudiante
+    iterations = 0;
     // @ts-expect-error Necessary to access the property dynamically
     while (informacionEstudiante[grupo] < requisitosTitulo[grupo]) {
+      if (iterations >= MAX_ITERATIONS) {
+        console.warn(
+          `Max iterations reached for group ${grupo}. Skipping to next group.`,
+        );
+        break;
+      }
+      iterations++;
+
       const indiceAleatorio = Math.floor(
         Math.random() * codigoUCsGrupoFiltradas.length,
       );
@@ -131,7 +143,15 @@ export const obtenerListadoUCs = (
   }
 
   // Hasta completar 450 creditos
+  iterations = 0;
   while (informacionEstudiante.creditosTotales < 450) {
+    if (iterations >= MAX_ITERATIONS) {
+      console.warn(
+        "Max iterations reached while trying to complete 450 credits. Stopping.",
+      );
+      break;
+    }
+    iterations++;
     // 1. Seleccionar un grupo al azar
     const grupos = Object.keys(ucsOptativasGruposActuales);
     const grupoAleatorio = grupos[

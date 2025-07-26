@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import type { GetUnidadesCurricularesFilter } from "@/api";
 import { DOMINIO_UNIDADES_CURRICULARES, getUnidadesCurriculares } from "@/api";

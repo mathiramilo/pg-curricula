@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { DOMINIO_PLANES, getListadoUCsInicial } from "@/api";
 import type { InformacionEstudiante } from "@/models";

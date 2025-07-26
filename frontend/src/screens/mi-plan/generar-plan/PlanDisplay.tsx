@@ -3,14 +3,14 @@ import { TrayectoriaSugeridaLoading } from "@/screens/inicio/TrayectoriaSugerida
 import { useMiPlanStore } from "@/store";
 
 interface PlanDisplayProps {
-  isLoading: boolean;
+  isPending: boolean;
   isError: boolean;
 }
 
-export const PlanDisplay = ({ isLoading, isError }: PlanDisplayProps) => {
+export const PlanDisplay = ({ isPending, isError }: PlanDisplayProps) => {
   const plan = useMiPlanStore((state) => state.plan);
 
-  if (isLoading) {
+  if (isPending) {
     return <TrayectoriaSugeridaLoading />;
   }
 

@@ -16,6 +16,8 @@ import {
 
 const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 
+const MAX_ITERATIONS = 1000;
+
 type EdgeValue = 0 | 1 | 2 | 3; // 3 es para el caso de que la unidad curricular previa se dicte ambos semestres y la actual solo uno
 
 interface Edge {
@@ -284,11 +286,20 @@ export class Graph {
     let creditsNextSemester = 0;
     let ucNextSemester: UnidadCurricular | null = null;
 
+    let iterations = 0;
     while (
       ES.size > 0 ||
       this.getUnidadesCurricularesSinPrevias().length > 0 ||
       creditsNextSemester > 0
     ) {
+      if (iterations >= MAX_ITERATIONS) {
+        console.warn(
+          "Max iterations reached while scheduling. Returning empty plan.",
+        );
+        return [];
+      }
+      iterations++;
+
       // Obtenemos los nodos que se pueden programar en el semestre actual ordenados por holgura para agregar primero los criticos
       const available = Array.from(ES.entries())
         .filter(([_, es]) => es <= semester - 1)
@@ -443,7 +454,16 @@ export class Graph {
       structuredClone(informacionEstudiante),
     );
 
+    let iterations = 0;
     while (!plan) {
+      if (iterations >= MAX_ITERATIONS) {
+        console.warn(
+          "Max iterations reached while scheduling. Returning empty plan.",
+        );
+        return [];
+      }
+      iterations++;
+
       plan = this.schedule(
         initialSemester,
         maxCredits,

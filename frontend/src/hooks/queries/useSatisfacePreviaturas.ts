@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { DOMINIO_PREVIATURAS, satisfacePreviaturas } from "@/api";
 import type { InformacionEstudiante, UnidadCurricular } from "@/models";
