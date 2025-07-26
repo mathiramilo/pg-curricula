@@ -22,6 +22,7 @@ const PDF_FILE_NAME = "plan-carrera-computacion.pdf";
 
 export const PlanTab = () => {
   const {
+    informacionEstudiante,
     listadoUCs,
     creditos,
     setCreditos,
@@ -72,7 +73,12 @@ export const PlanTab = () => {
             </Button>
 
             <PDFDownloadLink
-              document={<PlanPdf plan={plan} />}
+              document={
+                <PlanPdf
+                  plan={plan}
+                  totalCredits={informacionEstudiante.creditosTotales}
+                />
+              }
               fileName={PDF_FILE_NAME}
             >
               <Button variant="outline" disabled={!plan} className="w-full">

@@ -1,25 +1,35 @@
-import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import {
+  Document,
+  Image,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 
 import type { PlanCarrera } from "@/models";
 import { capitalizeWords } from "@/utils";
 
 interface PlanPdfProps {
   plan?: PlanCarrera;
+  totalCredits: number;
 }
 
-export const PlanPdf = ({ plan }: PlanPdfProps) => {
+export const PlanPdf = ({ plan, totalCredits }: PlanPdfProps) => {
   if (!plan?.length) return null;
 
   const beginDateText = plan[0].label;
   const endDateText = plan[plan.length - 1].label;
   const totalSemesters = plan.length;
-  const totalCredits = plan.reduce((acc, curr) => acc + curr.creditos, 0);
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-          <Text style={styles.title}>Plan de carrera</Text>
+          <View style={styles.header}>
+            <Text style={styles.title}>Plan de carrera</Text>
+            <Image src="/images/logo-black.png" style={styles.img} />
+          </View>
 
           <View style={styles.list}>
             <View style={styles.row}>
@@ -28,7 +38,7 @@ export const PlanPdf = ({ plan }: PlanPdfProps) => {
             </View>
 
             <View style={styles.row}>
-              <Text style={styles.textBold}>Fecha de inicio:</Text>
+              <Text style={styles.textBold}>Próxima fecha de inicio:</Text>
               <Text style={styles.text}>{beginDateText}</Text>
             </View>
 
@@ -38,7 +48,9 @@ export const PlanPdf = ({ plan }: PlanPdfProps) => {
             </View>
 
             <View style={styles.row}>
-              <Text style={styles.textBold}>Cantidad de semestres:</Text>
+              <Text style={styles.textBold}>
+                Cantidad de semestres restantes:
+              </Text>
               <Text style={styles.text}>{totalSemesters}</Text>
             </View>
 
@@ -88,6 +100,16 @@ const styles = StyleSheet.create({
   },
   section: {
     gap: 12,
+  },
+  img: {
+    width: 115,
+    aspectRatio: 5,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
   },
   list: {
     gap: 6,
