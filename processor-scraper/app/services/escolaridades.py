@@ -34,6 +34,8 @@ def get_student_data_with_intermediate_results(
     student_data = {
         "unidadesCurricularesAprobadas": {},
         "creditosTotales": 0,
+        "modulosTaller": 0,
+        "modulosExtension": 0,
         "MATEMATICA": 0,
         "CIENCIAS EXPERIMENTALES": 0,
         "PROGRAMACION": 0,
@@ -68,6 +70,7 @@ def get_student_data_with_intermediate_results(
                 ):
                     continue
                 else:
+                    print(line)
                     break
 
             final_results = [
@@ -138,6 +141,12 @@ def get_student_data_with_intermediate_results(
                             )
                         )
                         student_data["creditosTotales"] += int(creditos)
+                        student_data["modulosTaller"] += (
+                            int(creditos) if "MODULO DE TALLER" in nombre else 0
+                        )
+                        student_data["modulosExtension"] += (
+                            int(creditos) if "MODULO DE EXTENSION" in nombre else 0
+                        )
                         student_data[group] += int(creditos)
                     else:
                         unidad_curricular_data = result.split(" ")[2:]
@@ -190,6 +199,8 @@ def get_student_data_without_intermediate_results(
     student_data = {
         "unidadesCurricularesAprobadas": {},
         "creditosTotales": 0,
+        "modulosTaller": 0,
+        "modulosExtension": 0,
         "MATEMATICA": 0,
         "CIENCIAS EXPERIMENTALES": 0,
         "PROGRAMACION": 0,
@@ -257,6 +268,12 @@ def get_student_data_without_intermediate_results(
                         )
                     )
                     student_data["creditosTotales"] += int(creditos)
+                    student_data["modulosTaller"] += (
+                        int(creditos) if "MODULO DE TALLER" in nombre else 0
+                    )
+                    student_data["modulosExtension"] += (
+                        int(creditos) if "MODULO DE EXTENSION" in nombre else 0
+                    )
                     student_data[group] += int(creditos)
                 else:
                     # Unidades curriculares del area Materias Opcionales se muestran diferente => "[Fecha] [Nombre UC] [Cant. Reprobaciones] [Creditos] [Concepto]"

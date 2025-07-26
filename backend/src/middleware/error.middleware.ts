@@ -1,13 +1,14 @@
-import { ErrorRequestHandler, Request, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 
-import { HTTP_STATUS_CODE } from '../constants';
+import { HTTP_STATUS_CODE } from "@/constants";
 
 export const errorMiddleware: ErrorRequestHandler = (
   err: Error,
   _req: Request,
-  res: Response
+  res: Response,
+  _next: NextFunction,
 ) => {
-  const message = err.message || 'Ha ocurrido un error inesperado';
+  const message = err.message || "Ha ocurrido un error inesperado";
 
   console.error(err.stack);
 

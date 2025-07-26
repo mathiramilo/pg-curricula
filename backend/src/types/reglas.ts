@@ -1,4 +1,4 @@
-import { TipoInstancia } from '.';
+import { TipoInstancia } from ".";
 
 export type ReglaPreviaturas =
   | {
@@ -37,12 +37,11 @@ export type ReglaPreviaturas =
   | undefined;
 
 export const TIPO_REGLA = {
-  AND: 'AND',
-  OR: 'OR',
-  NOT: 'NOT',
-  SOME: 'SOME',
-  UC: 'UC',
-  CREDITOS_GRUPO: 'CREDITOS_GRUPO',
-  CREDITOS_PLAN: 'CREDITOS_PLAN',
+  AND: "AND",
+  OR: "OR",
+  NOT: "NOT",
+  SOME: "SOME",
+  UC: "UC",
+  CREDITOS_GRUPO: "CREDITOS_GRUPO",
+  CREDITOS_PLAN: "CREDITOS_PLAN",
 } as const;
-export type TipoRegla = (typeof TIPO_REGLA)[keyof typeof TIPO_REGLA];

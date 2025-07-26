@@ -1,22 +1,26 @@
-import fs from 'fs';
+import fs from "fs";
 
-import { UnidadCurricular } from '../types';
-import unidadesCurriculares from '../../data/unidades-curriculares.json';
-import unidadesCurricularesObligatorias from '../../data/ucs-obligatorias.json';
+import unidadesCurricularesObligatorias from "../../data/ucs-obligatorias.json";
+import unidadesCurriculares from "../../data/unidades-curriculares.json";
+import { UnidadCurricular } from "../types";
 
-const UBICACION_DESTINO_1 = '../../data/ucs-grupos-actuales.json';
-const UBICACION_DESTINO_2 = '../../data/ucs-optativas-grupos-actuales.json';
+const UBICACION_DESTINO_1 = "../../data/ucs-grupos-actuales.json";
+const UBICACION_DESTINO_2 = "../../data/ucs-optativas-grupos-actuales.json";
 
 const generarUCsGruposActualesJson = async (): Promise<void> => {
   try {
     const ucsGrupos = obtenerUCsGruposActuales(
-      unidadesCurriculares as UnidadCurricular[]
+      unidadesCurriculares as UnidadCurricular[],
     );
 
     fs.writeFileSync(
       UBICACION_DESTINO_1,
       JSON.stringify(ucsGrupos, null, 4),
-      'utf8'
+      "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de UCs grupos actuales generado correctamente en ${UBICACION_DESTINO_1}`,
     );
   } catch (error) {
     console.error(error);
@@ -26,23 +30,26 @@ const generarUCsGruposActualesJson = async (): Promise<void> => {
 const generarUCsOptativasGruposActualesJson = async (): Promise<void> => {
   try {
     const ucsGrupos = obtenerUCsGruposActuales(
-      unidadesCurriculares as UnidadCurricular[]
+      unidadesCurriculares as UnidadCurricular[],
     );
 
     const codigosObligatorios = new Set(
-      unidadesCurricularesObligatorias.map(({ codigo }) => codigo)
+      unidadesCurricularesObligatorias.map(({ codigo }) => codigo),
     );
 
     for (const grupo in ucsGrupos) {
-      ucsGrupos[grupo] = ucsGrupos[grupo]?.filter(
-        (uc) => !codigosObligatorios.has(uc)
-      )!;
+      ucsGrupos[grupo] =
+        ucsGrupos[grupo]?.filter((uc) => !codigosObligatorios.has(uc)) ?? [];
     }
 
     fs.writeFileSync(
       UBICACION_DESTINO_2,
       JSON.stringify(ucsGrupos, null, 4),
-      'utf8'
+      "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de UCs optativas grupos actuales generado correctamente en ${UBICACION_DESTINO_2}`,
     );
   } catch (error) {
     console.error(error);
@@ -50,7 +57,7 @@ const generarUCsOptativasGruposActualesJson = async (): Promise<void> => {
 };
 
 const obtenerUCsGruposActuales = (
-  unidadesCurriculares: UnidadCurricular[]
+  unidadesCurriculares: UnidadCurricular[],
 ): { [clave: string]: string[] } => {
   const UCsGrupos: { [clave: string]: string[] } = {};
 
@@ -59,9 +66,9 @@ const obtenerUCsGruposActuales = (
     .forEach((uc) => {
       const nombreGrupo = uc.nombreGrupoHijo;
 
-      if (nombreGrupo === '') {
-        if (!UCsGrupos['MATERIAS OPCIONALES']) {
-          UCsGrupos['MATERIAS OPCIONALES'] = [];
+      if (nombreGrupo === "") {
+        if (!UCsGrupos["MATERIAS OPCIONALES"]) {
+          UCsGrupos["MATERIAS OPCIONALES"] = [];
         }
       } else {
         if (!UCsGrupos[nombreGrupo]) {
@@ -69,8 +76,8 @@ const obtenerUCsGruposActuales = (
         }
       }
 
-      if (nombreGrupo === '') {
-        UCsGrupos['MATERIAS OPCIONALES']?.push(uc.codigo);
+      if (nombreGrupo === "") {
+        UCsGrupos["MATERIAS OPCIONALES"]?.push(uc.codigo);
       } else {
         UCsGrupos[nombreGrupo]?.push(uc.codigo);
       }

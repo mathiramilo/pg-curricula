@@ -1,11 +1,20 @@
-import { env } from '../config';
+import { NextFunction, Request, Response } from "express";
 
-export const authMiddleware = (req, res, next) => {
-  const apiKey = req.headers['x-api-key'];
+import { env } from "@/config";
+import { HTTP_STATUS_CODE } from "@/constants";
+
+export const authMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const apiKey = req.headers["x-api-key"];
   const apiKeyValid = apiKey === env.API_KEY;
 
   if (!apiKeyValid) {
-    return res.status(401).json({ message: 'Unauthorized: Invalid API key' });
+    return res
+      .status(HTTP_STATUS_CODE.UNAUTHORIZED)
+      .json({ message: "Unauthorized: Invalid API key" });
   }
 
   next();

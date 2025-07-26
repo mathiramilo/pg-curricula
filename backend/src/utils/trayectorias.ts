@@ -5,17 +5,17 @@ import {
   SemestreDeDictado,
   TIPO_APROBACION,
   UnidadCurricular,
-} from '../types';
+} from "@/types";
 
 export const actualizarInformacionEstudiante = (
   informacionEstudiante: InformacionEstudiante,
   unidadCurricular: UnidadCurricular,
-  grupo: GrupoHijo
+  grupo: GrupoHijo,
 ): void => {
   if (
     Object.hasOwn(
       informacionEstudiante.unidadesCurricularesAprobadas,
-      unidadCurricular.codigo
+      unidadCurricular.codigo,
     )
   )
     return;
@@ -25,12 +25,13 @@ export const actualizarInformacionEstudiante = (
       codigo: unidadCurricular.codigo,
       nombre: unidadCurricular.nombre,
       creditos: unidadCurricular.creditos,
-      concepto: '',
+      concepto: "",
       nombreGrupoHijo: grupo,
       nombreGrupoPadre: unidadCurricular.nombreGrupoPadre,
-      fecha: '',
+      fecha: "",
       tipoAprobacion: TIPO_APROBACION.EXAMEN,
     };
+  // @ts-expect-error Necessary to access the property dynamically
   informacionEstudiante[grupo] += unidadCurricular.creditos;
   informacionEstudiante.creditosTotales += unidadCurricular.creditos;
 };
@@ -43,13 +44,13 @@ export const obtenerSiguienteSemestre = (semestreActual: SemestreDeDictado) => {
 
 export const calcularValorArista = (
   semestresPrevias: SemestreDeDictado[],
-  semestresActuales: SemestreDeDictado[]
+  semestresActuales: SemestreDeDictado[],
 ) => {
   if (semestresActuales.length === 2) {
     return 1;
   }
 
-  //! REVIEW: Esta informacion no la tenemos en este punto, recien la tenemos al momento de asignar unidades curriculares a semestres
+  // Si la unidad curricular se puede cursar en cualquier semestre asignamos el valor 3 a la arista para detectar estos casos
   if (semestresPrevias.length === 2 && semestresActuales.length === 1) {
     return 3;
   }
@@ -63,7 +64,7 @@ export const calcularValorArista = (
 
 export const seDictaEsteSemestre = (
   semestreActual: number,
-  semestres: SemestreDeDictado[]
+  semestres: SemestreDeDictado[],
 ) => {
   if (!semestres.length) return false;
   if (semestres.length === 2) return true;
@@ -83,7 +84,7 @@ export const getInitialYear = (initialSemester: SemestreDeDictado) => {
   const actualMonth = new Date().getMonth() + 1;
   const initialYear =
     new Date().getFullYear() +
-    (initialSemester === '1' && actualMonth >= 5 && actualMonth <= 9 ? 1 : 0);
+    (initialSemester === "1" && actualMonth >= 5 && actualMonth <= 9 ? 1 : 0);
 
   return initialYear;
 };

@@ -43,7 +43,7 @@ export const SubirArchivoModal = ({
     reset,
   } = useDropzone();
 
-  const { mutate, isLoading } = useProcesarEscolaridad();
+  const { mutate, isPending } = useProcesarEscolaridad();
 
   const handleUpload = () => {
     if (!file) return;
@@ -174,11 +174,11 @@ export const SubirArchivoModal = ({
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={handleClose} disabled={isLoading}>
+          <Button variant="outline" onClick={handleClose} disabled={isPending}>
             Cancelar
           </Button>
-          <Button onClick={handleUpload} disabled={!file || isLoading}>
-            {isLoading ? "Procesando..." : "Cargar Progreso"}
+          <Button onClick={handleUpload} disabled={!file || isPending}>
+            {isPending ? "Procesando..." : "Cargar Progreso"}
           </Button>
         </DialogFooter>
       </DialogContent>

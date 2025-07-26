@@ -2,6 +2,7 @@ import os
 
 from app.constants.scraper import SOME_RULE_PATTERN
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
@@ -90,6 +91,65 @@ def go_to_next_page(driver, actual_page: int):
     )
     driver.execute_script("arguments[0].scrollIntoView(true);", next_page_button)
     next_page_button.click()
+
+
+def login(driver, ci, password):
+    login_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "Menu:button_cuenta_preLogin"))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", login_button)
+    login_button.click()
+
+    username_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "username"))
+    )
+    username_input.send_keys(ci)
+
+    password_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "password"))
+    )
+    password_input.send_keys(password)
+
+    submit_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.NAME, "_eventId_proceed"))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
+    submit_button.click()
+
+    try:
+        error_message = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "form-error"))
+        )
+        if error_message.is_displayed():
+            raise ValueError("Login failed. Please check your credentials.")
+    except TimeoutException:
+        pass
+
+
+def navigate_to_course_inscriptions(driver):
+    nav_element = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.LINK_TEXT, "INSCRIPCIONES"))
+    )
+    nav_element.click()
+
+    nav_link = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.LINK_TEXT, "Inscripción"))
+    )
+    nav_link.click()
+
+    fing_accordion = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "datos1111:0:servSelec1111_header"))
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", fing_accordion)
+    fing_accordion.click()
+
+    courses_anchor = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            (By.ID, "datos1111:0:datos1111:j_idt100:0:verCalendarioE")
+        )
+    )
+    driver.execute_script("arguments[0].scrollIntoView(true);", courses_anchor)
+    courses_anchor.click()
 
 
 def parse_some_line(line: str):

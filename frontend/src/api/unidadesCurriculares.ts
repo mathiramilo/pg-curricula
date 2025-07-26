@@ -19,13 +19,12 @@ export interface GetUnidadesCurricularesFilter {
   aprobadas?: boolean;
 }
 
-export type GetUnidadesCurricularesResponse = PaginatedResponse<
-  UnidadCurricular[]
->;
+type GetUnidadesCurricularesResponse = PaginatedResponse<UnidadCurricular[]>;
 
 export const getUnidadesCurriculares = async (
   filter: GetUnidadesCurricularesFilter,
   page: number,
+  pageSize?: number,
 ) => {
   const informacionEstudiante =
     useInformacionEstudianteStore.getState().informacionEstudiante;
@@ -38,6 +37,7 @@ export const getUnidadesCurriculares = async (
         ...filter,
         semestresDeDictado: JSON.stringify(filter.semestresDeDictado),
         page,
+        pageSize,
       },
     },
   );
@@ -48,6 +48,14 @@ export const getUnidadesCurriculares = async (
 export const getTrayectoriaSugerida = async () => {
   const res = await api.get<TrayectoriaSugeridaSemestre[]>(
     "/unidades-curriculares/trayectoria-sugerida",
+  );
+
+  return res.data;
+};
+
+export const getUnidadesCurricularesObligatorias = async () => {
+  const res = await api.get<UnidadCurricular[]>(
+    "/unidades-curriculares/obligatorias",
   );
 
   return res.data;

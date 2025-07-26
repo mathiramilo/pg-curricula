@@ -1,4 +1,9 @@
-import type { PlanCarrera, SemestreDeDictado } from "@/models";
+import type {
+  InformacionEstudiante,
+  PlanCarrera,
+  SemestreDeDictado,
+  UnidadCurricular,
+} from "@/models";
 import { useInformacionEstudianteStore } from "@/store";
 import { api } from "./axios";
 
@@ -7,11 +12,13 @@ export const DOMINIO_PLANES = "planes";
 export interface GeneratePlanParams {
   creditosPorSemestre: number;
   semestreInicial: SemestreDeDictado;
+  listadoUCs: UnidadCurricular[];
 }
 
 export const generatePlan = async ({
   creditosPorSemestre,
   semestreInicial,
+  listadoUCs,
 }: GeneratePlanParams) => {
   const informacionEstudiante =
     useInformacionEstudianteStore.getState().informacionEstudiante;
@@ -20,6 +27,30 @@ export const generatePlan = async ({
     informacionEstudiante,
     creditosPorSemestre,
     semestreInicial,
+    listadoUCs,
+  });
+
+  return res.data;
+};
+
+export const getListadoUCsInicial = async (
+  informacionEstudiante: InformacionEstudiante,
+) => {
+  const res = await api.post<UnidadCurricular[]>(
+    "/planes/inicializar-listado",
+    {
+      informacionEstudiante,
+    },
+  );
+
+  return res.data;
+};
+
+export const getListadoUCsAleatorio = async (
+  informacionEstudiante: InformacionEstudiante,
+) => {
+  const res = await api.post<UnidadCurricular[]>("/planes/generar-listado", {
+    informacionEstudiante,
   });
 
   return res.data;

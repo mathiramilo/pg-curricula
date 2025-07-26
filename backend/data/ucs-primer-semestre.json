@@ -1,0 +1,242 @@
+[
+    {
+        "codigo": "1944",
+        "nombre": "ADMINISTRACIÓN GENERAL PARA INGENIEROS"
+    },
+    {
+        "codigo": "1918",
+        "nombre": "ADMINISTRACIÓN Y SEGURIDAD DE SISTEMAS"
+    },
+    {
+        "codigo": "1438",
+        "nombre": "APLICACIONES DE TEORÍA DE LA INFORMACIÓN AL PROCESAMIENT"
+    },
+    {
+        "codigo": "1949",
+        "nombre": "BASES DE DATOS NO RELACIONALES"
+    },
+    {
+        "codigo": "1061",
+        "nombre": "CALCULO DIFERENCIAL E INTEGRAL EN UNA VARIABLE"
+    },
+    {
+        "codigo": "1062",
+        "nombre": "CALCULO DIFERENCIAL E INTEGRAL EN VARIAS VARIABLES"
+    },
+    {
+        "codigo": "1063",
+        "nombre": "CALCULO VECTORIAL"
+    },
+    {
+        "codigo": "1271",
+        "nombre": "CIUDADANÍA EN ENTORNOS DIGITALES"
+    },
+    {
+        "codigo": "1447",
+        "nombre": "COMPUTACIÓN DE PROPÓSITO GENERAL EN UNIDADES DE PROCE"
+    },
+    {
+        "codigo": "1434",
+        "nombre": "COMPUTACIÓN DE ALTA PERFORMANCE"
+    },
+    {
+        "codigo": "1353",
+        "nombre": "DIDÁCTICA DE ALGORITMOS Y ESTRUCTURAS DE DATOS"
+    },
+    {
+        "codigo": "1151",
+        "nombre": "FÍSICA 1"
+    },
+    {
+        "codigo": "1152",
+        "nombre": "FÍSICA 2"
+    },
+    {
+        "codigo": "1153",
+        "nombre": "FÍSICA 3"
+    },
+    {
+        "codigo": "1066",
+        "nombre": "FUNCIONES DE VARIABLE COMPLEJA"
+    },
+    {
+        "codigo": "1857",
+        "nombre": "FUNDAMENTOS DE LA ROBÓTICA AUTÓNOMA"
+    },
+    {
+        "codigo": "1942",
+        "nombre": "FUNDAMENTOS DE LA WEB SEMÁNTICA"
+    },
+    {
+        "codigo": "1871",
+        "nombre": "FUNDAMENTOS DE OPTIMIZACIÓN"
+    },
+    {
+        "codigo": "1631",
+        "nombre": "FUNDAMENTOS DE PROGRAMACIÓN ENTERA"
+    },
+    {
+        "codigo": "5916",
+        "nombre": "FUNDAMENTOS DE SEGURIDAD INFORMÁTICA"
+    },
+    {
+        "codigo": "1030",
+        "nombre": "GEOMETRÍA Y ÁLGEBRA LINEAL 1"
+    },
+    {
+        "codigo": "1031",
+        "nombre": "GEOMETRÍA Y ÁLGEBRA LINEAL 2"
+    },
+    {
+        "codigo": "1954",
+        "nombre": "GESTIÓN DE CALIDAD"
+    },
+    {
+        "codigo": "5707",
+        "nombre": "IMÁGENES MEDICAS: ADQUISICIÓN  INSTRUMENTACIÓN Y GESTIÓN"
+    },
+    {
+        "codigo": "2040",
+        "nombre": "INICIACIÓN A LA PRODUCCIÓN AUDIOVISUAL Y MULTIMEDIA"
+    },
+    {
+        "codigo": "1316",
+        "nombre": "INTRODUCCIÓN A LA COMPUTACIÓN GRAFICA"
+    },
+    {
+        "codigo": "1716",
+        "nombre": "INT. A LA INGENIERIA DE SOFTWARE"
+    },
+    {
+        "codigo": "1650",
+        "nombre": "INTRODUCCIÓN A LA INVESTIGACIÓN DE OPERACIONES"
+    },
+    {
+        "codigo": "1450",
+        "nombre": "INTRODUCCIÓN A LA TEORÍA DE LA INFORMACIÓN"
+    },
+    {
+        "codigo": "1513",
+        "nombre": "INTRODUCCIÓN A LOS MICROPROCESADORES"
+    },
+    {
+        "codigo": "1828",
+        "nombre": "INTRODUCCIÓN AL PROCESAMIENTO DE LENGUAJE NATURAL"
+    },
+    {
+        "codigo": "1027",
+        "nombre": "LÓGICA"
+    },
+    {
+        "codigo": "1023",
+        "nombre": "MATEMÁTICA DISCRETA 1"
+    },
+    {
+        "codigo": "1026",
+        "nombre": "MATEMÁTICA DISCRETA 2"
+    },
+    {
+        "codigo": "MI2",
+        "nombre": "MATEMÁTICA INICIAL"
+    },
+    {
+        "codigo": "1057",
+        "nombre": "MÉTODOS MONTECARLO"
+    },
+    {
+        "codigo": "1731",
+        "nombre": "PASANTÍA"
+    },
+    {
+        "codigo": "1767",
+        "nombre": "PRINCIPIOS Y FUNDAMENTOS DEL PROCESO PERSONAL DEL SOFT"
+    },
+    {
+        "codigo": "1025",
+        "nombre": "PROBABILIDAD Y ESTADÍSTICA"
+    },
+    {
+        "codigo": "1354",
+        "nombre": "PROGRAMACIÓN FUNCIONAL"
+    },
+    {
+        "codigo": "1340",
+        "nombre": "PROGRAMACIÓN LÓGICA"
+    },
+    {
+        "codigo": "1373",
+        "nombre": "PROGRAMACIÓN 1"
+    },
+    {
+        "codigo": "1321",
+        "nombre": "PROGRAMACIÓN 2"
+    },
+    {
+        "codigo": "1324",
+        "nombre": "PROGRAMACIÓN 4"
+    },
+    {
+        "codigo": "1730",
+        "nombre": "PROYECTO DE GRADO"
+    },
+    {
+        "codigo": "1758",
+        "nombre": "RELACIONES PERSONALES EN INGENIERÍA DE SOFTWARE Y GEREN"
+    },
+    {
+        "codigo": "1848",
+        "nombre": "ROBÓTICA BASADA EN COMPORTAMIENTOS"
+    },
+    {
+        "codigo": "1781",
+        "nombre": "SISTEMAS DE INFORMACIÓN PARA EL ANÁLISIS DE GRANDES VOLÚ"
+    },
+    {
+        "codigo": "1556",
+        "nombre": "SISTEMAS EMBEBIDOS PARA TIEMPO REAL"
+    },
+    {
+        "codigo": "1537",
+        "nombre": "SISTEMAS OPERATIVOS"
+    },
+    {
+        "codigo": "5853",
+        "nombre": "TALLER DE APRENDIZAJE AUTOMÁTICO"
+    },
+    {
+        "codigo": "1876",
+        "nombre": "TALLER DE MINERÍA DE PROCESOS DE NEGOCIO (TPM)"
+    },
+    {
+        "codigo": "1780",
+        "nombre": "TALLER DE ROBÓTICA EDUCATIVA"
+    },
+    {
+        "codigo": "1776",
+        "nombre": "TALLER DE SISTEMAS DE INFORMACIÓN GEOGRÁFICA EMPRESARIA"
+    },
+    {
+        "codigo": "1952",
+        "nombre": "TALLER DE SISTEMAS CIBER-FISICOS"
+    },
+    {
+        "codigo": "1775",
+        "nombre": "TALLER DE SISTEMAS EMPRESARIALES"
+    },
+    {
+        "codigo": "1325",
+        "nombre": "TEORÍA DE LENGUAJES"
+    },
+    {
+        "codigo": "5828",
+        "nombre": "TRATAMIENTO DE IMÁGENES POR COMPUTADORA"
+    },
+    {
+        "codigo": "2216",
+        "nombre": "TUTORÍAS ENTRE PARES 1"
+    },
+    {
+        "codigo": "2217",
+        "nombre": "TUTORÍAS ENTRE PARES 2"
+    }
+]

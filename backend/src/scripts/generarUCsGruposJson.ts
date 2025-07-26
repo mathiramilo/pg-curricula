@@ -1,20 +1,24 @@
-import fs from 'fs';
+import fs from "fs";
 
-import { UnidadCurricular } from '../types';
-import unidadesCurriculares from '../../data/unidades-curriculares.json';
+import unidadesCurriculares from "../../data/unidades-curriculares.json";
+import { UnidadCurricular } from "../types";
 
-const UBICACION_DESTINO = '../../data/ucs-grupos.json';
+const UBICACION_DESTINO = "../../data/ucs-grupos.json";
 
 const generarUCsGruposJson = async (): Promise<void> => {
   try {
     const ucsGrupos = obtenerUCsGrupos(
-      unidadesCurriculares as UnidadCurricular[]
+      unidadesCurriculares as UnidadCurricular[],
     );
 
     fs.writeFileSync(
       UBICACION_DESTINO,
       JSON.stringify(ucsGrupos, null, 4),
-      'utf8'
+      "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de UCs grupos generado correctamente en ${UBICACION_DESTINO}`,
     );
   } catch (error) {
     console.error(error);
@@ -22,16 +26,16 @@ const generarUCsGruposJson = async (): Promise<void> => {
 };
 
 const obtenerUCsGrupos = (
-  unidadesCurriculares: UnidadCurricular[]
+  unidadesCurriculares: UnidadCurricular[],
 ): { [clave: string]: string[] } => {
   const UCsGrupos: { [clave: string]: string[] } = {};
 
   unidadesCurriculares.forEach((uc) => {
     const nombreGrupo = uc.nombreGrupoHijo;
 
-    if (nombreGrupo === '') {
-      if (!UCsGrupos['MATERIAS OPCIONALES']) {
-        UCsGrupos['MATERIAS OPCIONALES'] = [];
+    if (nombreGrupo === "") {
+      if (!UCsGrupos["MATERIAS OPCIONALES"]) {
+        UCsGrupos["MATERIAS OPCIONALES"] = [];
       }
     } else {
       if (!UCsGrupos[nombreGrupo]) {
@@ -39,8 +43,8 @@ const obtenerUCsGrupos = (
       }
     }
 
-    if (nombreGrupo === '') {
-      UCsGrupos['MATERIAS OPCIONALES']?.push(uc.codigo);
+    if (nombreGrupo === "") {
+      UCsGrupos["MATERIAS OPCIONALES"]?.push(uc.codigo);
     } else {
       UCsGrupos[nombreGrupo]?.push(uc.codigo);
     }

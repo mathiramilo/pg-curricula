@@ -8,11 +8,14 @@ import type {
   UnidadCurricularAprobada,
 } from "@/models";
 
-export interface InformacionEstudianteStore {
+interface InformacionEstudianteStore {
   informacionEstudiante: InformacionEstudiante;
   setInformacionEstudiante: (
     informacionEstudiante: InformacionEstudiante,
   ) => void;
+  hasUnidadCurricularExamen: (
+    unidadCurricular: UnidadCurricularAprobada,
+  ) => boolean;
   addUnidadCurricularCurso: (
     unidadCurricular: UnidadCurricularAprobada,
   ) => void;
@@ -28,9 +31,11 @@ export interface InformacionEstudianteStore {
   resetInformacionEstudiante: () => void;
 }
 
-const initialInformacionEstudiante: InformacionEstudiante = {
+export const initialInformacionEstudiante: InformacionEstudiante = {
   unidadesCurricularesAprobadas: {},
   creditosTotales: 0,
+  modulosTaller: 0,
+  modulosExtension: 0,
   ...(Object.fromEntries(GRUPO_VALUES.map((grupo) => [grupo, 0])) as Record<
     Grupo,
     number
@@ -40,11 +45,18 @@ const initialInformacionEstudiante: InformacionEstudiante = {
 export const useInformacionEstudianteStore =
   create<InformacionEstudianteStore>()(
     persist(
-      (set) => ({
+      (set, get) => ({
         informacionEstudiante: initialInformacionEstudiante,
 
         setInformacionEstudiante: (informacionEstudiante) =>
           set({ informacionEstudiante }),
+
+        hasUnidadCurricularExamen: (unidadCurricular) =>
+          Boolean(
+            get().informacionEstudiante.unidadesCurricularesAprobadas[
+              unidadCurricular.codigo
+            ]?.tipoAprobacion === TIPO_APROBACION.EXAMEN,
+          ),
 
         addUnidadCurricularCurso: (unidadCurricular) =>
           set((state) => ({

@@ -1,10 +1,10 @@
-import axios from 'axios';
-import fs from 'fs';
+import fs from "fs";
+import axios from "axios";
 
-import { env } from '../config';
-import { ReglaPreviaturas } from '../types';
+import { env } from "../config";
+import { ReglaPreviaturas } from "../types";
 
-const UBICACION_DESTINO = '../../data/previaturas.json';
+const UBICACION_DESTINO = "../../data/previaturas.json";
 
 const generarPreviaturasJson = async () => {
   try {
@@ -13,16 +13,20 @@ const generarPreviaturasJson = async () => {
       await axios.get<Record<string, ReglaPreviaturas>>(url);
 
     if (!previaturas) {
-      throw new Error('Ha ocurrido un error al fetchear las previaturas');
+      throw new Error("Ha ocurrido un error al fetchear las previaturas");
     }
 
     fs.writeFileSync(
       UBICACION_DESTINO,
       JSON.stringify(previaturas, null, 4),
-      'utf8'
+      "utf8",
+    );
+
+    console.log(
+      `Archivo JSON de previaturas generado correctamente en ${UBICACION_DESTINO}`,
     );
   } catch (error) {
-    console.error('Error al generar el JSON de previaturas:', error);
+    console.error("Error al generar el JSON de previaturas:", error);
   }
 };
 

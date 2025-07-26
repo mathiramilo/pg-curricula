@@ -1,29 +1,29 @@
-import previaturas from '../../../data/previaturas.json';
-import ucsAnuales from '../../../data/ucs-anuales.json';
-
-import {
-  InformacionEstudiante,
-  SemestreDeDictado,
-  UnidadCurricular,
-} from '../../types';
-import { Graph } from '../../models';
+import previaturas from "@/data/previaturas.json";
+import ucsAnuales from "@/data/ucs-anuales.json";
+import { Graph } from "@/models";
 import {
   cumplePreviaturas,
   obtenerCodigosUCsPrevias,
-} from '../previaturas.service';
+} from "@/services/previaturas.service";
 import {
-  actualizarInformacionEstudiante,
-  calcularValorArista,
-  obtenerSiguienteSemestre,
-} from '../../utils';
+  InformacionEstudiante,
+  ReglaPreviaturas,
+  SemestreDeDictado,
+  UnidadCurricular,
+} from "@/types";
+import { actualizarInformacionEstudiante, calcularValorArista } from "@/utils";
 
-const NOMBRE_NODO_INICIO = 'inicio';
-const NOMBRE_NODO_FIN = 'fin';
+const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
+
+const MAX_ITERATIONS = 1000;
+
+const NOMBRE_NODO_INICIO = "inicio";
+const NOMBRE_NODO_FIN = "fin";
 
 export const generarGrafo = (
   listadoUCs: UnidadCurricular[],
   semestreInicial: SemestreDeDictado,
-  informacionEstudiante: InformacionEstudiante
+  informacionEstudiante: InformacionEstudiante,
 ): Graph => {
   const grafo = new Graph();
 
@@ -31,13 +31,11 @@ export const generarGrafo = (
   grafo.addNode({ id: NOMBRE_NODO_FIN, isInitial: false, isFinal: true });
 
   let listadoUCsFaltantes: UnidadCurricular[] = [];
-  let listadoUCsPrevias: UnidadCurricular[] = [];
-  let semestreActual = semestreInicial;
+  const listadoUCsPrevias: UnidadCurricular[] = [];
 
   for (const uc of listadoUCs) {
-    if (cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo])) {
-      const seDictaEnSemestreActual = uc.semestres?.includes(semestreActual)!; // Ya nos aseguramos de que semestres no sea null en el paso anterior
-
+    if (cumplePreviaturas(informacionEstudiante, previaturasTyped[uc.codigo])) {
+      const seDictaEnSemestreActual = uc.semestres?.includes(semestreInicial);
       const valorArista = seDictaEnSemestreActual ? 0 : 1;
 
       grafo.addNode({ id: uc.codigo, unidadCurricular: uc });
@@ -45,7 +43,7 @@ export const generarGrafo = (
       grafo.addEdge(
         uc.codigo,
         NOMBRE_NODO_FIN,
-        ucsAnuales.includes(uc.codigo) ? 2 : 1
+        ucsAnuales.includes(uc.codigo) ? 2 : 1,
       );
 
       listadoUCsPrevias.push(uc);
@@ -58,23 +56,34 @@ export const generarGrafo = (
     actualizarInformacionEstudiante(
       informacionEstudiante,
       uc,
-      uc.nombreGrupoHijo
+      uc.nombreGrupoHijo,
     );
   });
 
   const listadoUCsSinPrevias: UnidadCurricular[] = [];
 
-  //? De aca en adelante no se utiliza mas, que debemos hacer? (Creemos que solo es necesario para el valor de las aristas salientes del nodo inicial)
-  semestreActual = obtenerSiguienteSemestre(semestreActual);
-
+  let iterations = 0;
   while (listadoUCsFaltantes.length > 0) {
+    if (iterations >= MAX_ITERATIONS) {
+      console.warn(
+        "Max iterations reached while generating the graph. Stopping.",
+      );
+      break;
+    }
+    iterations++;
+
     for (const uc of listadoUCsFaltantes) {
-      if (cumplePreviaturas(informacionEstudiante, previaturas[uc.codigo])) {
+      if (
+        cumplePreviaturas(informacionEstudiante, previaturasTyped[uc.codigo])
+      ) {
         let codigosUCsPrevias: string[] = [];
 
-        obtenerCodigosUCsPrevias(previaturas[uc.codigo], codigosUCsPrevias);
+        obtenerCodigosUCsPrevias(
+          previaturasTyped[uc.codigo],
+          codigosUCsPrevias,
+        );
         codigosUCsPrevias = codigosUCsPrevias.filter((codigoUC) =>
-          listadoUCsPrevias.find((ucPrevia) => ucPrevia.codigo === codigoUC)
+          listadoUCsPrevias.find((ucPrevia) => ucPrevia.codigo === codigoUC),
         );
 
         //* Si tiene previas en el grafo, se conecta con ellas. Caso contrario, se agrega al pool de UCs sin previas
@@ -83,11 +92,13 @@ export const generarGrafo = (
 
           codigosUCsPrevias.forEach((codigoUC) => {
             const ucPrevia = listadoUCsPrevias.find(
-              (ucPrevia) => ucPrevia.codigo === codigoUC
+              (ucPrevia) => ucPrevia.codigo === codigoUC,
             );
+            if (!ucPrevia) return;
+
             const valorArista = calcularValorArista(
-              ucPrevia?.semestres!,
-              uc.semestres!
+              ucPrevia.semestres ?? [],
+              uc.semestres ?? [],
             );
 
             grafo.addEdge(codigoUC, uc.codigo, valorArista);
@@ -96,7 +107,7 @@ export const generarGrafo = (
           grafo.addEdge(
             uc.codigo,
             NOMBRE_NODO_FIN,
-            ucsAnuales.includes(uc.codigo) ? 2 : 1
+            ucsAnuales.includes(uc.codigo) ? 2 : 1,
           );
 
           listadoUCsPrevias.push(uc);
@@ -111,14 +122,14 @@ export const generarGrafo = (
       (uc) =>
         !listadoUCsPrevias.includes(uc) &&
         !listadoUCsSinPrevias.includes(uc) &&
-        !grafo.getUnidadesCurricularesSinPrevias().includes(uc)
+        !grafo.getUnidadesCurricularesSinPrevias().includes(uc),
     );
 
     listadoUCsPrevias.forEach((uc) => {
       actualizarInformacionEstudiante(
         informacionEstudiante,
         uc,
-        uc.nombreGrupoHijo
+        uc.nombreGrupoHijo,
       );
     });
 
@@ -126,7 +137,7 @@ export const generarGrafo = (
       actualizarInformacionEstudiante(
         informacionEstudiante,
         uc,
-        uc.nombreGrupoHijo
+        uc.nombreGrupoHijo,
       );
     });
   }

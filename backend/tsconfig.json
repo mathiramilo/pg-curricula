@@ -1,29 +1,34 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["es5", "es6", "ESNext", "dom"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "target": "ES2022",
+    "lib": ["ES2022"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "baseUrl": "src/",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["./*"],
+      "@/data/*": ["../data/*"]
     },
     "typeRoots": ["./src/types", "./node_modules/@types"],
+
     "resolveJsonModule": true,
-    "outDir": "./dist",
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "removeComments": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false, // Permitir el uso de `any` sin errores
-    "noImplicitReturns": false, // Permitir funciones sin una declaración de retorno explícita
-    "noImplicitThis": false // Permitir el uso de `this` con tipo implícito
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "data/*.json"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

@@ -37,7 +37,9 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "MATEMATICA",
         "codigoGrupoHijo": "4083",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CÁLCULO 2",
@@ -170,14 +172,16 @@
         "semestres": null
     },
     {
-        "nombre": "TEMAS AVANZADOS EN CÓDIGOS PARA CORRECCIÓN DE ERRORES",
+        "nombre": "TEMAS AVANZADOS EN CODIGOS PARA CORRECCION DE ERRORES",
         "codigo": "1899",
         "creditos": 7,
         "nombreGrupoPadre": "MATERIAS BASICAS",
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "MATEMATICA",
         "codigoGrupoHijo": "4083",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1 INTERACTIVA",
@@ -187,9 +191,7 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "MATEMATICA",
         "codigoGrupoHijo": "4083",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "MATEMATICA INICIAL-OPTATIVA",
@@ -309,9 +311,7 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "MATEMATICA",
         "codigoGrupoHijo": "4083",
-        "semestres": [
-            "1"
-        ]
+        "semestres": null
     },
     {
         "nombre": "FUNCIONES DE VARIABLE COMPLEJA",
@@ -343,7 +343,9 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "MATEMATICA",
         "codigoGrupoHijo": "4083",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "MATEMATICA INICIAL",
@@ -446,9 +448,7 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "MATEMATICA",
         "codigoGrupoHijo": "4083",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -1241,7 +1241,7 @@
         "semestres": null
     },
     {
-        "nombre": "INT. A LA FÍSICA MODERNA",
+        "nombre": "INT. A LA FISICA MODERNA",
         "codigo": "1159",
         "creditos": 10,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -1388,7 +1388,9 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
         "codigoGrupoHijo": "4442",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "GENÓMICA (2021-2024)",
@@ -1428,7 +1430,9 @@
         "codigoGrupoPadre": "2436",
         "nombreGrupoHijo": "CIENCIAS EXPERIMENTALES",
         "codigoGrupoHijo": "4442",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "DISEÑO Y ANALISIS DE EXPERIMENTOS (MTDEO)",
@@ -1850,7 +1854,7 @@
         "semestres": null
     },
     {
-        "nombre": "CONCEPTOS DE LENGUAJES DE PROGRAMACIÓN",
+        "nombre": "CONCEPTOS DE LENGUAJES DE PROGRAMACION",
         "codigo": "1374",
         "creditos": 6,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -1931,7 +1935,8 @@
         "nombreGrupoHijo": "PROGRAMACION",
         "codigoGrupoHijo": "4580",
         "semestres": [
-            "1"
+            "1",
+            "2"
         ]
     },
     {
@@ -2583,7 +2588,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
         "codigoGrupoHijo": "4428",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "REDES OPTICAS",
@@ -2593,7 +2600,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
         "codigoGrupoHijo": "4428",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "ARQUITECTURA DE COMPUTADORAS",
@@ -2603,7 +2612,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
         "codigoGrupoHijo": "4428",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "PROGRAMACIÓN MASIVAMENTE PARALELA EN PROCESADORES GRÁFICOS (GPUS)",
@@ -2782,9 +2793,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
         "codigoGrupoHijo": "4428",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "ARQUITECTURA DE COMPUTADORES 1",
@@ -3520,7 +3529,8 @@
         "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
         "codigoGrupoHijo": "4882",
         "semestres": [
-            "1"
+            "1",
+            "2"
         ]
     },
     {
@@ -3552,7 +3562,8 @@
         "nombreGrupoHijo": "INT.ARTIFICIAL Y ROBOTICA",
         "codigoGrupoHijo": "4882",
         "semestres": [
-            "1"
+            "1",
+            "2"
         ]
     },
     {
@@ -3583,9 +3594,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
         "codigoGrupoHijo": "4647",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "CREDITOS NO ACUM. CON SIST. DE INFORMACION EN SALUD",
@@ -3881,9 +3890,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "B.DATOS Y SIST. DE INFORMACION",
         "codigoGrupoHijo": "4647",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "SEMINARIO RECUP.DE INF.Y REC.EN LA WEB",
@@ -4023,9 +4030,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "CALCULO NUMERICO Y SIMBOLICO",
         "codigoGrupoHijo": "5020",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -4204,7 +4209,7 @@
         "semestres": null
     },
     {
-        "nombre": "ALGORITMOS DE APROXIMACIÓN",
+        "nombre": "ALGORITMOS DE APROXIMACION",
         "codigo": "1641",
         "creditos": 10,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -4216,7 +4221,7 @@
         ]
     },
     {
-        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
         "codigo": "1650",
         "creditos": 10,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -4289,7 +4294,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
         "codigoGrupoHijo": "4815",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "DISEÑO TOPOLOGICO DE REDES",
@@ -4579,9 +4586,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
         "codigoGrupoHijo": "4815",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -4602,6 +4607,18 @@
         "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
         "codigoGrupoHijo": "4815",
         "semestres": null
+    },
+    {
+        "nombre": "TALLER: DISEÑO DE PROY P/LA GESTIÓN UNIV",
+        "codigo": "I546",
+        "creditos": 10,
+        "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
+        "codigoGrupoPadre": "3215",
+        "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
+        "codigoGrupoHijo": "5082",
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "TALLER INTRODUCTORIO DE INGENIERÍA DE SOFTWARE",
@@ -4631,7 +4648,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
         "codigoGrupoHijo": "5082",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CREDITOS NO ACUM. CON RELACIONES PERS. EN ING. DE SOFT. Y GER. DE PROY.",
@@ -4663,7 +4682,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
         "codigoGrupoHijo": "5082",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "GESTIÓN DE PROYECTOS",
@@ -4673,7 +4694,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
         "codigoGrupoHijo": "5082",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "INVESTIGACION MEDIANTE ENCUESTAS EN COMPUTACION",
@@ -4743,9 +4766,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
         "codigoGrupoHijo": "5082",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "ARQUITECTURA DE SOFTWARE",
@@ -4943,7 +4964,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -5036,7 +5059,8 @@
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
         "semestres": [
-            "1"
+            "1",
+            "2"
         ]
     },
     {
@@ -5047,7 +5071,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -5168,8 +5194,7 @@
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
         "semestres": [
-            "1",
-            "2"
+            "1"
         ]
     },
     {
@@ -5215,9 +5240,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
-        "semestres": [
-            "1"
-        ]
+        "semestres": null
     },
     {
         "nombre": "SEMINARIO DE PROCESAM. PARALELO APLICADO",
@@ -5299,9 +5322,7 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "TALLER DE SISTEMAS DE INFORMACION 3",
@@ -5463,7 +5484,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
         "codigoGrupoHijo": "4066",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "GESTION DE CALIDAD",
@@ -5505,7 +5528,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
         "codigoGrupoHijo": "4066",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "PROSPECTIVA ESTRATÉGICA: CON LA MIRADA EN EL FUTURO",
@@ -5515,7 +5540,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
         "codigoGrupoHijo": "4066",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "PLANIFICACIÓN ESTRATÉGICA",
@@ -5535,7 +5562,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
         "codigoGrupoHijo": "4066",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "INTRODUCCIÓN A LOS SISTEMAS DE GESTIÓN",
@@ -5753,7 +5782,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "GESTION EN ORGANIZACIONES",
         "codigoGrupoHijo": "4066",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "TALLER DE ÉTICA",
@@ -5793,7 +5824,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CIENCIA,TECNOLOGÍA, INNOVACIÓN, SOCIEDAD Y DESARROLLO",
@@ -5813,7 +5846,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "COMUNICACIÓN E INTELIGENCIA ARTIFICIAL(PPP)",
@@ -5833,7 +5868,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CIUDADANIA EN ENTORNOS DIGITALES",
@@ -5885,7 +5922,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "EPISTEMOLOGIA, ETICA Y EDUCACION",
@@ -5895,7 +5934,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "METODOLOGÍAS DE INVESTIGACIÓN",
@@ -5905,7 +5946,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "EPISTEMOLOGÍA",
@@ -6025,7 +6068,9 @@
         "codigoGrupoPadre": "3233",
         "nombreGrupoHijo": "CIENCIAS HUMANAS Y SOCIALES",
         "codigoGrupoHijo": "5265",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "ECONOMIA",
@@ -6187,7 +6232,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "SEMINARIO SOBRE ENCUENTROS ENTRE ARTE Y TECNOLOGIAS",
@@ -6197,9 +6244,7 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "SENSIBILIZACIÓN E INTERCAMBIO PARA LA EQUIDAD",
@@ -6251,7 +6296,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "BIONFORMÁTICA ESTRUCTURAL",
@@ -6261,7 +6308,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "PRODUCCIÓN GRÁFICA 3D II",
@@ -6291,7 +6340,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "TALLER DE COMUNICACIÓN ORAL Y ESCRITA",
@@ -6311,7 +6362,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "MODELADO 3D PARA PRODUCCION DIGITAL (PERFIL PRODUCTO)",
@@ -6321,7 +6374,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -6342,8 +6397,7 @@
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
         "semestres": [
-            "1",
-            "2"
+            "1"
         ]
     },
     {
@@ -6355,8 +6409,7 @@
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
         "semestres": [
-            "1",
-            "2"
+            "1"
         ]
     },
     {
@@ -6484,9 +6537,7 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": [
-            "1"
-        ]
+        "semestres": null
     },
     {
         "nombre": "TALLER ENCARARE 1:CREATIVIDAD E INNOVAC.",

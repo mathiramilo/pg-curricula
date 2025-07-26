@@ -1,3 +1,4 @@
+import getpass
 import re
 import time
 from typing import List
@@ -8,7 +9,6 @@ from app.constants.scraper import (
     GROUP_PATTERN,
     NODE_TYPE,
     SUBJECT_PATTERN,
-    TOTAL_PAGES,
 )
 from app.models.grupos import Grupo
 from app.models.previaturas import (
@@ -23,10 +23,13 @@ from app.models.previaturas import (
     ReglaSome,
     ReglaUc,
 )
-from app.models.unidades_curriculares import UnidadCurricular
+from app.models.unidades_curriculares import BaseUnidadCurricular, UnidadCurricular
+from app.utils.print import print_error, print_info, print_success, print_warning
 from app.utils.scraper import (
     go_to_next_page,
     init_driver,
+    login,
+    navigate_to_course_inscriptions,
     navigate_to_groups_and_subjects,
     navigate_to_previatures,
     parse_some_line,
@@ -90,7 +93,7 @@ def expand_tree(driver):
             toggle_div.click()
             time.sleep(1)
         except Exception as e:
-            print("Error clicking the toggle:", e)
+            print_error(f"Error clicking the toggle: {e}")
 
     expand_tree(driver)
 
@@ -252,12 +255,38 @@ def generate_previatures_object(node_html) -> ReglaPreviaturas:
                 )
 
             else:
-                print(f"Default node type not recognized: {rule_text}")
+                print_warning(f"Default node type not recognized: {rule_text}")
                 return None
 
         case _:
-            print(f"Rule not recognized: {node_type}")
+            print_warning(f"Rule not recognized: {node_type}")
             return None
+
+
+def get_current_subjects_list_html(driver):
+    previatures_list_html = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "j_idt163_data"))
+    )
+
+    return previatures_list_html.get_attribute("outerHTML")
+
+
+def get_list_of_current_subjects(html) -> List[tuple]:
+    soup = BeautifulSoup(html, "html.parser")
+    subjects = []
+
+    rows = soup.find_all("tr")
+    for row in rows:
+        columns = row.find_all("td")
+
+        values = columns[0].text.split(" - ", 1)
+        code = values[1].strip() if len(values) > 1 else values[0].strip()
+
+        name = columns[1].text.strip()
+
+        subjects.append(BaseUnidadCurricular(codigo=code, nombre=name))
+
+    return subjects
 
 
 def scrape_groups_and_subjects():
@@ -301,7 +330,7 @@ def scrape_groups_and_subjects():
                     )
                 )
             else:
-                print("No match found (Parent Group)")
+                print_warning("No match found (Parent Group)")
 
             child_group_elements = group_element.find_all(
                 "li", attrs={"data-nodetype": "Grupo"}
@@ -339,7 +368,7 @@ def scrape_groups_and_subjects():
                             )
                         )
                     else:
-                        print("No match found (Subject)")
+                        print_warning("No match found (Subject)")
 
             for child_group_element in child_group_elements:
                 child_content = child_group_element.find(
@@ -363,7 +392,7 @@ def scrape_groups_and_subjects():
                         )
                     )
                 else:
-                    print("No match found (Child Group)")
+                    print_warning("No match found (Child Group)")
 
                 subject_elements = child_group_element.find_all(
                     "li", attrs={"data-nodetype": "Materia"}
@@ -395,11 +424,11 @@ def scrape_groups_and_subjects():
                             )
                         )
                     else:
-                        print("No match found (Subject)")
+                        print_warning("No match found (Subject)")
 
         execution_time = time.time() - start_time
         minutes, seconds = divmod(execution_time, 60)
-        print(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
+        print_success(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
 
         return parent_groups, child_groups, subjects
     finally:
@@ -417,8 +446,9 @@ def scrape_previatures():
     try:
         navigate_to_previatures(driver)
 
-        for i in range(1, TOTAL_PAGES):
-            print(f"Scraping page {i} of previatures")
+        i = 1
+        while True:
+            print_info(f"Scraping page {i} of previatures")
 
             previatures_list_html = get_previatures_list_html(driver)
             subjects = get_list_of_subjects(previatures_list_html)
@@ -428,13 +458,71 @@ def scrape_previatures():
                 previatures = get_previatures(driver, data_ri)
                 previatures_object[code] = previatures
 
-            go_to_next_page(driver, i)
+            try:
+                go_to_next_page(driver, i)
+            except:
+                print_info(f"Final page reached: {i}")
+                break
+
+            i += 1
             time.sleep(1)
 
         execution_time = time.time() - start_time
         minutes, seconds = divmod(execution_time, 60)
-        print(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
+        print_success(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
 
         return previatures_object
+    finally:
+        driver.quit()
+
+
+def scrape_current_subjects():
+    start_time = time.time()
+
+    ci = input("Enter your CI: ")
+    password = getpass.getpass("Enter your password: ")
+
+    if not ci or not password:
+        raise ValueError("CI and password must be provided.")
+
+    print_info("Starting scraping current subjects...")
+
+    driver = init_driver()
+    driver.get(BASE_URL)
+
+    current_subjects = []
+
+    try:
+        login(driver, ci, password)
+        navigate_to_course_inscriptions(driver)
+
+        i = 1
+        while True:
+            print(f"Scraping page {i} of current subjects")
+
+            current_subjects_list_html = get_current_subjects_list_html(driver)
+            page_current_subjects = get_list_of_current_subjects(
+                current_subjects_list_html
+            )
+
+            current_subjects.extend(page_current_subjects)
+
+            try:
+                go_to_next_page(driver, i)
+            except:
+                print_info(f"Final page reached: {i}")
+                break
+
+            i += 1
+            time.sleep(1)
+
+        execution_time = time.time() - start_time
+        minutes, seconds = divmod(execution_time, 60)
+        print_success(f"Completed in: {int(minutes)} minutes and {seconds:.2f} seconds")
+
+        return current_subjects
+    except ValueError as e:
+        print_error(e)
+        driver.quit()
     finally:
         driver.quit()

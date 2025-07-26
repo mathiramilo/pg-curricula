@@ -1,52 +1,54 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
-import previaturas from '../../data/previaturas.json';
+import { HTTP_STATUS_CODE } from "@/constants";
+import previaturas from "@/data/previaturas.json";
+import { cumplePreviaturas } from "@/services";
+import { ReglaPreviaturas, type InformacionEstudiante } from "@/types";
 
-import { HTTP_STATUS_CODE } from '../constants';
-import { cumplePreviaturas } from '../services';
-import { type InformacionEstudiante } from '../types';
+const previaturasTyped = previaturas as Record<string, ReglaPreviaturas>;
 
-export const obtenerPreviaturasController: RequestHandler = (
+export const obtenerPreviaturasController = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const { codigo } = req.params;
 
   try {
     if (!codigo)
       return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
-        error: 'No se proporcionó el código de la unidad curricular a chequear',
+        error: "No se proporcionó el código de la unidad curricular a chequear",
       });
 
-    if (!previaturas[codigo])
+    if (!previaturasTyped[codigo])
       return res.status(HTTP_STATUS_CODE.NO_CONTENT).json(null);
 
-    return res.status(HTTP_STATUS_CODE.OK).json(previaturas[codigo]);
+    return res.status(HTTP_STATUS_CODE.OK).json(previaturasTyped[codigo]);
   } catch (error) {
     next(error);
   }
 };
 
-export const satisfacePreviaturasController: RequestHandler = (
+export const satisfacePreviaturasController = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const { codigo } = req.params;
-  const informacionEstudiante = req.body;
+  const { informacionEstudiante } = req.body;
 
   try {
     if (!codigo)
       return res.status(HTTP_STATUS_CODE.BAD_REQUEST).json({
-        error: 'No se proporcionó el código de la unidad curricular a chequear',
+        error: "No se proporcionó el código de la unidad curricular a chequear",
       });
 
-    if (!previaturas[codigo]) return res.status(HTTP_STATUS_CODE.OK).json(true);
+    if (!previaturasTyped[codigo])
+      return res.status(HTTP_STATUS_CODE.OK).json(true);
 
     const cumple = cumplePreviaturas(
       informacionEstudiante as InformacionEstudiante,
-      previaturas[codigo]
+      previaturasTyped[codigo],
     );
     return res.status(HTTP_STATUS_CODE.OK).json(cumple);
   } catch (error) {

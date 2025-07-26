@@ -1,14 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-import unidadesCurriculares from '../../data/unidades-curriculares.json';
-
-import { env } from '../config';
-import { InformacionEstudiante } from '../types';
+import { env } from "@/config";
+import unidadesCurriculares from "@/data/unidades-curriculares.json";
+import { InformacionEstudiante, UCAprobada, UnidadCurricular } from "@/types";
 
 export const procesarEscolaridad = async (file: Express.Multer.File) => {
   const formData = new FormData();
   const fileBlob = new Blob([file.buffer], { type: file.mimetype });
-  formData.append('file', fileBlob, file.originalname);
+  formData.append("file", fileBlob, file.originalname);
 
   const url = `${env.PDF_PROCESSOR_SERVICE_URL}/procesar-escolaridad`;
 
@@ -21,10 +20,13 @@ export const procesarEscolaridad = async (file: Express.Multer.File) => {
 
 const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
   const nombresUCs = Object.keys(
-    informacionEstudiante.unidadesCurricularesAprobadas
+    informacionEstudiante.unidadesCurricularesAprobadas,
   );
 
-  const unidadesCurricularesAprobadasActualizado = {};
+  const unidadesCurricularesAprobadasActualizado: Record<
+    UnidadCurricular["codigo"],
+    UCAprobada
+  > = {};
 
   for (const nombreUC of nombresUCs) {
     const ucs = unidadesCurriculares.filter((uc) => uc.nombre === nombreUC);
@@ -33,7 +35,7 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
     const uc1 = ucs.find(
       (uc) =>
         uc.creditos ===
-        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]?.creditos
+        informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]?.creditos,
     );
 
     // Buscamos una UC que tenga la misma cantidad de creditos y se dicte actualmente
@@ -41,16 +43,18 @@ const asociarCodigosUCs = (informacionEstudiante: InformacionEstudiante) => {
       (uc) =>
         uc.creditos ===
           informacionEstudiante.unidadesCurricularesAprobadas[nombreUC]
-            ?.creditos && uc.semestres
+            ?.creditos && uc.semestres,
     );
 
     // Si encontramos una UC que cumpla con las ultimas condiciones, la asociamos, sino, asociamos la primera que encontramos
     if (uc2) {
+      // @ts-expect-error Necessary to bypass type error
       unidadesCurricularesAprobadasActualizado[uc2.codigo] = {
         ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
         codigo: uc2.codigo,
       };
     } else if (uc1) {
+      // @ts-expect-error Necessary to bypass type error
       unidadesCurricularesAprobadasActualizado[uc1.codigo] = {
         ...informacionEstudiante.unidadesCurricularesAprobadas[nombreUC],
         codigo: uc1.codigo,

@@ -1,2 +1,2 @@
 export const calculatePercentage = (value: number, total: number) =>
-  (value / total) * 100;
+  Math.min((value / total) * 100, 100);

@@ -2936,7 +2936,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -4691,6 +4691,177 @@
             }
         ]
     },
+    "1145": {
+        "regla": "AND",
+        "previas": [
+            {
+                "regla": "CREDITOS_PLAN",
+                "cantidad": 250
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP1",
+                        "nombre": "ANALISIS MATEMATICO I",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP22",
+                        "nombre": "ANALISIS MATEMATICO I (P. 74)",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1062",
+                        "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1022",
+                        "nombre": "CALCULO 2",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1072",
+                        "nombre": "CALCULO 2",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1062P",
+                        "nombre": "CREDITOS NO ACUM CDIVV",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1021",
+                        "nombre": "ALGEBRA LINEAL",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MAT33",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "MA09",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "M9",
+                        "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031P",
+                        "nombre": "CREDITOS NO ACUM GAL2",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP2",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP23",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL (P. 74)",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1031",
+                        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP52",
+                        "nombre": "COMPUTACION",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP24",
+                        "nombre": "COMPUTACION (P. 74)",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP144",
+                        "nombre": "COMPUTACION I",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1408",
+                        "nombre": "COMPUTACION 1",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1411",
+                        "nombre": "COMPUTACION 1",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP9",
+                        "nombre": "PROGRAMACION I",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1320",
+                        "nombre": "PROGRAMACION 1",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1322",
+                        "nombre": "PROGRAMACION 1",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP10",
+                        "nombre": "TALLER II",
+                        "tipoInstancia": "C"
+                    }
+                ]
+            }
+        ]
+    },
     "1151": {
         "regla": "NOT",
         "previas": {
@@ -5353,6 +5524,86 @@
                         "regla": "UC",
                         "codigo": "125L",
                         "nombre": "PROBABILIDAD Y ESTADISTICA",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            }
+        ]
+    },
+    "1159": {
+        "regla": "AND",
+        "previas": [
+            {
+                "regla": "NOT",
+                "previas": {
+                    "regla": "SOME",
+                    "cantidad": 1,
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "1131P",
+                            "nombre": "CREDITOS NO ACUM INT. A LA FISICA MODERNA",
+                            "tipoInstancia": "E"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1131",
+                            "nombre": "INT. A LA FISICA MODERNA",
+                            "tipoInstancia": "E"
+                        }
+                    ]
+                }
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1153P",
+                        "nombre": "CREDITOS NO ACUM FISICA 3",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1153",
+                        "nombre": "FISICA 3",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1061",
+                        "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1061P",
+                        "nombre": "CREDITOS NO ACUM CDIV",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1151P",
+                        "nombre": "CREDITOS NO ACUM FISICA 1",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1151",
+                        "nombre": "FISICA 1",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -7115,6 +7366,15 @@
         "regla": "AND",
         "previas": [
             {
+                "regla": "NOT",
+                "previas": {
+                    "regla": "UC",
+                    "codigo": "1331P",
+                    "nombre": "CREDITOS NO ACUM. CON DISEÑO DE COMPILADORES",
+                    "tipoInstancia": "E"
+                }
+            },
+            {
                 "regla": "OR",
                 "previas": [
                     {
@@ -7161,14 +7421,14 @@
                 "previas": [
                     {
                         "regla": "UC",
-                        "codigo": "CP29",
-                        "nombre": "PROGRAMACION III",
+                        "codigo": "CP33",
+                        "nombre": "TEORIA DE LA PROGRAMACION I",
                         "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1323",
-                        "nombre": "PROGRAMACION 3",
+                        "codigo": "1325",
+                        "nombre": "TEORIA DE LENGUAJES",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -7179,14 +7439,14 @@
                 "previas": [
                     {
                         "regla": "UC",
-                        "codigo": "CP33",
-                        "nombre": "TEORIA DE LA PROGRAMACION I",
+                        "codigo": "CP29",
+                        "nombre": "PROGRAMACION III",
                         "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1325",
-                        "nombre": "TEORIA DE LENGUAJES",
+                        "codigo": "1323",
+                        "nombre": "PROGRAMACION 3",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -7427,6 +7687,59 @@
                         "regla": "UC",
                         "codigo": "1010",
                         "nombre": "LOGICA Y COMPUTACION",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            }
+        ]
+    },
+    "1346": {
+        "regla": "AND",
+        "previas": [
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP4",
+                        "nombre": "LOGICA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1027",
+                        "nombre": "LOGICA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1013",
+                        "nombre": "LOGICA MODALIDAD AL REVES",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1010",
+                        "nombre": "LOGICA Y COMPUTACION",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP15",
+                        "nombre": "PROGRAMACION II",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1321",
+                        "nombre": "PROGRAMACION 2",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -8955,7 +9268,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -9836,6 +10149,15 @@
             {
                 "regla": "NOT",
                 "previas": {
+                    "regla": "UC",
+                    "codigo": "1454",
+                    "nombre": "ASPECTOS BASICOS DE REDES DE COMPUT",
+                    "tipoInstancia": "E"
+                }
+            },
+            {
+                "regla": "NOT",
+                "previas": {
                     "regla": "SOME",
                     "cantidad": 1,
                     "previas": [
@@ -9873,64 +10195,43 @@
                 }
             },
             {
-                "regla": "NOT",
-                "previas": {
-                    "regla": "UC",
-                    "codigo": "1454",
-                    "nombre": "ASPECTOS BASICOS DE REDES DE COMPUT",
-                    "tipoInstancia": "E"
-                }
-            },
-            {
                 "regla": "SOME",
                 "cantidad": 1,
                 "previas": [
                     {
                         "regla": "UC",
-                        "codigo": "CP29",
-                        "nombre": "PROGRAMACION III",
+                        "codigo": "CP31",
+                        "nombre": "SISTEMAS OPERATIVOS",
                         "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1323",
-                        "nombre": "PROGRAMACION 3",
+                        "codigo": "C350",
+                        "nombre": "SISTEMAS OPERATIVOS",
                         "tipoInstancia": "E"
-                    }
-                ]
-            },
-            {
-                "regla": "SOME",
-                "cantidad": 1,
-                "previas": [
+                    },
                     {
                         "regla": "UC",
-                        "codigo": "1443",
-                        "nombre": "ARQUITECTURA DE COMPUTADORAS",
+                        "codigo": "1511",
+                        "nombre": "SISTEMAS OPERATIVOS",
                         "tipoInstancia": "C"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1424",
-                        "nombre": "ARQUITECTURA DE COMPUTADORES 1",
+                        "codigo": "1518",
+                        "nombre": "SISTEMAS OPERATIVOS",
                         "tipoInstancia": "C"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "CP28",
-                        "nombre": "ARQUITECTURA DE SISTEMAS",
-                        "tipoInstancia": "E"
+                        "codigo": "1532",
+                        "nombre": "SISTEMAS OPERATIVOS",
+                        "tipoInstancia": "C"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1443P",
-                        "nombre": "CREDITOS NO ACUM. CON ARQUITECTURA DE COMPUTADORAS",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1403",
-                        "nombre": "INT. A LA ARQUITECTURA DE COMPUTADORES",
+                        "codigo": "1537",
+                        "nombre": "SISTEMAS OPERATIVOS",
                         "tipoInstancia": "C"
                     }
                 ]
@@ -10001,39 +10302,63 @@
                 "previas": [
                     {
                         "regla": "UC",
-                        "codigo": "CP31",
-                        "nombre": "SISTEMAS OPERATIVOS",
+                        "codigo": "1443",
+                        "nombre": "ARQUITECTURA DE COMPUTADORAS",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1466",
+                        "nombre": "ARQUITECTURA DE COMPUTADORAS",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1466",
+                        "nombre": "ARQUITECTURA DE COMPUTADORAS",
                         "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "C350",
-                        "nombre": "SISTEMAS OPERATIVOS",
+                        "codigo": "1424",
+                        "nombre": "ARQUITECTURA DE COMPUTADORES 1",
+                        "tipoInstancia": "C"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "CP28",
+                        "nombre": "ARQUITECTURA DE SISTEMAS",
                         "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1511",
-                        "nombre": "SISTEMAS OPERATIVOS",
-                        "tipoInstancia": "C"
+                        "codigo": "1443P",
+                        "nombre": "CREDITOS NO ACUM. CON ARQUITECTURA DE COMPUTADORAS",
+                        "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1518",
-                        "nombre": "SISTEMAS OPERATIVOS",
+                        "codigo": "1403",
+                        "nombre": "INT. A LA ARQUITECTURA DE COMPUTADORES",
                         "tipoInstancia": "C"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "CP29",
+                        "nombre": "PROGRAMACION III",
+                        "tipoInstancia": "E"
                     },
                     {
                         "regla": "UC",
-                        "codigo": "1532",
-                        "nombre": "SISTEMAS OPERATIVOS",
-                        "tipoInstancia": "C"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1537",
-                        "nombre": "SISTEMAS OPERATIVOS",
-                        "tipoInstancia": "C"
+                        "codigo": "1323",
+                        "nombre": "PROGRAMACION 3",
+                        "tipoInstancia": "E"
                     }
                 ]
             }
@@ -10239,7 +10564,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -11884,7 +12209,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12015,7 +12340,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12044,7 +12369,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12111,7 +12436,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12176,7 +12501,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12205,7 +12530,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12234,7 +12559,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12304,7 +12629,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "C"
                     },
                     {
@@ -12451,7 +12776,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12504,7 +12829,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12616,7 +12941,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -12677,7 +13002,7 @@
             {
                 "regla": "UC",
                 "codigo": "1650",
-                "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                 "tipoInstancia": "E"
             }
         ]
@@ -12713,7 +13038,36 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            }
+        ]
+    },
+    "1641": {
+        "regla": "AND",
+        "previas": [
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1610P",
+                        "nombre": "CREDITOS NO ACUM INT. A LA INVESTIGACION DE OPERACIONES",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1610",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1650",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -13386,7 +13740,7 @@
                                     {
                                         "regla": "UC",
                                         "codigo": "1650",
-                                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                                         "tipoInstancia": "C"
                                     }
                                 ]
@@ -15199,7 +15553,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     },
                     {
@@ -16285,58 +16639,38 @@
             {
                 "regla": "NOT",
                 "previas": {
+                    "regla": "SOME",
+                    "cantidad": 1,
+                    "previas": [
+                        {
+                            "regla": "UC",
+                            "codigo": "1820",
+                            "nombre": "APRENDIZAJE AUTOMATICO",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1827",
+                            "nombre": "APRENDIZAJE AUTOMATICO",
+                            "tipoInstancia": "C"
+                        },
+                        {
+                            "regla": "UC",
+                            "codigo": "1866P",
+                            "nombre": "CRÉDITOS NO ACUM. CON APRENDIZAJE AUTOMÁTICO",
+                            "tipoInstancia": "E"
+                        }
+                    ]
+                }
+            },
+            {
+                "regla": "NOT",
+                "previas": {
                     "regla": "UC",
                     "codigo": "1834",
                     "nombre": "METODOS DE APRENDIZAJE AUTOMATICO",
                     "tipoInstancia": "E"
                 }
-            },
-            {
-                "regla": "NOT",
-                "previas": {
-                    "regla": "UC",
-                    "codigo": "1827",
-                    "nombre": "APRENDIZAJE AUTOMATICO",
-                    "tipoInstancia": "E"
-                }
-            },
-            {
-                "regla": "NOT",
-                "previas": {
-                    "regla": "UC",
-                    "codigo": "1820",
-                    "nombre": "APRENDIZAJE AUTOMATICO",
-                    "tipoInstancia": "E"
-                }
-            },
-            {
-                "regla": "OR",
-                "previas": [
-                    {
-                        "regla": "UC",
-                        "codigo": "1324",
-                        "nombre": "PROGRAMACION 4",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "SOME",
-                        "cantidad": 2,
-                        "previas": [
-                            {
-                                "regla": "UC",
-                                "codigo": "CP71",
-                                "nombre": "TALLER III ( 2DO.SEM.)",
-                                "tipoInstancia": "C"
-                            },
-                            {
-                                "regla": "UC",
-                                "codigo": "CP30",
-                                "nombre": "TALLER III (1ER.SEM.)",
-                                "tipoInstancia": "C"
-                            }
-                        ]
-                    }
-                ]
             },
             {
                 "regla": "OR",
@@ -16398,6 +16732,35 @@
                 ]
             },
             {
+                "regla": "OR",
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1324",
+                        "nombre": "PROGRAMACION 4",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "SOME",
+                        "cantidad": 2,
+                        "previas": [
+                            {
+                                "regla": "UC",
+                                "codigo": "CP71",
+                                "nombre": "TALLER III ( 2DO.SEM.)",
+                                "tipoInstancia": "C"
+                            },
+                            {
+                                "regla": "UC",
+                                "codigo": "CP30",
+                                "nombre": "TALLER III (1ER.SEM.)",
+                                "tipoInstancia": "C"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "regla": "UC",
                 "codigo": "1323",
                 "nombre": "PROGRAMACION 3",
@@ -16408,30 +16771,6 @@
                 "codigo": "1911",
                 "nombre": "FUNDAMENTOS DE BASES DE DATOS",
                 "tipoInstancia": "E"
-            },
-            {
-                "regla": "SOME",
-                "cantidad": 1,
-                "previas": [
-                    {
-                        "regla": "UC",
-                        "codigo": "1025P",
-                        "nombre": "CREDITOS NO ACUM PROB Y EST.",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1025",
-                        "nombre": "PROBABILIDAD Y ESTADISTICA",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1075",
-                        "nombre": "PROBABILIDAD Y ESTADISTICA",
-                        "tipoInstancia": "E"
-                    }
-                ]
             },
             {
                 "regla": "SOME",
@@ -16459,6 +16798,30 @@
                         "regla": "UC",
                         "codigo": "1010",
                         "nombre": "LOGICA Y COMPUTACION",
+                        "tipoInstancia": "E"
+                    }
+                ]
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1025P",
+                        "nombre": "CREDITOS NO ACUM PROB Y EST.",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1025",
+                        "nombre": "PROBABILIDAD Y ESTADISTICA",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1075",
+                        "nombre": "PROBABILIDAD Y ESTADISTICA",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -16911,7 +17274,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -17319,7 +17682,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -19374,6 +19737,45 @@
             }
         ]
     },
+    "2512": {
+        "regla": "NOT",
+        "previas": {
+            "regla": "SOME",
+            "cantidad": 1,
+            "previas": [
+                {
+                    "regla": "UC",
+                    "codigo": "SD10",
+                    "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1512P",
+                    "nombre": "CREDITOS NO ACUM DISEÑO LOGICO",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "CP51",
+                    "nombre": "DISEÑO LOGICO",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1512",
+                    "nombre": "DISEÑO LOGICO",
+                    "tipoInstancia": "C"
+                },
+                {
+                    "regla": "UC",
+                    "codigo": "1512C",
+                    "nombre": "DISEÑO LOGICO",
+                    "tipoInstancia": "C"
+                }
+            ]
+        }
+    },
     "3207": {
         "regla": "AND",
         "previas": [
@@ -19402,7 +19804,7 @@
                     {
                         "regla": "UC",
                         "codigo": "1650",
-                        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+                        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -19901,15 +20303,24 @@
         "regla": "AND",
         "previas": [
             {
-                "regla": "UC",
-                "codigo": "1323",
-                "nombre": "PROGRAMACION 3",
-                "tipoInstancia": "E"
+                "regla": "NOT",
+                "previas": {
+                    "regla": "UC",
+                    "codigo": "5852P",
+                    "nombre": "CREDITOS NO ACUM FUNDAMENTOS DE APRENDIZAJE AUT. Y REC. DE PATRO",
+                    "tipoInstancia": "C"
+                }
+            },
+            {
+                "regla": "CREDITOS_GRUPO",
+                "codigo": 4083,
+                "nombre": "MATEMATICA",
+                "cantidad": 60
             },
             {
                 "regla": "UC",
-                "codigo": "1026",
-                "nombre": "MATEMATICA DISCRETA 2",
+                "codigo": "1321",
+                "nombre": "PROGRAMACION 2",
                 "tipoInstancia": "E"
             },
             {
@@ -19932,60 +20343,6 @@
                         "regla": "UC",
                         "codigo": "1075",
                         "nombre": "PROBABILIDAD Y ESTADISTICA",
-                        "tipoInstancia": "E"
-                    }
-                ]
-            },
-            {
-                "regla": "SOME",
-                "cantidad": 1,
-                "previas": [
-                    {
-                        "regla": "UC",
-                        "codigo": "1911P",
-                        "nombre": "CREDITOS NO ACUM. CON FUNDAMENTOS DE BASES DE DATOS",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1911",
-                        "nombre": "FUNDAMENTOS DE BASES DE DATOS",
-                        "tipoInstancia": "E"
-                    }
-                ]
-            },
-            {
-                "regla": "SOME",
-                "cantidad": 1,
-                "previas": [
-                    {
-                        "regla": "UC",
-                        "codigo": "1027",
-                        "nombre": "LOGICA",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1013",
-                        "nombre": "LOGICA MODALIDAD AL REVES",
-                        "tipoInstancia": "E"
-                    }
-                ]
-            },
-            {
-                "regla": "SOME",
-                "cantidad": 1,
-                "previas": [
-                    {
-                        "regla": "UC",
-                        "codigo": "1324P",
-                        "nombre": "CREDITOS NO ACUM PROGRAMACION 4",
-                        "tipoInstancia": "E"
-                    },
-                    {
-                        "regla": "UC",
-                        "codigo": "1324",
-                        "nombre": "PROGRAMACION 4",
                         "tipoInstancia": "E"
                     }
                 ]
@@ -21519,6 +21876,35 @@
             {
                 "regla": "CREDITOS_PLAN",
                 "cantidad": 200
+            }
+        ]
+    },
+    "I546": {
+        "regla": "OR",
+        "previas": [
+            {
+                "regla": "UC",
+                "codigo": "1783",
+                "nombre": "TALLER INTRODUCTORIO DE INGENIERÍA DE SOFTWARE",
+                "tipoInstancia": "C"
+            },
+            {
+                "regla": "SOME",
+                "cantidad": 1,
+                "previas": [
+                    {
+                        "regla": "UC",
+                        "codigo": "1716P",
+                        "nombre": "CREDITOS NO ACUM INT. A LA ING. DE SOFTWARE",
+                        "tipoInstancia": "E"
+                    },
+                    {
+                        "regla": "UC",
+                        "codigo": "1716",
+                        "nombre": "INT. A LA INGENIERIA DE SOFTWARE",
+                        "tipoInstancia": "E"
+                    }
+                ]
             }
         ]
     },

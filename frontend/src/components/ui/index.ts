@@ -1,4 +1,5 @@
 export * from "./Accordion";
+export * from "./Alert";
 export * from "./AlertDialog";
 export * from "./Button";
 export * from "./Card";
@@ -11,6 +12,7 @@ export * from "./Select";
 export * from "./Skeleton";
 export * from "./Slider";
 export * from "./Switch";
+export * from "./Tabs";
 export * from "./Timeline";
 export * from "./Toaster";
 export * from "./Tooltip";

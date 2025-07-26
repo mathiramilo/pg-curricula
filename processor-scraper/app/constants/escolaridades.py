@@ -35,6 +35,7 @@ LINES_TO_SKIP = [
     "Resultados Finales e Intermedios",
     "Resultados Finales",
     "Normal Tipo de Inscripción: En curso Estado:",
+    "Tipo de inscripción",
     "Aprobación",
     "Unidad Curricular",
     "Nota  FechaCant.",
@@ -56,4 +57,8 @@ LINES_TO_SKIP = [
     "Concepto",
     "Ingreso",
     "Normal",
+    "Examen",
+    "Créd.",
+    "Créditos",
+    "ACTUACIÓN",
 ]

@@ -16,7 +16,7 @@ def has_intermediate_results(pdf_text: str) -> bool:
 
     text_to_check = "Resultados Finales e Intermedios"
 
-    return lines[4] == text_to_check or lines[5] == text_to_check
+    return any(text_to_check == line for line in lines[:20])
 
 
 def line_is_unidad_curricular(line: str, with_intermediate_results: bool) -> bool:

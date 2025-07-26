@@ -1,9 +1,12 @@
 from pydantic import BaseModel
 
 
-class UnidadCurricular(BaseModel):
+class BaseUnidadCurricular(BaseModel):
     codigo: str
     nombre: str
+
+
+class UnidadCurricular(BaseUnidadCurricular):
     creditos: int
     codigo_grupo_padre: str
     nombre_grupo_padre: str

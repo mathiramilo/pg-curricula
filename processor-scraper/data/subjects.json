@@ -154,7 +154,7 @@
     },
     {
         "codigo": "1899",
-        "nombre": "TEMAS AVANZADOS EN CÓDIGOS PARA CORRECCIÓN DE ERRORES",
+        "nombre": "TEMAS AVANZADOS EN CODIGOS PARA CORRECCION DE ERRORES",
         "creditos": 7,
         "codigo_grupo_padre": "2436",
         "nombre_grupo_padre": "MATERIAS BASICAS",
@@ -1081,7 +1081,7 @@
     },
     {
         "codigo": "1159",
-        "nombre": "INT. A LA FÍSICA MODERNA",
+        "nombre": "INT. A LA FISICA MODERNA",
         "creditos": 10,
         "codigo_grupo_padre": "2436",
         "nombre_grupo_padre": "MATERIAS BASICAS",
@@ -1621,7 +1621,7 @@
     },
     {
         "codigo": "1374",
-        "nombre": "CONCEPTOS DE LENGUAJES DE PROGRAMACIÓN",
+        "nombre": "CONCEPTOS DE LENGUAJES DE PROGRAMACION",
         "creditos": 6,
         "codigo_grupo_padre": "3215",
         "nombre_grupo_padre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -3655,7 +3655,7 @@
     },
     {
         "codigo": "1641",
-        "nombre": "ALGORITMOS DE APROXIMACIÓN",
+        "nombre": "ALGORITMOS DE APROXIMACION",
         "creditos": 10,
         "codigo_grupo_padre": "3215",
         "nombre_grupo_padre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -3664,7 +3664,7 @@
     },
     {
         "codigo": "1650",
-        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
         "creditos": 10,
         "codigo_grupo_padre": "3215",
         "nombre_grupo_padre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -3994,6 +3994,15 @@
         "nombre_grupo_padre": "BASICO-TEC,TECNICAS E INTEG.",
         "codigo_grupo_hijo": "4815",
         "nombre_grupo_hijo": "INVESTIGACION OPERATIVA"
+    },
+    {
+        "codigo": "I546",
+        "nombre": "TALLER: DISEÑO DE PROY P/LA GESTIÓN UNIV",
+        "creditos": 10,
+        "codigo_grupo_padre": "3215",
+        "nombre_grupo_padre": "BASICO-TEC,TECNICAS E INTEG.",
+        "codigo_grupo_hijo": "5082",
+        "nombre_grupo_hijo": "INGENIERIA DE SOFTWARE"
     },
     {
         "codigo": "1783",

@@ -21,8 +21,8 @@ export const ContentBuscarCursos = () => {
 
   const [page, setPage] = useState(1);
 
-  const { data, isLoading, isError } = useUnidadesCurriculares(
-    {
+  const { data, isLoading, isError } = useUnidadesCurriculares({
+    filter: {
       search: debouncedQuery,
       grupo,
       minCreditos: debouncedRangoCreditos[0],
@@ -31,7 +31,7 @@ export const ContentBuscarCursos = () => {
       semestresDeDictado,
     },
     page,
-  );
+  });
 
   useEffect(() => {
     setPage(1);

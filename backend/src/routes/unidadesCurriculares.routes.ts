@@ -1,14 +1,19 @@
-import { Router } from 'express';
+import { Router } from "express";
 
 import {
-  obtenerUnidadesCurricularesController,
   obtenerTrayectoriaSugeridaController,
-} from '../controllers';
+  obtenerUnidadesCurricularesController,
+  obtenerUnidadesCurricularesObligatoriasController,
+} from "@/controllers";
 
 export const unidadesCurricularesRouter = Router();
 
-unidadesCurricularesRouter.post('/', obtenerUnidadesCurricularesController);
+unidadesCurricularesRouter.post("/", obtenerUnidadesCurricularesController);
 unidadesCurricularesRouter.get(
-  '/trayectoria-sugerida',
-  obtenerTrayectoriaSugeridaController
+  "/trayectoria-sugerida",
+  obtenerTrayectoriaSugeridaController,
+);
+unidadesCurricularesRouter.get(
+  "/obligatorias",
+  obtenerUnidadesCurricularesObligatoriasController,
 );

@@ -24,8 +24,6 @@ SOME_RULE_PATTERN = re.compile(
     re.VERBOSE,
 )
 
-TOTAL_PAGES = 19
-
 
 class NODE_TYPE:
     AND = "y"
