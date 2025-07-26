@@ -8,7 +8,7 @@ import {
 } from "@/components";
 import { useBoolean } from "@/hooks";
 
-export const HeaderMiPlan = () => {
+export const PlanificarCarreraHeader = () => {
   const {
     value: show,
     setTrue: openModal,
@@ -18,8 +18,8 @@ export const HeaderMiPlan = () => {
   return (
     <>
       <ScreenHeader
-        title="Generar Plan de Carrera"
-        description="Solicita un plan de carrera personalizado basado en tus créditos y semestre inicial. Puedes descargar el plan una vez generado."
+        title="Planificar Carrera"
+        description="Seleccioná los cursos que desees hacer y solicitá un plan de estudios personalizado según tu tiempo de dedicación disponible. Puedes descargar el plan una vez generado."
         rightElement={
           <Button variant="outline" onClick={openModal}>
             <InfoCircleIcon />

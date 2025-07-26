@@ -68,7 +68,7 @@ const SideBarDesktop = ({
           )}
         </NavLink>
 
-        <NavLink to={ROUTES.MI_PLAN}>
+        <NavLink to={ROUTES.PLANIFICAR_CARRERA}>
           {({ isActive }) => (
             <Button
               size="sm"
@@ -77,7 +77,7 @@ const SideBarDesktop = ({
                 isActive && "bg-principal-400",
               )}
             >
-              <CompassIcon /> Mi Plan
+              <CompassIcon /> Planificar Carrera
             </Button>
           )}
         </NavLink>
@@ -156,7 +156,7 @@ const SideBarMobile = ({
       </NavLink>
 
       <NavLink
-        to={ROUTES.MI_PLAN}
+        to={ROUTES.PLANIFICAR_CARRERA}
         className={({ isActive }) =>
           cn("rounded-lg p-3 transition-all", isActive && "bg-principal-400")
         }
