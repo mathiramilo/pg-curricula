@@ -68,6 +68,10 @@
         "nombre": "CONTROL DE CALIDAD"
     },
     {
+        "codigo": "2512",
+        "nombre": "DISEÑO LOGICO"
+    },
+    {
         "codigo": "A42",
         "nombre": "DISEÑO ORGANIZACIONAL"
     },
@@ -78,10 +82,6 @@
     {
         "codigo": "C216",
         "nombre": "EPISTEMOLOGIA, ETICA Y EDUCACION"
-    },
-    {
-        "codigo": "M014",
-        "nombre": "ESTRATEGIAS PARA APRENDER: DESARROLLANDO ESTRATEGIAS P/ESTUDIAR EN LA UNIV."
     },
     {
         "codigo": "FD1",
@@ -292,6 +292,10 @@
         "nombre": "TALLER: DISEÑO DE PROY P/LA GESTIÓN UNIV"
     },
     {
+        "codigo": "1774",
+        "nombre": "TALLER DE EVALUACION DE TECNOLOGIAS DE LA INF."
+    },
+    {
         "codigo": "O6311",
         "nombre": "TALLER DE INTERACCIÓN"
     },
@@ -330,5 +334,9 @@
     {
         "codigo": "O6521",
         "nombre": "TEORÍAS Y PRÁCTICAS DE LA ACCESIBILIDAD EN LA COMUNICACIÓN - LIM"
+    },
+    {
+        "codigo": "5005",
+        "nombre": "TUTORIAS ENTRE PARES ACADEMICAS PROGRESA/FING"
     }
 ]

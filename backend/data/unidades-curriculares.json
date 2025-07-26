@@ -172,7 +172,7 @@
         "semestres": null
     },
     {
-        "nombre": "TEMAS AVANZADOS EN CÓDIGOS PARA CORRECCIÓN DE ERRORES",
+        "nombre": "TEMAS AVANZADOS EN CODIGOS PARA CORRECCION DE ERRORES",
         "codigo": "1899",
         "creditos": 7,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -1241,7 +1241,7 @@
         "semestres": null
     },
     {
-        "nombre": "INT. A LA FÍSICA MODERNA",
+        "nombre": "INT. A LA FISICA MODERNA",
         "codigo": "1159",
         "creditos": 10,
         "nombreGrupoPadre": "MATERIAS BASICAS",
@@ -1854,7 +1854,7 @@
         "semestres": null
     },
     {
-        "nombre": "CONCEPTOS DE LENGUAJES DE PROGRAMACIÓN",
+        "nombre": "CONCEPTOS DE LENGUAJES DE PROGRAMACION",
         "codigo": "1374",
         "creditos": 6,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -2588,7 +2588,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "ARQUIT, S.OP. Y REDES DE COMP.",
         "codigoGrupoHijo": "4428",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "REDES OPTICAS",
@@ -4207,7 +4209,7 @@
         "semestres": null
     },
     {
-        "nombre": "ALGORITMOS DE APROXIMACIÓN",
+        "nombre": "ALGORITMOS DE APROXIMACION",
         "codigo": "1641",
         "creditos": 10,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -4219,7 +4221,7 @@
         ]
     },
     {
-        "nombre": "INT. A LA INVESTIGACIÓN DE OPERACIONES",
+        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES",
         "codigo": "1650",
         "creditos": 10,
         "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
@@ -4605,6 +4607,18 @@
         "nombreGrupoHijo": "INVESTIGACION OPERATIVA",
         "codigoGrupoHijo": "4815",
         "semestres": null
+    },
+    {
+        "nombre": "TALLER: DISEÑO DE PROY P/LA GESTIÓN UNIV",
+        "codigo": "I546",
+        "creditos": 10,
+        "nombreGrupoPadre": "BASICO-TEC,TECNICAS E INTEG.",
+        "codigoGrupoPadre": "3215",
+        "nombreGrupoHijo": "INGENIERIA DE SOFTWARE",
+        "codigoGrupoHijo": "5082",
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "TALLER INTRODUCTORIO DE INGENIERÍA DE SOFTWARE",
@@ -5057,7 +5071,9 @@
         "codigoGrupoPadre": "3215",
         "nombreGrupoHijo": "A.INTEG,TALLERES,PASANT.Y PROY",
         "codigoGrupoHijo": "4756",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "CREDITOS ASIGNADOS POR REVALIDA",
@@ -6196,9 +6212,7 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": [
-            "2"
-        ]
+        "semestres": null
     },
     {
         "nombre": "INGLES PARA FINES UNIVERSITARIOS I",
@@ -6218,7 +6232,9 @@
         "codigoGrupoPadre": "3582",
         "nombreGrupoHijo": "MATERIAS OPCIONALES",
         "codigoGrupoHijo": "3582",
-        "semestres": null
+        "semestres": [
+            "2"
+        ]
     },
     {
         "nombre": "SEMINARIO SOBRE ENCUENTROS ENTRE ARTE Y TECNOLOGIAS",
