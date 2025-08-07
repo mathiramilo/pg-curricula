@@ -3,6 +3,8 @@ import requisitosTitulo from "@/data/requisitos-titulo.json";
 import ucsObligatorias from "@/data/ucs-obligatorias.json";
 import ucsOptativasGruposActuales from "@/data/ucs-optativas-grupos-actuales.json";
 import unidadesCurricularesJson from "@/data/unidades-curriculares.json";
+import ucsPrimerSemestre from "@/data/ucs-primer-semestre.json";
+import ucsSegundoSemestre from "@/data/ucs-segundo-semestre.json";
 import {
   GrupoHijo,
   InformacionEstudiante,
@@ -27,6 +29,9 @@ const ucsOptativasGruposActualesTyped = ucsOptativasGruposActuales as Record<
 >;
 
 const MAX_ITERATIONS = 1000;
+
+const codigosPrimerSemestre = new Set(ucsPrimerSemestre.map((uc) => uc.codigo));
+const codigosSegundoSemestre = new Set(ucsSegundoSemestre.map((uc) => uc.codigo));
 
 export const obtenerListadoUCs = (
   informacionEstudiante: InformacionEstudiante,
@@ -142,6 +147,9 @@ export const obtenerListadoUCs = (
     }
   }
 
+  let countPrimerSemestre = 0;
+  let countSegundoSemestre = 0;
+
   // Hasta completar 450 creditos
   iterations = 0;
   while (informacionEstudiante.creditosTotales < 450) {
@@ -158,34 +166,59 @@ export const obtenerListadoUCs = (
       Math.floor(Math.random() * grupos.length)
     ] as GrupoHijo;
 
-    // 2. Seleccionar una unidad curricular del grupo al azar
-    const indiceAleatorio = Math.floor(
-      // @ts-expect-error Necessary to access the property dynamically
-      Math.random() * ucsOptativasGruposActualesTyped[grupoAleatorio].length,
+    // 2. Filtrar materias disponibles del grupo por semestre
+    const codigosDisponibles = ucsOptativasGruposActualesTyped[
+      grupoAleatorio
+    ]?.filter(
+      (codigoUC) =>
+        !Object.hasOwn(
+          informacionEstudiante.unidadesCurricularesAprobadas,
+          codigoUC,
+        ) && !listadoUCs.find((uc) => uc.codigo === codigoUC),
     );
-    const codigoUCAleatorio =
-      ucsOptativasGruposActualesTyped[grupoAleatorio!]?.[indiceAleatorio];
+
+    const codigosPrimer = codigosDisponibles?.filter((codigo) =>
+      codigosPrimerSemestre.has(codigo),
+    );
+    const codigosSegundo = codigosDisponibles?.filter((codigo) =>
+      codigosSegundoSemestre.has(codigo),
+    );
+
+    // 3. Elegir semestre con menos materias seleccionadas en este grupo
+    let listaElegida: string[];
+    if (countPrimerSemestre <= countSegundoSemestre) {
+      listaElegida = codigosPrimer!.length > 0 ? codigosPrimer! : codigosSegundo!;
+    } else {
+      listaElegida = codigosSegundo!.length > 0 ? codigosSegundo! : codigosPrimer!;
+    }
+    if (listaElegida.length === 0) continue; // No hay más materias disponibles en este grupo
+
+    // 4. Seleccionar una materia al azar de la lista elegida
+    const indiceAleatorio = Math.floor(Math.random() * listaElegida.length);
+    const codigoUCAleatorio = listaElegida[indiceAleatorio];
     const ucAleatoria = unidadesCurricularesJson.find(
       (uc) => uc.codigo === codigoUCAleatorio,
     ) as UnidadCurricular;
-    const previaturasUCAleatoria = previaturasTyped[
-      ucAleatoria.codigo
-    ] as ReglaPreviaturas;
+    const previaturasUCAleatoria = previaturasTyped[ucAleatoria.codigo] as ReglaPreviaturas;
 
-    if (
-      !cumplePreviaturas(informacionEstudiante, previaturasUCAleatoria) ||
-      listadoUCs.find((uc) => uc.codigo === ucAleatoria.codigo)
-    )
-      continue;
+    if (!cumplePreviaturas(informacionEstudiante, previaturasUCAleatoria)) continue;
 
-    // 3. Agregar la unidad curricular al listado y actualizar informacionEstudiante
+    // 5. Agregar la unidad curricular al listado y actualizar informacionEstudiante
     listadoUCs.push(ucAleatoria);
     actualizarInformacionEstudiante(
       informacionEstudiante,
       ucAleatoria,
       grupoAleatorio!,
     );
+
+    // 6. Actualizar el contador de semestre global
+    if (codigosPrimerSemestre.has(codigoUCAleatorio!)) {
+      countPrimerSemestre++;
+    } else if (codigosSegundoSemestre.has(codigoUCAleatorio!)) {
+      countSegundoSemestre++;
+    }
   }
 
+  console.log(countPrimerSemestre, countSegundoSemestre);
   return listadoUCs;
 };
