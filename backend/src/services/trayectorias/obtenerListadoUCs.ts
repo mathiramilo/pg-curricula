@@ -147,11 +147,8 @@ export const obtenerListadoUCs = (
     }
   }
 
-  const grupos = Object.keys(ucsOptativasGruposActuales);
-  const countPorGrupoYSemestre: Record<string, { primer: number; segundo: number }> = {};
-  grupos.forEach(grupo => {
-    countPorGrupoYSemestre[grupo] = { primer: 0, segundo: 0 };
-  });
+  let countPrimerSemestre = 0;
+  let countSegundoSemestre = 0;
 
   // Hasta completar 450 creditos
   iterations = 0;
@@ -164,6 +161,7 @@ export const obtenerListadoUCs = (
     }
     iterations++;
     // 1. Seleccionar un grupo al azar
+    const grupos = Object.keys(ucsOptativasGruposActuales);
     const grupoAleatorio = grupos[
       Math.floor(Math.random() * grupos.length)
     ] as GrupoHijo;
@@ -188,7 +186,7 @@ export const obtenerListadoUCs = (
 
     // 3. Elegir semestre con menos materias seleccionadas en este grupo
     let listaElegida: string[];
-    if (countPorGrupoYSemestre[grupoAleatorio]!.primer <= countPorGrupoYSemestre[grupoAleatorio]!.segundo) {
+    if (countPrimerSemestre <= countSegundoSemestre) {
       listaElegida = codigosPrimer!.length > 0 ? codigosPrimer! : codigosSegundo!;
     } else {
       listaElegida = codigosSegundo!.length > 0 ? codigosSegundo! : codigosPrimer!;
@@ -213,13 +211,14 @@ export const obtenerListadoUCs = (
       grupoAleatorio!,
     );
 
-    // 6. Actualizar el contador de semestre para este grupo
+    // 6. Actualizar el contador de semestre global
     if (codigosPrimerSemestre.has(codigoUCAleatorio!)) {
-      countPorGrupoYSemestre[grupoAleatorio]!.primer++;
+      countPrimerSemestre++;
     } else if (codigosSegundoSemestre.has(codigoUCAleatorio!)) {
-      countPorGrupoYSemestre[grupoAleatorio]!.segundo++;
+      countSegundoSemestre++;
     }
   }
 
+  console.log(countPrimerSemestre, countSegundoSemestre);
   return listadoUCs;
 };
