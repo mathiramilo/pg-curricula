@@ -393,8 +393,8 @@ export class Graph {
           continue;
         }
 
-        // Si no se puede agregar la unidad curricular por exceso de creditos, se tiene que avanzar al siguiente semestre
-        break;
+        // Si no se puede agregar la unidad curricular por exceso de creditos, se prueba con la siguiente unidad curricular
+        continue;
       }
 
       // Buscamos si podemos agregar alguna del pool de UCs sin previas
