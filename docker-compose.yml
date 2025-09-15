@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
@@ -13,7 +13,7 @@ services:
       - /app/node_modules
       - /app/dist
     ports:
-      - '3000:3000'
+      - "3000:3000"
     restart: unless-stopped
 
   frontend:
@@ -28,7 +28,7 @@ services:
       - /app/node_modules
       - /app/dist
     ports:
-      - '5173:5173'
+      - "5173:5173"
     restart: unless-stopped
 
   processor-scraper:
@@ -37,5 +37,5 @@ services:
     volumes:
       - ./processor-scraper:/app
     ports:
-      - '8000:8000'
+      - "8000:8000"
     restart: unless-stopped
