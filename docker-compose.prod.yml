@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
@@ -10,7 +10,7 @@ services:
     depends_on:
       - processor-scraper
     ports:
-      - '3000:3000'
+      - "3000:3000"
     restart: unless-stopped
 
   frontend:
@@ -22,8 +22,8 @@ services:
     depends_on:
       - backend
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     restart: unless-stopped
     volumes:
       - ./certbot/conf:/etc/letsencrypt
@@ -37,12 +37,9 @@ services:
     entrypoint: >
       sh -c "trap exit TERM;
         while :; do
-          certbot certonly --webroot \
-            --webroot-path=/var/www/certbot \
-            --email mathiramilo2290@gmail.com \
-            --agree-tos \
-            --no-eff-email \
-            -d pg-curricula.web.elasticloud.uy;
+          certbot renew --webroot --webroot-path=/var/www/certbot;
+          echo 'Reloading nginx...';
+          docker exec frontend nginx -s reload || true;
           sleep 12h;
         done"
     restart: unless-stopped
@@ -52,5 +49,5 @@ services:
       context: ./processor-scraper
       dockerfile: Dockerfile.prod
     ports:
-      - '8000:8000'
+      - "8000:8000"
     restart: unless-stopped
