@@ -1,195 +1,207 @@
 [
     {
         "codigo": "1944",
-        "nombre": "ADMINISTRACIÓN GENERAL PARA INGENIEROS"
+        "nombre": "ADMINISTRACION GENERAL PARA INGENIEROS"
     },
     {
         "codigo": "1918",
-        "nombre": "ADMINISTRACIÓN Y SEGURIDAD DE SISTEMAS"
+        "nombre": "ADMINISTRACION Y SEGURIDAD DE SISTEMAS"
     },
     {
-        "codigo": "1438",
-        "nombre": "APLICACIONES DE TEORÍA DE LA INFORMACIÓN AL PROCESAMIENT"
-    },
-    {
-        "codigo": "1949",
-        "nombre": "BASES DE DATOS NO RELACIONALES"
+        "codigo": "MHC39",
+        "nombre": "BIOQUÍMICA I (2025-"
     },
     {
         "codigo": "1061",
-        "nombre": "CALCULO DIFERENCIAL E INTEGRAL EN UNA VARIABLE"
+        "nombre": "CALCULO DIF. E INTEGRAL EN UNA VARIABLE"
     },
     {
         "codigo": "1062",
-        "nombre": "CALCULO DIFERENCIAL E INTEGRAL EN VARIAS VARIABLES"
+        "nombre": "CALCULO DIF. E INTEGRAL EN VARIAS VARIABLES"
     },
     {
         "codigo": "1063",
         "nombre": "CALCULO VECTORIAL"
     },
     {
-        "codigo": "1271",
-        "nombre": "CIUDADANÍA EN ENTORNOS DIGITALES"
+        "codigo": "1890",
+        "nombre": "CALIDAD DE DATOS E INFORMACIÓN"
     },
     {
-        "codigo": "1447",
-        "nombre": "COMPUTACIÓN DE PROPÓSITO GENERAL EN UNIDADES DE PROCE"
+        "codigo": "MC10",
+        "nombre": "CÁLCULO I"
+    },
+    {
+        "codigo": "1223",
+        "nombre": "CIENCIA, TECNOLOGIA Y SOCIEDAD"
+    },
+    {
+        "codigo": "D78A",
+        "nombre": "CIENCIA,TECNOLOGÍA, INNOVACIÓN, SOCIEDAD Y DESARROLLO"
     },
     {
         "codigo": "1434",
-        "nombre": "COMPUTACIÓN DE ALTA PERFORMANCE"
+        "nombre": "COMPUTACION DE ALTA PERFORMANCE"
     },
     {
         "codigo": "1353",
-        "nombre": "DIDÁCTICA DE ALGORITMOS Y ESTRUCTURAS DE DATOS"
+        "nombre": "DIDACTICA DE ALGORIT.Y ESTRUCT.DE DATOS"
     },
     {
         "codigo": "1151",
-        "nombre": "FÍSICA 1"
+        "nombre": "FISICA 1"
     },
     {
         "codigo": "1152",
-        "nombre": "FÍSICA 2"
+        "nombre": "FISICA 2"
     },
     {
         "codigo": "1153",
-        "nombre": "FÍSICA 3"
+        "nombre": "FISICA 3"
     },
     {
         "codigo": "1066",
         "nombre": "FUNCIONES DE VARIABLE COMPLEJA"
     },
     {
-        "codigo": "1857",
-        "nombre": "FUNDAMENTOS DE LA ROBÓTICA AUTÓNOMA"
+        "codigo": "2044",
+        "nombre": "FUNDAMENTOS DE LA COMBINATORIA"
     },
     {
-        "codigo": "1942",
-        "nombre": "FUNDAMENTOS DE LA WEB SEMÁNTICA"
+        "codigo": "1857",
+        "nombre": "FUNDAMENTOS DE LA ROBOTICA AUTONOMA"
     },
     {
         "codigo": "1871",
-        "nombre": "FUNDAMENTOS DE OPTIMIZACIÓN"
-    },
-    {
-        "codigo": "1631",
-        "nombre": "FUNDAMENTOS DE PROGRAMACIÓN ENTERA"
+        "nombre": "FUNDAMENTOS DE OPTIMIZACION"
     },
     {
         "codigo": "5916",
-        "nombre": "FUNDAMENTOS DE SEGURIDAD INFORMÁTICA"
+        "nombre": "FUNDAMENTOS DE SEGURIDAD INFORMATICA"
     },
     {
         "codigo": "1030",
-        "nombre": "GEOMETRÍA Y ÁLGEBRA LINEAL 1"
+        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 1"
     },
     {
         "codigo": "1031",
-        "nombre": "GEOMETRÍA Y ÁLGEBRA LINEAL 2"
+        "nombre": "GEOMETRIA Y ALGEBRA LINEAL 2"
     },
     {
         "codigo": "1954",
-        "nombre": "GESTIÓN DE CALIDAD"
+        "nombre": "GESTION DE CALIDAD"
+    },
+    {
+        "codigo": "2045",
+        "nombre": "GESTION DE SOFTWARE PARA EQUIPOS ALTAMENTE PERFORMANTES"
     },
     {
         "codigo": "5707",
-        "nombre": "IMÁGENES MEDICAS: ADQUISICIÓN  INSTRUMENTACIÓN Y GESTIÓN"
+        "nombre": "IMAGENES MEDICAS: ADQUISICION, INSTRUMENTACION Y GESTION"
+    },
+    {
+        "codigo": "816EU",
+        "nombre": "INGLES CIENTÍFICO"
     },
     {
         "codigo": "2040",
-        "nombre": "INICIACIÓN A LA PRODUCCIÓN AUDIOVISUAL Y MULTIMEDIA"
+        "nombre": "INICIACION A LA PROD. AUDIOVIS. Y MULTIMEDIA"
     },
     {
         "codigo": "1316",
-        "nombre": "INTRODUCCIÓN A LA COMPUTACIÓN GRAFICA"
+        "nombre": "INT. A LA COMPUTACION GRAFICA"
     },
     {
-        "codigo": "1716",
-        "nombre": "INT. A LA INGENIERIA DE SOFTWARE"
+        "codigo": "1159",
+        "nombre": "INT. A LA FISICA MODERNA"
     },
     {
         "codigo": "1650",
-        "nombre": "INTRODUCCIÓN A LA INVESTIGACIÓN DE OPERACIONES"
+        "nombre": "INT. A LA INVESTIGACION DE OPERACIONES"
     },
     {
         "codigo": "1450",
-        "nombre": "INTRODUCCIÓN A LA TEORÍA DE LA INFORMACIÓN"
+        "nombre": "INT. A LA TEORIA DE LA INFORMACION"
     },
     {
-        "codigo": "1513",
-        "nombre": "INTRODUCCIÓN A LOS MICROPROCESADORES"
-    },
-    {
-        "codigo": "1828",
-        "nombre": "INTRODUCCIÓN AL PROCESAMIENTO DE LENGUAJE NATURAL"
+        "codigo": "103EU",
+        "nombre": "INT. A LAS C. BIOLÓGICAS I"
     },
     {
         "codigo": "1027",
-        "nombre": "LÓGICA"
-    },
-    {
-        "codigo": "1023",
-        "nombre": "MATEMÁTICA DISCRETA 1"
+        "nombre": "LOGICA"
     },
     {
         "codigo": "1026",
-        "nombre": "MATEMÁTICA DISCRETA 2"
+        "nombre": "MATEMATICA DISCRETA 2"
     },
     {
         "codigo": "MI2",
-        "nombre": "MATEMÁTICA INICIAL"
+        "nombre": "MATEMATICA INICIAL"
+    },
+    {
+        "codigo": "1897",
+        "nombre": "METODOS EFICI. DE SIMUL. PARA LA ESTIM. DE CONFIA. DE REDES"
     },
     {
         "codigo": "1057",
-        "nombre": "MÉTODOS MONTECARLO"
+        "nombre": "METODOS MONTECARLO"
     },
     {
-        "codigo": "1731",
-        "nombre": "PASANTÍA"
+        "codigo": "AT009",
+        "nombre": "MODELADO 3D PARA PRODUCCION DIGITAL (PERFIL PRODUCTO)"
+    },
+    {
+        "codigo": "1632",
+        "nombre": "OPTIMIZACION BAJO INCERTIDUMBRE"
     },
     {
         "codigo": "1767",
-        "nombre": "PRINCIPIOS Y FUNDAMENTOS DEL PROCESO PERSONAL DEL SOFT"
+        "nombre": "PRINC.Y FUND.DEL PROC.PERS.DE SOFTWARE"
     },
     {
         "codigo": "1025",
-        "nombre": "PROBABILIDAD Y ESTADÍSTICA"
+        "nombre": "PROBABILIDAD Y ESTADISTICA"
     },
     {
         "codigo": "1354",
-        "nombre": "PROGRAMACIÓN FUNCIONAL"
+        "nombre": "PROGRAMACION FUNCIONAL"
     },
     {
         "codigo": "1340",
-        "nombre": "PROGRAMACIÓN LÓGICA"
+        "nombre": "PROGRAMACION LOGICA"
     },
     {
         "codigo": "1373",
-        "nombre": "PROGRAMACIÓN 1"
+        "nombre": "PROGRAMACION 1"
     },
     {
         "codigo": "1321",
-        "nombre": "PROGRAMACIÓN 2"
+        "nombre": "PROGRAMACION 2"
     },
     {
         "codigo": "1324",
-        "nombre": "PROGRAMACIÓN 4"
+        "nombre": "PROGRAMACION 4"
+    },
+    {
+        "codigo": "1898",
+        "nombre": "PROGRAMACIÓN MASIVAMENTE PARALELA EN PROCESADORES GRÁFICOS (GPUS)"
     },
     {
         "codigo": "1730",
         "nombre": "PROYECTO DE GRADO"
     },
     {
+        "codigo": "102EU",
+        "nombre": "QUÍMICA GENERAL I"
+    },
+    {
         "codigo": "1758",
-        "nombre": "RELACIONES PERSONALES EN INGENIERÍA DE SOFTWARE Y GEREN"
+        "nombre": "RELACIONES PERSONALES EN ING. DE SOFT. Y GER. DE PROY."
     },
     {
-        "codigo": "1848",
-        "nombre": "ROBÓTICA BASADA EN COMPORTAMIENTOS"
-    },
-    {
-        "codigo": "1781",
-        "nombre": "SISTEMAS DE INFORMACIÓN PARA EL ANÁLISIS DE GRANDES VOLÚ"
+        "codigo": "5705",
+        "nombre": "SEMINARIO DE INGENIERIA BIOMEDICA"
     },
     {
         "codigo": "1556",
@@ -200,43 +212,63 @@
         "nombre": "SISTEMAS OPERATIVOS"
     },
     {
-        "codigo": "5853",
-        "nombre": "TALLER DE APRENDIZAJE AUTOMÁTICO"
+        "codigo": "1275",
+        "nombre": "TALLER BASICO DE ESTRATEGIAS Y ORIENTACION (TBEO)"
     },
     {
-        "codigo": "1876",
-        "nombre": "TALLER DE MINERÍA DE PROCESOS DE NEGOCIO (TPM)"
+        "codigo": "5720",
+        "nombre": "TALLER DE APRENDIZAJE AUTOMATICO"
+    },
+    {
+        "codigo": "2107A",
+        "nombre": "TALLER DE COMUNICACIÓN ORAL Y ESCRITA"
+    },
+    {
+        "codigo": "1774",
+        "nombre": "TALLER DE EVALUACION DE TECNOLOGIAS DE LA INF."
+    },
+    {
+        "codigo": "V2110",
+        "nombre": "TALLER DE ÉTICA"
+    },
+    {
+        "codigo": "O6311",
+        "nombre": "TALLER DE INTERACCIÓN"
     },
     {
         "codigo": "1780",
-        "nombre": "TALLER DE ROBÓTICA EDUCATIVA"
+        "nombre": "TALLER DE ROBOTICA EDUCATIVA"
     },
     {
         "codigo": "1776",
-        "nombre": "TALLER DE SISTEMAS DE INFORMACIÓN GEOGRÁFICA EMPRESARIA"
+        "nombre": "TALLER DE SIST. DE INF. GEO. EMPRES."
     },
     {
         "codigo": "1952",
         "nombre": "TALLER DE SISTEMAS CIBER-FISICOS"
     },
     {
-        "codigo": "1775",
-        "nombre": "TALLER DE SISTEMAS EMPRESARIALES"
+        "codigo": "1742",
+        "nombre": "TALLER DE VERIFICACION DEL SOFTWARE"
+    },
+    {
+        "codigo": "1783",
+        "nombre": "TALLER INTRODUCTORIO DE INGENIERÍA DE SOFTWARE"
     },
     {
         "codigo": "1325",
-        "nombre": "TEORÍA DE LENGUAJES"
+        "nombre": "TEORIA DE LENGUAJES"
+    },
+    {
+        "codigo": "1886",
+        "nombre": "TOPOLOGIA Y ANALISIS REAL"
     },
     {
         "codigo": "5828",
-        "nombre": "TRATAMIENTO DE IMÁGENES POR COMPUTADORA"
+        "nombre": "TRATAMIENTO DE IMAGENES POR COMPUTADORA"
     },
     {
-        "codigo": "2216",
-        "nombre": "TUTORÍAS ENTRE PARES 1"
-    },
-    {
-        "codigo": "2217",
-        "nombre": "TUTORÍAS ENTRE PARES 2"
+        "codigo": "5005",
+        "nombre": "TUTORIAS ENTRE PARES ACADEMICAS PROGRESA/FING"
     }
 ]
